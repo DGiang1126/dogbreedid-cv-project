@@ -1,0 +1,4 @@
+experiment:
+  id: E3
+  name: resnet18_partial
+# Parameters will be finalized in the task/protocol before implementation.
