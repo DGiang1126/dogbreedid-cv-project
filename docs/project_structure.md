@@ -71,8 +71,9 @@ dogbreedid-cv-project/
 ├── tests/
 │
 └── docs/
+    ├── De_cuong_chi_tiet_DogBreedID.docx
     ├── project_structure.md
-    ├── proposal/
+    ├── reports/
     ├── protocol/
     ├── pipeline/
     ├── team_tasks/
@@ -245,8 +246,11 @@ Khi giao task, nhóm trưởng sẽ quy định file test cần chỉnh sửa.
 Chứa tài liệu chung của nhóm.
 
 ```text
-proposal/
-→ đề cương đồ án
+De_cuong_chi_tiet_DogBreedID.docx
+→ đề cương chi tiết chính thức của đồ án
+
+reports/
+→ báo cáo đồ án, để trống cho đến khi có file báo cáo
 
 protocol/
 → quy định dataset, training, evaluation và Git
