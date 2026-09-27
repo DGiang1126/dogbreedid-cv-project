@@ -1,0 +1,13 @@
+# Shared dataset and preprocessing configuration.
+# Do not modify per experiment unless the protocol explicitly allows it.
+data:
+  dataset: Stanford Dogs
+  image_size: 224
+  split:
+    train: 0.80
+    validation: 0.10
+    calibration: 0.10
+
+preprocessing:
+  # To be finalized according to docs/protocol/training_protocol.md
+  status: TODO
