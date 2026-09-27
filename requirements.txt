@@ -1,0 +1,2 @@
+# Add project dependencies here after the shared environment is finalized.
+# Example categories: torch, torchvision, scikit-learn, pandas, numpy, matplotlib, gradio, pyyaml
