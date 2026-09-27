@@ -1,0 +1,4 @@
+experiment:
+  id: E4
+  name: cutmix_ablation
+# Parameters will be finalized after E0-E3 results.
