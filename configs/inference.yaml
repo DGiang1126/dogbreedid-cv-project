@@ -1,0 +1,4 @@
+# Shared inference configuration.
+# Fill after the final classification model, calibration temperature, and reject threshold are locked.
+inference:
+  status: TODO
