@@ -1,0 +1,4 @@
+experiment:
+  id: E0
+  name: custom_cnn
+# Parameters will be finalized in the task/protocol before implementation.
