@@ -1,0 +1,8 @@
+# Shared project configuration.
+# Values will be finalized by the team leader before experiments start.
+project:
+  name: dogbreedid
+  num_classes: 30
+
+training:
+  seed: null
