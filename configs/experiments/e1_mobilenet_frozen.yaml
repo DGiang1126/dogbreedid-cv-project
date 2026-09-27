@@ -1,0 +1,4 @@
+experiment:
+  id: E1
+  name: mobilenet_v2_frozen
+# Parameters will be finalized in the task/protocol before implementation.
