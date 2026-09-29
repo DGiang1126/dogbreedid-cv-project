@@ -1,0 +1,301 @@
+relative_path,class_id,breed_name,source_split
+n02109961-Eskimo_dog/n02109961_12719.jpg,0,Eskimo Dog,official_train
+n02109961-Eskimo_dog/n02109961_17033.jpg,0,Eskimo Dog,official_train
+n02109961-Eskimo_dog/n02109961_2388.jpg,0,Eskimo Dog,official_train
+n02109961-Eskimo_dog/n02109961_2609.jpg,0,Eskimo Dog,official_train
+n02109961-Eskimo_dog/n02109961_2706.jpg,0,Eskimo Dog,official_train
+n02109961-Eskimo_dog/n02109961_3810.jpg,0,Eskimo Dog,official_train
+n02109961-Eskimo_dog/n02109961_4182.jpg,0,Eskimo Dog,official_train
+n02109961-Eskimo_dog/n02109961_467.jpg,0,Eskimo Dog,official_train
+n02109961-Eskimo_dog/n02109961_5597.jpg,0,Eskimo Dog,official_train
+n02109961-Eskimo_dog/n02109961_8187.jpg,0,Eskimo Dog,official_train
+n02110063-malamute/n02110063_1058.jpg,1,Malamute,official_train
+n02110063-malamute/n02110063_14782.jpg,1,Malamute,official_train
+n02110063-malamute/n02110063_1581.jpg,1,Malamute,official_train
+n02110063-malamute/n02110063_16539.jpg,1,Malamute,official_train
+n02110063-malamute/n02110063_17138.jpg,1,Malamute,official_train
+n02110063-malamute/n02110063_3722.jpg,1,Malamute,official_train
+n02110063-malamute/n02110063_4432.jpg,1,Malamute,official_train
+n02110063-malamute/n02110063_6391.jpg,1,Malamute,official_train
+n02110063-malamute/n02110063_650.jpg,1,Malamute,official_train
+n02110063-malamute/n02110063_7810.jpg,1,Malamute,official_train
+n02110185-Siberian_husky/n02110185_10898.jpg,2,Siberian Husky,official_train
+n02110185-Siberian_husky/n02110185_11409.jpg,2,Siberian Husky,official_train
+n02110185-Siberian_husky/n02110185_14479.jpg,2,Siberian Husky,official_train
+n02110185-Siberian_husky/n02110185_14594.jpg,2,Siberian Husky,official_train
+n02110185-Siberian_husky/n02110185_184.jpg,2,Siberian Husky,official_train
+n02110185-Siberian_husky/n02110185_3328.jpg,2,Siberian Husky,official_train
+n02110185-Siberian_husky/n02110185_4060.jpg,2,Siberian Husky,official_train
+n02110185-Siberian_husky/n02110185_5495.jpg,2,Siberian Husky,official_train
+n02110185-Siberian_husky/n02110185_5716.jpg,2,Siberian Husky,official_train
+n02110185-Siberian_husky/n02110185_7210.jpg,2,Siberian Husky,official_train
+n02107574-Greater_Swiss_Mountain_dog/n02107574_1083.jpg,3,Greater Swiss Mountain Dog,official_train
+n02107574-Greater_Swiss_Mountain_dog/n02107574_1387.jpg,3,Greater Swiss Mountain Dog,official_train
+n02107574-Greater_Swiss_Mountain_dog/n02107574_1927.jpg,3,Greater Swiss Mountain Dog,official_train
+n02107574-Greater_Swiss_Mountain_dog/n02107574_2579.jpg,3,Greater Swiss Mountain Dog,official_train
+n02107574-Greater_Swiss_Mountain_dog/n02107574_3274.jpg,3,Greater Swiss Mountain Dog,official_train
+n02107574-Greater_Swiss_Mountain_dog/n02107574_549.jpg,3,Greater Swiss Mountain Dog,official_train
+n02107574-Greater_Swiss_Mountain_dog/n02107574_656.jpg,3,Greater Swiss Mountain Dog,official_train
+n02107574-Greater_Swiss_Mountain_dog/n02107574_743.jpg,3,Greater Swiss Mountain Dog,official_train
+n02107574-Greater_Swiss_Mountain_dog/n02107574_785.jpg,3,Greater Swiss Mountain Dog,official_train
+n02107574-Greater_Swiss_Mountain_dog/n02107574_988.jpg,3,Greater Swiss Mountain Dog,official_train
+n02107908-Appenzeller/n02107908_1176.jpg,4,Appenzeller,official_train
+n02107908-Appenzeller/n02107908_2365.jpg,4,Appenzeller,official_train
+n02107908-Appenzeller/n02107908_2555.jpg,4,Appenzeller,official_train
+n02107908-Appenzeller/n02107908_3254.jpg,4,Appenzeller,official_train
+n02107908-Appenzeller/n02107908_3971.jpg,4,Appenzeller,official_train
+n02107908-Appenzeller/n02107908_4296.jpg,4,Appenzeller,official_train
+n02107908-Appenzeller/n02107908_4885.jpg,4,Appenzeller,official_train
+n02107908-Appenzeller/n02107908_4931.jpg,4,Appenzeller,official_train
+n02107908-Appenzeller/n02107908_5378.jpg,4,Appenzeller,official_train
+n02107908-Appenzeller/n02107908_5402.jpg,4,Appenzeller,official_train
+n02108000-EntleBucher/n02108000_1073.jpg,5,EntleBucher,official_train
+n02108000-EntleBucher/n02108000_121.jpg,5,EntleBucher,official_train
+n02108000-EntleBucher/n02108000_204.jpg,5,EntleBucher,official_train
+n02108000-EntleBucher/n02108000_2125.jpg,5,EntleBucher,official_train
+n02108000-EntleBucher/n02108000_2523.jpg,5,EntleBucher,official_train
+n02108000-EntleBucher/n02108000_3601.jpg,5,EntleBucher,official_train
+n02108000-EntleBucher/n02108000_446.jpg,5,EntleBucher,official_train
+n02108000-EntleBucher/n02108000_748.jpg,5,EntleBucher,official_train
+n02108000-EntleBucher/n02108000_777.jpg,5,EntleBucher,official_train
+n02108000-EntleBucher/n02108000_918.jpg,5,EntleBucher,official_train
+n02113624-toy_poodle/n02113624_1756.jpg,6,Toy Poodle,official_train
+n02113624-toy_poodle/n02113624_2224.jpg,6,Toy Poodle,official_train
+n02113624-toy_poodle/n02113624_2427.jpg,6,Toy Poodle,official_train
+n02113624-toy_poodle/n02113624_288.jpg,6,Toy Poodle,official_train
+n02113624-toy_poodle/n02113624_3061.jpg,6,Toy Poodle,official_train
+n02113624-toy_poodle/n02113624_479.jpg,6,Toy Poodle,official_train
+n02113624-toy_poodle/n02113624_8444.jpg,6,Toy Poodle,official_train
+n02113624-toy_poodle/n02113624_8880.jpg,6,Toy Poodle,official_train
+n02113624-toy_poodle/n02113624_8936.jpg,6,Toy Poodle,official_train
+n02113624-toy_poodle/n02113624_952.jpg,6,Toy Poodle,official_train
+n02113712-miniature_poodle/n02113712_1036.jpg,7,Miniature Poodle,official_train
+n02113712-miniature_poodle/n02113712_112.jpg,7,Miniature Poodle,official_train
+n02113712-miniature_poodle/n02113712_1147.jpg,7,Miniature Poodle,official_train
+n02113712-miniature_poodle/n02113712_1917.jpg,7,Miniature Poodle,official_train
+n02113712-miniature_poodle/n02113712_2045.jpg,7,Miniature Poodle,official_train
+n02113712-miniature_poodle/n02113712_2596.jpg,7,Miniature Poodle,official_train
+n02113712-miniature_poodle/n02113712_2894.jpg,7,Miniature Poodle,official_train
+n02113712-miniature_poodle/n02113712_3171.jpg,7,Miniature Poodle,official_train
+n02113712-miniature_poodle/n02113712_3315.jpg,7,Miniature Poodle,official_train
+n02113712-miniature_poodle/n02113712_580.jpg,7,Miniature Poodle,official_train
+n02113799-standard_poodle/n02113799_1316.jpg,8,Standard Poodle,official_train
+n02113799-standard_poodle/n02113799_1439.jpg,8,Standard Poodle,official_train
+n02113799-standard_poodle/n02113799_1537.jpg,8,Standard Poodle,official_train
+n02113799-standard_poodle/n02113799_2017.jpg,8,Standard Poodle,official_train
+n02113799-standard_poodle/n02113799_2037.jpg,8,Standard Poodle,official_train
+n02113799-standard_poodle/n02113799_300.jpg,8,Standard Poodle,official_train
+n02113799-standard_poodle/n02113799_4458.jpg,8,Standard Poodle,official_train
+n02113799-standard_poodle/n02113799_4604.jpg,8,Standard Poodle,official_train
+n02113799-standard_poodle/n02113799_5973.jpg,8,Standard Poodle,official_train
+n02113799-standard_poodle/n02113799_7649.jpg,8,Standard Poodle,official_train
+n02097047-miniature_schnauzer/n02097047_1260.jpg,9,Miniature Schnauzer,official_train
+n02097047-miniature_schnauzer/n02097047_1352.jpg,9,Miniature Schnauzer,official_train
+n02097047-miniature_schnauzer/n02097047_2233.jpg,9,Miniature Schnauzer,official_train
+n02097047-miniature_schnauzer/n02097047_2463.jpg,9,Miniature Schnauzer,official_train
+n02097047-miniature_schnauzer/n02097047_2466.jpg,9,Miniature Schnauzer,official_train
+n02097047-miniature_schnauzer/n02097047_255.jpg,9,Miniature Schnauzer,official_train
+n02097047-miniature_schnauzer/n02097047_535.jpg,9,Miniature Schnauzer,official_train
+n02097047-miniature_schnauzer/n02097047_5869.jpg,9,Miniature Schnauzer,official_train
+n02097047-miniature_schnauzer/n02097047_635.jpg,9,Miniature Schnauzer,official_train
+n02097047-miniature_schnauzer/n02097047_6701.jpg,9,Miniature Schnauzer,official_train
+n02097209-standard_schnauzer/n02097209_1303.jpg,10,Standard Schnauzer,official_train
+n02097209-standard_schnauzer/n02097209_1653.jpg,10,Standard Schnauzer,official_train
+n02097209-standard_schnauzer/n02097209_2194.jpg,10,Standard Schnauzer,official_train
+n02097209-standard_schnauzer/n02097209_221.jpg,10,Standard Schnauzer,official_train
+n02097209-standard_schnauzer/n02097209_2365.jpg,10,Standard Schnauzer,official_train
+n02097209-standard_schnauzer/n02097209_2684.jpg,10,Standard Schnauzer,official_train
+n02097209-standard_schnauzer/n02097209_2845.jpg,10,Standard Schnauzer,official_train
+n02097209-standard_schnauzer/n02097209_3936.jpg,10,Standard Schnauzer,official_train
+n02097209-standard_schnauzer/n02097209_5027.jpg,10,Standard Schnauzer,official_train
+n02097209-standard_schnauzer/n02097209_583.jpg,10,Standard Schnauzer,official_train
+n02097130-giant_schnauzer/n02097130_1032.jpg,11,Giant Schnauzer,official_train
+n02097130-giant_schnauzer/n02097130_1070.jpg,11,Giant Schnauzer,official_train
+n02097130-giant_schnauzer/n02097130_2942.jpg,11,Giant Schnauzer,official_train
+n02097130-giant_schnauzer/n02097130_310.jpg,11,Giant Schnauzer,official_train
+n02097130-giant_schnauzer/n02097130_3359.jpg,11,Giant Schnauzer,official_train
+n02097130-giant_schnauzer/n02097130_364.jpg,11,Giant Schnauzer,official_train
+n02097130-giant_schnauzer/n02097130_4050.jpg,11,Giant Schnauzer,official_train
+n02097130-giant_schnauzer/n02097130_4649.jpg,11,Giant Schnauzer,official_train
+n02097130-giant_schnauzer/n02097130_4888.jpg,11,Giant Schnauzer,official_train
+n02097130-giant_schnauzer/n02097130_878.jpg,11,Giant Schnauzer,official_train
+n02100735-English_setter/n02100735_2086.jpg,12,English Setter,official_train
+n02100735-English_setter/n02100735_2145.jpg,12,English Setter,official_train
+n02100735-English_setter/n02100735_3566.jpg,12,English Setter,official_train
+n02100735-English_setter/n02100735_4531.jpg,12,English Setter,official_train
+n02100735-English_setter/n02100735_4912.jpg,12,English Setter,official_train
+n02100735-English_setter/n02100735_5054.jpg,12,English Setter,official_train
+n02100735-English_setter/n02100735_5435.jpg,12,English Setter,official_train
+n02100735-English_setter/n02100735_6132.jpg,12,English Setter,official_train
+n02100735-English_setter/n02100735_8326.jpg,12,English Setter,official_train
+n02100735-English_setter/n02100735_9979.jpg,12,English Setter,official_train
+n02100877-Irish_setter/n02100877_156.jpg,13,Irish Setter,official_train
+n02100877-Irish_setter/n02100877_2443.jpg,13,Irish Setter,official_train
+n02100877-Irish_setter/n02100877_2599.jpg,13,Irish Setter,official_train
+n02100877-Irish_setter/n02100877_2732.jpg,13,Irish Setter,official_train
+n02100877-Irish_setter/n02100877_370.jpg,13,Irish Setter,official_train
+n02100877-Irish_setter/n02100877_378.jpg,13,Irish Setter,official_train
+n02100877-Irish_setter/n02100877_4895.jpg,13,Irish Setter,official_train
+n02100877-Irish_setter/n02100877_5916.jpg,13,Irish Setter,official_train
+n02100877-Irish_setter/n02100877_8800.jpg,13,Irish Setter,official_train
+n02100877-Irish_setter/n02100877_8900.jpg,13,Irish Setter,official_train
+n02101006-Gordon_setter/n02101006_12.jpg,14,Gordon Setter,official_train
+n02101006-Gordon_setter/n02101006_1506.jpg,14,Gordon Setter,official_train
+n02101006-Gordon_setter/n02101006_1804.jpg,14,Gordon Setter,official_train
+n02101006-Gordon_setter/n02101006_228.jpg,14,Gordon Setter,official_train
+n02101006-Gordon_setter/n02101006_2513.jpg,14,Gordon Setter,official_train
+n02101006-Gordon_setter/n02101006_3422.jpg,14,Gordon Setter,official_train
+n02101006-Gordon_setter/n02101006_3868.jpg,14,Gordon Setter,official_train
+n02101006-Gordon_setter/n02101006_3882.jpg,14,Gordon Setter,official_train
+n02101006-Gordon_setter/n02101006_4470.jpg,14,Gordon Setter,official_train
+n02101006-Gordon_setter/n02101006_751.jpg,14,Gordon Setter,official_train
+n02102040-English_springer/n02102040_1306.jpg,15,English Springer,official_train
+n02102040-English_springer/n02102040_3225.jpg,15,English Springer,official_train
+n02102040-English_springer/n02102040_3476.jpg,15,English Springer,official_train
+n02102040-English_springer/n02102040_350.jpg,15,English Springer,official_train
+n02102040-English_springer/n02102040_3693.jpg,15,English Springer,official_train
+n02102040-English_springer/n02102040_3950.jpg,15,English Springer,official_train
+n02102040-English_springer/n02102040_5449.jpg,15,English Springer,official_train
+n02102040-English_springer/n02102040_682.jpg,15,English Springer,official_train
+n02102040-English_springer/n02102040_6843.jpg,15,English Springer,official_train
+n02102040-English_springer/n02102040_688.jpg,15,English Springer,official_train
+n02102177-Welsh_springer_spaniel/n02102177_1471.jpg,16,Welsh Springer Spaniel,official_train
+n02102177-Welsh_springer_spaniel/n02102177_2349.jpg,16,Welsh Springer Spaniel,official_train
+n02102177-Welsh_springer_spaniel/n02102177_2405.jpg,16,Welsh Springer Spaniel,official_train
+n02102177-Welsh_springer_spaniel/n02102177_2611.jpg,16,Welsh Springer Spaniel,official_train
+n02102177-Welsh_springer_spaniel/n02102177_2628.jpg,16,Welsh Springer Spaniel,official_train
+n02102177-Welsh_springer_spaniel/n02102177_3032.jpg,16,Welsh Springer Spaniel,official_train
+n02102177-Welsh_springer_spaniel/n02102177_4292.jpg,16,Welsh Springer Spaniel,official_train
+n02102177-Welsh_springer_spaniel/n02102177_466.jpg,16,Welsh Springer Spaniel,official_train
+n02102177-Welsh_springer_spaniel/n02102177_661.jpg,16,Welsh Springer Spaniel,official_train
+n02102177-Welsh_springer_spaniel/n02102177_839.jpg,16,Welsh Springer Spaniel,official_train
+n02102318-cocker_spaniel/n02102318_10178.jpg,17,Cocker Spaniel,official_train
+n02102318-cocker_spaniel/n02102318_11228.jpg,17,Cocker Spaniel,official_train
+n02102318-cocker_spaniel/n02102318_11581.jpg,17,Cocker Spaniel,official_train
+n02102318-cocker_spaniel/n02102318_2030.jpg,17,Cocker Spaniel,official_train
+n02102318-cocker_spaniel/n02102318_2048.jpg,17,Cocker Spaniel,official_train
+n02102318-cocker_spaniel/n02102318_239.jpg,17,Cocker Spaniel,official_train
+n02102318-cocker_spaniel/n02102318_3121.jpg,17,Cocker Spaniel,official_train
+n02102318-cocker_spaniel/n02102318_3269.jpg,17,Cocker Spaniel,official_train
+n02102318-cocker_spaniel/n02102318_5967.jpg,17,Cocker Spaniel,official_train
+n02102318-cocker_spaniel/n02102318_7163.jpg,17,Cocker Spaniel,official_train
+n02094114-Norfolk_terrier/n02094114_1198.jpg,18,Norfolk Terrier,official_train
+n02094114-Norfolk_terrier/n02094114_1444.jpg,18,Norfolk Terrier,official_train
+n02094114-Norfolk_terrier/n02094114_1601.jpg,18,Norfolk Terrier,official_train
+n02094114-Norfolk_terrier/n02094114_1641.jpg,18,Norfolk Terrier,official_train
+n02094114-Norfolk_terrier/n02094114_1696.jpg,18,Norfolk Terrier,official_train
+n02094114-Norfolk_terrier/n02094114_3060.jpg,18,Norfolk Terrier,official_train
+n02094114-Norfolk_terrier/n02094114_3409.jpg,18,Norfolk Terrier,official_train
+n02094114-Norfolk_terrier/n02094114_4238.jpg,18,Norfolk Terrier,official_train
+n02094114-Norfolk_terrier/n02094114_4332.jpg,18,Norfolk Terrier,official_train
+n02094114-Norfolk_terrier/n02094114_566.jpg,18,Norfolk Terrier,official_train
+n02094258-Norwich_terrier/n02094258_1281.jpg,19,Norwich Terrier,official_train
+n02094258-Norwich_terrier/n02094258_1386.jpg,19,Norwich Terrier,official_train
+n02094258-Norwich_terrier/n02094258_1947.jpg,19,Norwich Terrier,official_train
+n02094258-Norwich_terrier/n02094258_2058.jpg,19,Norwich Terrier,official_train
+n02094258-Norwich_terrier/n02094258_2694.jpg,19,Norwich Terrier,official_train
+n02094258-Norwich_terrier/n02094258_310.jpg,19,Norwich Terrier,official_train
+n02094258-Norwich_terrier/n02094258_3167.jpg,19,Norwich Terrier,official_train
+n02094258-Norwich_terrier/n02094258_3598.jpg,19,Norwich Terrier,official_train
+n02094258-Norwich_terrier/n02094258_848.jpg,19,Norwich Terrier,official_train
+n02094258-Norwich_terrier/n02094258_866.jpg,19,Norwich Terrier,official_train
+n02093754-Border_terrier/n02093754_1102.jpg,20,Border Terrier,official_train
+n02093754-Border_terrier/n02093754_4418.jpg,20,Border Terrier,official_train
+n02093754-Border_terrier/n02093754_6437.jpg,20,Border Terrier,official_train
+n02093754-Border_terrier/n02093754_6623.jpg,20,Border Terrier,official_train
+n02093754-Border_terrier/n02093754_6760.jpg,20,Border Terrier,official_train
+n02093754-Border_terrier/n02093754_717.jpg,20,Border Terrier,official_train
+n02093754-Border_terrier/n02093754_7552.jpg,20,Border Terrier,official_train
+n02093754-Border_terrier/n02093754_7908.jpg,20,Border Terrier,official_train
+n02093754-Border_terrier/n02093754_7923.jpg,20,Border Terrier,official_train
+n02093754-Border_terrier/n02093754_8019.jpg,20,Border Terrier,official_train
+n02106030-collie/n02106030_10021.jpg,21,Collie,official_train
+n02106030-collie/n02106030_10675.jpg,21,Collie,official_train
+n02106030-collie/n02106030_15829.jpg,21,Collie,official_train
+n02106030-collie/n02106030_15958.jpg,21,Collie,official_train
+n02106030-collie/n02106030_16162.jpg,21,Collie,official_train
+n02106030-collie/n02106030_16370.jpg,21,Collie,official_train
+n02106030-collie/n02106030_18288.jpg,21,Collie,official_train
+n02106030-collie/n02106030_19383.jpg,21,Collie,official_train
+n02106030-collie/n02106030_3776.jpg,21,Collie,official_train
+n02106030-collie/n02106030_8697.jpg,21,Collie,official_train
+n02105855-Shetland_sheepdog/n02105855_12087.jpg,22,Shetland Sheepdog,official_train
+n02105855-Shetland_sheepdog/n02105855_13876.jpg,22,Shetland Sheepdog,official_train
+n02105855-Shetland_sheepdog/n02105855_14509.jpg,22,Shetland Sheepdog,official_train
+n02105855-Shetland_sheepdog/n02105855_15196.jpg,22,Shetland Sheepdog,official_train
+n02105855-Shetland_sheepdog/n02105855_15524.jpg,22,Shetland Sheepdog,official_train
+n02105855-Shetland_sheepdog/n02105855_16951.jpg,22,Shetland Sheepdog,official_train
+n02105855-Shetland_sheepdog/n02105855_19782.jpg,22,Shetland Sheepdog,official_train
+n02105855-Shetland_sheepdog/n02105855_2376.jpg,22,Shetland Sheepdog,official_train
+n02105855-Shetland_sheepdog/n02105855_3103.jpg,22,Shetland Sheepdog,official_train
+n02105855-Shetland_sheepdog/n02105855_3498.jpg,22,Shetland Sheepdog,official_train
+n02106166-Border_collie/n02106166_1133.jpg,23,Border Collie,official_train
+n02106166-Border_collie/n02106166_2345.jpg,23,Border Collie,official_train
+n02106166-Border_collie/n02106166_2595.jpg,23,Border Collie,official_train
+n02106166-Border_collie/n02106166_2685.jpg,23,Border Collie,official_train
+n02106166-Border_collie/n02106166_402.jpg,23,Border Collie,official_train
+n02106166-Border_collie/n02106166_4107.jpg,23,Border Collie,official_train
+n02106166-Border_collie/n02106166_4625.jpg,23,Border Collie,official_train
+n02106166-Border_collie/n02106166_6545.jpg,23,Border Collie,official_train
+n02106166-Border_collie/n02106166_6824.jpg,23,Border Collie,official_train
+n02106166-Border_collie/n02106166_913.jpg,23,Border Collie,official_train
+n02099601-golden_retriever/n02099601_1633.jpg,24,Golden Retriever,official_train
+n02099601-golden_retriever/n02099601_1743.jpg,24,Golden Retriever,official_train
+n02099601-golden_retriever/n02099601_281.jpg,24,Golden Retriever,official_train
+n02099601-golden_retriever/n02099601_3853.jpg,24,Golden Retriever,official_train
+n02099601-golden_retriever/n02099601_5240.jpg,24,Golden Retriever,official_train
+n02099601-golden_retriever/n02099601_5709.jpg,24,Golden Retriever,official_train
+n02099601-golden_retriever/n02099601_6139.jpg,24,Golden Retriever,official_train
+n02099601-golden_retriever/n02099601_7654.jpg,24,Golden Retriever,official_train
+n02099601-golden_retriever/n02099601_8764.jpg,24,Golden Retriever,official_train
+n02099601-golden_retriever/n02099601_9301.jpg,24,Golden Retriever,official_train
+n02099712-Labrador_retriever/n02099712_129.jpg,25,Labrador Retriever,official_train
+n02099712-Labrador_retriever/n02099712_2938.jpg,25,Labrador Retriever,official_train
+n02099712-Labrador_retriever/n02099712_4403.jpg,25,Labrador Retriever,official_train
+n02099712-Labrador_retriever/n02099712_4625.jpg,25,Labrador Retriever,official_train
+n02099712-Labrador_retriever/n02099712_490.jpg,25,Labrador Retriever,official_train
+n02099712-Labrador_retriever/n02099712_5599.jpg,25,Labrador Retriever,official_train
+n02099712-Labrador_retriever/n02099712_6318.jpg,25,Labrador Retriever,official_train
+n02099712-Labrador_retriever/n02099712_6775.jpg,25,Labrador Retriever,official_train
+n02099712-Labrador_retriever/n02099712_7418.jpg,25,Labrador Retriever,official_train
+n02099712-Labrador_retriever/n02099712_7608.jpg,25,Labrador Retriever,official_train
+n02099849-Chesapeake_Bay_retriever/n02099849_1823.jpg,26,Chesapeake Bay Retriever,official_train
+n02099849-Chesapeake_Bay_retriever/n02099849_2068.jpg,26,Chesapeake Bay Retriever,official_train
+n02099849-Chesapeake_Bay_retriever/n02099849_2315.jpg,26,Chesapeake Bay Retriever,official_train
+n02099849-Chesapeake_Bay_retriever/n02099849_2581.jpg,26,Chesapeake Bay Retriever,official_train
+n02099849-Chesapeake_Bay_retriever/n02099849_3617.jpg,26,Chesapeake Bay Retriever,official_train
+n02099849-Chesapeake_Bay_retriever/n02099849_3789.jpg,26,Chesapeake Bay Retriever,official_train
+n02099849-Chesapeake_Bay_retriever/n02099849_4457.jpg,26,Chesapeake Bay Retriever,official_train
+n02099849-Chesapeake_Bay_retriever/n02099849_463.jpg,26,Chesapeake Bay Retriever,official_train
+n02099849-Chesapeake_Bay_retriever/n02099849_501.jpg,26,Chesapeake Bay Retriever,official_train
+n02099849-Chesapeake_Bay_retriever/n02099849_920.jpg,26,Chesapeake Bay Retriever,official_train
+n02085782-Japanese_spaniel/n02085782_1284.jpg,27,Japanese Spaniel,official_train
+n02085782-Japanese_spaniel/n02085782_1552.jpg,27,Japanese Spaniel,official_train
+n02085782-Japanese_spaniel/n02085782_1731.jpg,27,Japanese Spaniel,official_train
+n02085782-Japanese_spaniel/n02085782_3019.jpg,27,Japanese Spaniel,official_train
+n02085782-Japanese_spaniel/n02085782_3727.jpg,27,Japanese Spaniel,official_train
+n02085782-Japanese_spaniel/n02085782_385.jpg,27,Japanese Spaniel,official_train
+n02085782-Japanese_spaniel/n02085782_3966.jpg,27,Japanese Spaniel,official_train
+n02085782-Japanese_spaniel/n02085782_4772.jpg,27,Japanese Spaniel,official_train
+n02085782-Japanese_spaniel/n02085782_664.jpg,27,Japanese Spaniel,official_train
+n02085782-Japanese_spaniel/n02085782_668.jpg,27,Japanese Spaniel,official_train
+n02086079-Pekinese/n02086079_10613.jpg,28,Pekinese,official_train
+n02086079-Pekinese/n02086079_14307.jpg,28,Pekinese,official_train
+n02086079-Pekinese/n02086079_14929.jpg,28,Pekinese,official_train
+n02086079-Pekinese/n02086079_17686.jpg,28,Pekinese,official_train
+n02086079-Pekinese/n02086079_19863.jpg,28,Pekinese,official_train
+n02086079-Pekinese/n02086079_23100.jpg,28,Pekinese,official_train
+n02086079-Pekinese/n02086079_2368.jpg,28,Pekinese,official_train
+n02086079-Pekinese/n02086079_4843.jpg,28,Pekinese,official_train
+n02086079-Pekinese/n02086079_869.jpg,28,Pekinese,official_train
+n02086079-Pekinese/n02086079_9408.jpg,28,Pekinese,official_train
+n02086240-Shih-Tzu/n02086240_12315.jpg,29,Shih-Tzu,official_train
+n02086240-Shih-Tzu/n02086240_12650.jpg,29,Shih-Tzu,official_train
+n02086240-Shih-Tzu/n02086240_3802.jpg,29,Shih-Tzu,official_train
+n02086240-Shih-Tzu/n02086240_447.jpg,29,Shih-Tzu,official_train
+n02086240-Shih-Tzu/n02086240_5443.jpg,29,Shih-Tzu,official_train
+n02086240-Shih-Tzu/n02086240_5976.jpg,29,Shih-Tzu,official_train
+n02086240-Shih-Tzu/n02086240_5994.jpg,29,Shih-Tzu,official_train
+n02086240-Shih-Tzu/n02086240_6269.jpg,29,Shih-Tzu,official_train
+n02086240-Shih-Tzu/n02086240_788.jpg,29,Shih-Tzu,official_train
+n02086240-Shih-Tzu/n02086240_8205.jpg,29,Shih-Tzu,official_train

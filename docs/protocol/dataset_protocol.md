@@ -144,14 +144,26 @@ docs/protocol/dataset_protocol.md
 
 Dataset ảnh gốc không push lên GitHub.
 
-## 9. Freeze Status
+## 9. Dataset Freeze v1
 
-**Dataset Protocol v1 đã freeze**:
+**Status: COMPLETED**
 
-- 30 breeds;
-- Class ID;
-- split ratio 80/10/10;
-- split seed 42;
-- Official Test lock policy.
+Dataset chính thức của DogBreedID đã được chuẩn bị và kiểm tra với:
 
-**Dataset Freeze hoàn chỉnh** chỉ được xác nhận sau khi Data Audit hoàn thành và fixed split files đã được sinh, kiểm tra leakage và commit vào repository.
+- Số classes: 30
+- Split seed: 42
+- Selected Official Train: 3000 images
+- Train: 2400 images
+- Validation: 300 images
+- Calibration: 300 images
+- Selected Official Test: 1934 images
+- Tổng số ảnh được audit: 4934
+- Missing/unreadable images: 0
+- Data leakage giữa các split: 0
+
+Mỗi class trong Official Train có:
+
+```text
+80 Train
+10 Validation
+10 Calibration

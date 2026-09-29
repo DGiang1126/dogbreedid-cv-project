@@ -1,0 +1,31 @@
+class_id,breed_name,stanford_folder,official_train_count,official_test_count,train_count,validation_count,calibration_count
+0,Eskimo Dog,n02109961-Eskimo_dog,100,50,80,10,10
+1,Malamute,n02110063-malamute,100,78,80,10,10
+2,Siberian Husky,n02110185-Siberian_husky,100,92,80,10,10
+3,Greater Swiss Mountain Dog,n02107574-Greater_Swiss_Mountain_dog,100,68,80,10,10
+4,Appenzeller,n02107908-Appenzeller,100,51,80,10,10
+5,EntleBucher,n02108000-EntleBucher,100,102,80,10,10
+6,Toy Poodle,n02113624-toy_poodle,100,51,80,10,10
+7,Miniature Poodle,n02113712-miniature_poodle,100,55,80,10,10
+8,Standard Poodle,n02113799-standard_poodle,100,59,80,10,10
+9,Miniature Schnauzer,n02097047-miniature_schnauzer,100,54,80,10,10
+10,Standard Schnauzer,n02097209-standard_schnauzer,100,55,80,10,10
+11,Giant Schnauzer,n02097130-giant_schnauzer,100,57,80,10,10
+12,English Setter,n02100735-English_setter,100,61,80,10,10
+13,Irish Setter,n02100877-Irish_setter,100,55,80,10,10
+14,Gordon Setter,n02101006-Gordon_setter,100,53,80,10,10
+15,English Springer,n02102040-English_springer,100,59,80,10,10
+16,Welsh Springer Spaniel,n02102177-Welsh_springer_spaniel,100,50,80,10,10
+17,Cocker Spaniel,n02102318-cocker_spaniel,100,59,80,10,10
+18,Norfolk Terrier,n02094114-Norfolk_terrier,100,72,80,10,10
+19,Norwich Terrier,n02094258-Norwich_terrier,100,85,80,10,10
+20,Border Terrier,n02093754-Border_terrier,100,72,80,10,10
+21,Collie,n02106030-collie,100,53,80,10,10
+22,Shetland Sheepdog,n02105855-Shetland_sheepdog,100,57,80,10,10
+23,Border Collie,n02106166-Border_collie,100,50,80,10,10
+24,Golden Retriever,n02099601-golden_retriever,100,50,80,10,10
+25,Labrador Retriever,n02099712-Labrador_retriever,100,71,80,10,10
+26,Chesapeake Bay Retriever,n02099849-Chesapeake_Bay_retriever,100,67,80,10,10
+27,Japanese Spaniel,n02085782-Japanese_spaniel,100,85,80,10,10
+28,Pekinese,n02086079-Pekinese,100,49,80,10,10
+29,Shih-Tzu,n02086240-Shih-Tzu,100,114,80,10,10
