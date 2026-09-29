@@ -1,4 +1,13 @@
 experiment:
   id: E1
   name: mobilenet_v2_frozen
-# Parameters will be finalized in the task/protocol before implementation.
+  seed: 42
+
+model:
+  type: mobilenet_v2
+  weights: imagenet
+  backbone_frozen: true
+  num_classes: 30
+
+training:
+  classifier_lr: 0.001
