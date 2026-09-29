@@ -1,4 +1,18 @@
 experiment:
   id: E0
   name: custom_cnn
-# Parameters will be finalized in the task/protocol before implementation.
+  seed: 42
+
+model:
+  type: custom_cnn
+  pretrained: false
+  channels: [32, 64, 128, 256]
+  kernel_size: 3
+  use_batch_norm: true
+  pooling: maxpool
+  global_pooling: adaptive_avg
+  dropout: 0.3
+  num_classes: 30
+
+training:
+  learning_rate: 0.001
