@@ -1,4 +1,22 @@
 experiment:
   id: E3
   name: resnet18_partial
-# Parameters will be finalized in the task/protocol before implementation.
+  seed: 42
+
+model:
+  type: resnet18
+  weights: imagenet
+  frozen_modules:
+    - conv1
+    - bn1
+    - layer1
+    - layer2
+    - layer3
+  trainable_modules:
+    - layer4
+    - fc
+  num_classes: 30
+
+training:
+  backbone_lr: 0.0001
+  classifier_lr: 0.0005
