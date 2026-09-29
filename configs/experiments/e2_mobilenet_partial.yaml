@@ -1,4 +1,15 @@
 experiment:
   id: E2
   name: mobilenet_v2_partial
-# Parameters will be finalized in the task/protocol before implementation.
+  seed: 42
+
+model:
+  type: mobilenet_v2
+  weights: imagenet
+  frozen_features_before_index: 14
+  trainable_features_from_index: 14
+  num_classes: 30
+
+training:
+  backbone_lr: 0.0001
+  classifier_lr: 0.0005
