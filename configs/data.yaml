@@ -2,12 +2,38 @@
 # Do not modify per experiment unless the protocol explicitly allows it.
 data:
   dataset: Stanford Dogs
+  num_classes: 30
   image_size: 224
+  split_seed: 42
   split:
+    source: official_train
     train: 0.80
     validation: 0.10
     calibration: 0.10
+    stratified: true
+  official_test:
+    source: official_test
+    locked_until_final_evaluation: true
 
 preprocessing:
-  # To be finalized according to docs/protocol/training_protocol.md
-  status: TODO
+  train:
+    random_resized_crop:
+      size: 224
+      scale: [0.85, 1.0]
+      ratio: [0.9, 1.1]
+    horizontal_flip_p: 0.5
+    color_jitter:
+      brightness: 0.15
+      contrast: 0.15
+      saturation: 0.15
+      hue: 0.05
+    rotation_degrees: 10
+
+  evaluation:
+    resize: 256
+    center_crop: 224
+
+  normalization:
+    type: imagenet
+    mean: [0.485, 0.456, 0.406]
+    std: [0.229, 0.224, 0.225]
