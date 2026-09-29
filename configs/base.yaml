@@ -1,8 +1,23 @@
 # Shared project configuration.
-# Values will be finalized by the team leader before experiments start.
+# Frozen foundation settings. Do not modify per experiment unless the protocol allows it.
 project:
   name: dogbreedid
   num_classes: 30
 
 training:
-  seed: null
+  seed: 42
+  loss: cross_entropy
+  optimizer: adamw
+  weight_decay: 0.0001
+  effective_batch_size: 32
+  max_epochs: 40
+  early_stopping_patience: 7
+  checkpoint_metric: macro_f1
+  mixed_precision: true
+
+scheduler:
+  name: reduce_lr_on_plateau
+  mode: max
+  factor: 0.5
+  patience: 2
+  min_lr: 0.000001
