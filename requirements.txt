@@ -1,7 +1,13 @@
-# Add project dependencies here after the shared environment is finalized.
-# Example categories: torch, torchvision, scikit-learn, pandas, numpy, matplotlib, gradio, pyyaml
+# Direct dependencies for data preparation and E0-E3 shared pipeline.
+# Install matching torch/torchvision wheels for your CPU or CUDA environment.
 numpy
 pandas
 scipy
 scikit-learn
 Pillow
+PyYAML
+torch
+torchvision
+matplotlib
+tqdm
+pytest
