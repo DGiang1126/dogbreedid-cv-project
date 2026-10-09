@@ -1,0 +1,44 @@
+{
+  "git_commit": "93d3ea7c44db2ce0ab0916d302882f5ffd0b4538",
+  "model_smoke_test": "passed",
+  "output_shape": [
+    2,
+    30
+  ],
+  "total_parameters": 397086,
+  "trainable_parameters": 397086,
+  "unit_tests": ".......                                                                  [100%]\n7 passed in 22.66s\n",
+  "dataloader_dry_run": "Experiment=E0; seed=42\nTrain=2400, Validation=300, effective_batch=32, accumulation=4\ntrain: image=(8, 3, 224, 224); label=(8,); example=n02102040-English_springer/n02102040_902.jpg\nvalidation: image=(8, 3, 224, 224); label=(8,); example=n02109961-Eskimo_dog/n02109961_11634.jpg\nDATA DRY-RUN PASSED. Official Test was not accessed.\n",
+  "frozen_sha256": {
+    "configs/base.yaml": "1f70efd233bc607c99a4947740fb29e52e5324c4d718f859c0d8c4a69cc34709",
+    "configs/data.yaml": "add251840c7c6ca71f9d7e99bc9510b232b90afd2842ec0984535ade590d8bb7",
+    "configs/experiments/e0_custom_cnn.yaml": "e27ea47489b3f4369408ad0bc5f58023eacc416c45a2fb73bb3e1cf734f41c0f",
+    "data/metadata/class_mapping.json": "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c",
+    "data/splits/train.csv": "6328f08544e33049e1feccd1f65892c517d727ddb27ba941d6a690fafe1e6aba",
+    "data/splits/validation.csv": "3f6dbe00e9c120d8c7acabcaa658830011beb1ea989949a07471542ac95c8d13"
+  },
+  "started_at_utc": "2026-10-04T20:30:38Z",
+  "training_duration_seconds": 1010.2872611980001,
+  "training_command": [
+    "/usr/bin/python3",
+    "-u",
+    "scripts/train.py",
+    "--config",
+    "configs/experiments/e0_custom_cnn.yaml",
+    "--dataset-root",
+    "/kaggle/working/dogbreedid-cv-project/data/raw/stanford_dogs",
+    "--batch-size",
+    "8",
+    "--num-workers",
+    "0",
+    "--device",
+    "auto"
+  ],
+  "python_version": "3.13.15",
+  "torch_version": "2.11.0+cu128",
+  "cuda_version": "12.8",
+  "gpu": "Tesla T4",
+  "physical_batch_size": 8,
+  "effective_batch_size": 32,
+  "seed": 42
+}
