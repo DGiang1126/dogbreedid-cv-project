@@ -1,4 +1,19 @@
 experiment:
   id: E4
   name: cutmix_ablation
-# Parameters will be finalized after E0-E3 results.
+  seed: 42
+
+model:
+  type: mobilenet_v2
+  weights: imagenet
+  backbone_frozen: true
+  num_classes: 30
+
+training:
+  classifier_lr: 0.001
+
+augmentation:
+  cutmix:
+    enabled: true
+    alpha: 1.0
+    probability: 0.5
