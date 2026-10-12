@@ -1,4 +1,4 @@
-"""Shared E0–E3 entrypoint: data smoke-check now; full train after model owners implement builders."""
+"""Shared E0-E4 training entrypoint using the project's standard pipeline."""
 from __future__ import annotations
 
 import argparse
@@ -11,7 +11,6 @@ if str(PROJECT_ROOT) not in sys.path:
 
 import torch
 from torch.utils.data import DataLoader
-
 from src.data.dataset import DogBreedDataset
 from src.data.transforms import build_transforms
 from src.models.model_factory import build_model, build_optimizer
@@ -27,7 +26,7 @@ from src.utils.seed import set_seed, seed_worker
 
 
 def main():
-    parser = argparse.ArgumentParser(description="DogBreedID shared E0–E3 runner")
+    parser = argparse.ArgumentParser(description="DogBreedID shared E0-E4 runner")
     parser.add_argument("--config", required=True, help="configs/experiments/e0_...yaml")
     parser.add_argument("--dataset-root", default=None, help="Root containing Images/; default: data/raw/stanford_dogs or DOGBREEDID_DATA_ROOT")
     parser.add_argument("--batch-size", type=int, default=32)
@@ -67,6 +66,7 @@ def main():
             print(f"{name}: image={tuple(sample['image'].shape)}; label={tuple(sample['label'].shape)}; example={sample['relative_path'][0]}")
         print("DATA DRY-RUN PASSED. Official Test was not accessed.")
         return
+
     device = resolve_device(args.device)
     model = build_model(config).to(device)
     optimizer = build_optimizer(model, config)
@@ -82,21 +82,34 @@ def main():
     if paths["history"].exists():
         raise FileExistsError(f"Run history already exists. Do not overwrite an experiment silently: {paths['history']}")
     write_json(paths["metadata"], run_metadata(config, device, args.batch_size, accumulation))
+
+    # Only E4 receives CutMix. E0-E3 retain their original training behavior.
+    cutmix_config = None
+    if config["experiment"]["id"] == "E4":
+        cutmix_config = config["augmentation"]["cutmix"]
+
     for epoch in range(1, int(config["training"]["max_epochs"]) + 1):
-        training = train_one_epoch(model, train_loader, criterion, optimizer, device, accumulation, scaler)
+        training = train_one_epoch(
+            model, train_loader, criterion, optimizer, device,
+            accumulation, scaler, cutmix_config=cutmix_config,
+        )
         validation = validate_one_epoch(model, val_loader, criterion, device)
         scheduler.step(validation["macro_f1"])
         improved, should_stop = stopper.step(validation["macro_f1"])
-        row = {"epoch": epoch,
-               **{f"train_{key}": value for key, value in training.items()},
-               **{f"val_{key}": value for key, value in validation.items()},
-               "learning_rate": optimizer.param_groups[0]["lr"]}
+        row = {
+            "epoch": epoch,
+            **{f"train_{key}": value for key, value in training.items()},
+            **{f"val_{key}": value for key, value in validation.items()},
+            "learning_rate": optimizer.param_groups[0]["lr"],
+        }
         append_history(paths["history"], row)
         if improved:
             save_checkpoint(paths["best_checkpoint"], model, optimizer, epoch, validation, config)
             write_json(paths["validation_metrics"], {"best_epoch": epoch, **validation})
         save_checkpoint(paths["last_checkpoint"], model, optimizer, epoch, validation, config)
-        print(f"Epoch {epoch:02d} | train loss={training['loss']:.4f} | val macro-F1={validation['macro_f1']:.4f} | best={stopper.best:.4f}")
+        metric_samples = training.get("metric_samples")
+        metric_note = f" | train metric samples={metric_samples}" if metric_samples is not None else ""
+        print(f"Epoch {epoch:02d} | train loss={training['loss']:.4f} | val macro-F1={validation['macro_f1']:.4f} | best={stopper.best:.4f}{metric_note}")
         if should_stop:
             print(f"Early stopping after {epoch} epochs (patience={stopper.patience}).")
             break

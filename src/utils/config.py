@@ -48,11 +48,31 @@ def load_experiment_config(experiment_path: str | Path) -> dict[str, Any]:
         raise ValueError("Project/model class count must match the frozen 30-class mapping.")
     if int(config["data"]["split_seed"]) != 42:
         raise ValueError("Dataset split seed is frozen at 42.")
-    expected_model = {"E0": "custom_cnn", "E1": "mobilenet_v2",
-                      "E2": "mobilenet_v2", "E3": "resnet18"}
+
+    expected_model = {
+        "E0": "custom_cnn",
+        "E1": "mobilenet_v2",
+        "E2": "mobilenet_v2",
+        "E3": "resnet18",
+        "E4": "mobilenet_v2",
+    }
     experiment_id = config["experiment"]["id"]
     if experiment_id not in expected_model:
-        raise ValueError("This foundation runner handles only E0–E3; later experiments need approved runners.")
+        raise ValueError(f"Unsupported experiment ID: {experiment_id}")
     if config["model"]["type"] != expected_model[experiment_id]:
         raise ValueError(f"{experiment_id} must use model type {expected_model[experiment_id]}.")
+
+    if experiment_id == "E4":
+        if config["model"].get("backbone_frozen") is not True:
+            raise ValueError("E4 must use MobileNetV2 with backbone_frozen: true.")
+        cutmix = config.get("augmentation", {}).get("cutmix")
+        if not isinstance(cutmix, dict) or cutmix.get("enabled") is not True:
+            raise ValueError("E4 config must enable augmentation.cutmix.")
+        alpha = float(cutmix.get("alpha", 1.0))
+        probability = float(cutmix.get("probability", 0.5))
+        if alpha <= 0:
+            raise ValueError("E4 CutMix alpha must be greater than zero.")
+        if not 0.0 <= probability <= 1.0:
+            raise ValueError("E4 CutMix probability must be in [0, 1].")
+
     return config
