@@ -1,4 +1,4 @@
-"""E0–E3 model contract; member model files must expose build_model(model_config)."""
+"""Shared model and optimizer factory for E0-E4."""
 import torch
 
 
@@ -32,7 +32,8 @@ def build_optimizer(model: torch.nn.Module, config: dict):
     if exp == "E0":
         groups = [{"params": [p for p in model.parameters() if p.requires_grad],
                    "lr": float(train["learning_rate"])}]
-    elif exp == "E1":
+    elif exp in {"E1", "E4"}:
+        # E4 has exactly the E1 trainable policy: classifier only.
         groups = [{"params": [p for p in model.classifier.parameters() if p.requires_grad],
                    "lr": float(train["classifier_lr"])}]
     elif exp == "E2":
