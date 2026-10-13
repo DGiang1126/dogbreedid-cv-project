@@ -1,0 +1,201 @@
+{
+  "experiment_id": "E1",
+  "seed": 123,
+  "started_utc": "2026-10-13T22:02:46.559852+00:00",
+  "finished_utc": "2026-10-13T22:14:32.010149+00:00",
+  "wall_duration_seconds": 701.680194381,
+  "command": [
+    "/usr/bin/python3",
+    "-u",
+    "/kaggle/working/dogbreedid-cv-project/scripts/train.py",
+    "--config",
+    "/tmp/dogbreedid-e5-1ldp2k_2/seed_config.yaml",
+    "--batch-size",
+    "8",
+    "--num-workers",
+    "0",
+    "--device",
+    "cuda",
+    "--dataset-root",
+    "/kaggle/working/dogbreedid-cv-project/data/raw/stanford_dogs"
+  ],
+  "source_sha": "ef0a4b817acbd81a101fa57c4b123dd60c296625",
+  "branch": "kiet-e5-stability",
+  "hardware": {
+    "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+    "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "cuda_version": "12.8",
+    "gpu_name": "Tesla T4",
+    "gpu_count": 2
+  },
+  "torch_cuda_version": "12.8",
+  "python_version": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+  "dataset_source": "jessicali9530/stanford-dogs-dataset",
+  "drive_target_folder_url": "https://drive.google.com/drive/folders/1cjBotowMvJxR7UQaLW0DORzK-NZCairb",
+  "checkpoint_verification": {
+    "best_epoch_matches_validation_json": true,
+    "last_epoch_matches_final_history_row": true,
+    "best_and_last_strict_load": true,
+    "checkpoint_checks": {
+      "best": {
+        "epoch": 17,
+        "strict_state_dict_load": true,
+        "finite_state_dict_tensors": 314,
+        "finite_logits_shape": [
+          2,
+          30
+        ],
+        "validation_metrics_match": true
+      },
+      "last": {
+        "epoch": 24,
+        "strict_state_dict_load": true,
+        "finite_state_dict_tensors": 314,
+        "finite_logits_shape": [
+          2,
+          30
+        ],
+        "validation_metrics_match": true
+      }
+    },
+    "shared_validation_rerun": {
+      "loss": 0.6185221269230048,
+      "macro_f1": 0.801608102640543,
+      "top1_accuracy": 0.8066666722297668,
+      "top5_accuracy": 0.9933333396911621
+    },
+    "validation_metric_match": "exact macro_f1/top1_accuracy/top5_accuracy; loss tolerance 1e-5"
+  },
+  "run_metadata": {
+    "experiment_id": "E1",
+    "seed": 123,
+    "git_commit": "ef0a4b817acbd81a101fa57c4b123dd60c296625",
+    "timestamp_utc": "2026-10-13T22:02:51.131151+00:00",
+    "python_version": "3.13.15",
+    "torch_version": "2.11.0+cu128",
+    "cuda_version": "12.8",
+    "device": "cuda",
+    "physical_batch_size": 8,
+    "gradient_accumulation_steps": 4,
+    "effective_batch_size": 32,
+    "config": {
+      "project": {
+        "name": "dogbreedid",
+        "num_classes": 30
+      },
+      "training": {
+        "seed": 123,
+        "loss": "cross_entropy",
+        "optimizer": "adamw",
+        "weight_decay": 0.0001,
+        "effective_batch_size": 32,
+        "max_epochs": 40,
+        "early_stopping_patience": 7,
+        "checkpoint_metric": "macro_f1",
+        "mixed_precision": true,
+        "classifier_lr": 0.001
+      },
+      "scheduler": {
+        "name": "reduce_lr_on_plateau",
+        "mode": "max",
+        "factor": 0.5,
+        "patience": 2,
+        "min_lr": 1e-06
+      },
+      "data": {
+        "dataset": "Stanford Dogs",
+        "num_classes": 30,
+        "image_size": 224,
+        "split_seed": 42,
+        "split": {
+          "source": "official_train",
+          "train": 0.8,
+          "validation": 0.1,
+          "calibration": 0.1,
+          "stratified": true
+        },
+        "official_test": {
+          "source": "official_test",
+          "locked_until_final_evaluation": true
+        }
+      },
+      "preprocessing": {
+        "train": {
+          "random_resized_crop": {
+            "size": 224,
+            "scale": [
+              0.85,
+              1.0
+            ],
+            "ratio": [
+              0.9,
+              1.1
+            ]
+          },
+          "horizontal_flip_p": 0.5,
+          "color_jitter": {
+            "brightness": 0.15,
+            "contrast": 0.15,
+            "saturation": 0.15,
+            "hue": 0.05
+          },
+          "rotation_degrees": 10
+        },
+        "evaluation": {
+          "resize": 256,
+          "center_crop": 224
+        },
+        "normalization": {
+          "type": "imagenet",
+          "mean": [
+            0.485,
+            0.456,
+            0.406
+          ],
+          "std": [
+            0.229,
+            0.224,
+            0.225
+          ]
+        }
+      },
+      "experiment": {
+        "id": "E1",
+        "name": "mobilenet_v2_frozen",
+        "seed": 123
+      },
+      "model": {
+        "type": "mobilenet_v2",
+        "weights": "imagenet",
+        "backbone_frozen": true,
+        "num_classes": 30
+      }
+    }
+  },
+  "prechecks": {
+    "pytest": "passed",
+    "frozen_hashes": "passed",
+    "train_validation_only": true,
+    "train_count": 2400,
+    "validation_count": 300,
+    "class_count": 30,
+    "model_total_parameters": 2262302,
+    "model_trainable_parameters": 38430,
+    "dry_run": {
+      "experiment_id": "E1",
+      "seed": 123,
+      "dry_run": true,
+      "git_commit": null,
+      "duration_seconds": 5.535258107000004,
+      "artifacts": {
+        "best_checkpoint": "/kaggle/working/dogbreedid-cv-project/outputs/checkpoints/E1/seed_123/best.pt",
+        "last_checkpoint": "/kaggle/working/dogbreedid-cv-project/outputs/checkpoints/E1/seed_123/last.pt",
+        "history": "/kaggle/working/dogbreedid-cv-project/outputs/logs/E1/seed_123/history.csv",
+        "metadata": "/kaggle/working/dogbreedid-cv-project/outputs/logs/E1/seed_123/run_metadata.json",
+        "validation": "/kaggle/working/dogbreedid-cv-project/outputs/metrics/E1/seed_123/validation.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "seeds": [
+    42,
+    123,
+    2026
+  ],
+  "metric_unit": "fraction",
+  "std_ddof": 1,
+  "std_convention": "sample standard deviation (n-1)",
+  "runs": [
+    {
+      "experiment_id": "E4",
+      "configuration": "cutmix_ablation",
+      "seed": 42,
+      "best_epoch": 25,
+      "macro_f1": 0.815099216821925,
+      "top1_accuracy": 0.8166666626930237,
+      "top5_accuracy": 0.9866666793823242,
+      "loss": 0.6620433596769969,
+      "git_commit": "aba8b689b0dd5b7dcbb687092d99fa27c04e1820",
+      "validation_path": "outputs/metrics/E4/seed_42/validation.json"
+    },
+    {
+      "experiment_id": "E4",
+      "configuration": "cutmix_ablation",
+      "seed": 123,
+      "best_epoch": 9,
+      "macro_f1": 0.7917696013772203,
+      "top1_accuracy": 0.79666668176651,
+      "top5_accuracy": 0.9900000095367432,
+      "loss": 0.6614012218515078,
+      "git_commit": "ef0a4b817acbd81a101fa57c4b123dd60c296625",
+      "validation_path": "outputs/metrics/E4/seed_123/validation.json"
+    },
+    {
+      "experiment_id": "E4",
+      "configuration": "cutmix_ablation",
+      "seed": 2026,
+      "best_epoch": 12,
+      "macro_f1": 0.8015130406769029,
+      "top1_accuracy": 0.8033333420753479,
+      "top5_accuracy": 0.9933333396911621,
+      "loss": 0.6585342886050543,
+      "git_commit": "ef0a4b817acbd81a101fa57c4b123dd60c296625",
+      "validation_path": "outputs/metrics/E4/seed_2026/validation.json"
+    },
+    {
+      "experiment_id": "E1",
+      "configuration": "mobilenet_v2_frozen",
+      "seed": 42,
+      "best_epoch": 18,
+      "macro_f1": 0.7996395749895547,
+      "top1_accuracy": 0.8033333420753479,
+      "top5_accuracy": 0.9900000095367432,
+      "loss": 0.6261249186346928,
+      "git_commit": "72190d59a5036bfe676e81634853399aa41cffdc",
+      "validation_path": "outputs/metrics/E1/seed_42/validation.json"
+    },
+    {
+      "experiment_id": "E1",
+      "configuration": "mobilenet_v2_frozen",
+      "seed": 123,
+      "best_epoch": 17,
+      "macro_f1": 0.801608102640543,
+      "top1_accuracy": 0.8066666722297668,
+      "top5_accuracy": 0.9933333396911621,
+      "loss": 0.6185221269230048,
+      "git_commit": "ef0a4b817acbd81a101fa57c4b123dd60c296625",
+      "validation_path": "outputs/metrics/E1/seed_123/validation.json"
+    },
+    {
+      "experiment_id": "E1",
+      "configuration": "mobilenet_v2_frozen",
+      "seed": 2026,
+      "best_epoch": 8,
+      "macro_f1": 0.797218806464869,
+      "top1_accuracy": 0.800000011920929,
+      "top5_accuracy": 0.996666669845581,
+      "loss": 0.6129516710092624,
+      "git_commit": "ef0a4b817acbd81a101fa57c4b123dd60c296625",
+      "validation_path": "outputs/metrics/E1/seed_2026/validation.json"
+    }
+  ],
+  "summary": [
+    {
+      "experiment_id": "E4",
+      "configuration": "cutmix_ablation",
+      "n": 3,
+      "macro_f1_mean": 0.8027939529586827,
+      "macro_f1_std": 0.011717435359525638,
+      "top1_mean": 0.8055555621782938,
+      "top1_std": 0.010183491832602438
+    },
+    {
+      "experiment_id": "E1",
+      "configuration": "mobilenet_v2_frozen",
+      "n": 3,
+      "macro_f1_mean": 0.7994888280316556,
+      "macro_f1_std": 0.0021985276239869372,
+      "top1_mean": 0.8033333420753479,
+      "top1_std": 0.0033333301544189453
+    }
+  ],
+  "delivery_note": "Checkpoint strict-load and shared Drive access/upload require separate verification."
+}
