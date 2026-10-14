@@ -42,7 +42,7 @@ def main(argv=None):
                               device=args.device, dry_run=args.dry_run,
                               drive_upload_confirmed=args.drive_upload_confirmed)
         else:
-            result = collect_summary(args.configs)
+            result = collect_summary(args.configs, project_root=PROJECT_ROOT)
             paths = write_summary(result, PROJECT_ROOT / "outputs/metrics/E5")
             result = {"files": list(map(str, paths)), **result}
     except (ValueError, KeyError, OSError, subprocess.CalledProcessError) as error:
