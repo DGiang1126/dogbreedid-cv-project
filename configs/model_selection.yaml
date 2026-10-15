@@ -1,0 +1,21 @@
+
+selection:
+  status: approved
+  source_experiments: [E1, E4]
+  selection_metric: validation_macro_f1_mean
+  tie_breaker: validation_top1_mean
+  selected_experiment: E4
+  selected_seed: 42
+
+model:
+  architecture: mobilenet_v2
+  num_classes: 30
+  config_path: configs/experiments/e4_cutmix.yaml
+  checkpoint_path: outputs/checkpoints/E4/seed_42/best.pt
+  checkpoint_drive_folder: https://drive.google.com/drive/folders/1eZ6h8nWZfUnUDozvC8hd55DZRk8oCIXJ
+
+data:
+  class_mapping: data/metadata/class_mapping.json
+  calibration_split: data/splits/calibration.csv
+  calibration_samples: 300
+  official_test_locked: true
