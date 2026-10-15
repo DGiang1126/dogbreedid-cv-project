@@ -1,4 +1,50 @@
+
 experiment:
   id: E7
   name: selective_prediction
-# Threshold settings will be finalized using the Calibration Set.
+  phase: reliability_development
+
+model:
+  selection_config: configs/model_selection.yaml
+
+data:
+  split: calibration
+  split_file: data/splits/calibration.csv
+  expected_samples: 300
+  num_classes: 30
+
+calibration:
+  required: true
+  temperature_file: outputs/metrics/E6/temperature.json
+  confidence_source: calibrated_softmax
+  confidence_method: max_probability
+
+threshold_selection:
+  method: target_coverage
+  target_coverage: 0.90
+  selection_rule: highest_feasible_threshold
+  accept_operator: ">="
+  tie_policy: accept_all_equal_to_threshold
+
+evaluation:
+  coverage_points: [1.0, 0.9, 0.8]
+  metrics:
+    - coverage
+    - selective_accuracy
+    - selective_risk
+    - aurc
+  generate_risk_coverage_curve: true
+
+rejection:
+  enabled: true
+  message: "Mô hình chưa đủ tự tin để đưa ra kết luận."
+
+outputs:
+  metrics: outputs/metrics/E7/selective_metrics.json
+  threshold: outputs/metrics/E7/threshold.json
+  risk_coverage_data: outputs/metrics/E7/risk_coverage.csv
+  risk_coverage_figure: outputs/figures/E7/risk_coverage_curve.png
+
+restrictions:
+  requires_e6_completed: true
+  use_official_test: false

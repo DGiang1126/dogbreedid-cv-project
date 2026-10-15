@@ -1,4 +1,44 @@
+
 experiment:
   id: E6
   name: calibration
-# Calibration settings will be finalized after the best classification model is locked.
+  phase: reliability_development
+
+model:
+  selection_config: configs/model_selection.yaml
+  checkpoint_experiment: E4
+  checkpoint_seed: 42
+
+data:
+  split: calibration
+  split_file: data/splits/calibration.csv
+  expected_samples: 300
+  preprocessing: evaluation
+  num_classes: 30
+
+temperature_scaling:
+  method: scalar_temperature
+  initial_temperature: 1.0
+  parameterization: log_temperature
+  objective: nll
+  optimizer: lbfgs
+  learning_rate: 0.1
+  max_iterations: 100
+
+evaluation:
+  ece_bins: 15
+  metrics:
+    - ece
+    - multiclass_brier
+    - nll
+    - top1_accuracy
+  verify_top1_unchanged: true
+
+outputs:
+  metrics: outputs/metrics/E6/calibration_metrics.json
+  temperature: outputs/metrics/E6/temperature.json
+  reliability_diagram: outputs/figures/E6/reliability_diagram.png
+
+restrictions:
+  update_classifier_weights: false
+  use_official_test: false
