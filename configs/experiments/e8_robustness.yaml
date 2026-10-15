@@ -10,31 +10,49 @@ execution:
 
 model:
   selection_config: configs/model_selection.yaml
+  checkpoint_experiment: E4
+  checkpoint_seed: 42
+
+data:
+  input_size: 224
+  corruption_stage: after_crop_before_normalization
+  pixel_range: [0.0, 1.0]
+  preserve_labels: true
 
 corruptions:
-  enabled:
+  gaussian_blur:
+    enabled: true
+    kernel_size: 7
+    sigma: 1.5
+
+  gaussian_noise:
+    enabled: true
+    mean: 0.0
+    std: 0.05
+    clamp_range: [0.0, 1.0]
+
+  occlusion:
+    enabled: true
+    shape: square
+    side_fraction: 0.30
+    fill_rgb: [0.5, 0.5, 0.5]
+    position_policy: deterministic_per_image
+
+reproducibility:
+  seed: 42
+  per_image_seed: stable_image_identifier
+  deterministic: true
+
+evaluation:
+  conditions:
+    - clean
     - gaussian_blur
     - gaussian_noise
     - occlusion
-
-  deterministic: true
-  preserve_image_size: true
-  preserve_label: true
-
-severity:
-  status: pending_approval
-  gaussian_blur: null
-  gaussian_noise: null
-  occlusion: null
-
-evaluation:
-  metric: top1_accuracy
+  primary_metric: top1_accuracy
   report_accuracy_drop: true
   accuracy_drop_formula: clean_minus_corrupted
-
-testing:
-  synthetic_inputs_allowed: true
-  official_test_allowed: false
+  optional_metric: ece
 
 restrictions:
   train_new_model: false
