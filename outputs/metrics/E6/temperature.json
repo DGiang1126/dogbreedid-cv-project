@@ -1,0 +1,18 @@
+{
+  "experiment": "E6",
+  "method": "scalar_temperature_scaling",
+  "initial_temperature": 1.0,
+  "parameterization": "log_temperature",
+  "objective": "nll",
+  "optimizer": "LBFGS",
+  "nll_before": 0.6301476512142412,
+  "nll_after": 0.605685369796325,
+  "nll_improved": true,
+  "model_experiment": "E4",
+  "checkpoint_seed": 42,
+  "checkpoint_path": "/content/drive/MyDrive/DogBreedID/E4/seed_42/best.pt",
+  "split": "calibration",
+  "n_samples": 300,
+  "git_sha": "c3f3f0d7cca81b2df2d9eed34288580ab278ce1d",
+  "temperature": 0.80246283961825
+}
