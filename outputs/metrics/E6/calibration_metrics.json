@@ -1,0 +1,48 @@
+{
+  "experiment": "E6",
+  "model": "E4 MobileNetV2 Frozen + CutMix",
+  "checkpoint_seed": 42,
+  "split": "calibration",
+  "n_samples": 300,
+  "temperature": 0.80246283961825,
+  "optimization": {
+    "temperature": 0.80246283961825,
+    "nll_before": 0.6301476512142412,
+    "nll_after": 0.605685369796325,
+    "nll_improved": true,
+    "optimizer": "LBFGS",
+    "learning_rate": 0.1,
+    "max_iterations": 100,
+    "closure_evaluations": 76,
+    "parameterization": "log_temperature",
+    "objective": "nll"
+  },
+  "metrics_before": {
+    "n_samples": 300,
+    "n_classes": 30,
+    "ece_bins": 15,
+    "top1_accuracy": 0.7866666666666666,
+    "nll": 0.6301476512142413,
+    "ece": 0.06358793749854226,
+    "multiclass_brier": 0.31107817427208745,
+    "mean_top_confidence": 0.7399787948454473
+  },
+  "metrics_after": {
+    "n_samples": 300,
+    "n_classes": 30,
+    "ece_bins": 15,
+    "top1_accuracy": 0.7866666666666666,
+    "nll": 0.6056853698453534,
+    "ece": 0.061926068953411795,
+    "multiclass_brier": 0.30819835051186684,
+    "mean_top_confidence": 0.8020959137742616
+  },
+  "top1_predictions_unchanged": true,
+  "top1_accuracy_unchanged": true,
+  "metric_definitions": {
+    "nll": "mean multiclass negative log-likelihood / cross-entropy from logits",
+    "ece": "top-label ECE; 15 equal-width bins, right-closed intervals; empty bins contribute zero",
+    "multiclass_brier": "mean over samples of sum_c (p_ic - one_hot(y_i)_c)^2; not divided by C",
+    "top1_accuracy": "fraction of samples whose argmax logit equals the label"
+  }
+}

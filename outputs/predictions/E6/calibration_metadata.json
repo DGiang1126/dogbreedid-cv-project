@@ -1,0 +1,45 @@
+{
+  "experiment": "E6",
+  "source_model": "E4 MobileNetV2 Frozen + CutMix",
+  "checkpoint_seed": 42,
+  "checkpoint_identifier": "/content/drive/MyDrive/DogBreedID/E4/seed_42/best.pt",
+  "checkpoint_filename": "best.pt",
+  "git_sha": "c3f3f0d7cca81b2df2d9eed34288580ab278ce1d",
+  "split": "calibration",
+  "n_samples": 300,
+  "logits_shape": [
+    300,
+    30
+  ],
+  "labels_shape": [
+    300
+  ],
+  "image_ids_shape": [
+    300
+  ],
+  "preprocessing": {
+    "color_mode": "RGB",
+    "resize": 256,
+    "center_crop": 224,
+    "normalization_mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "normalization_std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "environment": {
+    "python": "3.13.15",
+    "pytorch": "2.11.0+cu130",
+    "numpy": "2.1.3",
+    "device": "cuda"
+  },
+  "ordering": "DataLoader shuffle=False; logits, labels and image_ids preserve calibration.csv row order",
+  "official_test_used": false,
+  "weights_updated": false,
+  "source_code_commit_note": "Record/commit the final source Git SHA per project protocol before final submission."
+}
