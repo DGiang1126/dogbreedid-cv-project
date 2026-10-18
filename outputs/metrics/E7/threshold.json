@@ -1,0 +1,35 @@
+{
+  "experiment": "E7",
+  "execution_kind": "official_calibration_execution",
+  "official_e7_execution": true,
+  "synthetic": false,
+  "split": "calibration",
+  "temperature": 0.80246283961825,
+  "threshold": 0.5011672918550012,
+  "target_coverage": 0.9,
+  "selection_rule": "highest_feasible_threshold",
+  "accept_operator": ">=",
+  "tie_policy": "accept_all_equal_to_threshold",
+  "n_total": 300,
+  "n_accept": 271,
+  "n_reject": 29,
+  "achieved_coverage": 0.9033333333333333,
+  "source_git_sha": "264d4de5877d1792cfa94f5ce82ff6da41348990",
+  "source_commit_status": "tracked and clean at source HEAD; remote publication not checked",
+  "input_sha256": {
+    "e7_config": "6bc90bf168675f76720f8e94659760ef6cd1b9ad25502366f95764480fda4ec9",
+    "model_selection": "dcd08500e556650e67f6b98062a6407bed1caaebc7d1ed63bb3337a7bd31f332",
+    "data_config": "add251840c7c6ca71f9d7e99bc9510b232b90afd2842ec0984535ade590d8bb7",
+    "class_mapping": "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c",
+    "calibration_csv": "fde6210d5ad059dd57474dcb21411b6d2b6ffbaa051c919db0214ce94ff7e654",
+    "e4_config": "9d815e385fbfc84264f57b51c8c60a36e2e3690cc558a2eb97a6ebd61a99c7a6",
+    "e6_temperature": "867a9389084e06330ef04e9d286e53cf932790db2cee2df71cb735b8bf4adc4d",
+    "e6_metadata": "3dd21a26efd9e4b1eaf4c4b4f0a1c81cd80a2fbf9019eaf539c3567096a6edde",
+    "e6_logits": "919a022f6246fa54b01a72f603c53c8b3bcf2b89e7d66ec275476666f73786f4"
+  },
+  "upstream_provenance": {
+    "temperature_git_sha": "c3f3f0d7cca81b2df2d9eed34288580ab278ce1d",
+    "checkpoint_identifier": "/content/drive/MyDrive/DogBreedID/E4/seed_42/best.pt",
+    "provenance_status": "historical E6 provenance recorded; not independently verified"
+  }
+}
