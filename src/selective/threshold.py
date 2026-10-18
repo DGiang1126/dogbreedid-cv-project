@@ -50,7 +50,8 @@ def _validate_logits(logits):
     if array.dtype.kind not in "iuf":
         raise ValueError("logits must contain real numeric values")
     try:
-        result = np.array(array, dtype=np.float64, copy=True)
+        with np.errstate(over="ignore", under="ignore", invalid="ignore"):
+            result = np.array(array, dtype=np.float64, copy=True)
     except (TypeError, ValueError, OverflowError) as exc:
         raise ValueError("logits must contain real numeric values") from exc
     if not np.all(np.isfinite(result)):
@@ -60,6 +61,14 @@ def _validate_logits(logits):
         for original, converted in zip(array.flat, result.flat)
     ):
         raise ValueError("integer logits must be exactly representable as float64")
+    if array.dtype.kind == "f":
+        try:
+            with np.errstate(over="ignore", under="ignore", invalid="ignore"):
+                roundtrip = result.astype(array.dtype, copy=False)
+        except (TypeError, ValueError, OverflowError) as exc:
+            raise ValueError("floating-point logits must be exactly representable as float64") from exc
+        if not np.array_equal(roundtrip, array):
+            raise ValueError("floating-point logits must be exactly representable as float64")
     return result
 
 
@@ -70,7 +79,8 @@ def calibrated_predictions(logits, temperature):
     preserves small differences under large shared offsets. If subtraction
     overflows for opposite-sign extremes, those cells are evaluated by
     separately scaling their operands. Logits are represented internally as
-    float64, so higher-precision floating inputs are normalized to that dtype.
+    float64; floating inputs must roundtrip exactly through float64 to prevent
+    silent loss of values or class ranking.
     """
     values = _validate_logits(logits)
     temp = _real_scalar(temperature, "temperature")
@@ -122,10 +132,10 @@ def select_threshold(confidences, target_coverage):
     samples are all accepted at the selected threshold.
     """
     values = validate_confidences(confidences)
-    target = _real_scalar(target_coverage, "target_coverage")
+    _real_scalar(target_coverage, "target_coverage")
     if target_coverage <= 0 or target_coverage > 1:
         raise ValueError("target_coverage must be in (0, 1]")
-    fraction = Fraction(str(target))
+    fraction = Fraction(str(target_coverage))
     count = (values.size * fraction.numerator + fraction.denominator - 1) // fraction.denominator
     descending = np.sort(values)[::-1]
     return float(descending[count - 1])

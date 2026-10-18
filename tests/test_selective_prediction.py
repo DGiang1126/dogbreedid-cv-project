@@ -13,6 +13,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+import warnings
 
 import numpy as np
 import pytest
@@ -1250,3 +1251,79 @@ def test_load_e6_artifacts_rejects_scalar_nested_static_config_blocks_as_value_e
     _mutate_fixture_yaml(fixture, relative, mutate)
     with pytest.raises(ValueError):
         _loaded_synthetic_artifacts(fixture)
+
+
+def _has_extended_longdouble_precision():
+    return np.finfo(np.longdouble).eps < np.finfo(np.float64).eps
+
+
+def test_calibrated_predictions_accepts_exact_longdouble_logits_and_matches_float64():
+    if not _has_extended_longdouble_precision():
+        pytest.skip("platform longdouble has no precision beyond float64")
+    extended = np.array([[1, 2], [3, 3]], dtype=np.longdouble)
+    ordinary = calibrated_predictions(extended.astype(np.float64), 2.0)
+    result = calibrated_predictions(extended, 2.0)
+    np.testing.assert_allclose(result["probabilities"], ordinary["probabilities"], rtol=0, atol=1e-15)
+    np.testing.assert_array_equal(result["predictions"], ordinary["predictions"])
+    np.testing.assert_allclose(result["confidences"], ordinary["confidences"], rtol=0, atol=1e-15)
+
+
+def test_calibrated_predictions_rejects_longdouble_rank_difference_lost_by_float64():
+    if not _has_extended_longdouble_precision():
+        pytest.skip("platform longdouble has no precision beyond float64")
+    eps = np.finfo(np.longdouble).eps
+    logits = np.array([[np.longdouble(1), np.longdouble(1) + eps]], dtype=np.longdouble)
+    assert logits[0, 1] > logits[0, 0]
+    with pytest.raises(ValueError):
+        calibrated_predictions(logits, 1.0)
+
+
+@pytest.mark.parametrize("values", [
+    np.array([[np.longdouble("1e400"), np.longdouble("1e400")]], dtype=np.longdouble),
+    np.array([[np.longdouble("1e-400"), np.longdouble("2e-400")]], dtype=np.longdouble),
+])
+def test_calibrated_predictions_rejects_longdouble_outside_float64_exact_range_without_warning(values):
+    if not _has_extended_longdouble_precision():
+        pytest.skip("platform longdouble has no precision beyond float64")
+    assert np.isfinite(values).all()
+    with warnings.catch_warnings(record=True) as seen:
+        warnings.simplefilter("always")
+        with pytest.raises(ValueError):
+            calibrated_predictions(values, 1.0)
+    assert seen == []
+
+
+def test_select_threshold_uses_exact_fraction_target_arithmetic():
+    confidences = [0.2, 0.9, 0.4]
+    # 3 * 1/3 is exactly one; this target requires one accepted sample.
+    threshold = select_threshold(confidences, Fraction(1, 3))
+    assert threshold == 0.9
+    assert int(accept_mask(confidences, threshold).sum()) == 1
+
+
+def test_select_threshold_tiny_fraction_still_requires_one_sample():
+    confidences = [0.2, 0.9, 0.4]
+    target = Fraction(1, 10**1000)
+    assert _decimal_ceil_product(len(confidences), target) == 1
+    threshold = select_threshold(confidences, target)
+    assert threshold == 0.9
+    assert int(accept_mask(confidences, threshold).sum()) == 1
+
+
+def test_select_threshold_uses_numpy_float32_decimal_spelling_for_coverage():
+    confidences = np.linspace(0.01, 0.50, 50)
+    target = np.float32(0.14)
+    assert str(target) == "0.14"
+    assert _decimal_ceil_product(len(confidences), target) == 7
+    threshold = select_threshold(confidences, target)
+    assert threshold == confidences[-7]
+    assert int(accept_mask(confidences, threshold).sum()) == 7
+
+
+def test_select_threshold_smallest_positive_float_target_selects_at_least_one():
+    confidences = [0.2, 0.9, 0.4]
+    target = np.nextafter(0.0, 1.0)
+    assert _decimal_ceil_product(len(confidences), target) == 1
+    threshold = select_threshold(confidences, target)
+    assert threshold == 0.9
+    assert int(accept_mask(confidences, threshold).sum()) == 1
