@@ -15,6 +15,7 @@ from pathlib import Path
 
 import torch
 import torch.nn as nn
+import yaml
 
 # Allow running from project root without installing the package
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -23,7 +24,7 @@ from src.robustness.config import load_e8_config
 from src.robustness.robustness_eval import RobustnessEvaluator
 
 
-def _make_dummy_model(num_classes: int = 120) -> nn.Module:
+def _make_dummy_model(num_classes: int) -> nn.Module:
     """Tiny linear model for smoke tests — no real checkpoint needed in Task 03."""
     model = nn.Sequential(nn.AdaptiveAvgPool2d(1), nn.Flatten(), nn.Linear(3, num_classes))
     model.eval()
@@ -31,11 +32,12 @@ def _make_dummy_model(num_classes: int = 120) -> nn.Module:
 
 
 def _make_synthetic_batch(
+    *,
+    h: int,
+    w: int,
+    num_classes: int,
+    seed: int,
     n: int = 8,
-    h: int = 224,
-    w: int = 224,
-    num_classes: int = 120,
-    seed: int = 42,
 ) -> tuple[torch.Tensor, torch.Tensor]:
     g = torch.Generator()
     g.manual_seed(seed)
@@ -86,15 +88,27 @@ def main() -> None:
     print(f"[E8] Conditions: {cfg.conditions}")
     print(f"[E8] official_evaluation_enabled: {cfg.official_evaluation_enabled}")
 
-    model = _make_dummy_model()
-    images, labels = _make_synthetic_batch(seed=cfg.reproducibility.seed)
+    # Read metadata only; no checkpoint or dataset is opened in this runner.
+    with Path(cfg.model_selection_config).open(encoding="utf-8") as f:
+        selection = yaml.safe_load(f)
+    num_classes = selection["model"]["num_classes"]
+    if type(num_classes) is not int or num_classes <= 0:
+        raise ValueError("model_selection.model.num_classes must be a positive integer")
+    with torch.random.fork_rng(devices=[]):
+        torch.manual_seed(cfg.reproducibility.seed)
+        model = _make_dummy_model(num_classes=num_classes)
+    images, labels = _make_synthetic_batch(
+        h=cfg.input_size, w=cfg.input_size, num_classes=num_classes,
+        seed=cfg.reproducibility.seed,
+    )
+    image_ids = [f"synthetic/image_{i:04d}.png" for i in range(len(images))]
 
     evaluator = RobustnessEvaluator(model, cfg)
-    results = evaluator.evaluate(images, labels)
+    results = evaluator.evaluate(images, labels, image_ids)
 
     print("\n[E8] Synthetic smoke-test results (NOT official):")
     print(json.dumps(results, indent=2, default=str))
-    print("\n[E8] Tooling verified. Task 03 complete — Official Evaluation: Not Started.")
+    print("\n[E8] Tooling verified on synthetic data. Official Evaluation: Not Started.")
 
 
 if __name__ == "__main__":
