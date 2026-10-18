@@ -911,6 +911,8 @@ def test_synthetic_e7_run_writes_valid_auditable_four_outputs_and_refuses_overwr
     assert metrics["model"]["experiment"] == "E4"
     assert metrics["model"]["seed"] == 42
     assert metrics["source_git_sha"] and len(metrics["source_git_sha"]) == 40
+    assert metrics["source_commit_status"] == threshold_record["source_commit_status"]
+    assert metrics["source_commit_status"] == "source HEAD recorded; tracked/clean status not checked in synthetic mode"
     assert metrics["upstream_provenance"]["temperature_git_sha"] == "a" * 40
     assert metrics["runtime"]["python"]
     assert metrics["timestamp_utc"].endswith("+00:00")

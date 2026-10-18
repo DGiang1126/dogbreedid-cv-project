@@ -632,8 +632,10 @@ def run_selective_prediction(config_path: str | Path | None = None,
 
     if synthetic:
         source_git_sha = _source_head(SOURCE_ROOT)
+        source_commit_status = "source HEAD recorded; tracked/clean status not checked in synthetic mode"
     else:
         source_git_sha = _require_tracked_clean_sources(root)
+        source_commit_status = "tracked and clean at source HEAD; remote publication not checked"
 
     artifacts = load_e6_artifacts(config, root, synthetic=synthetic)
     output_paths = _preflight_outputs(root, config)
@@ -691,7 +693,7 @@ def run_selective_prediction(config_path: str | Path | None = None,
         "risk_coverage_rows": len(curve),
         "rejection_message": config["rejection"]["message"],
         "source_git_sha": source_git_sha,
-        "source_commit_status": "tracked and clean at source HEAD; remote publication not checked",
+        "source_commit_status": source_commit_status,
         "runtime": runtime,
         "timestamp_utc": timestamp,
         "input_sha256": input_hashes,
@@ -714,7 +716,7 @@ def run_selective_prediction(config_path: str | Path | None = None,
         "n_reject": selected["n_reject"],
         "achieved_coverage": selected["coverage"],
         "source_git_sha": source_git_sha,
-        "source_commit_status": "tracked and clean at source HEAD; remote publication not checked",
+        "source_commit_status": common["source_commit_status"],
         "input_sha256": input_hashes,
         "upstream_provenance": upstream_provenance,
     }
