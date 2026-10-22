@@ -285,7 +285,8 @@ def test_validation_execution_guard_requires_head_tracked_clean_sources(tmp_path
 @pytest.mark.parametrize("mutation", [
     "missing_field", "extra_field", "object_array", "nan", "inf", "float16_logits",
     "integer_logits", "shape", "label", "int32_labels", "uint64_labels", "duplicate_id",
-    "byte_ids", "unsafe_id", "swapped_label", "changed_id",
+    "byte_ids", "unsafe_id", "swapped_label", "changed_id", "short_labels", "short_ids",
+    "labels_2d", "ids_2d", "empty_n",
 ])
 def test_rejects_invalid_or_misaligned_prediction_bundles(tmp_path, mutation):
     fixture = _fixture(tmp_path)
@@ -323,10 +324,70 @@ def test_rejects_invalid_or_misaligned_prediction_bundles(tmp_path, mutation):
         arrays["labels"][0], arrays["labels"][1] = arrays["labels"][1], arrays["labels"][0]
     elif mutation == "changed_id":
         arrays["image_ids"][0] = "synthetic/not-in-csv.jpg"
+    elif mutation == "short_labels":
+        arrays["labels"] = arrays["labels"][:-1]
+    elif mutation == "short_ids":
+        arrays["image_ids"] = arrays["image_ids"][:-1]
+    elif mutation == "labels_2d":
+        arrays["labels"] = arrays["labels"][:, None]
+    elif mutation == "ids_2d":
+        arrays["image_ids"] = arrays["image_ids"][:, None]
+    elif mutation == "empty_n":
+        arrays = {
+            "logits": np.empty((0, 30), dtype=np.float32),
+            "labels": np.empty((0,), dtype=np.int64),
+            "image_ids": np.empty((0,), dtype="U1"),
+        }
     bad = tmp_path / "bad.npz"
     np.savez(bad, **arrays)
     with pytest.raises(ValueError):
         _load(fixture, predictions=bad)
+
+
+def test_accepts_float64_logits_without_downcasting(tmp_path):
+    logits = np.zeros((33, 30), dtype=np.float64)
+    fixture = _fixture(tmp_path, logits=logits)
+    bundle = _load(fixture)
+    assert bundle["logits"].dtype == np.dtype("float64")
+    np.testing.assert_array_equal(bundle["logits"], logits)
+
+
+def test_inference_writer_predictions_feed_selective_runner_with_alignment_and_dtype(tmp_path):
+    from src.inference.predictor import load_raw_predictions, save_raw_predictions
+
+    margins = np.asarray([6, 6, 4, 4, 1, 1], dtype=np.float64)
+    logits = np.zeros((6, 30), dtype=np.float64)
+    logits[:, 0] = margins
+    fixture = _fixture(tmp_path, n=6, logits=logits.astype(np.float32))
+    permutation = np.asarray([5, 2, 0, 4, 1, 3])
+    saved_path = save_raw_predictions(
+        fixture["predictions"],
+        logits[permutation],
+        fixture["labels"][permutation],
+        fixture["ids"][permutation],
+    )
+    upstream = load_raw_predictions(saved_path)
+    assert upstream["logits"].dtype == np.dtype("float64")
+    np.testing.assert_array_equal(upstream["image_ids"], fixture["ids"][permutation])
+
+    bundle = _load(fixture)
+    assert bundle["input_order_matches_csv"] is False
+    np.testing.assert_array_equal(bundle["image_ids"], fixture["ids"])
+    np.testing.assert_array_equal(bundle["labels"], fixture["labels"])
+    np.testing.assert_array_equal(bundle["logits"], logits)
+    assert bundle["logits"].dtype == np.dtype("float64")
+
+    result = runner.run_final_selective(
+        saved_path, fixture["metadata"], tmp_path / "upstream-writer-output",
+        split="synthetic", split_csv=fixture["csv"], repo_root=fixture["repo"],
+    )
+    assert result["n_total"] == 6
+    assert result["selected_metrics"]["n_accept"] == 4
+    assert result["selected_metrics"]["coverage"] == pytest.approx(2 / 3)
+    assert result["selected_metrics"]["selective_accuracy"] == pytest.approx(1 / 4)
+    assert result["selected_metrics"]["selective_risk"] == pytest.approx(3 / 4)
+    assert result["aurc"] == pytest.approx(25 / 36)
+    assert all(Path(path).is_file() for path in result["output_paths"].values())
 
 
 def test_row_permutation_preserves_selected_metrics(tmp_path):
