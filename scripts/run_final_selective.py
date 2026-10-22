@@ -13,6 +13,7 @@ import math
 import platform
 import subprocess
 import sys
+import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -315,11 +316,17 @@ def load_prediction_bundle(predictions_path, metadata_path, *, split="validation
     mapping_mode = _mapping_hash_mode(root, metadata.get("class_mapping_sha256"))
     csv_rows = _csv_rows(csv_path, mapping, split)
     try:
-        with np.load(predictions_path, allow_pickle=False) as archive:
-            if set(archive.files) != {"logits", "labels", "image_ids"} or len(archive.files) != 3:
-                raise ValueError("prediction NPZ must contain exactly logits, labels, and image_ids")
-            logits, labels, image_ids = archive["logits"], archive["labels"], archive["image_ids"]
-    except (OSError, ValueError, EOFError) as exc:
+        with predictions_path.open("rb") as input_handle:
+            archive = np.load(input_handle, allow_pickle=False)
+            if not isinstance(archive, np.lib.npyio.NpzFile):
+                raise ValueError("prediction file must be an NPZ archive")
+            with archive:
+                if set(archive.files) != {"logits", "labels", "image_ids"} or len(archive.files) != 3:
+                    raise ValueError("prediction NPZ must contain exactly logits, labels, and image_ids")
+                logits, labels, image_ids = archive["logits"], archive["labels"], archive["image_ids"]
+                if not all(isinstance(array, np.ndarray) for array in (logits, labels, image_ids)):
+                    raise ValueError("prediction NPZ entries must be NumPy arrays")
+    except (OSError, ValueError, EOFError, zipfile.BadZipFile, zipfile.LargeZipFile) as exc:
         if isinstance(exc, ValueError) and str(exc).startswith("prediction NPZ"):
             raise
         raise ValueError(f"Could not read prediction NPZ {predictions_path}: {exc}") from exc

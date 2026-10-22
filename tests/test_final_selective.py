@@ -13,6 +13,7 @@ from pathlib import Path
 import struct
 import subprocess
 import sys
+import zipfile
 
 import numpy as np
 import pytest
@@ -342,6 +343,39 @@ def test_rejects_invalid_or_misaligned_prediction_bundles(tmp_path, mutation):
     np.savez(bad, **arrays)
     with pytest.raises(ValueError):
         _load(fixture, predictions=bad)
+
+
+@pytest.mark.parametrize("malformation", ["npy", "corrupt_zip", "raw_zip_members"])
+def test_malformed_prediction_containers_fail_cleanly_in_api_and_cli(tmp_path, malformation):
+    fixture = _fixture(tmp_path)
+    suffix = ".npy" if malformation == "npy" else ".npz"
+    bad = tmp_path / f"malformed_{malformation}{suffix}"
+    if malformation == "npy":
+        with bad.open("wb") as handle:
+            np.save(handle, np.zeros((33, 30), dtype=np.float32))
+    elif malformation == "corrupt_zip":
+        bad.write_bytes(bytes.fromhex("504b030462726f6b656e"))
+    else:
+        with zipfile.ZipFile(bad, "w") as archive:
+            archive.writestr("logits", b"not an NPY array")
+            archive.writestr("labels", b"not an NPY array")
+            archive.writestr("image_ids", b"not an NPY array")
+
+    with pytest.raises(ValueError, match="prediction NPZ|NPZ archive"):
+        _load(fixture, predictions=bad)
+
+    output = tmp_path / f"malformed_{malformation}_output"
+    command = [
+        sys.executable, str(SOURCE_ROOT / "scripts/run_final_selective.py"),
+        "--predictions", str(bad), "--metadata", str(fixture["metadata"]),
+        "--output-dir", str(output), "--split", "synthetic",
+        "--split-csv", str(fixture["csv"]), "--repo-root", str(fixture["repo"]),
+    ]
+    completed = subprocess.run(command, capture_output=True, text=True, check=False)
+    assert completed.returncode == 2
+    assert "run_final_selective:" in completed.stderr
+    assert "Traceback" not in completed.stderr
+    assert not output.exists()
 
 
 def test_accepts_float64_logits_without_downcasting(tmp_path):
