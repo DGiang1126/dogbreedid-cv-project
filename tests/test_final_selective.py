@@ -560,9 +560,16 @@ def test_synthetic_csv_order_is_restored_and_mapping_newline_hash_is_accepted(tm
     assert bundle["input_order_matches_csv"] is False
     np.testing.assert_array_equal(bundle["image_ids"], fixture["ids"])
     mapping_path = fixture["repo"] / "data/metadata/class_mapping.json"
-    mapping_text = mapping_path.read_text(encoding="utf-8")
-    crlf_hash = hashlib.sha256(mapping_text.replace("\n", "\r\n").encode("utf-8")).hexdigest()
+    # Git may have checked out the reference as CRLF; force an LF fixture.
+    mapping_lf = mapping_path.read_bytes().replace(b"\r\n", b"\n")
+    mapping_crlf = mapping_lf.replace(b"\n", b"\r\n")
+    mapping_path.write_bytes(mapping_lf)
+    assert b"\n" in mapping_lf and b"\r" not in mapping_lf
+    assert mapping_path.read_bytes() == mapping_lf != mapping_crlf
+    assert mapping_crlf.replace(b"\r\n", b"\n") == mapping_lf
+    crlf_hash = hashlib.sha256(mapping_crlf).hexdigest()
     metadata = dict(fixture["meta"], class_mapping_sha256=crlf_hash)
+    assert metadata["class_mapping_sha256"] != _sha256(mapping_path)
     altered_metadata = tmp_path / "crlf_metadata.json"
     altered_metadata.write_text(json.dumps(metadata), encoding="utf-8")
     assert _load(fixture, metadata=altered_metadata)["mapping_hash_mode"] == "newline_variant_crlf"
@@ -583,19 +590,30 @@ def test_crlf_reference_files_accept_lf_counterpart_hashes_without_changing_valu
         path.write_bytes(path.read_bytes().replace(b"\r\n", b"\n").replace(b"\n", b"\r\n"))
 
     temperature_path = fixture["repo"] / "outputs/metrics/E6/temperature.json"
-    temperature_path.write_bytes(temperature_path.read_bytes().replace(b"\r\n", b"\n").replace(b"\n", b"\r\n"))
+    temperature_lf = temperature_path.read_bytes().replace(b"\r\n", b"\n")
+    temperature_path.write_bytes(temperature_lf.replace(b"\n", b"\r\n"))
     mapping_path = fixture["repo"] / "data/metadata/class_mapping.json"
-    mapping_lf = mapping_path.read_bytes()
-    mapping_path.write_bytes(mapping_lf.replace(b"\r\n", b"\n").replace(b"\n", b"\r\n"))
+    mapping_lf = mapping_path.read_bytes().replace(b"\r\n", b"\n")
+    mapping_path.write_bytes(mapping_lf.replace(b"\n", b"\r\n"))
     # Metadata records the digest of the semantically identical LF mapping.
     fixture["meta"]["class_mapping_sha256"] = hashlib.sha256(mapping_lf).hexdigest()
     fixture["metadata"].write_text(json.dumps(fixture["meta"]), encoding="utf-8")
+    assert fixture["meta"]["class_mapping_sha256"] != _sha256(mapping_path)
+    threshold_path = fixture["repo"] / "outputs/metrics/E7/threshold.json"
+    temperature_hash = json.loads(threshold_path.read_bytes())["input_sha256"]["e6_temperature"]
+    assert temperature_hash == hashlib.sha256(temperature_lf).hexdigest()
+    assert temperature_hash != _sha256(temperature_path)
+    for path, lf_bytes in ((mapping_path, mapping_lf), (temperature_path, temperature_lf)):
+        raw = path.read_bytes()
+        assert b"\n" in lf_bytes and b"\r" not in lf_bytes
+        assert raw == lf_bytes.replace(b"\n", b"\r\n") != lf_bytes
+        assert raw.replace(b"\r\n", b"\n") == lf_bytes
 
     bundle = _load(fixture)
     assert bundle["temperature"] == TEMPERATURE
     assert bundle["threshold"] == FROZEN_THRESHOLD
-    assert bundle["mapping_hash_mode"] in {"newline_variant_lf", "newline_variant"}
-    assert bundle["temperature_hash_mode"] in {"newline_variant_lf", "newline_variant"}
+    assert bundle["mapping_hash_mode"] == "newline_variant_lf"
+    assert bundle["temperature_hash_mode"] == "newline_variant_lf"
 
     temperature_payload = json.loads(temperature_path.read_text(encoding="utf-8"))
     temperature_payload["temperature"] = TEMPERATURE + 0.01
