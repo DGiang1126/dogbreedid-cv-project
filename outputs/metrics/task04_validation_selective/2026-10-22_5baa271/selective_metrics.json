@@ -1,0 +1,68 @@
+{
+  "experiment_id": "E4_TASK04_FINAL_SELECTIVE",
+  "experimental_status": "task04_preparation",
+  "official_final_evaluation": false,
+  "split": "validation",
+  "synthetic": false,
+  "model": {
+    "experiment": "E4",
+    "architecture": "mobilenet_v2",
+    "seed": 42,
+    "num_classes": 30,
+    "checkpoint_sha256": "73df0cc1c5b16866d4facc910f3e4d3ab481e3f12f1681a59fa7d61e3845c47b",
+    "checkpoint_evidence": "metadata-only; not independently verified"
+  },
+  "temperature": 0.80246283961825,
+  "temperature_hash_mode": "exact",
+  "threshold": 0.5011672918550012,
+  "threshold_reselected": false,
+  "accept_operator": ">=",
+  "selected_metrics": {
+    "n_total": 300,
+    "n_accept": 261,
+    "n_reject": 39,
+    "n_correct_accept": 220,
+    "coverage": 0.87,
+    "selective_accuracy": 0.842911877394636,
+    "selective_risk": 0.15708812260536398
+  },
+  "aurc": 0.09093638678902743,
+  "aurc_convention": "grouped right-step over confidence tie groups",
+  "n_total": 300,
+  "input_order_matches_csv": true,
+  "mapping_hash_mode": "newline_variant_crlf",
+  "input_sha256": {
+    "predictions": "5aae305b3a29e842fad313b5f3eae6edc1e2d3ca31b6e9228f4bc9c17442682a",
+    "metadata": "07e179e125f5d5f5c15e64e087fdf82036351a2695e405b1e286d55d4997eb77",
+    "split_csv": "3f6dbe00e9c120d8c7acabcaa658830011beb1ea989949a07471542ac95c8d13",
+    "class_mapping": "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c",
+    "temperature": "867a9389084e06330ef04e9d286e53cf932790db2cee2df71cb735b8bf4adc4d",
+    "threshold": "dcf037dee5a35db9f9d302ab43051153258d4d209be58a07430e70b736e0d6ea",
+    "e7_config": "6bc90bf168675f76720f8e94659760ef6cd1b9ad25502366f95764480fda4ec9",
+    "data_config": "add251840c7c6ca71f9d7e99bc9510b232b90afd2842ec0984535ade590d8bb7",
+    "e4_config": "9d815e385fbfc84264f57b51c8c60a36e2e3690cc558a2eb97a6ebd61a99c7a6",
+    "e6_config": "d47e36771c26a98d4fdef34010ac20828162410b98665b8e0f5a85a167906421",
+    "model_selection": "dcd08500e556650e67f6b98062a6407bed1caaebc7d1ed63bb3337a7bd31f332"
+  },
+  "upstream_provenance": {
+    "status": "historical execution not independently verified",
+    "metadata_git_sha": "891edf9e69a6b724bcdc20b02143888e8f35bbd8",
+    "checkpoint_verification": "metadata-only; no checkpoint loaded or independently verified",
+    "local_git_source_presence": "diagnostic only; does not verify historical execution"
+  },
+  "source_git_sha": "5baa2713cf89c71582eff39e67af2ab307466d6f",
+  "source_commit_status": "required source and reference files tracked and clean at HEAD",
+  "upstream_git_sha": "891edf9e69a6b724bcdc20b02143888e8f35bbd8",
+  "timestamp_utc": "2026-10-22T06:16:29.988444+00:00",
+  "runtime": {
+    "python_version": "3.12.14",
+    "numpy_version": "2.3.5",
+    "device": "CPU",
+    "inference_performed": false
+  },
+  "output_paths": {
+    "metrics": "/workspace/scratch/03f371afd155/dogbreedid-cv-project/outputs/metrics/task04_validation_selective/2026-10-22_5baa271/selective_metrics.json",
+    "risk_coverage_csv": "/workspace/scratch/03f371afd155/dogbreedid-cv-project/outputs/metrics/task04_validation_selective/2026-10-22_5baa271/risk_coverage.csv",
+    "risk_coverage_curve": "/workspace/scratch/03f371afd155/dogbreedid-cv-project/outputs/metrics/task04_validation_selective/2026-10-22_5baa271/risk_coverage_curve.png"
+  }
+}
