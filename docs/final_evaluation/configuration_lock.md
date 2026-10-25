@@ -177,14 +177,57 @@ Accuracy Drop là hiệu có dấu và có thể âm nếu độ chính xác tr�
 | Hạng mục                                                | Trạng thái      |
 | ------------------------------------------------------- | --------------- |
 | Git commit nền sau Task 03                              | `77612d7`       |
-| SHA-256 checkpoint                                      | Đã ghi nhận     |
-| Git commit dùng cho Final Evaluation                    | CHƯA XÁC ĐỊNH   |
-| Môi trường Python và thư viện dùng cho Final Evaluation | CHƯA XÁC NHẬN   |
-| Kiểm tra tính toàn vẹn của dữ liệu và artifacts         | CHƯA HOÀN THÀNH |
+| SHA-256 checkpoint                                      | ĐÃ XÁC MINH — khớp bằng chứng Validation replay tại mục 7.1 |
+| Git commit dùng cho Official Final Evaluation           | CHƯA XÁC ĐỊNH   |
+| Môi trường Python và thư viện dùng cho Official Final Evaluation | CHƯA XÁC NHẬN |
+| Kiểm tra tính toàn vẹn của dữ liệu và artifacts cho Official Final Evaluation | CHƯA HOÀN THÀNH |
 | Đối chiếu checkpoint với Google Drive                   | ĐÃ HOÀN THÀNH — SHA-256 TRÙNG KHỚP |
-| Kiểm thử tích hợp các runner Final Evaluation           | CHƯA HOÀN THÀNH |
+| Kiểm thử tích hợp các runner Official Final Evaluation  | CHƯA HOÀN THÀNH |
 
 Git commit `77612d7` xác định phiên bản repository sau khi tích hợp Task 03. Đây không mặc nhiên là commit sẽ được sử dụng để chạy Final Evaluation.
+
+### 7.1. Bằng chứng Task 05 — Validation Reproducibility
+
+Đã đối chiếu báo cáo `docs/final_evaluation/task05_validation_reproducibility.md`, file `task05_reproducibility_evidence_01.txt` và các artifacts replay hiện có. Phạm vi là **Validation, 300 ảnh, 30 lớp**; không sử dụng Official Test.
+
+| Thành phần của phiên Validation replay | Giá trị đã ghi nhận |
+| --- | --- |
+| Source commit thực thi | `5d3b393666c73b699671a2f420d1c6f3996ff992` |
+| Python | `3.12.4` |
+| PyTorch | `2.6.0+cu124` |
+| Torchvision | `0.21.0+cu124` |
+| NumPy | `2.5.3` |
+| CUDA build / thiết bị inference | `12.4` / `cuda` |
+| Checkpoint E4 SHA-256 | `73df0cc1c5b16866d4facc910f3e4d3ab481e3f12f1681a59fa7d61e3845c47b` — đã tính lại từ file và khớp evidence |
+| NPZ lịch sử | `outputs/predictions/task04_validation_review/validation_raw_predictions.npz` |
+| NPZ replay | `outputs/predictions/task05_validation_replay_01/validation_raw_predictions.npz` |
+| Đối chiếu predictions | Cùng schema, dtype, shapes; 300 Image IDs và labels khớp nguyên thứ tự; **9.000/9.000 logits trùng tuyệt đối**, maximum absolute difference = `0.0` |
+| SHA-256 chung của hai NPZ | `5aae305b3a29e842fad313b5f3eae6edc1e2d3ca31b6e9228f4bc9c17442682a` |
+
+**E4/E6/E7 trên Validation đã tái lập khớp bằng chứng đã ghi nhận:** metrics JSON E4/E6 lịch sử và replay giống từng byte; E7 tính từ NPZ replay khớp kết quả Validation đã nghiệm thu trong báo cáo `docs/task_reports/kiet/22_10_task.md`.
+
+| Chỉ số Validation | Kết quả |
+| --- | ---: |
+| E4 Top-1 theo số đếm | `0.8166666666666667` (245/300) |
+| E4 `classification.top1_accuracy` trong JSON | `0.8166666626930237` |
+| E6 ECE sau hiệu chỉnh | `0.07963164098033844` |
+| E7 ACCEPT / REJECT | 261 / 39 |
+| E7 Coverage | `0.87` |
+| E7 Selective Accuracy | `0.842911877394636` |
+| E7 Selective Risk | `0.15708812260536398` |
+| E7 AURC tham chiếu, grouped right-step | `0.09093638678902743` |
+
+Hai giá trị Top-1 trên là cùng tỷ lệ 245/300 với biểu diễn độ chính xác khác nhau; giữ nguyên số liệu JSON. E7 replay được lưu tại `outputs/predictions/task05_e7_validation_replay_01/`. Không refit Temperature E6, không chọn lại threshold E7 và không thay đổi cấu hình E4/E6/E7/E8.
+
+**Giới hạn provenance:** tái lập chính xác predictions không xác minh ngược toàn bộ source hoặc thay đổi local của phiên lịch sử có metadata Git SHA `891edf9e69a6b724bcdc20b02143888e8f35bbd8`. Artifacts lịch sử được giữ nguyên. Kết luận tái lập tuyệt đối áp dụng cho các artifacts và môi trường replay đã ghi nhận, chưa chứng minh trên môi trường khác.
+
+### 7.2. Kiểm thử Task 05 và các điều kiện Official Final Evaluation còn mở
+
+Kết quả integration/regression Task 05 mới nhất đã ghi nhận: **770 passed, 7 skipped, 1 warning**, không có failed tests. Warning NumPy `longdouble` overflow thuộc test E7 đã tồn tại. Không chạy lại tests hoặc inference trong lần cập nhật tài liệu này.
+
+Kết quả trên xác nhận phạm vi tooling và tích hợp Task 05 đã kiểm thử; **không đồng nghĩa đã kiểm thử đầy đủ các runner Official Final Evaluation**. Source/dependencies cho Official Final Evaluation, integration tests tương ứng và phê duyệt của trưởng nhóm vẫn chưa hoàn tất.
+
+**Git SHA và môi trường ở mục 7.1 chỉ thuộc phiên Validation replay. Chưa phê duyệt chúng làm Git SHA hoặc môi trường Official Final Evaluation.** Các mục tương ứng trong bảng đầu mục 7 và mục 10 tiếp tục chờ xác định/phê duyệt. Configuration Lock vẫn ở trạng thái bản nháp; Official Test chưa được phép sử dụng.
 
 Khi đánh giá chính thức, phải ghi nhận đầy đủ:
 
@@ -222,11 +265,14 @@ Mọi thay đổi có ảnh hưởng đến giao thức thực nghiệm phải �
 - [x] SHA-256 checkpoint được đối chiếu với bản tải lại từ Google Drive chung.
 - [x] Hợp đồng dữ liệu được trưởng nhóm chốt làm quy ước triển khai Task 04.
 
-### 9.2. Hạng mục chưa hoàn thành
-- [ ] Hợp đồng dữ liệu được kiểm chứng bằng integration tests và nghiệm thu sau Task 04.
+### 9.2. Theo dõi các điều kiện trước khi phê duyệt
+
+- [x] Hợp đồng dữ liệu được kiểm chứng bằng integration tests và nghiệm thu sau Task 04.
 - [ ] Mã nguồn Final Evaluation và các thư viện phụ thuộc được kiểm tra.
 - [ ] Các kiểm thử tích hợp Final Evaluation đạt yêu cầu.
 - [ ] Trưởng nhóm phê duyệt Configuration Lock.
+
+Điều kiện Data Contract được cập nhật theo mục 7.2 và kết luận nghiệm thu trong `docs/final_evaluation/data_contract.md`. Ba điều kiện còn lại áp dụng cho **Official Final Evaluation**; bằng chứng Validation và regression Task 05 tại mục 7 không tự động hoàn thành các điều kiện này.
 
 **Quyết định hiện tại: CHƯA KHÓA CẤU HÌNH.**
 
