@@ -17,9 +17,14 @@ import copy
 import hashlib
 import importlib
 import json
+import os
 import platform
+import shutil
 import subprocess
 import sys
+import tempfile
+import uuid
+from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable, Mapping
@@ -42,6 +47,13 @@ DEFAULT_SPLIT_CSV = Path("data/splits/validation.csv")
 DEFAULT_E4_CONFIG = Path("configs/experiments/e4_cutmix.yaml")
 DEFAULT_DATA_CONFIG = Path("configs/data.yaml")
 DEFAULT_OUTPUT_DIR = Path("outputs/predictions/task04_validation")
+_INCOMPLETE_MARKER = ".incomplete"
+_RUN_MARKER = ".inference_run"
+_COMPLETE_MARKER = ".complete"
+_OUTPUT_ARTIFACTS = (
+    "validation_raw_predictions.npz", "validation_metrics.json",
+    "validation_metadata.json", "validation_reliability_diagram.png",
+)
 
 
 class InferenceContractError(ValueError):
@@ -104,6 +116,7 @@ def _safe_output_dir(repo_root: Path, output_dir: str | Path) -> Path:
     path = Path(output_dir)
     if not path.is_absolute():
         path = repo_root / path
+    _reject_output_links(path.absolute())
     path = path.resolve()
     outputs_root = (repo_root / "outputs").resolve()
     try:
@@ -117,9 +130,134 @@ def _safe_output_dir(repo_root: Path, output_dir: str | Path) -> Path:
         raise PermissionError(
             f"Refusing to write Task 04 outputs to a location named Official Test: {path}"
         )
-    if path == outputs_root or path == (outputs_root / "predictions" / "final").resolve():
+    protected = (
+        outputs_root / "metrics", outputs_root / "robustness", outputs_root / "checkpoints",
+        outputs_root / "predictions" / "E6", outputs_root / "predictions" / "final",
+    )
+    if (path in (outputs_root, outputs_root / "predictions")
+            or any(path.is_relative_to(parent) for parent in protected)):
         raise PermissionError(f"Refusing to write to a protected output directory: {path}")
+    if path.exists():
+        raise FileExistsError(f"Output run directory already exists; choose a new directory: {path}")
+    for parent in path.parents:
+        if not parent.is_relative_to(outputs_root):
+            break
+        if any((parent / name).exists() for name in (*_OUTPUT_ARTIFACTS, _INCOMPLETE_MARKER, _RUN_MARKER)):
+            raise PermissionError(f"Refusing to nest a new run inside an existing output bundle: {parent}")
     return path
+
+
+def _reject_output_links(path: Path) -> None:
+    if any(p.is_symlink() or getattr(p, "is_junction", lambda: False)()
+           for p in (path, *path.parents)):
+        raise PermissionError(f"Symlink/junction output paths are forbidden: {path}")
+
+
+def _identity(stat_result) -> tuple[int, int]:
+    return stat_result.st_dev, stat_result.st_ino
+
+
+def _owned_file(path: Path, identity: tuple[int, int]) -> bool:
+    try:
+        return not path.is_symlink() and _identity(path.lstat()) == identity
+    except FileNotFoundError:
+        return False
+
+
+@contextmanager
+def _exclusive_binary_file(path: Path):
+    """Create, never replace or unlink a public pathname, including on failure.
+
+    A partial file is safer than deleting a replacement installed by another
+    writer. Private staging is cleaned by its TemporaryDirectory owner.
+    """
+    with path.open("xb") as handle:
+        yield handle
+
+
+class _OutputRun:
+    """Own a new run directory; publish a complete staged bundle exclusively."""
+
+    def __init__(self, output: Path, staging: Path, directory_identity, marker_identity, token):
+        self.output = output
+        self.staging = staging
+        self.directory_identity = directory_identity
+        self.marker_identity = marker_identity
+        self.token = token
+        self.published: list[tuple[Path, tuple[int, int]]] = []
+
+    def check_directory(self) -> None:
+        _reject_output_links(self.output)
+        if _identity(self.output.stat()) != self.directory_identity:
+            raise RuntimeError("Output run directory was replaced during execution")
+
+    def publish(self) -> None:
+        names = {path.name for path in self.staging.iterdir()}
+        if names != set(_OUTPUT_ARTIFACTS):
+            raise RuntimeError("Staging does not contain the expected inference output bundle")
+        for name in _OUTPUT_ARTIFACTS:
+            self.check_directory()
+            source, destination = self.staging / name, self.output / name
+            with source.open("rb") as reader, _exclusive_binary_file(destination) as writer:
+                self.published.append((destination, _identity(os.fstat(writer.fileno()))))
+                shutil.copyfileobj(reader, writer)
+
+    def finish(self) -> None:
+        self.check_directory()
+        expected = {path.name for path, _ in self.published} | {_RUN_MARKER}
+        if {path.name for path in self.output.iterdir()} != expected:
+            raise RuntimeError("Unexpected files appeared in the output run directory")
+        if not all(_owned_file(path, identity) for path, identity in self.published):
+            raise RuntimeError("A published output artifact was replaced during execution")
+        marker = self.output / _RUN_MARKER
+        if not _owned_file(marker, self.marker_identity):
+            raise RuntimeError("Output run completion marker was replaced")
+        # Completion is append-only: no check-then-unlink, even for a marker.
+        # A consumer requires this token to match the permanent run marker.
+        with _exclusive_binary_file(self.output / _COMPLETE_MARKER) as handle:
+            handle.write(self.token)
+        assert_prediction_bundle_complete(self.output / _OUTPUT_ARTIFACTS[0])
+
+    def rollback(self) -> None:
+        """Invalidate the bundle without deleting any public artifact or marker."""
+        self.check_directory()
+        try:
+            with _exclusive_binary_file(self.output / _INCOMPLETE_MARKER) as handle:
+                handle.write(b"INCOMPLETE RUN: do not consume this directory as an accepted result.\n")
+        except FileExistsError:
+            pass  # Preserve another writer's marker verbatim; its presence blocks consumption.
+
+
+@contextmanager
+def _exclusive_output_run(output: Path):
+    _reject_output_links(output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.mkdir()  # Atomic reservation; also rejects a directory created after preflight.
+    directory_identity = _identity(output.stat())
+    marker = output / _RUN_MARKER
+    token = (uuid.uuid4().hex + "\n").encode("ascii")
+    with _exclusive_binary_file(marker) as handle:
+        marker_identity = _identity(os.fstat(handle.fileno()))
+        handle.write(token)
+    run = None
+    try:
+        # The shared E6 plotting API writes a pathname. Give it an isolated,
+        # freshly allocated directory, never a public artifact path.
+        with tempfile.TemporaryDirectory(prefix="dogbreedid-inference-") as temporary:
+            run = _OutputRun(output, Path(temporary), directory_identity, marker_identity, token)
+            yield run
+            run.publish()
+        run.finish()
+    except BaseException as error:
+        if run is not None:
+            try:
+                run.rollback()
+            except (OSError, RuntimeError) as marker_error:
+                # The permanent run marker without a matching completion token
+                # also blocks consumers, even if the failure marker cannot be written.
+                if hasattr(error, "add_note"):
+                    error.add_note(f"Could not mark the failed output run: {marker_error}")
+        raise
 
 
 def validate_raw_predictions(
@@ -182,23 +320,68 @@ def save_raw_predictions(
     logits: Any,
     labels: Any,
     image_ids: Any,
+    *,
+    exclusive: bool = False,
 ) -> Path:
-    """Write exactly the three required NPZ fields, using Unicode image IDs."""
+    """Write contract fields. Production uses exclusive=True; retain legacy API.
+
+    exclusive=False deliberately overwrites an existing NPZ (legacy fixture API),
+    and is not suitable for protecting historical artifacts. The production runner
+    always uses exclusive=True inside a managed run. Exclusive standalone writes
+    never replace or delete files, but can leave a partial file on failure; they
+    do not by themselves provide the managed bundle's completion protocol.
+    """
     output_path = Path(output_path)
     logits_np, labels_np, ids_np = validate_raw_predictions(logits, labels, image_ids)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    np.savez_compressed(
-        output_path,
-        logits=logits_np,
-        labels=labels_np.astype(np.int64, copy=False),
-        image_ids=ids_np,
-    )
+    fields = dict(logits=logits_np, labels=labels_np.astype(np.int64, copy=False), image_ids=ids_np)
+    if exclusive:
+        with _exclusive_binary_file(output_path) as handle:
+            np.savez_compressed(handle, **fields)
+    else:
+        np.savez_compressed(output_path, **fields)
     return output_path
+
+
+def assert_prediction_bundle_complete(input_path: str | Path) -> None:
+    """Reject failed/pending managed runs; retain standalone NPZ compatibility.
+
+    Managed runs use immutable .inference_run/.complete tokens; .incomplete always
+    overrides completion. No marker is removed or overwritten. Historical bundles
+    and standalone fixtures without markers retain their previous validation.
+    """
+    directory = Path(input_path).parent
+    incomplete = directory / _INCOMPLETE_MARKER
+    run_marker = directory / _RUN_MARKER
+    complete = directory / _COMPLETE_MARKER
+    if os.path.lexists(incomplete):
+        raise InferenceContractError(f"Incomplete inference output bundle: {directory}")
+    if os.path.lexists(run_marker) or os.path.lexists(complete):
+        try:
+            if run_marker.is_symlink() or complete.is_symlink():
+                raise ValueError("Completion markers must not be symlinks")
+            with run_marker.open("rb") as handle:
+                token = handle.read(34)
+            with complete.open("rb") as handle:
+                completed_token = handle.read(34)
+            if (len(token) != 33 or token[-1:] != b"\n"
+                    or any(c not in b"0123456789abcdef" for c in token[:-1])
+                    or completed_token != token):
+                raise ValueError("Missing or inconsistent completion token")
+            if not all((directory / name).is_file() for name in _OUTPUT_ARTIFACTS):
+                raise ValueError("Missing inference output artifacts")
+        except (OSError, ValueError) as error:
+            raise InferenceContractError(
+                f"Incomplete or invalid inference output bundle: {directory}"
+            ) from error
+    if os.path.lexists(incomplete):
+        raise InferenceContractError(f"Incomplete inference output bundle: {directory}")
 
 
 def load_raw_predictions(input_path: str | Path) -> dict[str, np.ndarray]:
     """Read and validate a raw-prediction NPZ without enabling pickle."""
     input_path = Path(input_path)
+    assert_prediction_bundle_complete(input_path)
     if not input_path.is_file():
         raise FileNotFoundError(f"Raw-prediction NPZ not found: {input_path}")
     with np.load(input_path, allow_pickle=False) as stored:
@@ -208,6 +391,7 @@ def load_raw_predictions(input_path: str | Path) -> dict[str, np.ndarray]:
             raise InferenceContractError(f"NPZ is missing required fields: {sorted(missing)}")
         logits, labels, image_ids = (stored["logits"], stored["labels"], stored["image_ids"])
     logits, labels, image_ids = validate_raw_predictions(logits, labels, image_ids)
+    assert_prediction_bundle_complete(input_path)
     return {"logits": logits, "labels": labels, "image_ids": image_ids}
 
 
@@ -600,177 +784,176 @@ def run_final_inference(
     temp_path = temp_path.resolve()
     outputs = _safe_output_dir(repo_root, output_dir if output_dir is not None else DEFAULT_OUTPUT_DIR)
 
-    if device is None or str(device).lower() == "auto":
-        runtime_device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    else:
-        runtime_device = torch.device(device)
-        if runtime_device.type == "cuda" and not torch.cuda.is_available():
-            raise RuntimeError("CUDA was requested but torch.cuda.is_available() is False")
+    with _exclusive_output_run(outputs) as run:
+        if device is None or str(device).lower() == "auto":
+            runtime_device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        else:
+            runtime_device = torch.device(device)
+            if runtime_device.type == "cuda" and not torch.cuda.is_available():
+                raise RuntimeError("CUDA was requested but torch.cuda.is_available() is False")
 
-    # Check all artifacts before touching the model or dataset.
-    actual_checkpoint_hash = verify_checkpoint_hash(checkpoint)
-    temperature, temperature_payload = _load_temperature(temp_path)
-    class_mapping_path = repo_root / "data" / "metadata" / "class_mapping.json"
-    if not class_mapping_path.is_file():
-        raise FileNotFoundError(f"Approved class mapping not found: {class_mapping_path}")
-    class_mapping_sha256 = sha256_file(class_mapping_path)
+        # Check all artifacts before touching the model or dataset.
+        actual_checkpoint_hash = verify_checkpoint_hash(checkpoint)
+        temperature, temperature_payload = _load_temperature(temp_path)
+        class_mapping_path = repo_root / "data" / "metadata" / "class_mapping.json"
+        if not class_mapping_path.is_file():
+            raise FileNotFoundError(f"Approved class mapping not found: {class_mapping_path}")
+        class_mapping_sha256 = sha256_file(class_mapping_path)
 
-    data_payload = _load_yaml(repo_root / DEFAULT_DATA_CONFIG)
-    data_config = data_payload.get("data", data_payload)
-    if int(data_config.get("num_classes", -1)) != NUM_CLASSES:
-        raise ValueError("configs/data.yaml must define exactly 30 classes")
+        data_payload = _load_yaml(repo_root / DEFAULT_DATA_CONFIG)
+        data_config = data_payload.get("data", data_payload)
+        if int(data_config.get("num_classes", -1)) != NUM_CLASSES:
+            raise ValueError("configs/data.yaml must define exactly 30 classes")
 
-    if images_dir is None:
-        images_root = find_image_root(repo_root, split_csv_path)
-    else:
-        images_root = Path(images_dir).expanduser()
-        if not images_root.is_absolute():
-            images_root = repo_root / images_root
-        images_root = images_root.resolve()
-        if not images_root.is_dir():
-            raise FileNotFoundError(f"Images directory not found: {images_root}")
+        if images_dir is None:
+            images_root = find_image_root(repo_root, split_csv_path)
+        else:
+            images_root = Path(images_dir).expanduser()
+            if not images_root.is_absolute():
+                images_root = repo_root / images_root
+            images_root = images_root.resolve()
+            if not images_root.is_dir():
+                raise FileNotFoundError(f"Images directory not found: {images_root}")
 
-    if str(repo_root) not in sys.path:
-        sys.path.insert(0, str(repo_root))
-    dataset_module = importlib.import_module("src.data.dataset")
-    transforms_module = importlib.import_module("src.data.transforms")
-    transform = transforms_module.build_transforms(data_payload, split="validation")
-    dataset = dataset_module.DogBreedDataset(
-        csv_path=split_csv_path,
-        images_dir=images_root,
-        transform=transform,
-    )
-    data_loader = DataLoader(
-        dataset,
-        batch_size=int(batch_size),
-        shuffle=False,
-        num_workers=int(num_workers),
-        pin_memory=(runtime_device.type == "cuda"),
-        drop_last=False,
-    )
+        if str(repo_root) not in sys.path:
+            sys.path.insert(0, str(repo_root))
+        dataset_module = importlib.import_module("src.data.dataset")
+        transforms_module = importlib.import_module("src.data.transforms")
+        transform = transforms_module.build_transforms(data_payload, split="validation")
+        dataset = dataset_module.DogBreedDataset(
+            csv_path=split_csv_path,
+            images_dir=images_root,
+            transform=transform,
+        )
+        data_loader = DataLoader(
+            dataset,
+            batch_size=int(batch_size),
+            shuffle=False,
+            num_workers=int(num_workers),
+            pin_memory=(runtime_device.type == "cuda"),
+            drop_last=False,
+        )
 
-    model, loaded_checkpoint_hash = load_e4_model(repo_root, checkpoint, runtime_device)
-    if loaded_checkpoint_hash != actual_checkpoint_hash:
-        raise RuntimeError("Checkpoint SHA-256 unexpectedly changed during model setup")
-    logits, labels, image_ids = collect_predictions(
-        model,
-        data_loader,
-        device=runtime_device,
-        num_classes=NUM_CLASSES,
-        input_size=INPUT_SIZE,
-    )
-    class_names = _assert_npz_alignment_with_csv(split_csv_path, image_ids, labels)
-    metrics = compute_task1_metrics(
-        logits,
-        labels,
-        temperature=temperature,
-        class_names=class_names,
-        num_classes=NUM_CLASSES,
-    )
+        model, loaded_checkpoint_hash = load_e4_model(repo_root, checkpoint, runtime_device)
+        if loaded_checkpoint_hash != actual_checkpoint_hash:
+            raise RuntimeError("Checkpoint SHA-256 unexpectedly changed during model setup")
+        logits, labels, image_ids = collect_predictions(
+            model,
+            data_loader,
+            device=runtime_device,
+            num_classes=NUM_CLASSES,
+            input_size=INPUT_SIZE,
+        )
+        class_names = _assert_npz_alignment_with_csv(split_csv_path, image_ids, labels)
+        metrics = compute_task1_metrics(
+            logits,
+            labels,
+            temperature=temperature,
+            class_names=class_names,
+            num_classes=NUM_CLASSES,
+        )
 
-    outputs.mkdir(parents=True, exist_ok=True)
-    npz_path = save_raw_predictions(outputs / "validation_raw_predictions.npz", logits, labels, image_ids)
+        npz_path = outputs / "validation_raw_predictions.npz"
+        save_raw_predictions(
+            run.staging / npz_path.name, logits, labels, image_ids, exclusive=True,
+        )
 
-    timestamp = datetime.now(timezone.utc).isoformat()
-    try:
-        relative_checkpoint = checkpoint.relative_to(repo_root).as_posix()
-    except ValueError:
-        relative_checkpoint = str(checkpoint)
-    try:
-        relative_temperature_artifact = temp_path.relative_to(repo_root).as_posix()
-    except ValueError:
-        relative_temperature_artifact = str(temp_path)
-    try:
-        import torchvision
-        torchvision_version = torchvision.__version__
-    except Exception:
-        torchvision_version = "unavailable"
+        timestamp = datetime.now(timezone.utc).isoformat()
+        try:
+            relative_checkpoint = checkpoint.relative_to(repo_root).as_posix()
+        except ValueError:
+            relative_checkpoint = str(checkpoint)
+        try:
+            relative_temperature_artifact = temp_path.relative_to(repo_root).as_posix()
+        except ValueError:
+            relative_temperature_artifact = str(temp_path)
+        try:
+            import torchvision
+            torchvision_version = torchvision.__version__
+        except Exception:
+            torchvision_version = "unavailable"
 
-    metadata = {
-        "experiment_id": "E4_TASK04_FINAL_INFERENCE",
-        "task": "Task 04 / Task 1 - Final Classification & Calibration Inference",
-        "split": "validation",
-        "data_status": "validation",
-        "num_samples": int(len(labels)),
-        "num_classes": NUM_CLASSES,
-        "class_mapping_path": "data/metadata/class_mapping.json",
-        "class_mapping_sha256": class_mapping_sha256,
-        "git_sha": _get_git_sha(repo_root),
-        "checkpoint_path": relative_checkpoint,
-        "checkpoint_sha256": loaded_checkpoint_hash,
-        "model_initialization": "E4 architecture built with weights='none'; full approved checkpoint then loaded with strict=True",
-        "temperature_artifact_path": relative_temperature_artifact,
-        "temperature_source_experiment": temperature_payload.get("experiment"),
-        "temperature_source_split": temperature_payload.get("split"),
-        "temperature": float(temperature),
-        "preprocessing": {
-            "config": DEFAULT_DATA_CONFIG.as_posix(),
-            "transform_builder": "src.data.transforms.build_transforms",
-            "split_argument": "validation",
-            "expected_tensor_shape": [3, INPUT_SIZE, INPUT_SIZE],
-            "evaluation_resize": data_payload["preprocessing"]["evaluation"]["resize"],
-            "evaluation_center_crop": data_payload["preprocessing"]["evaluation"]["center_crop"],
-            "normalization": data_payload["preprocessing"]["normalization"],
-        },
-        "runtime": {
-            "timestamp_utc": timestamp,
-            "python_version": platform.python_version(),
-            "pytorch_version": torch.__version__,
-            "torchvision_version": torchvision_version,
-            "device": str(runtime_device),
-            "cuda_available": bool(torch.cuda.is_available()),
-            "batch_size": int(batch_size),
-            "num_workers": int(num_workers),
-        },
-        "outputs": {
-            "raw_predictions_npz": str(npz_path.relative_to(repo_root).as_posix()),
-        },
-        "safety": {
-            "official_test_used": False,
-            "model_trained_or_updated": False,
-            "temperature_refit": False,
-            "official_test_guard": "validation-only runner",
-        },
-    }
+        metadata = {
+            "experiment_id": "E4_TASK04_FINAL_INFERENCE",
+            "task": "Task 04 / Task 1 - Final Classification & Calibration Inference",
+            "split": "validation",
+            "data_status": "validation",
+            "num_samples": int(len(labels)),
+            "num_classes": NUM_CLASSES,
+            "class_mapping_path": "data/metadata/class_mapping.json",
+            "class_mapping_sha256": class_mapping_sha256,
+            "git_sha": _get_git_sha(repo_root),
+            "checkpoint_path": relative_checkpoint,
+            "checkpoint_sha256": loaded_checkpoint_hash,
+            "model_initialization": "E4 architecture built with weights='none'; full approved checkpoint then loaded with strict=True",
+            "temperature_artifact_path": relative_temperature_artifact,
+            "temperature_source_experiment": temperature_payload.get("experiment"),
+            "temperature_source_split": temperature_payload.get("split"),
+            "temperature": float(temperature),
+            "preprocessing": {
+                "config": DEFAULT_DATA_CONFIG.as_posix(),
+                "transform_builder": "src.data.transforms.build_transforms",
+                "split_argument": "validation",
+                "expected_tensor_shape": [3, INPUT_SIZE, INPUT_SIZE],
+                "evaluation_resize": data_payload["preprocessing"]["evaluation"]["resize"],
+                "evaluation_center_crop": data_payload["preprocessing"]["evaluation"]["center_crop"],
+                "normalization": data_payload["preprocessing"]["normalization"],
+            },
+            "runtime": {
+                "timestamp_utc": timestamp,
+                "python_version": platform.python_version(),
+                "pytorch_version": torch.__version__,
+                "torchvision_version": torchvision_version,
+                "device": str(runtime_device),
+                "cuda_available": bool(torch.cuda.is_available()),
+                "batch_size": int(batch_size),
+                "num_workers": int(num_workers),
+            },
+            "outputs": {
+                "raw_predictions_npz": str(npz_path.relative_to(repo_root).as_posix()),
+            },
+            "safety": {
+                "official_test_used": False,
+                "model_trained_or_updated": False,
+                "temperature_refit": False,
+                "official_test_guard": "validation-only runner",
+            },
+        }
 
-    metrics_path = outputs / "validation_metrics.json"
-    metadata_path = outputs / "validation_metadata.json"
-    with metrics_path.open("w", encoding="utf-8") as handle:
-        json.dump(metrics, handle, indent=2, ensure_ascii=False, allow_nan=False)
-        handle.write("\n")
-    with metadata_path.open("w", encoding="utf-8") as handle:
-        json.dump(metadata, handle, indent=2, ensure_ascii=False, allow_nan=False)
-        handle.write("\n")
+        metrics_path = outputs / "validation_metrics.json"
+        metadata_path = outputs / "validation_metadata.json"
+        with (run.staging / metrics_path.name).open("x", encoding="utf-8") as handle:
+            json.dump(metrics, handle, indent=2, ensure_ascii=False, allow_nan=False)
+            handle.write("\n")
+        with (run.staging / metadata_path.name).open("x", encoding="utf-8") as handle:
+            json.dump(metadata, handle, indent=2, ensure_ascii=False, allow_nan=False)
+            handle.write("\n")
 
-    reliability_path: Path | None = None
-    try:
         calibration_module = importlib.import_module("src.calibration.calibration_metrics")
-        reliability_path = calibration_module.plot_reliability_diagram(
+        reliability_path = outputs / "validation_reliability_diagram.png"
+        calibration_module.plot_reliability_diagram(
             logits,
             logits / float(temperature),
             labels,
             n_bins=ECE_BINS,
-            output_path=outputs / "validation_reliability_diagram.png",
+            output_path=run.staging / reliability_path.name,
             title="E4 Validation: Before vs After E6 Temperature Scaling",
         )
-    except ImportError:
-        # Metrics are still complete if optional matplotlib is unavailable.
-        reliability_path = None
 
-    return {
-        "logits": logits,
-        "labels": labels,
-        "image_ids": image_ids,
-        "metrics": metrics,
-        "metadata": metadata,
-        "temperature": temperature,
-        "checkpoint_sha256": loaded_checkpoint_hash,
-        "images_dir": str(images_root),
-        "outputs_dir": str(outputs),
-        "paths": {
-            "raw_predictions_npz": str(npz_path),
-            "metrics_json": str(metrics_path),
-            "metadata_json": str(metadata_path),
-            "reliability_diagram": str(reliability_path) if reliability_path else None,
-        },
-    }
+        return {
+            "logits": logits,
+            "labels": labels,
+            "image_ids": image_ids,
+            "metrics": metrics,
+            "metadata": metadata,
+            "temperature": temperature,
+            "checkpoint_sha256": loaded_checkpoint_hash,
+            "images_dir": str(images_root),
+            "outputs_dir": str(outputs),
+            "paths": {
+                "raw_predictions_npz": str(npz_path),
+                "metrics_json": str(metrics_path),
+                "metadata_json": str(metadata_path),
+                "reliability_diagram": str(reliability_path) if reliability_path else None,
+            },
+        }
