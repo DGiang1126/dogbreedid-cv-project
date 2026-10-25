@@ -136,12 +136,28 @@ Các thành viên bắt buộc tuân thủ định dạng dữ liệu và quy t�
 
 ### 7.2. Điều kiện nghiệm thu sau Task 04
 
-- [ ] Thuận chứng minh có thể xuất đúng định dạng raw predictions.
-- [ ] Kiệt chứng minh có thể đọc và tính E7 từ định dạng này.
-- [ ] Đức Anh chứng minh sử dụng đúng Image IDs từ split CSV.
-- [ ] Integration tests trên dữ liệu giả lập hoặc Validation đạt yêu cầu.
-- [ ] Trưởng nhóm kiểm tra và nghiệm thu việc tuân thủ Data Contract.
+- [x] Thuận chứng minh có thể xuất đúng định dạng raw predictions.
+- [x] Kiệt chứng minh có thể đọc và tính E7 từ định dạng này.
+- [x] Đức Anh chứng minh sử dụng đúng Image IDs từ split CSV.
+- [x] Integration tests trên dữ liệu giả lập hoặc Validation đạt yêu cầu.
+- [x] Trưởng nhóm kiểm tra và nghiệm thu việc tuân thủ Data Contract.
 
-**Trạng thái nghiệm thu: CHƯA HOÀN THÀNH — CHỜ KẾT QUẢ TASK 04.**
+**Trạng thái nghiệm thu: HOÀN THÀNH — ĐÃ NGHIỆM THU SAU TASK 04.**
+
+### Kết luận nghiệm thu Data Contract sau Task 04
+
+Trưởng nhóm xác nhận các yêu cầu chức năng và quy ước bàn giao dữ liệu của Task 04 đã được đáp ứng:
+
+- Thuận đã triển khai exporter tạo raw predictions theo schema `logits`, `labels`, `image_ids`; bộ NPZ Validation gồm 300 ảnh và 30 lớp đã được kiểm tra.
+- Kiệt đã đọc dữ liệu bàn giao và tính thành công E7 Selective Prediction.
+- Đức Anh đã sử dụng đúng `relative_path` làm Image ID và xác minh trên Validation.
+- Bộ kiểm thử tích hợp và regression đạt 712 passed, 7 skipped, 1 warning theo kết quả kiểm tra đã ghi nhận.
+- Các runner Task 04 không sử dụng Official Test.
+
+**Quyết định:** Nghiệm thu Data Contract về mặt chức năng và tích hợp sau Task 04.
+
+**Giới hạn còn lại:** Metadata của phiên inference Validation lịch sử ghi Git SHA chưa đại diện đầy đủ source tại thời điểm thực thi. Không kết luận dữ liệu sai từ phát hiện này. Nhóm sẽ giữ nguyên artifacts lịch sử và thực hiện một phiên kiểm chứng tái lập riêng từ source đã commit trước Official Final Evaluation.
+
+Việc nghiệm thu Data Contract không đồng nghĩa phê duyệt Configuration Lock hoặc cho phép truy cập Official Test.
 
 **Official Test chưa được phép sử dụng.**
