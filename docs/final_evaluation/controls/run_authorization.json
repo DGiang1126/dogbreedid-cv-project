@@ -1,0 +1,23 @@
+{
+  "approval_id": "dogbreedid-task05-lock-20261026",
+  "approval_sha256": "65d63a9e71684934efcef93d518c8a249f3f4eeca982fdabe91ab55f8a18b720",
+  "authorization_id": "grant-task05-final-20261026-ea8c474981b14065af219fb43ee8e65e",
+  "automatic_retry": false,
+  "claim_root": "D:/HK1_IUH_22646851_Final/TGMT/dogbreedid-cv-project/outputs/final_evaluation_controls/claims",
+  "grant_evidence": {
+    "reference": "leader-grant",
+    "sha256": "ec91e000f58de50199a84055fb8e73c90dc0adcfb105e9c15544e6abec7683c0"
+  },
+  "grantor": "Trưởng nhóm DogBreedID",
+  "max_runs": 1,
+  "output_dir": "D:/HK1_IUH_22646851_Final/TGMT/dogbreedid-cv-project/outputs/final_evaluation_b2/task05-final-20261026-ea8c474981b14065af219fb43ee8e65e",
+  "run_id": "task05-final-20261026-ea8c474981b14065af219fb43ee8e65e",
+  "schema": "dogbreedid.official-authorization.v1",
+  "scope": [
+    "E4",
+    "E6",
+    "E7",
+    "E8"
+  ],
+  "status": "GRANTED"
+}
