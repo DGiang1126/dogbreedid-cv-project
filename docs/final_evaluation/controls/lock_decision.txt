@@ -1,0 +1,19 @@
+QUYẾT ĐỊNH PHÊ DUYỆT CONFIGURATION LOCK — DOGBREEDID TASK 05
+
+Ngày: 26/10/2026
+
+Nguồn: Quyết định trực tiếp của trưởng nhóm DogBreedID trong hội thoại với Codex. Bản ghi lưu quyết định của trưởng nhóm; không phải Codex tự cấp quyền.
+
+Nội dung quyết định:
+
+Tôi, trưởng nhóm DogBreedID, xác nhận đã xem xét và PHÊ DUYỆT Configuration Lock với:
+
+- Source revision S: 02483f801277482fbe24c25048e6cc769a16295f
+- Dataset freeze revision D: d0b6931250cc51088e7beded24737959ef9464cc
+- Canonical dataset reference và Git blob ID như mục 7.3.
+- Checkpoint E4, cấu hình khoa học E4/E6/E7/E8 và bằng chứng nghiệm thu như hồ sơ.
+- Runtime profile đúng 16 trường tại mục 7.4, sử dụng CUDA và batch size 32.
+
+Cho phép hoàn thiện tài liệu ở trạng thái LOCKED và tạo các control records phục vụ Configuration Lock Approval, đúng schema hiện có.
+
+Quyết định này KHÔNG cấp Official Evaluation Authorization. Chưa cho phép đọc hoặc chạy Official Test, chưa cho phép tạo claim hay thực hiện Official Evaluation. Việc cấp quyền đó phải có quyết định riêng.
