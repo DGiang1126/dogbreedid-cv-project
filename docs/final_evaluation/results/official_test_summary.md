@@ -6,7 +6,7 @@ Báo cáo phục vụ đồ án môn học và bàn giao nhóm, tổng hợp kh�
 
 - **Run ID:** `task05-final-20261026-ea8c474981b14065af219fb43ee8e65e`.
 - **Tập đánh giá:** Official Test, **1.934 ảnh, 30 lớp**.
-- **Nguồn:** `e4_e6_metrics.json`, `selective_metrics.json`, `e8_metrics.json` và hai PNG đã xuất từ cùng run thành công.
+- **Nguồn:** `e4_e6_metrics.json`, `selective_metrics.json`, `e8_metrics.json`, `reliability_diagram.png` và `risk_coverage.csv` đã xuất từ cùng run thành công. Hình risk–coverage phục vụ báo cáo được dựng lại từ CSV này.
 - **Bản số liệu chia sẻ:** [official_metrics_summary.json](official_metrics_summary.json), chỉ trích xuất các trường tổng hợp bằng allowlist.
 - **Tham khảo:** [Bàn giao nghiệm thu Task 05](../task05_final_acceptance_handoff.md).
 
@@ -59,9 +59,11 @@ AURC theo quy ước artifact: `grouped right-step over confidence tie groups`.
 
 **81,49% là Top-1 trên toàn bộ 1.934 ảnh; 85,14% là Selective Accuracy chỉ trên 1.736 ảnh ACCEPT.** Độ chính xác trên nhóm ACCEPT cao hơn khoảng 3,65 điểm phần trăm, đổi lại hệ thống từ chối 198 ảnh (10,24%).
 
-![Risk–coverage curve tổng hợp sao chép từ bundle Official](risk_coverage_curve.png)
+![E7 — Official Test Risk–Coverage Curve](risk_coverage_curve.png)
 
-*Hình 2. Bản sao nguyên bytes của `risk_coverage_curve.png` trong bundle run Official. **Lưu ý lỗi nhãn nguồn: hình có watermark “VALIDATION”.** Không dùng watermark này làm bằng chứng về split; bảng E7 lấy từ JSON Official của cùng run. Hình cần trưởng nhóm xử lý nhãn hoặc quyết định cách trình bày trước khi công bố. Bước này không chỉnh ảnh, không thay artifact gốc và không đưa metrics Validation vào báo cáo.*
+*Hình 2. Biểu đồ trình bày được dựng lại từ hai cột `coverage` và `selective_risk` của `risk_coverage.csv` đã xuất trong run Official nêu ở mục 1. Giữ nguyên các nhóm confidence tie và đường bậc thang theo quy ước grouped right-step; risk không xác định tại coverage bằng 0. AURC kiểm tra từ CSV là `0.056656294531499965`, khớp artifact `0.05665629453149997` với sai số tuyệt đối khoảng `6.94e-18`.*
+
+PNG gốc có lỗi nhãn do hàm vẽ gán watermark “VALIDATION” cho nhánh `official_test`. Bản hình báo cáo này đã dùng đúng tiêu đề Official Test và không có watermark; artifact PNG gốc được giữ nguyên. Đây chỉ là sửa cách trình bày từ đường cong đã xuất, không chạy lại đánh giá hoặc thay đổi số liệu E7.
 
 ## 5. E8 — Robustness
 
@@ -87,6 +89,6 @@ Giữ nguyên độ chính xác số của từng artifact: E4 Top-1 là `0.8148
 - Kết quả chỉ phản ánh một lượt Official Test theo protocol đã khóa, không chứng minh hiệu năng trên mọi phân bố ảnh, thiết bị hoặc môi trường thực tế. Không bổ sung khoảng tin cậy hay kết quả đa lượt khi chưa có bằng chứng.
 - Báo cáo này không thực hiện tuning, refit, retrain hoặc đánh giá lại. Thông số và artifacts lịch sử được giữ nguyên.
 - JSON chia sẻ chỉ có chỉ số và số đếm tổng hợp; không xuất image IDs, nhãn từng ảnh, logits, probabilities, CSV từng mẫu, đường dẫn ảnh/local, checkpoint hay claim ledger. Không xuất các mảng per-sample có trong JSON nguồn E8.
-- Hai PNG đã được kiểm tra trực quan là biểu đồ tổng hợp, không thấy ID ảnh, đường dẫn local hay thông tin gắn với từng mẫu; text metadata PNG chỉ ghi phần mềm Matplotlib. Riêng watermark “VALIDATION” ở Hình 2 là vấn đề trình bày còn chờ trưởng nhóm quyết định trước khi công bố.
+- Hai PNG đã được kiểm tra trực quan là biểu đồ tổng hợp, không thấy ID ảnh, đường dẫn local hay thông tin gắn với từng mẫu. Hình 1 giữ nguyên bản sao artifact; Hình 2 là bản trình bày dựng lại từ CSV Official, không chia sẻ CSV hoặc dữ liệu từng mẫu. Text metadata của bản hình mới chỉ ghi phần mềm, tiêu đề và mô tả biểu đồ tổng hợp.
 
 **Trạng thái:** Bộ tổng hợp chuẩn bị cho trưởng nhóm review; chưa stage, commit, push hoặc tạo PR trong bước này.
