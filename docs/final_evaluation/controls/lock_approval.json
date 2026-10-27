@@ -1,0 +1,88 @@
+{
+  "acceptance": {
+    "phase_a": {
+      "reference": "phase-a",
+      "sha256": "4df84860182f79f4e8e09ef86a6c4308021e344101b3cee88195cc27a255c7d6"
+    },
+    "phase_b1": {
+      "reference": "phase-b1",
+      "sha256": "fc890fc0a725b4a8e60c6eff4bff972e7a3078f0025f228896a2075514438217"
+    }
+  },
+  "approval_evidence": {
+    "reference": "leader-lock",
+    "sha256": "5dddd463c3d8d1d5bc42735ad1f302ce99003413a022d0dcfee169faa9ea597c"
+  },
+  "approval_id": "dogbreedid-task05-lock-20261026",
+  "approver": "Trưởng nhóm DogBreedID",
+  "dataset_descriptor": {
+    "expected_samples": 1934,
+    "num_classes": 30,
+    "reference": "data/splits/official_test.csv",
+    "revision": "d0b6931250cc51088e7beded24737959ef9464cc"
+  },
+  "frozen_sha256": {
+    "configs/data.yaml": "f4f710fb5f10a4b250df899c0198505ae0d16dbe4f2d22c0b72e80b1b080a960",
+    "configs/experiments/e4_cutmix.yaml": "a5988f231a96783c13a69319364271652cf5c39b5597b0c633c09ddbf856d3cf",
+    "configs/experiments/e6_calibration.yaml": "78e9650c6565e5add042f8eb40b20c5b5c73e2e6e0bd4a615f26000b5025557d",
+    "configs/experiments/e7_selective_prediction.yaml": "a17ad79c89b16365f812cc52097c8fc419f369dcac54d06fa8e955066d5466b3",
+    "configs/experiments/e8_robustness.yaml": "07a8fbc95494838eb2c8cd402e85a00d912e671c49d14c7321d218ff6c15bd56",
+    "configs/model_selection.yaml": "54236e9e71967313e86c35b5d36e8b5197859b5c40fe80702fd13965a7385560",
+    "data/metadata/class_mapping.json": "79f08f8da0d65b3cb9cf256ac3b37688e112ce84b0352e5a600861b9b2327542",
+    "outputs/metrics/E6/temperature.json": "338a09892fc7a2928ee932c8faa562dae39cfa47e20389e43daade2125c3aa92",
+    "outputs/metrics/E7/threshold.json": "b9bc8c895ae075a87e4fc5c84679cbe1a12f305da1eac31c4f8bc788da98ff27"
+  },
+  "lock_sha256": "7ef1115b3c90e92582f45425cdaedff7ec823e2d67fdbed9dd781836c036ee58",
+  "protocol_sha256": "0ac89f6e83aa524842231e7c1203d68d10bb3029fea3c7bb7284805f6fedf46c",
+  "runtime": {
+    "batch_size": 32,
+    "cuda_build": "12.4",
+    "device": "cuda",
+    "matplotlib": "3.11.2",
+    "num_workers": 0,
+    "numpy": "2.5.3",
+    "os": "Windows-11-10.0.26300-SP0",
+    "pandas": "3.0.6",
+    "pillow": "12.3.0",
+    "python": "3.12.4",
+    "pytorch": "2.6.0+cu124",
+    "pyyaml": "6.0.3",
+    "scikit_learn": "1.9.1",
+    "scipy": "1.18.1",
+    "torch_num_threads": 4,
+    "torchvision": "0.21.0+cu124"
+  },
+  "schema": "dogbreedid.configuration-approval.v1",
+  "source_revision": "02483f801277482fbe24c25048e6cc769a16295f",
+  "source_sha256": {
+    "scripts/run_final_evaluation.py": "1e204d6521ecad06a1cea74f31bfdde64066c24f05ed152178184d16aa5f7f21",
+    "scripts/run_final_evaluation_preflight.py": "992796b5d851e867784db793c14eea921dd9f3cb032512f9897268936898d410",
+    "scripts/run_final_inference.py": "570afde01ce95949e2a9d1cf138ca2b69b1c71fa863d9013328ae3aa923fb6a6",
+    "scripts/run_final_robustness.py": "0475638c7bf5a748e64eab3681d946de3ed5765915b656feb5d4b38f824de524",
+    "scripts/run_final_selective.py": "a6774273db2a4686d16e3a41cd966b639caf1a82b6c2ca54c90d36c27f7d27b3",
+    "src/calibration/__init__.py": "7a1438d88b3bd5ac2eb42e10313da10250b745723bcdfe82f6719d64c443a537",
+    "src/calibration/calibration_metrics.py": "54d27b0cedd1892555109e3552597408dee990613d5375303f7b0d91a4425a89",
+    "src/calibration/temperature_scaling.py": "d9dd1ba80a7bcca86b76f14df8fc7a9d594161385414a14fc5a55379ba58fa05",
+    "src/data/dataset.py": "2018db8a1819bd0e7facc8064c71c9b34cea87d9f17e8b8ff7e599c80bced63a",
+    "src/data/transforms.py": "c1d81ed569ca92975804296b909be9623e9925bf573b6a88a43a2d36640d0ee0",
+    "src/evaluation/metrics.py": "562d480343bbbd273523a59889c9091934b3f3831323e90c95463ffda70b57d9",
+    "src/final_evaluation/__init__.py": "8e4edd833609535f74314edb63bb60d7656e4197e1def73c6c9d02ecc680833d",
+    "src/final_evaluation/authorization.py": "53139893eb4f621732967cb91b01dcbdc11d22fa0abbbf0b9689e4e8827a8a67",
+    "src/inference/__init__.py": "6fac0f0c9e6fb1923ab7183e228304a90585dec164be4631fa835f764251a2ac",
+    "src/inference/predictor.py": "48d0c97f014a99af5180f05b5d6179c76281d3bd13058418a56ecacdaed17f75",
+    "src/models/mobilenet_v2.py": "bf3bebd5898c2cd5f9cbb62c5b05158896330f5c6f5cd53afd6963b6fd6a6041",
+    "src/models/model_factory.py": "4002e6c40f8d260703431cda03ef793d8c1fc6a11912d222096e9eaa7d5af446",
+    "src/robustness/__init__.py": "bf6c86982a00067d442d3f58d55442b70f12b11bd91c666229d81b1881c3e278",
+    "src/robustness/config.py": "52bb3cb00b8319d2513ce843096c9bcdddd32a3a31fa67c667c063a78d12469a",
+    "src/robustness/corruptions.py": "65bc34c39b1fc01bd8752e9ba63fc842b75713ae2534055f7fbe44adecf8e133",
+    "src/robustness/robustness_eval.py": "4c07cb49c9cfee351faabae3b0ec01d24a163ad7f94d1976c2b90e04f4b48ed1",
+    "src/selective/config.py": "a86d4ce4c799b1a520872b034376c26724b0956da90357542c60b68a2d06f886",
+    "src/selective/risk_coverage.py": "c945cef47136e46b28f3fd0c05a82bd40a05b7f12dd2573b85caee7c18ca0efc",
+    "src/selective/threshold.py": "1f7dcc980fbc1f4fcef51b3be34892a16742d1af5a0fdcb72dfcceee09edeb3c",
+    "src/utils/config.py": "6f3c60ee616bcdbd26629d1cf7bc81913742500d8f68282540c7bb30a4459caf",
+    "tests/test_final_evaluation_authorization.py": "ee04f81b0bd75bbc23e2478243726953b430a356e2d5ca187f2947f97c0d61d7",
+    "tests/test_final_evaluation_execution.py": "24b478a061c4dee9b72168f3de9e6319ccff31e6aa2722195a9e82d6fca311fa",
+    "tests/test_final_evaluation_preflight.py": "cfcf2de14fbff36739a238d7ddb997f4a6f6301fc1990d42d25bc7924d075df7"
+  },
+  "status": "APPROVED"
+}

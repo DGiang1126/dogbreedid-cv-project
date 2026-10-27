@@ -1,0 +1,36 @@
+QUYẾT ĐỊNH OFFICIAL EVALUATION AUTHORIZATION — DOGBREEDID TASK 05
+
+Ngày: 26/10/2026
+
+Nguồn: Quyết định trực tiếp của trưởng nhóm DogBreedID trong hội thoại với Codex; đây là bản ghi quyết định của trưởng nhóm, không phải Codex tự cấp quyền.
+
+Nội dung quyết định:
+
+Tôi, trưởng nhóm DogBreedID, PHÊ DUYỆT cấp quyền cho duy nhất một lượt Official Evaluation với:
+
+- Run ID: task05-final-20261026-ea8c474981b14065af219fb43ee8e65e
+- Authorization ID: grant-task05-final-20261026-ea8c474981b14065af219fb43ee8e65e
+- Configuration Lock commit: 90dc817b24a32d5038e282d012f21e85b40e72ed
+- Source S và Dataset D đúng theo Configuration Lock.
+- Claim root, output root và output directory đúng theo đề xuất Codex.
+- Scope: E4/E6/E7/E8.
+- Runtime: đúng 16 trường đã khóa, CUDA, batch size 32.
+- max_runs=1, automatic_retry=false.
+
+Cho phép tạo grant_decision.txt, run_authorization.json và b2_release.json theo schema đã nghiệm thu, sau đó commit và xác minh reviewed release R.
+
+Quyết định này chưa phải lệnh bắt đầu inference. Official Test chỉ được truy cập trong bước thực thi riêng sau khi R hợp lệ và toàn bộ authorization gate, claim độc quyền, output reservation cùng các kiểm tra trước dataset access đều thành công.
+
+Không thay đổi scientific parameters, source S, dataset D hoặc Configuration Lock đã phê duyệt.
+
+Các tham chiếu được giải nghĩa đúng theo đề xuất đã được trưởng nhóm phê duyệt:
+- Source S: 02483f801277482fbe24c25048e6cc769a16295f
+- Dataset D: d0b6931250cc51088e7beded24737959ef9464cc
+- Claim root: D:/HK1_IUH_22646851_Final/TGMT/dogbreedid-cv-project/outputs/final_evaluation_controls/claims
+- Output root: D:/HK1_IUH_22646851_Final/TGMT/dogbreedid-cv-project/outputs/final_evaluation_b2
+- Output directory: D:/HK1_IUH_22646851_Final/TGMT/dogbreedid-cv-project/outputs/final_evaluation_b2/task05-final-20261026-ea8c474981b14065af219fb43ee8e65e
+- Approval ID: dogbreedid-task05-lock-20261026
+- Approval SHA-256: 65d63a9e71684934efcef93d518c8a249f3f4eeca982fdabe91ab55f8a18b720
+- Runtime giữ nguyên object 16 trường của Lock Approval; không dùng profile của tiến trình tạo records thay thế.
+
+Authorization đã claim không được tái sử dụng. Thất bại/hủy sau claim cần quyết định cấp quyền mới; không tự động retry hoặc xóa claim để mở lại quyền. Việc tạo/commit các records này không tạo claim, không reserve output và không bắt đầu dataset access/inference.

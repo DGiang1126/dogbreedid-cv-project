@@ -31,6 +31,7 @@ if str(SOURCE_ROOT) not in sys.path:
 from src.selective.config import load_e7_config
 from src.selective.threshold import accept_mask, calibrated_predictions
 from src.selective.risk_coverage import compute_aurc, risk_coverage_curve, selective_metrics
+from src.inference.predictor import assert_prediction_bundle_complete
 
 OFFICIAL_CHECKPOINT_SHA256 = "73df0cc1c5b16866d4facc910f3e4d3ab481e3f12f1681a59fa7d61e3845c47b"
 
@@ -280,6 +281,7 @@ def load_prediction_bundle(predictions_path, metadata_path, *, split="validation
     csv_path = Path(split_csv) if split_csv is not None else None
     for path, label in ((predictions_path, "predictions"), (metadata_path, "metadata")):
         _reject_unsafe_path(path, label)
+        assert_prediction_bundle_complete(path)
     if csv_path is not None:
         _reject_unsafe_path(csv_path, "split CSV")
     root = Path(repo_root).resolve() if repo_root is not None else SOURCE_ROOT
@@ -421,6 +423,8 @@ def load_prediction_bundle(predictions_path, metadata_path, *, split="validation
             raise ValueError("validation runtime timestamp_utc must be ISO 8601") from exc
         if parsed_timestamp.tzinfo is None:
             raise ValueError("validation runtime timestamp_utc must include a timezone")
+    assert_prediction_bundle_complete(predictions_path)
+    assert_prediction_bundle_complete(metadata_path)
     return {
         "logits": np.array(logits[order], copy=True), "labels": np.array(labels[order], dtype=np.int64, copy=True),
         "image_ids": np.asarray([item[0] for item in csv_rows], dtype=str), "metadata": metadata,

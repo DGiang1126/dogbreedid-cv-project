@@ -1,0 +1,15 @@
+{
+  "approval_sha256": "65d63a9e71684934efcef93d518c8a249f3f4eeca982fdabe91ab55f8a18b720",
+  "authorization_sha256": "9643ce36c0ab3e360cf9ce7532b7ed60c3db13902ce5fc0e35aa740933ab8fbe",
+  "claim_root": "D:/HK1_IUH_22646851_Final/TGMT/dogbreedid-cv-project/outputs/final_evaluation_controls/claims",
+  "output_root": "D:/HK1_IUH_22646851_Final/TGMT/dogbreedid-cv-project/outputs/final_evaluation_b2",
+  "profile": {
+    "checkpoint_sha256": "73df0cc1c5b16866d4facc910f3e4d3ab481e3f12f1681a59fa7d61e3845c47b",
+    "declaration_sha256": null,
+    "kind": "official",
+    "n_samples": 1934
+  },
+  "protocol_sha256": "0ac89f6e83aa524842231e7c1203d68d10bb3029fea3c7bb7284805f6fedf46c",
+  "schema": "dogbreedid.reviewed-controls.v1",
+  "source_revision": "02483f801277482fbe24c25048e6cc769a16295f"
+}

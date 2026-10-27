@@ -266,10 +266,16 @@ def synthetic_final_pipeline(monkeypatch, tmp_path):
     monkeypatch.setattr(predictor, "load_e4_model", lambda *args: (torch.nn.Identity(), predictor.EXPECTED_CHECKPOINT_SHA256))
     monkeypatch.setattr(predictor, "collect_predictions", lambda *args, **kwargs: (logits, labels, image_ids))
     monkeypatch.setattr(predictor, "_assert_npz_alignment_with_csv", lambda *args: {})
-    monkeypatch.setattr(calibration_metrics, "plot_reliability_diagram", lambda *args, **kwargs: None)
+    def synthetic_diagram(*args, output_path, **kwargs):
+        from PIL import Image
 
-    def run():
-        return predictor.run_final_inference(repo_root=repo_root, images_dir=tmp_path, device="cpu")
+        Image.new("RGB", (2, 2), "white").save(output_path)
+        return Path(output_path)
+
+    monkeypatch.setattr(calibration_metrics, "plot_reliability_diagram", synthetic_diagram)
+
+    def run(**kwargs):
+        return predictor.run_final_inference(repo_root=repo_root, images_dir=tmp_path, device="cpu", **kwargs)
 
     return run, config, logits
 
@@ -308,3 +314,473 @@ def test_missing_preprocessing_config_is_rejected_without_fallback(synthetic_fin
     del parent[field[-1]]
     with pytest.raises(KeyError, match=field[-1]):
         run()
+
+
+ARTIFACT_NAMES = (
+    "validation_raw_predictions.npz", "validation_metrics.json",
+    "validation_metadata.json", "validation_reliability_diagram.png",
+)
+
+
+def _run_output(tmp_path):
+    return tmp_path / predictor.DEFAULT_OUTPUT_DIR
+
+
+def _assert_failed_bundle(output, foreign_files=(), retained_artifacts=()):
+    assert (output / ".incomplete").read_text().startswith("INCOMPLETE RUN")
+    assert {p.name for p in output.iterdir()} == {
+        ".inference_run", ".incomplete", *foreign_files, *retained_artifacts,
+    }
+    assert not (output / ".complete").exists()
+    with pytest.raises(InferenceContractError, match="Incomplete"):
+        load_raw_predictions(output / ARTIFACT_NAMES[0])
+
+
+def test_complete_bundle_is_published_once_without_changing_payloads(synthetic_final_pipeline, tmp_path):
+    from PIL import Image
+
+    run, _, logits = synthetic_final_pipeline
+    expected_metrics = compute_task1_metrics(logits, _fake_predictions()[1], temperature=predictor.EXPECTED_TEMPERATURE)
+    result = run()
+    output = _run_output(tmp_path)
+    assert {p.name for p in output.iterdir()} == {*ARTIFACT_NAMES, ".inference_run", ".complete"}
+    assert (output / ".complete").read_bytes() == (output / ".inference_run").read_bytes()
+    predictor.assert_prediction_bundle_complete(output / ARTIFACT_NAMES[0])
+    np.testing.assert_array_equal(load_raw_predictions(output / ARTIFACT_NAMES[0])["logits"], logits)
+    assert json.loads((output / ARTIFACT_NAMES[1]).read_text(encoding="utf-8")) == expected_metrics
+    assert json.loads((output / ARTIFACT_NAMES[2]).read_text(encoding="utf-8")) == result["metadata"]
+    assert result["metadata"]["outputs"]["raw_predictions_npz"] == (
+        predictor.DEFAULT_OUTPUT_DIR / ARTIFACT_NAMES[0]
+    ).as_posix()
+    assert {Path(p).parent for p in result["paths"].values()} == {output}
+    with np.load(output / ARTIFACT_NAMES[0], allow_pickle=False) as stored:
+        assert set(stored.files) == {"logits", "labels", "image_ids"}
+        for key, expected in zip(("logits", "labels", "image_ids"), _fake_predictions()):
+            np.testing.assert_array_equal(stored[key], expected)
+    with Image.open(output / ARTIFACT_NAMES[3]) as image:
+        image.verify()
+    original = {p.name: p.read_bytes() for p in output.iterdir()}
+    with pytest.raises(FileExistsError, match="already exists"):
+        run()
+    assert {p.name: p.read_bytes() for p in output.iterdir()} == original
+    # A different run directory remains supported.
+    second = run(output_dir="outputs/predictions/a_fresh_run")
+    assert set(Path(second["outputs_dir"]).iterdir()) != set(output.iterdir())
+
+
+@pytest.mark.parametrize("existing", [None, "unrelated.txt", *ARTIFACT_NAMES])
+def test_existing_output_is_rejected_before_model_or_inference(
+    synthetic_final_pipeline, tmp_path, monkeypatch, existing,
+):
+    run, _, _ = synthetic_final_pipeline
+    output = _run_output(tmp_path)
+    output.mkdir(parents=True)
+    if existing:
+        (output / existing).write_bytes(b"previous result must survive")
+    before = {p.name: p.read_bytes() for p in output.iterdir()}
+
+    def forbid(*args, **kwargs):
+        pytest.fail("Output preflight must precede checkpoint loading and inference")
+
+    for name in ("verify_checkpoint_hash", "load_e4_model", "collect_predictions"):
+        monkeypatch.setattr(predictor, name, forbid)
+    with pytest.raises(FileExistsError, match="already exists"):
+        run()
+    assert {p.name: p.read_bytes() for p in output.iterdir()} == before
+
+
+def test_directory_created_after_preflight_is_not_reused(synthetic_final_pipeline, tmp_path, monkeypatch):
+    run, _, _ = synthetic_final_pipeline
+    safe_output = predictor._safe_output_dir
+
+    def race(*args):
+        output = safe_output(*args)
+        output.mkdir(parents=True)
+        (output / "other_writer.txt").write_bytes(b"foreign")
+        return output
+
+    monkeypatch.setattr(predictor, "_safe_output_dir", race)
+    monkeypatch.setattr(predictor, "collect_predictions", lambda *a, **k: pytest.fail("Inference started"))
+    with pytest.raises(FileExistsError):
+        run()
+    output = _run_output(tmp_path)
+    assert {p.name for p in output.iterdir()} == {"other_writer.txt"}
+    assert (output / "other_writer.txt").read_bytes() == b"foreign"
+
+
+@pytest.mark.parametrize("artifact", ARTIFACT_NAMES)
+def test_artifact_created_after_preflight_is_never_overwritten(
+    synthetic_final_pipeline, tmp_path, monkeypatch, artifact,
+):
+    run, _, _ = synthetic_final_pipeline
+    collect = predictor.collect_predictions
+    output = _run_output(tmp_path)
+
+    def race(*args, **kwargs):
+        (output / artifact).write_bytes(b"another writer's artifact")
+        return collect(*args, **kwargs)
+
+    monkeypatch.setattr(predictor, "collect_predictions", race)
+    with pytest.raises(FileExistsError):
+        run()
+    _assert_failed_bundle(output, [artifact], ARTIFACT_NAMES[:ARTIFACT_NAMES.index(artifact)])
+    assert (output / artifact).read_bytes() == b"another writer's artifact"
+
+
+@pytest.mark.parametrize("stage", ["npz", "metrics", "metadata", "png", "plot_import", "missing_png"])
+def test_staging_failure_cannot_publish_a_partial_bundle(
+    synthetic_final_pipeline, tmp_path, monkeypatch, stage,
+):
+    from src.calibration import calibration_metrics
+
+    run, _, _ = synthetic_final_pipeline
+    staged_paths = []
+    original_save = predictor.save_raw_predictions
+
+    def save(path, *args, **kwargs):
+        staged_paths.append(Path(path))
+        if stage == "npz":
+            Path(path).write_bytes(b"partial npz")
+            raise OSError("injected staging failure")
+        return original_save(path, *args, **kwargs)
+
+    monkeypatch.setattr(predictor, "save_raw_predictions", save)
+    original_dump = predictor.json.dump
+
+    def dump(payload, handle, *args, **kwargs):
+        if Path(handle.name).name == f"validation_{stage}.json":
+            handle.write('{"partial":')
+            raise OSError("injected staging failure")
+        return original_dump(payload, handle, *args, **kwargs)
+
+    monkeypatch.setattr(predictor.json, "dump", dump)
+
+    def plot(*args, output_path, **kwargs):
+        if stage == "missing_png":
+            return None
+        Path(output_path).write_bytes(b"partial png")
+        error = ImportError if stage == "plot_import" else OSError
+        raise error("injected staging failure")
+
+    if stage in ("png", "plot_import", "missing_png"):
+        monkeypatch.setattr(calibration_metrics, "plot_reliability_diagram", plot)
+    with pytest.raises((OSError, ImportError, RuntimeError), match="injected staging failure|expected inference output bundle"):
+        run()
+    output = _run_output(tmp_path)
+    _assert_failed_bundle(output)
+    assert staged_paths and all(not path.parent.exists() for path in staged_paths)
+    with pytest.raises(FileExistsError):
+        run()
+
+
+@pytest.mark.parametrize("fail_at", [1, 2, 3, 4])
+def test_publication_write_failure_retains_artifacts_in_a_rejected_bundle(
+    synthetic_final_pipeline, tmp_path, monkeypatch, fail_at,
+):
+    run, _, _ = synthetic_final_pipeline
+    original_copy = predictor.shutil.copyfileobj
+    calls = 0
+
+    def failing_copy(reader, writer):
+        nonlocal calls
+        calls += 1
+        if calls == fail_at:
+            writer.write(b"partial artifact")
+            raise OSError("injected publication failure")
+        return original_copy(reader, writer)
+
+    monkeypatch.setattr(predictor.shutil, "copyfileobj", failing_copy)
+    with pytest.raises(OSError, match="publication failure"):
+        run()
+    _assert_failed_bundle(_run_output(tmp_path), retained_artifacts=ARTIFACT_NAMES[:fail_at])
+    assert (_run_output(tmp_path) / ARTIFACT_NAMES[fail_at - 1]).read_bytes() == b"partial artifact"
+
+
+def test_rollback_preserves_foreign_file_replacing_a_published_artifact(
+    synthetic_final_pipeline, tmp_path, monkeypatch,
+):
+    run, _, _ = synthetic_final_pipeline
+
+    def fail_finish(transaction):
+        artifact = transaction.output / ARTIFACT_NAMES[0]
+        artifact.rename(tmp_path / "moved_owned_artifact.npz")
+        artifact.write_bytes(b"foreign replacement")
+        raise OSError("injected completion failure")
+
+    monkeypatch.setattr(predictor._OutputRun, "finish", fail_finish)
+    with pytest.raises(OSError, match="completion failure"):
+        run()
+    output = _run_output(tmp_path)
+    _assert_failed_bundle(output, [ARTIFACT_NAMES[0]], ARTIFACT_NAMES)
+    assert (output / ARTIFACT_NAMES[0]).read_bytes() == b"foreign replacement"
+
+
+def test_exclusive_npz_export_refuses_overwrite_and_preserves_its_partial_file(tmp_path, monkeypatch):
+    values = _fake_predictions()
+    existing = tmp_path / "existing.npz"
+    save_raw_predictions(existing, *values, exclusive=True)
+    original = existing.read_bytes()
+    with pytest.raises(FileExistsError):
+        save_raw_predictions(existing, *values, exclusive=True)
+    assert existing.read_bytes() == original
+
+    def partial_write(handle, **kwargs):
+        handle.write(b"partial npz")
+        raise OSError("injected npz failure")
+
+    monkeypatch.setattr(predictor.np, "savez_compressed", partial_write)
+    failed = tmp_path / "failed.npz"
+    with pytest.raises(OSError, match="npz failure"):
+        save_raw_predictions(failed, *values, exclusive=True)
+    assert failed.read_bytes() == b"partial npz"
+    assert existing.read_bytes() == original
+
+
+@pytest.mark.parametrize("relative", [
+    "outputs", "outputs/predictions", "outputs/metrics/E6/new_run",
+    "outputs/robustness/new_run", "outputs/checkpoints/new_run",
+    "outputs/predictions/final/new_run", "outputs/predictions/E6/new_run",
+    "outputs/predictions/official_test/new_run", "outside_outputs/new_run",
+])
+def test_protected_output_locations_are_rejected(tmp_path, relative):
+    with pytest.raises(PermissionError):
+        predictor._safe_output_dir(tmp_path, relative)
+    assert not (tmp_path / relative).exists()
+
+
+def test_new_run_cannot_be_nested_in_a_previous_bundle(tmp_path):
+    old_output = _run_output(tmp_path)
+    old_output.mkdir(parents=True)
+    (old_output / ARTIFACT_NAMES[0]).write_bytes(b"old result")
+    with pytest.raises(PermissionError, match="existing output bundle"):
+        predictor._safe_output_dir(tmp_path, old_output / "nested_run")
+    assert (old_output / ARTIFACT_NAMES[0]).read_bytes() == b"old result"
+
+
+def test_runner_still_refuses_official_test_before_creating_outputs(synthetic_final_pipeline, tmp_path):
+    run, _, _ = synthetic_final_pipeline
+    with pytest.raises(PermissionError, match="Official Test is locked"):
+        run(split_name="official_test")
+    assert not _run_output(tmp_path).exists()
+
+
+@pytest.mark.parametrize("artifact", ARTIFACT_NAMES)
+def test_rollback_preserves_replacement_after_ownership_check(tmp_path, monkeypatch, artifact):
+    """Replay the exact stale-ownership result that formerly authorized unlink."""
+    output = tmp_path / "run"
+    replacement = b"foreign file installed after identity check"
+    original_owned = predictor._owned_file
+    with pytest.raises(OSError, match="force rollback"):
+        with predictor._exclusive_output_run(output) as transaction:
+            staging = transaction.staging
+            for name in ARTIFACT_NAMES:
+                (staging / name).write_bytes(b"owned artifact")
+            transaction.publish()
+            target, identity = next(item for item in transaction.published if item[0].name == artifact)
+            checked_owned = original_owned(target, identity)
+            assert checked_owned
+            # The scheduler lets a foreign writer replace the name after stat,
+            # before the old cleanup uses that already-computed True result.
+            target.rename(tmp_path / "moved_original")
+            target.write_bytes(replacement)
+
+            def stale_check(path, expected):
+                return checked_owned if path == target else original_owned(path, expected)
+
+            monkeypatch.setattr(predictor, "_owned_file", stale_check)
+            raise OSError("force rollback after ownership check")
+    assert target.read_bytes() == replacement
+    assert (tmp_path / "moved_original").read_bytes() == b"owned artifact"
+    assert not staging.exists()
+    _assert_failed_bundle(output, retained_artifacts=ARTIFACT_NAMES)
+    # Invalidation is idempotent and never deletes an artifact or foreign file.
+    transaction.rollback()
+    assert target.read_bytes() == replacement
+
+
+def test_exclusive_file_failure_preserves_replacement_after_ownership_check(tmp_path, monkeypatch):
+    target = tmp_path / "artifact.npz"
+    replacement = b"foreign replacement"
+    with pytest.raises(OSError, match="force writer failure"):
+        with predictor._exclusive_binary_file(target) as handle:
+            handle.write(b"owned bytes")
+            identity = predictor._identity(predictor.os.fstat(handle.fileno()))
+            handle.close()  # Release Windows' open-file rename restrictions.
+            checked_owned = predictor._owned_file(target, identity)
+            assert checked_owned
+            target.rename(tmp_path / "owned_backup")
+            target.write_bytes(replacement)
+            monkeypatch.setattr(predictor, "_owned_file", lambda *args: checked_owned)
+            raise OSError("force writer failure after ownership check")
+    assert target.read_bytes() == replacement
+
+
+@pytest.mark.parametrize("fail", [False, True])
+def test_no_public_unlink_even_for_completion_markers(synthetic_final_pipeline, tmp_path, monkeypatch, fail):
+    run, _, _ = synthetic_final_pipeline
+    output = _run_output(tmp_path)
+    original_unlink = Path.unlink
+
+    def no_public_unlink(path, *args, **kwargs):
+        assert not path.is_relative_to(output), f"Unsafe public cleanup: {path}"
+        return original_unlink(path, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "unlink", no_public_unlink)
+    if fail:
+        def fail_finish(transaction):
+            raise OSError("completion failure")
+
+        monkeypatch.setattr(predictor._OutputRun, "finish", fail_finish)
+        with pytest.raises(OSError, match="completion failure"):
+            run()
+        _assert_failed_bundle(output, retained_artifacts=ARTIFACT_NAMES)
+    else:
+        run()
+        predictor.assert_prediction_bundle_complete(output / ARTIFACT_NAMES[0])
+
+
+@pytest.mark.parametrize("marker", [".incomplete", ".complete", "foreign_file.txt"])
+def test_foreign_file_or_control_marker_is_neither_overwritten_nor_deleted(
+    synthetic_final_pipeline, tmp_path, monkeypatch, marker,
+):
+    run, _, _ = synthetic_final_pipeline
+    output = _run_output(tmp_path)
+    collect = predictor.collect_predictions
+
+    def inject(*args, **kwargs):
+        (output / marker).write_bytes(b"foreign marker")
+        return collect(*args, **kwargs)
+
+    monkeypatch.setattr(predictor, "collect_predictions", inject)
+    with pytest.raises(RuntimeError, match="Unexpected files"):
+        run()
+    assert (output / marker).read_bytes() == b"foreign marker"
+    assert (output / ".incomplete").is_file()
+    with pytest.raises(InferenceContractError, match="Incomplete"):
+        load_raw_predictions(output / ARTIFACT_NAMES[0])
+
+
+def test_run_marker_replaced_after_ownership_check_is_preserved(
+    synthetic_final_pipeline, tmp_path, monkeypatch,
+):
+    run, _, _ = synthetic_final_pipeline
+    output = _run_output(tmp_path)
+    original_owned = predictor._owned_file
+    injected = False
+
+    def swap_marker(path, identity):
+        nonlocal injected
+        owned = original_owned(path, identity)
+        if owned and path == output / ".inference_run" and not injected:
+            path.rename(tmp_path / "owned_run_marker")
+            path.write_bytes(b"foreign run marker")
+            injected = True
+        return owned
+
+    monkeypatch.setattr(predictor, "_owned_file", swap_marker)
+    with pytest.raises(InferenceContractError, match="Incomplete"):
+        run()
+    assert injected
+    assert (output / ".inference_run").read_bytes() == b"foreign run marker"
+    assert (output / ".incomplete").is_file()
+    with pytest.raises(InferenceContractError, match="Incomplete"):
+        load_raw_predictions(output / ARTIFACT_NAMES[0])
+
+
+@pytest.mark.parametrize("state", [
+    "legacy_incomplete", "pending", "orphan_complete", "mismatched_complete",
+    "partial_complete", "complete_but_incomplete", "missing_artifact",
+])
+def test_prediction_consumer_rejects_unfinished_bundles(tmp_path, state):
+    output = tmp_path / "bundle"
+    output.mkdir()
+    target = save_raw_predictions(output / ARTIFACT_NAMES[0], *_fake_predictions(), exclusive=True)
+    for name in ARTIFACT_NAMES[1:]:
+        (output / name).write_bytes(b"synthetic companion artifact")
+    token = b"a" * 32 + b"\n"
+    if state != "legacy_incomplete":
+        (output / ".inference_run").write_bytes(token)
+    if state not in ("legacy_incomplete", "pending"):
+        (output / ".complete").write_bytes(token)
+    if state in ("legacy_incomplete", "complete_but_incomplete"):
+        (output / ".incomplete").write_bytes(b"failed")
+    elif state == "orphan_complete":
+        (output / ".inference_run").unlink()
+    elif state == "mismatched_complete":
+        (output / ".complete").write_bytes(b"b" * 32 + b"\n")
+    elif state == "partial_complete":
+        (output / ".complete").write_bytes(token[:5])
+    elif state == "missing_artifact":
+        (output / ARTIFACT_NAMES[-1]).unlink()
+    with pytest.raises(InferenceContractError, match="Incomplete"):
+        load_raw_predictions(target)
+
+
+def test_consumer_rechecks_failure_marker_after_npz_read(tmp_path, monkeypatch):
+    target = save_raw_predictions(tmp_path / "standalone.npz", *_fake_predictions())
+    original_load = predictor.np.load
+
+    def load_and_invalidate(*args, **kwargs):
+        archive = original_load(*args, **kwargs)
+        (tmp_path / ".incomplete").write_bytes(b"concurrent failure")
+        return archive
+
+    monkeypatch.setattr(predictor.np, "load", load_and_invalidate)
+    with pytest.raises(InferenceContractError, match="Incomplete"):
+        load_raw_predictions(target)
+
+
+@pytest.mark.parametrize("state", ["incomplete", "pending"])
+def test_e7_production_consumer_rejects_incomplete_npz_before_reading_metadata(tmp_path, state):
+    from scripts import run_final_selective as selective_runner
+
+    target = save_raw_predictions(tmp_path / "standalone.npz", *_fake_predictions())
+    marker = ".incomplete" if state == "incomplete" else ".inference_run"
+    (tmp_path / marker).write_bytes(b"a" * 32 + b"\n")
+    with pytest.raises(InferenceContractError, match="Incomplete"):
+        selective_runner.load_prediction_bundle(
+            target, tmp_path / "missing_metadata.json", split="synthetic", repo_root=tmp_path,
+        )
+
+
+def test_legacy_npz_overwrite_mode_is_explicitly_compatible(tmp_path):
+    logits, labels, image_ids = _fake_predictions()
+    path = save_raw_predictions(tmp_path / "fixture.npz", logits, labels, image_ids)
+    changed_logits = logits + 1
+    save_raw_predictions(path, changed_logits, labels, image_ids)
+    np.testing.assert_array_equal(load_raw_predictions(path)["logits"], changed_logits)
+    with pytest.raises(FileExistsError):
+        save_raw_predictions(path, logits, labels, image_ids, exclusive=True)
+    np.testing.assert_array_equal(load_raw_predictions(path)["logits"], changed_logits)
+
+
+def test_failure_marker_write_error_preserves_original_error_and_rejects_bundle(
+    synthetic_final_pipeline, tmp_path, monkeypatch,
+):
+    run, _, _ = synthetic_final_pipeline
+    output = _run_output(tmp_path)
+    exclusive_file = predictor._exclusive_binary_file
+    staging_paths = []
+    publish = predictor._OutputRun.publish
+
+    def record_staging(transaction):
+        staging_paths.append(transaction.staging)
+        return publish(transaction)
+
+    def fail_finish(transaction):
+        raise OSError("original completion failure")
+
+    def fail_marker(path):
+        if path.name == ".incomplete":
+            raise PermissionError("cannot create failure marker")
+        return exclusive_file(path)
+
+    monkeypatch.setattr(predictor._OutputRun, "publish", record_staging)
+    monkeypatch.setattr(predictor._OutputRun, "finish", fail_finish)
+    monkeypatch.setattr(predictor, "_exclusive_binary_file", fail_marker)
+    with pytest.raises(OSError, match="original completion failure"):
+        run()
+    assert {path.name for path in output.iterdir()} == {*ARTIFACT_NAMES, ".inference_run"}
+    assert staging_paths and all(not path.exists() for path in staging_paths)
+    with pytest.raises(InferenceContractError, match="Incomplete"):
+        load_raw_predictions(output / ARTIFACT_NAMES[0])

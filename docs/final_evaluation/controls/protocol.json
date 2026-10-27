@@ -1,0 +1,67 @@
+{
+  "accept_operator": ">=",
+  "checkpoint_sha256": "73df0cc1c5b16866d4facc910f3e4d3ab481e3f12f1681a59fa7d61e3845c47b",
+  "e8": {
+    "conditions": [
+      "clean",
+      "gaussian_blur",
+      "gaussian_noise",
+      "occlusion"
+    ],
+    "gaussian_blur": {
+      "kernel_size": 7,
+      "sigma": 1.5
+    },
+    "gaussian_noise": {
+      "clamp_range": [
+        0.0,
+        1.0
+      ],
+      "mean": 0.0,
+      "std": 0.05
+    },
+    "occlusion": {
+      "fill_rgb": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "position_policy": "deterministic_per_image",
+      "shape": "square",
+      "side_fraction": 0.3
+    },
+    "pixel_range": [
+      0.0,
+      1.0
+    ],
+    "seed": 42,
+    "stage": "after_crop_before_normalization"
+  },
+  "model": {
+    "architecture": "mobilenet_v2",
+    "backbone_frozen": true,
+    "cutmix": true,
+    "epoch": 25,
+    "experiment": "E4",
+    "num_classes": 30,
+    "seed": 42
+  },
+  "preprocessing": {
+    "center_crop": 224,
+    "color": "RGB",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "resize": 256,
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "to_tensor": true
+  },
+  "temperature": 0.80246283961825,
+  "threshold": 0.5011672918550012
+}
