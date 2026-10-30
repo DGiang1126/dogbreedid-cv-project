@@ -1,0 +1,6 @@
+﻿experiment,model,configuration,split,seed,n_samples,n_classes,top1_accuracy,top5_accuracy,macro_f1,validation_loss,best_epoch,metric_unit,source
+E0,Custom CNN,e0_custom_cnn,validation,42,300,30,0.23000000417232513,0.5933333039283752,0.19288703060329535,2.7665463415781657,26,fraction,outputs/metrics/E0/seed_42/validation.json
+E1,MobileNetV2,e1_mobilenet_frozen,validation,42,300,30,0.8033333420753479,0.9900000095367432,0.7996395749895547,0.6261249186346928,18,fraction,outputs/metrics/E1/seed_42/validation.json
+E2,MobileNetV2,e2_mobilenet_partial,validation,42,300,30,0.7666666507720947,0.9866666793823242,0.7675008034479924,0.7513509844243527,7,fraction,outputs/metrics/E2/seed_42/validation.json
+E3,ResNet18,e3_resnet18_partial,validation,42,300,30,0.753333330154419,0.996666669845581,0.7487857561209741,0.7279999028146267,3,fraction,outputs/metrics/E3/seed_42/validation.json
+E4,MobileNetV2,e4_cutmix,validation,42,300,30,0.8166666626930237,0.9866666793823242,0.815099216821925,0.6620433596769969,25,fraction,outputs/metrics/E4/seed_42/validation.json

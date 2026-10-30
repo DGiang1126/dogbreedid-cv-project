@@ -1,0 +1,9 @@
+﻿experiment,configuration,row_type,seeds,split,n_samples_per_seed,n_seeds,top1_accuracy,top1_sample_std,macro_f1,macro_f1_sample_std,metric_unit,std_ddof,source
+E4,cutmix_ablation,individual_seed,42,validation,300,1,0.8166666626930237,,0.815099216821925,,fraction,1,outputs/metrics/E5/seed_stability_summary.json;outputs/metrics/E4/seed_42/validation.json
+E4,cutmix_ablation,individual_seed,123,validation,300,1,0.79666668176651,,0.7917696013772203,,fraction,1,outputs/metrics/E5/seed_stability_summary.json;outputs/metrics/E4/seed_123/validation.json
+E4,cutmix_ablation,individual_seed,2026,validation,300,1,0.8033333420753479,,0.8015130406769029,,fraction,1,outputs/metrics/E5/seed_stability_summary.json;outputs/metrics/E4/seed_2026/validation.json
+E1,mobilenet_v2_frozen,individual_seed,42,validation,300,1,0.8033333420753479,,0.7996395749895547,,fraction,1,outputs/metrics/E5/seed_stability_summary.json;outputs/metrics/E1/seed_42/validation.json
+E1,mobilenet_v2_frozen,individual_seed,123,validation,300,1,0.8066666722297668,,0.801608102640543,,fraction,1,outputs/metrics/E5/seed_stability_summary.json;outputs/metrics/E1/seed_123/validation.json
+E1,mobilenet_v2_frozen,individual_seed,2026,validation,300,1,0.800000011920929,,0.797218806464869,,fraction,1,outputs/metrics/E5/seed_stability_summary.json;outputs/metrics/E1/seed_2026/validation.json
+E4,cutmix_ablation,mean_sample_std,42;123;2026,validation,300,3,0.8055555621782938,0.010183491832602438,0.8027939529586827,0.011717435359525638,fraction,1,outputs/metrics/E5/seed_stability_summary.json
+E1,mobilenet_v2_frozen,mean_sample_std,42;123;2026,validation,300,3,0.8033333420753479,0.0033333301544189453,0.7994888280316556,0.0021985276239869372,fraction,1,outputs/metrics/E5/seed_stability_summary.json

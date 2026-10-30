@@ -1,0 +1,6 @@
+true_id,true_breed,predicted_id,predicted_breed,error_count,true_class_support,error_rate_by_true_support
+2,Siberian Husky,0,Eskimo Dog,28,92,0.30434782608695654
+1,Malamute,2,Siberian Husky,21,78,0.2692307692307692
+0,Eskimo Dog,2,Siberian Husky,14,50,0.28
+3,Greater Swiss Mountain Dog,5,EntleBucher,14,68,0.20588235294117646
+4,Appenzeller,5,EntleBucher,13,51,0.2549019607843137

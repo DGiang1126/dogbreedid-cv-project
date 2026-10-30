@@ -1,0 +1,67 @@
+{
+  "experiment": "E9",
+  "dataset_split": "official",
+  "num_samples": 1934,
+  "num_classes": 30,
+  "top1_correct": 1576,
+  "top1_incorrect": 358,
+  "top1_accuracy": 0.8148914167528438,
+  "macro_precision": 0.8152520558677406,
+  "macro_recall": 0.8114369136698532,
+  "macro_f1": 0.8111032621745409,
+  "temperature": 0.80246283961825,
+  "threshold": 0.5011672918550012,
+  "artifacts": [
+    "confusion_matrix.csv",
+    "confusion_matrix.png",
+    "confusion_matrix_normalized.png",
+    "per_class_metrics.csv",
+    "top5_confusion_pairs.csv",
+    "e7_error_breakdown.json"
+  ],
+  "reference_checks": {
+    "num_samples": {
+      "expected": 1934,
+      "actual": 1934,
+      "match": true
+    },
+    "top1_correct": {
+      "expected": 1576,
+      "actual": 1576,
+      "match": true
+    },
+    "top1_incorrect": {
+      "expected": 358,
+      "actual": 358,
+      "match": true
+    },
+    "top1_accuracy": {
+      "expected": 0.8149,
+      "actual": 0.8148914167528438,
+      "match": true
+    },
+    "macro_f1": {
+      "expected": 0.8111,
+      "actual": 0.8111032621745409,
+      "match": true
+    },
+    "e7_groups": {
+      "expected": {
+        "correct_accept": 1478,
+        "incorrect_accept": 258,
+        "correct_reject": 98,
+        "incorrect_reject": 100
+      },
+      "actual": {
+        "correct_accept": 1478,
+        "incorrect_accept": 258,
+        "correct_reject": 98,
+        "incorrect_reject": 100
+      },
+      "match": true
+    }
+  },
+  "privacy_note": "Aggregate outputs only; per-image IDs/predictions are not written for Official split.",
+  "input_artifact": "clean_predictions.npz",
+  "official_analysis_enabled_by_config": true
+}
