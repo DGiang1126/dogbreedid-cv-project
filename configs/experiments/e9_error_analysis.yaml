@@ -1,4 +1,61 @@
 experiment:
   id: E9
   name: error_analysis
-# Error-analysis settings will follow the evaluation protocol.
+
+model:
+  experiment_id: E4
+  architecture: MobileNetV2
+  seed: 42
+  num_classes: 30
+  input_size: 224
+  checkpoint_path: outputs/checkpoints/E4/seed_42/best.pt
+  checkpoint_sha256: 73df0cc1c5b16866d4facc910f3e4d3ab481e3f12f1681a59fa7d61e3845c47b
+
+class_mapping:
+  path: data/metadata/class_mapping.json
+
+# This tool reads saved logits only. It does not run model inference for E9 analysis.
+predictions:
+  required_npz_keys: [logits, labels, image_ids]
+  allow_pickle: false
+
+e6:
+  temperature: 0.80246283961825
+
+e7:
+  threshold: 0.5011672918550012
+  accept_operator: ">="
+
+e9:
+  confusion_matrix_shape: [30, 30]
+  top_confusion_pairs: 5
+  target_gradcam_class: predicted
+  max_representative_cases: 15
+
+paths:
+  default_output_dir: docs/task06/e9
+
+# False by default. Enable only after the saved-Official-artifact analysis is approved.
+official_analysis:
+  enabled: false
+  input_filename: clean_predictions.npz
+  expected_num_samples: 1934
+  reference_metrics:
+    num_samples: 1934
+    top1_correct: 1576
+    top1_incorrect: 358
+    top1_accuracy: 0.8149
+    macro_f1: 0.8111
+    e7_groups:
+      correct_accept: 1478
+      incorrect_accept: 258
+      correct_reject: 98
+      incorrect_reject: 100
+
+restrictions:
+  retraining: false
+  official_evaluation_rerun: false
+  refit_temperature: false
+  retune_threshold: false
+  export_official_per_image_rows: false
+  export_official_image_ids: false
