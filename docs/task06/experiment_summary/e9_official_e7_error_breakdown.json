@@ -1,0 +1,16 @@
+{
+  "temperature": 0.80246283961825,
+  "threshold": 0.5011672918550012,
+  "num_samples": 1934,
+  "num_accept": 1736,
+  "num_reject": 198,
+  "coverage": 0.8976215098241985,
+  "selective_accuracy": 0.8513824884792627,
+  "selective_risk": 0.14861751152073732,
+  "groups": {
+    "correct_accept": 1478,
+    "incorrect_accept": 258,
+    "correct_reject": 98,
+    "incorrect_reject": 100
+  }
+}
