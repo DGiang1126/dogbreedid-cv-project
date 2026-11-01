@@ -258,3 +258,76 @@ def test_delayed_upload_event_for_same_image_does_not_suppress_prediction(servic
     assert not thread.is_alive()
     assert output[0][1] == "Miniature Poodle"
     assert output[0][-1]["image_digest"]
+
+def test_clear_invalidates_inflight_prediction(service, image_file):
+    from types import SimpleNamespace
+    import gradio as gr
+
+    controller = DemoController(service)
+
+    request = SimpleNamespace(session_hash="clear-test")
+
+    started = threading.Event()
+    release = threading.Event()
+
+    original_predict = service.predict
+
+    def slow_predict(path):
+        started.set()
+        assert release.wait(10)
+        return original_predict(path)
+
+    service.predict = slow_predict
+
+    results = []
+
+    thread = threading.Thread(
+        target=lambda: results.append(
+            controller.predict(str(image_file), request)
+        )
+    )
+
+    thread.start()
+
+    try:
+        assert started.wait(5)
+
+        cleared = controller.clear(request)
+
+        assert len(cleared) == 10
+        assert cleared[0] is None
+        assert cleared[1] is None
+        assert cleared[2] == (
+            "Tải ảnh lên rồi nhấn **Dự đoán**."
+        )
+        assert cleared[3:] == (
+            "", "", "", {}, None, "", None
+        )
+
+    finally:
+        release.set()
+        thread.join(timeout=15)
+
+    assert not thread.is_alive()
+
+    # A prediction started before Clear must not overwrite the UI.
+    assert results[0] == tuple(gr.skip() for _ in range(8))
+
+def test_clear_event_is_private_and_unqueued():
+    app = build_app(startup_error="test")
+
+    config = app.get_config_file()
+    dependencies = config["dependencies"]
+
+    clear_events = [
+        event for event in dependencies
+        if event.get("api_name") == "clear"
+    ]
+
+    assert len(clear_events) == 1
+
+    event = clear_events[0]
+
+    assert event["api_visibility"] == "private"
+    assert event["queue"] is False
+    assert len(event["outputs"]) == 10

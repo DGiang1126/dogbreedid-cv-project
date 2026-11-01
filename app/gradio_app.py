@@ -58,6 +58,10 @@ class DemoController:
                 self._sessions[key] = (previous[0] + 1, now, None)
         return ("Tải ảnh lên rồi nhấn **Dự đoán**.", "", "", "", {}, None, "", None)
 
+    def clear(self, request: gr.Request = None):
+        """Clear UI and invalidate any prediction still running."""
+        return (None, None, *self.reset(request=request))
+
     def select_image(self, path, request: gr.Request = None):
         cleared = self.reset(path, request)
         revision = self._revision(request)
@@ -137,7 +141,7 @@ def build_app(service: InferenceService | None = None, startup_error: str | None
                 gr.Markdown("JPG, PNG hoặc WebP · Tối đa 10 MB · Ảnh rõ, một chú chó ở vị trí trung tâm sẽ dễ quan sát hơn.")
                 with gr.Row():
                     predict_button = gr.Button("Dự đoán", variant="primary")
-                    clear_button = gr.ClearButton(value="Xóa ảnh và kết quả")
+                    clear_button = gr.Button("Xóa ảnh và kết quả",variant="secondary",)
             with gr.Column(scale=5):
                 gr.Markdown("### 2 · Kết quả")
                 status = gr.Markdown("Tải ảnh lên rồi nhấn **Dự đoán**.")
@@ -154,10 +158,10 @@ def build_app(service: InferenceService | None = None, startup_error: str | None
         gr.Markdown("**Lưu ý:** Kết quả chỉ để tham khảo. REJECT nghĩa là mô hình chưa đủ tự tin, không xác định được giống ngoài 30 lớp hoặc ảnh có chó hay không.")
 
         outputs = [status, breed, confidence, latency, top5, overlay, explain_text, state]
-        picture.change(fn=controller.select_image, inputs=[picture], outputs=[preview, *outputs], queue=False, api_name=False)
+        picture.change(fn=controller.select_image, inputs=[picture], outputs=[preview, *outputs], queue=False, api_visibility="private")
         predict_button.click(fn=controller.predict, inputs=[picture], outputs=outputs, api_name="predict")
-        explain_button.click(fn=controller.explain, inputs=[picture, state], outputs=[overlay, explain_text], api_name=False)
-        clear_button.add([picture, preview, breed, confidence, latency, top5, overlay, explain_text, state])
+        explain_button.click(fn=controller.explain, inputs=[picture, state], outputs=[overlay, explain_text], api_visibility="private")
+        clear_button.click(fn=controller.clear,inputs=None,outputs=[picture, preview, *outputs],queue=False,api_visibility="private",show_progress="hidden",)
     return demo
 
 
