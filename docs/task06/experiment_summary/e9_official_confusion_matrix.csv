@@ -1,0 +1,31 @@
+true_label / predicted_label,Eskimo Dog,Malamute,Siberian Husky,Greater Swiss Mountain Dog,Appenzeller,EntleBucher,Toy Poodle,Miniature Poodle,Standard Poodle,Miniature Schnauzer,Standard Schnauzer,Giant Schnauzer,English Setter,Irish Setter,Gordon Setter,English Springer,Welsh Springer Spaniel,Cocker Spaniel,Norfolk Terrier,Norwich Terrier,Border Terrier,Collie,Shetland Sheepdog,Border Collie,Golden Retriever,Labrador Retriever,Chesapeake Bay Retriever,Japanese Spaniel,Pekinese,Shih-Tzu
+Eskimo Dog,27,6,14,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0
+Malamute,10,47,21,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Siberian Husky,28,11,50,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0
+Greater Swiss Mountain Dog,0,0,0,52,0,14,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+Appenzeller,1,0,0,4,33,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+EntleBucher,0,0,0,4,7,91,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Toy Poodle,0,0,0,0,0,0,34,13,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,3,0
+Miniature Poodle,0,0,0,0,0,0,8,39,4,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,0
+Standard Poodle,0,0,0,0,0,0,0,7,50,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+Miniature Schnauzer,0,0,0,0,0,0,0,0,0,41,11,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+Standard Schnauzer,0,0,0,0,0,0,0,0,0,5,43,4,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0
+Giant Schnauzer,0,0,0,0,0,0,0,0,0,1,6,47,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0
+English Setter,0,0,0,0,0,0,0,0,0,0,0,0,57,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1
+Irish Setter,0,0,0,0,0,0,0,0,0,0,0,0,0,52,0,0,0,0,0,0,0,0,0,0,1,0,2,0,0,0
+Gordon Setter,0,0,0,0,0,0,0,0,0,0,0,2,0,0,51,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+English Springer,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,57,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Welsh Springer Spaniel,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,49,0,0,0,0,0,0,0,0,0,0,0,0,0
+Cocker Spaniel,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,3,4,44,0,0,0,0,0,0,3,0,0,0,1,1
+Norfolk Terrier,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,55,13,3,0,0,0,0,0,0,0,0,0
+Norwich Terrier,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,8,76,0,0,0,0,0,0,0,0,0,0
+Border Terrier,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,3,2,66,0,0,0,0,0,0,0,0,0
+Collie,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,8,11,0,0,0,0,0,0
+Shetland Sheepdog,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,45,0,0,0,0,0,0,0
+Border Collie,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,11,0,35,0,0,0,0,0,0
+Golden Retriever,0,0,0,0,0,0,0,0,1,0,0,0,0,2,0,0,1,1,0,0,0,0,0,0,44,1,0,0,0,0
+Labrador Retriever,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,2,65,2,0,0,0
+Chesapeake Bay Retriever,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,66,0,0,0
+Japanese Spaniel,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,1,0,0,0,79,2,1
+Pekinese,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,46,2
+Shih-Tzu,0,2,0,0,0,0,1,0,0,2,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,4,102

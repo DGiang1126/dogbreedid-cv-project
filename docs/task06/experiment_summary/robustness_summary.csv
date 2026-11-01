@@ -1,0 +1,5 @@
+﻿experiment,model,split,seed,n_samples,n_classes,condition,parameters,n_correct,accuracy,accuracy_unit,accuracy_drop_percentage_points,source
+E8,E4 MobileNetV2 Frozen + CutMix,official_test,42,1934,30,clean,None,1576,0.8148914167528438,fraction,0,docs/final_evaluation/results/official_metrics_summary.json#e8;configs/experiments/e8_robustness.yaml
+E8,E4 MobileNetV2 Frozen + CutMix,official_test,42,1934,30,gaussian_blur,kernel=7;sigma=1.5,1261,0.6520165460186143,fraction,16.28748707342296,docs/final_evaluation/results/official_metrics_summary.json#e8;configs/experiments/e8_robustness.yaml
+E8,E4 MobileNetV2 Frozen + CutMix,official_test,42,1934,30,gaussian_noise,"mean=0;std=0.05;clamp=[0,1]",1403,0.7254395036194415,fraction,8.945191313340228,docs/final_evaluation/results/official_metrics_summary.json#e8;configs/experiments/e8_robustness.yaml
+E8,E4 MobileNetV2 Frozen + CutMix,official_test,42,1934,30,occlusion,"square_side_fraction=0.30;fill_rgb=[0.5,0.5,0.5];deterministic_per_image",1478,0.7642192347466391,fraction,5.067218200620472,docs/final_evaluation/results/official_metrics_summary.json#e8;configs/experiments/e8_robustness.yaml
