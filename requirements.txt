@@ -11,3 +11,4 @@ torchvision
 matplotlib
 tqdm
 pytest
+gradio>=6.0,<7
