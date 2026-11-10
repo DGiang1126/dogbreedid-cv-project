@@ -45,14 +45,34 @@ python scripts/run_demo.py
 
 Mở `http://127.0.0.1:7860` trong trình duyệt. Có thể dùng `--device cpu` hoặc `--device cuda`, `--port 7861`, và `--checkpoint <đường-dẫn>` khi cần. Ứng dụng chỉ lắng nghe trên máy cá nhân và không tạo public share link.
 
-Tải ảnh JPG/PNG/WebP tối đa 10 MB, nhấn **Dự đoán** để xem Top-1/Top-5, confidence và ACCEPT/REJECT. Thời gian hiển thị chỉ đo lượt chạy model forward, không bao gồm nạp và tiền xử lý ảnh. Nhấn **Xem Grad-CAM** sau khi dự đoán để xem overlay trên vùng ảnh đã crop 224 × 224 mà mô hình thực sự nhận. Chọn **Xóa ảnh và kết quả** để bắt đầu lượt mới. Grad-CAM chỉ hỗ trợ quan sát, không chứng minh nguyên nhân dự đoán.
+Tải ảnh JPG/PNG/WebP tối đa 10 MB và 25 triệu điểm ảnh. Chọn chế độ xử lý trong mục **Ảnh đầu vào**. Giao diện hiển thị ảnh gốc, còn preview 224 × 224 dùng cho kiểm thử nội bộ.
+
+- **Chuẩn E4 — CenterCrop** (`standard`, mặc định) dùng pipeline Resize(256) → CenterCrop(224) đã sử dụng trong Official Evaluation.
+- **Giữ trọn ảnh — Padding** (`fit`) thu ảnh theo đúng tỷ lệ và thêm nền RGB `(124, 116, 104)` để giữ toàn bộ bố cục. Đối tượng có thể nhỏ hơn trong khung 224 × 224. Đây là chế độ thử nghiệm ở cấp ứng dụng. Cần đo accuracy, ECE và E7 Selective Accuracy trên cùng Validation split trước khi kết luận. Temperature E6 và ngưỡng E7 vẫn dùng giá trị đã khóa, nhưng hiệu quả hiệu chỉnh và chọn lọc trên ảnh Padding chưa được kiểm chứng. Các kết quả Padding không thay thế chỉ số Official E4.
+
+Nhấn **Dự đoán** để xem Top-1/Top-5, confidence và ACCEPT/REJECT trong mục **Kết quả phân loại**. Thời gian hiển thị chỉ đo lượt chạy model forward. Cuộn xuống **03 · Giải thích dự đoán bằng Grad-CAM** rồi nhấn **Xem Grad-CAM** để xem overlay trên cùng ảnh 224 × 224 mà mô hình nhận. Đổi ảnh hoặc chế độ sẽ xóa kết quả cũ và yêu cầu dự đoán lại. **Xóa ảnh và kết quả** xóa ảnh và kết quả, đồng thời giữ chế độ đã chọn. Grad-CAM hỗ trợ quan sát, không chứng minh nguyên nhân dự đoán.
 
 Nếu giao diện báo thiếu hoặc sai checkpoint, kiểm tra lại đường dẫn và hash, rồi khởi động lại ứng dụng. Ảnh bị lỗi, không thuộc JPG/PNG/WebP hoặc vượt giới hạn sẽ được từ chối. Danh sách 30 giống và tham số hiệu chỉnh không được chỉnh bằng giao diện.
+
+### API local
+
+`/predict` nhận ảnh và tham số `mode` tùy chọn. Lời gọi chỉ truyền ảnh tiếp tục dùng `standard`. Giao diện và API dùng chung hàm dự đoán.
+
+```python
+from gradio_client import Client, handle_file
+
+client = Client("http://127.0.0.1:7860")
+image = handle_file("dog.jpg")
+standard = client.predict(image, api_name="/predict")
+fit = client.predict(image, mode="fit", api_name="/predict")
+```
+
+Xem thứ tự kết quả trả về và cách kiểm tra hai chế độ trong [tài liệu chế độ Padding](docs/task06/gradio/full_image_padding_mode.md).
 
 ### Kiểm thử
 
 ```powershell
-python -m pytest tests/test_gradio_app.py tests/test_gradcam.py -q
+python -m pytest tests/test_gradio_app.py tests/test_gradcam.py tests/test_transforms.py -q
 ```
 
 Hướng dẫn nghiệm thu và ảnh giao diện nằm trong `docs/task06/gradio/`. Không chạy lại Official Test để kiểm thử demo.

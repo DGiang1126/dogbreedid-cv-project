@@ -24,10 +24,36 @@ TEMPERATURE = 0.80246283961825
 THRESHOLD = 0.5011672918550012
 MAX_FILE_BYTES = 10 * 1024 * 1024
 MAX_IMAGE_PIXELS = 25_000_000
+STANDARD_MODE = "standard"
+FIT_MODE = "fit"
+PADDING_RGB = (124, 116, 104)
 
 
 class DemoError(Exception):
     """An actionable error which can be shown in the interface."""
+
+
+def _validate_mode(mode: str) -> None:
+    if mode not in (STANDARD_MODE, FIT_MODE):
+        raise DemoError("Chế độ xử lý ảnh không hợp lệ. Hãy chọn standard hoặc fit.")
+
+
+def prepare_image(image: Image.Image, mode: str, *, resize: int, crop: int) -> Image.Image:
+    """Prepare a validated RGB image for the unchanged E4 transform."""
+    _validate_mode(mode)
+    if mode == STANDARD_MODE:
+        return image
+
+    scale = crop / max(image.size)
+    # Clamp the short edge to one pixel for valid images with extreme ratios.
+    width, height = (max(1, round(edge * scale)) for edge in image.size)
+    fitted = image.resize((width, height), Image.Resampling.BICUBIC)
+    canvas = Image.new("RGB", (resize, resize), PADDING_RGB)
+    # Use torchvision's crop origin, then center within that crop. An odd
+    # leftover pixel belongs to the right or bottom padding.
+    origin = round((resize - crop) / 2)
+    canvas.paste(fitted, (origin + (crop - width) // 2, origin + (crop - height) // 2))
+    return canvas
 
 
 def _json(path: Path) -> dict:
@@ -114,17 +140,27 @@ class InferenceService:
                 data_config = yaml.safe_load(stream)
             self.transform = build_transforms(data_config, "inference")
             evaluation = data_config["preprocessing"]["evaluation"]
-            self.preview_transform = transforms.Compose([
-                transforms.Resize(evaluation["resize"]),
-                transforms.CenterCrop(evaluation["center_crop"]),
-            ])
+            self.resize = evaluation["resize"]
+            self.crop = evaluation["center_crop"]
+            self.preview_transform = transforms.Compose(self.transform.transforms[:-2])
         except (OSError, KeyError, TypeError, yaml.YAMLError) as exc:
             raise DemoError("Không thể đọc cấu hình tiền xử lý dùng chung.") from exc
         self.lock = threading.Lock()
 
-    def predict(self, path: str | Path | None) -> dict:
+    def preview(self, image: Image.Image, mode: str = STANDARD_MODE) -> Image.Image:
+        """Return the model's RGB input just before tensor conversion and normalization."""
+        prepared = prepare_image(image, mode, resize=self.resize, crop=self.crop)
+        # Show the actual RGB pixels without display-time orientation or color profiles.
+        return Image.fromarray(np.asarray(self.preview_transform(prepared)))
+
+    def predict(self, path: str | Path | None, mode: str = STANDARD_MODE) -> dict:
         image, digest = read_image(path)
-        tensor = self.transform(image).unsqueeze(0).to(self.device)
+        return self.predict_image(image, digest, mode)
+
+    def predict_image(self, image: Image.Image, digest: str, mode: str = STANDARD_MODE) -> dict:
+        """Predict from the validated image and digest returned by read_image."""
+        prepared = prepare_image(image, mode, resize=self.resize, crop=self.crop)
+        tensor = self.transform(prepared).unsqueeze(0).to(self.device)
         try:
             with self.lock, torch.inference_mode():
                 if self.device.type == "cuda":
@@ -145,27 +181,31 @@ class InferenceService:
             return {"class_id": top1, "name": self.names[top1], "confidence": confidence,
                     "accepted": accepted, "latency_ms": latency_ms,
                     "top5": {self.names[int(i)]: float(probabilities[i]) for i in indices},
-                    "image_digest": digest}
+                    "image_digest": digest, "mode": mode}
         except DemoError:
             raise
         except Exception as exc:
             raise DemoError("Không thể dự đoán ảnh này. Vui lòng thử lại.") from exc
 
-    def explain(self, path: str | Path | None, prediction: dict | None) -> Image.Image:
+    def explain(self, path: str | Path | None, prediction: dict | None,
+                mode: str = STANDARD_MODE) -> Image.Image:
+        _validate_mode(mode)
         if not prediction:
             raise DemoError("Hãy dự đoán ảnh trước khi xem Grad-CAM.")
+        if mode != prediction.get("mode", STANDARD_MODE):
+            raise DemoError("Chế độ xử lý đã thay đổi. Hãy dự đoán lại trước khi xem Grad-CAM.")
         image, digest = read_image(path)
         if digest != prediction.get("image_digest"):
             raise DemoError("Ảnh đã thay đổi. Hãy dự đoán lại trước khi xem Grad-CAM.")
         try:
-            tensor = self.transform(image).unsqueeze(0).to(self.device)
+            prepared = prepare_image(image, mode, resize=self.resize, crop=self.crop)
+            tensor = self.transform(prepared).unsqueeze(0).to(self.device)
             with self.lock:
                 heatmap = generate_gradcam(self.model, tensor, target_class=int(prediction["class_id"]))
-            # Show the actual centered crop seen by the model, aligned to the heatmap.
-            crop = np.asarray(self.preview_transform(image), dtype=np.float32) / 255.0
+            pixels = np.asarray(self.preview_transform(prepared), dtype=np.float32) / 255.0
             from matplotlib import colormaps
             colors = colormaps["jet"](heatmap)[..., :3]
-            overlay = np.clip(0.55 * crop + 0.45 * colors, 0, 1)
-            return Image.fromarray((overlay * 255).astype(np.uint8), "RGB")
+            overlay = np.clip(0.55 * pixels + 0.45 * colors, 0, 1)
+            return Image.fromarray((overlay * 255).astype(np.uint8))
         except Exception as exc:
             raise DemoError("Không thể tạo Grad-CAM cho ảnh này. Vui lòng thử lại.") from exc
