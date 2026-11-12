@@ -1,0 +1,31 @@
+class_id,breed_name,support,center_correct,padding_correct,delta_correct_padding_minus_center
+0,Eskimo Dog,10,6,6,0
+1,Malamute,10,8,7,-1
+2,Siberian Husky,10,5,1,-4
+3,Greater Swiss Mountain Dog,10,7,8,1
+4,Appenzeller,10,3,3,0
+5,EntleBucher,10,8,8,0
+6,Toy Poodle,10,6,6,0
+7,Miniature Poodle,10,9,7,-2
+8,Standard Poodle,10,9,7,-2
+9,Miniature Schnauzer,10,9,10,1
+10,Standard Schnauzer,10,9,5,-4
+11,Giant Schnauzer,10,10,10,0
+12,English Setter,10,6,4,-2
+13,Irish Setter,10,10,10,0
+14,Gordon Setter,10,9,8,-1
+15,English Springer,10,9,9,0
+16,Welsh Springer Spaniel,10,9,9,0
+17,Cocker Spaniel,10,7,6,-1
+18,Norfolk Terrier,10,9,8,-1
+19,Norwich Terrier,10,9,7,-2
+20,Border Terrier,10,10,10,0
+21,Collie,10,7,6,-1
+22,Shetland Sheepdog,10,8,7,-1
+23,Border Collie,10,8,9,1
+24,Golden Retriever,10,8,7,-1
+25,Labrador Retriever,10,9,9,0
+26,Chesapeake Bay Retriever,10,10,10,0
+27,Japanese Spaniel,10,10,9,-1
+28,Pekinese,10,9,9,0
+29,Shih-Tzu,10,9,7,-2
