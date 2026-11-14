@@ -1,0 +1,26 @@
+experiment:
+  id: E11-A
+  name: vit_tiny_patch16_224_frozen_no_cutmix
+  seed: 42
+
+model:
+  type: vit_tiny_patch16_224
+  source: timm
+  weights: timm/vit_tiny_patch16_224.augreg_in21k_ft_in1k
+  backbone_frozen: true
+  num_classes: 30
+
+preprocessing:
+  normalization:
+    type: vit_augreg_in21k_ft_in1k
+    mean: [0.5, 0.5, 0.5]
+    std: [0.5, 0.5, 0.5]
+
+training:
+  classifier_lr: 0.001
+
+augmentation:
+  cutmix:
+    enabled: false
+    alpha: 1.0
+    probability: 0.5
