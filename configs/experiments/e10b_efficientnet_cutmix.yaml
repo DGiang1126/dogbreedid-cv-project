@@ -1,0 +1,20 @@
+experiment:
+  id: E10-B
+  name: efficientnet_b0_frozen_cutmix
+  seed: 42
+
+model:
+  type: efficientnet_b0
+  source: torchvision
+  weights: IMAGENET1K_V1
+  backbone_frozen: true
+  num_classes: 30
+
+training:
+  classifier_lr: 0.001
+
+augmentation:
+  cutmix:
+    enabled: true
+    alpha: 1.0
+    probability: 0.5
