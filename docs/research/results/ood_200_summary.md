@@ -59,6 +59,19 @@ ID = 300 ảnh Validation (Top-1 toàn bộ 81.67%), OOD = OOD-200.
 | other_animal | 20 | 60.0% | 90.0% | 100.0% |
 | object_scene | 20 | 75.0% | 90.0% | 90.0% |
 
+### Phân bố confidence đã hiệu chỉnh (E7 baseline, CenterCrop)
+
+| Tập | Mean | P10 | P25 | P50 | P75 | P90 |
+|---|---:|---:|---:|---:|---:|---:|
+| ID Validation | 0.795 | 0.474 | 0.650 | 0.872 | 0.971 | 0.992 |
+| unknown_breed | 0.540 | 0.279 | 0.368 | 0.517 | 0.722 | 0.872 |
+| human | 0.287 | 0.160 | 0.202 | 0.250 | 0.315 | 0.445 |
+| cat | 0.473 | 0.265 | 0.319 | 0.406 | 0.577 | 0.850 |
+| other_animal | 0.505 | 0.266 | 0.357 | 0.444 | 0.639 | 0.851 |
+| object_scene | 0.360 | 0.167 | 0.205 | 0.332 | 0.473 | 0.636 |
+
+Số lượng ACCEPT/REJECT, mean confidence và mean Energy theo nhóm cho cả 3 phương pháp và 2 chế độ nằm trong `ood_200_group_metrics.csv`.
+
 ## 4. Kết quả bổ sung — Padding (chế độ "Giữ trọn ảnh" của Gradio)
 
 Dùng **cùng ngưỡng** chọn trên Calibration CenterCrop, không chọn lại. ID Top-1 toàn bộ 74.00% (khớp báo cáo E4 CenterCrop vs Padding).
@@ -84,20 +97,34 @@ AUROC: E7 confidence 0.8079, Energy 0.8482. Theo nhóm (Pipeline): unknown_breed
 - Bộ phát hiện chạy **tự động** mỗi lần bấm Dự đoán, không có công tắc bật/tắt. Ngưỡng nạp từ artifact đã khóa và được kiểm tra metadata. Nếu bị sửa (ngưỡng khác, split khác Calibration, `ood_200_used`, sai checkpoint hoặc E6/E7) thì app báo lỗi và không chạy.
 - **OOD REJECT**: ẩn Top-1, độ tin cậy, Top-5 và chặn Grad-CAM. Hiển thị thông báo: *"Ảnh có thể nằm ngoài phạm vi 30 giống chó được hỗ trợ. Hệ thống không đưa ra kết luận phân loại cho ảnh này."*
 - **E7 REJECT** giữ nguyên ý nghĩa cũ: ảnh đã qua kiểm tra OOD nhưng dự đoán chưa đủ tin cậy, Top-5 vẫn hiển thị để tham khảo. **ACCEPT** giữ nguyên.
-- Kiểm thử thật qua HTTP Gradio API với checkpoint thật, 6 nhóm × 2 chế độ:
+- Kiểm thử bằng ảnh thật với checkpoint E4 thật: mỗi nhóm 1 ảnh, chạy qua cả hàm xử lý của Gradio lẫn HTTP API của server Gradio đang chạy (6 nhóm × 2 chế độ). Ngưỡng Energy = −0.680; OOD khi Energy > ngưỡng.
 
-  | Nhóm | CenterCrop | Padding |
-  |---|---|---|
-  | Chó thuộc 30 lớp (Eskimo Dog) | ACCEPT, đúng giống | ACCEPT, đúng giống |
-  | Giống lạ | ACCEPT (sai giống) | ACCEPT (sai giống) |
-  | Người | OOD REJECT | OOD REJECT |
-  | Mèo | ACCEPT (sai) | OOD REJECT |
-  | Động vật khác | OOD REJECT | OOD REJECT |
-  | Đồ vật/cảnh | OOD REJECT | E7 REJECT |
+  | Nhóm | Chế độ | Top-1 E4 | Confidence | E7 baseline | Energy | Quyết định pipeline | Giao diện hiển thị |
+  |---|---|---|---:|---|---:|---|---|
+  | Chó thuộc 30 lớp (Eskimo Dog) | CenterCrop | Eskimo Dog | 0.755 | ACCEPT | −2.523 | ACCEPT | Top-1, Top-5, Grad-CAM ✔ |
+  | Chó thuộc 30 lớp (Eskimo Dog) | Padding | Eskimo Dog | 0.928 | ACCEPT | −2.177 | ACCEPT | Top-1, Top-5, Grad-CAM ✔ |
+  | Chó ngoài 30 lớp (Dobermann) | CenterCrop | Gordon Setter | 0.957 | ACCEPT | −2.020 | ACCEPT | Top-1 sai giống — **bỏ sót OOD** |
+  | Chó ngoài 30 lớp (Dobermann) | Padding | Gordon Setter | 0.961 | ACCEPT | −1.937 | ACCEPT | Top-1 sai giống — **bỏ sót OOD** |
+  | Người | CenterCrop | Eskimo Dog | 0.438 | REJECT | +0.936 | OOD_REJECT | Ẩn Top-1/Top-5/Grad-CAM + thông báo ✔ |
+  | Người | Padding | Chesapeake Bay Retriever | 0.142 | REJECT | +0.811 | OOD_REJECT | Ẩn Top-1/Top-5/Grad-CAM + thông báo ✔ |
+  | Mèo | CenterCrop | Pekinese | 0.845 | ACCEPT | −0.747 | ACCEPT | Top-1 "Pekinese" — **bỏ sót OOD** |
+  | Mèo | Padding | Pekinese | 0.511 | ACCEPT | −0.607 | OOD_REJECT | Ẩn Top-1/Top-5/Grad-CAM + thông báo ✔ |
+  | Động vật khác | CenterCrop | Norwich Terrier | 0.247 | REJECT | +0.230 | OOD_REJECT | Ẩn Top-1/Top-5/Grad-CAM + thông báo ✔ |
+  | Động vật khác | Padding | Norwich Terrier | 0.564 | ACCEPT | −0.166 | OOD_REJECT | Ẩn (OOD chặn ảnh mà E7 sẽ chấp nhận) ✔ |
+  | Đồ vật/cảnh vật | CenterCrop | Giant Schnauzer | 0.220 | REJECT | +0.427 | OOD_REJECT | Ẩn Top-1/Top-5/Grad-CAM + thông báo ✔ |
+  | Đồ vật/cảnh vật | Padding | Greater Swiss Mountain Dog | 0.278 | REJECT | −0.744 | E7_REJECT | "Chưa đủ tự tin", Top-5 tham khảo — OOD bỏ sót, E7 vẫn chặn |
 
-  Kết quả phù hợp với số liệu tổng hợp ở trên, kể cả điểm yếu near-OOD.
+  Giao diện hiển thị đúng với từng trạng thái. Có 3 trường hợp bỏ sót (Dobermann ở cả hai chế độ, mèo ở CenterCrop), khớp với điểm yếu near-OOD trong số liệu tổng hợp. Ảnh demo chỉ để minh họa; mọi số liệu định lượng lấy từ evaluation runner đã khóa.
 
-## 7. Tái lập
+## 7. Bàn giao artifacts nội bộ
+
+Ảnh, manifest chi tiết, `LOCK.json`, báo cáo audit, raw logits và dự đoán từng ảnh **không có trên GitHub**. Chúng được lưu ở thư mục Drive của nhóm: `DogBreedID — Team Artifacts/research/ood_200/` (<https://drive.google.com/drive/folders/1D8ESDW-KMZaHxrhPtKtqikFkns6nVn6M>).
+
+- Gồm 7 phần `ood_200_handover_20261114.zip.part01–07` và file `README_ood_200_handover.txt` có lệnh ghép file cùng SHA-256 của từng phần.
+- Zip đầy đủ: 48,843,892 bytes, SHA-256 `a9cacfc3eac9194e4ec1a62cfb0bb3453b0e696a4e73b4d674ae06be1e94e9a6`.
+- Giải nén ở thư mục gốc repo để có `data/ood_200/` và `outputs/research/ood_200/`, rồi chạy lại audit để kiểm tra.
+
+## 8. Tái lập
 
 ```bash
 python scripts/audit_ood_200.py --root data/ood_200 --images-dir data/raw/stanford_dogs/Images

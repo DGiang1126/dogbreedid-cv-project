@@ -183,3 +183,41 @@ def test_locked_real_ood_200_is_complete_if_present():
     rows, info = eval_mod.verify_ood_lock()
     assert len(rows) == 200
     assert info["group_counts"] == audit_mod.REQUIRED_GROUPS
+
+
+# ---------- locked E4 / E6 / E7 inputs ----------
+
+def test_runner_uses_locked_e6_e7_artifacts():
+    e6 = json.loads((ROOT / "outputs/metrics/E6/temperature.json").read_text(encoding="utf-8"))
+    e7 = json.loads((ROOT / "outputs/metrics/E7/threshold.json").read_text(encoding="utf-8"))
+    assert eval_mod.E6_TEMPERATURE == e6["temperature"]
+    assert eval_mod.E7_THRESHOLD == e7["threshold"]
+
+
+def test_e7_baseline_matches_locked_accept_rule():
+    from src.selective.threshold import accept_mask, calibrated_predictions
+    logits = np.random.default_rng(3).normal(scale=3.0, size=(500, 30))
+    d = eval_mod.method_decisions(logits, energy_threshold=0.0, energy_temperature=1.0)
+    conf = calibrated_predictions(logits, eval_mod.E6_TEMPERATURE)["confidences"]
+    assert d["e7_baseline"].tolist() == (conf >= eval_mod.E7_THRESHOLD).tolist()
+    assert d["e7_baseline"].any() and not d["e7_baseline"].all()
+    thr = eval_mod.E7_THRESHOLD
+    assert accept_mask([thr - 1e-12, thr, thr + 1e-12], thr).tolist() == [False, True, True]
+
+
+def test_runner_rejects_wrong_checkpoint(tmp_path, monkeypatch):
+    fake = tmp_path / "best.pt"
+    fake.write_bytes(b"not the approved checkpoint")
+    monkeypatch.setattr(eval_mod, "CHECKPOINT", fake)
+    with pytest.raises(Exception, match="(?i)sha|hash|checkpoint"):
+        eval_mod.E4Scorer("cpu")
+
+
+def test_real_checkpoint_hash_if_present():
+    from src.inference.predictor import EXPECTED_CHECKPOINT_SHA256
+    ckpt = ROOT / "outputs/checkpoints/E4/seed_42/best.pt"
+    if not ckpt.exists():
+        pytest.skip("E4 checkpoint not available on this machine")
+    assert hashlib.sha256(ckpt.read_bytes()).hexdigest() == EXPECTED_CHECKPOINT_SHA256
+    art = json.loads((ROOT / eval_mod.THRESHOLD_ARTIFACT).read_text(encoding="utf-8"))
+    assert art["checkpoint_sha256"] == EXPECTED_CHECKPOINT_SHA256
