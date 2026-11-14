@@ -539,3 +539,127 @@ def test_gradio_event_contract():
         cancellation = cancels[tuple(map(tuple, event["targets"]))]
         assert cancellation["api_visibility"] == "private"
         assert cancellation["cancels"] == [predict["id"], explain["id"]]
+
+
+# ---------------- Task 07: automatic Energy OOD detection ----------------
+
+from app.inference_service import (  # noqa: E402
+    OOD_MESSAGE, OOD_THRESHOLD, STATUS_ACCEPT, STATUS_E7_REJECT, STATUS_OOD_REJECT,
+)
+
+
+class OutOfScopeClassifier(TinyClassifier):
+    """All logits very low: confident top-1 for E7 but high energy (out of scope)."""
+
+    def __init__(self):
+        super().__init__()
+        self.scores[:] = -10.0
+        self.scores[7] = 0.0
+
+
+def _copy_locked_artifacts(dst, edit=None):
+    for rel in ("data/metadata/class_mapping.json", "outputs/metrics/E6/temperature.json",
+                "outputs/metrics/E7/threshold.json", "outputs/metrics/OOD/energy_threshold.json"):
+        (dst / rel).parent.mkdir(parents=True, exist_ok=True)
+        data = json.loads((ROOT / rel).read_text(encoding="utf-8"))
+        if edit and rel.endswith("energy_threshold.json"):
+            edit(data)
+        (dst / rel).write_text(json.dumps(data), encoding="utf-8")
+
+
+def test_ood_threshold_artifact_is_locked_and_loaded(service):
+    artifact = json.loads((ROOT / "outputs/metrics/OOD/energy_threshold.json").read_text(encoding="utf-8"))
+    assert artifact["split"] == "calibration" and artifact["ood_200_used"] is False
+    assert artifact["threshold"] == OOD_THRESHOLD
+    assert service.ood_detector.threshold == OOD_THRESHOLD and service.ood_detector.temperature == 1.0
+    # E6/E7 stay untouched by the OOD integration.
+    assert service.temperature == TEMPERATURE and service.threshold == THRESHOLD
+
+
+@pytest.mark.parametrize("edit, missing", [
+    (lambda d: d.update(threshold=0.0), False),
+    (lambda d: d.update(ood_200_used=True), False),
+    (lambda d: d.update(split="ood_200"), False),
+    (lambda d: d.update(energy_temperature=TEMPERATURE), False),
+    (None, True),
+])
+def test_ood_artifact_tampering_is_rejected(tmp_path, monkeypatch, edit, missing):
+    import app.inference_service as module
+    monkeypatch.setattr(module, "load_e4_model", lambda root, checkpoint, device: (TinyClassifier().eval(), "ok"))
+    _copy_locked_artifacts(tmp_path, edit)
+    if missing:
+        (tmp_path / "outputs/metrics/OOD/energy_threshold.json").unlink()
+    with pytest.raises(DemoError, match="OOD|cấu hình"):
+        InferenceService(root=tmp_path, device="cpu")
+
+
+@pytest.mark.parametrize("mode", [STANDARD_MODE, FIT_MODE])
+def test_three_decision_states_and_energy_diagnostics(service, image_file, mode):
+    seen = []
+    with service.model.register_forward_hook(lambda m, args, out: seen.append(out.detach().clone())):
+        accepted = service.predict(image_file, mode)
+    assert accepted["status"] == STATUS_ACCEPT and accepted["ood"]["is_ood"] is False
+    logits = seen[0].numpy()
+    service.model = TinyClassifier(confidence=0.45).eval()
+    e7 = service.predict(image_file, mode)
+    assert e7["status"] == STATUS_E7_REJECT and e7["accepted"] is False and e7["ood"]["is_ood"] is False
+    service.model = OutOfScopeClassifier().eval()
+    ood = service.predict(image_file, mode)
+    # OOD has priority even when E7 alone would accept the prediction.
+    assert ood["accepted"] is True and ood["status"] == STATUS_OOD_REJECT
+    assert ood["ood"]["energy"] > OOD_THRESHOLD and ood["ood"]["threshold"] == OOD_THRESHOLD
+    assert accepted["ood"]["energy"] == pytest.approx(-float(torch.logsumexp(torch.tensor(logits), 1)), abs=1e-5)
+
+
+def test_ood_reject_hides_top1_top5_and_gradcam(service, image_file):
+    controller = DemoController(service)
+    service.model = OutOfScopeClassifier().eval()
+    result = controller.predict(str(image_file))
+    status, breed, confidence, latency, top5, overlay, explain_text, state = result
+    assert "OOD REJECT" in status and OOD_MESSAGE in status
+    assert OOD_MESSAGE == ("Ảnh có thể nằm ngoài phạm vi 30 giống chó được hỗ trợ. "
+                           "Hệ thống không đưa ra kết luận phân loại cho ảnh này.")
+    assert breed == "" and confidence == "" and top5 == {} and overlay is None and explain_text == ""
+    assert latency.endswith("ms") and state["status"] == STATUS_OOD_REJECT
+    assert "Miniature Poodle" not in "".join(map(str, result[:7]))
+    cam, message = controller.explain(str(image_file), state)
+    assert cam is None and "ngoài phạm vi" in message
+    with pytest.raises(DemoError, match="ngoài phạm vi"):
+        service.explain(image_file, state)
+
+
+def test_e7_reject_keeps_its_own_meaning(service, image_file):
+    service.model = TinyClassifier(confidence=0.45).eval()
+    result = DemoController(service).predict(str(image_file))
+    assert "E7 REJECT" in result[0] and "OOD" not in result[0] and OOD_MESSAGE not in result[0]
+    assert result[1] == "Chưa đủ tự tin để kết luận" and len(result[4]) == 5
+
+
+def test_ood_outputs_do_not_leak_after_clear_mode_change_or_new_image(service, image_file, tmp_path):
+    controller = DemoController(service)
+    request = SimpleNamespace(session_hash="ood-session")
+    service.model = OutOfScopeClassifier().eval()
+    assert "OOD REJECT" in controller.predict(str(image_file), STANDARD_MODE, request)[0]
+    cleared = controller.select_image(str(image_file), FIT_MODE, request)
+    assert cleared[2] == "Tải ảnh lên rồi nhấn **Dự đoán**." and cleared[-1] is None
+    assert controller.clear(request)[-1] is None
+    service.model = TinyClassifier().eval()
+    other = tmp_path / "dog2.png"
+    Image.new("RGB", (300, 300), "brown").save(other)
+    controller.select_image(str(other), STANDARD_MODE, request)
+    fresh = controller.predict(str(other), STANDARD_MODE, request)
+    assert "ACCEPT" in fresh[0] and fresh[1] == "Miniature Poodle" and fresh[-1]["status"] == STATUS_ACCEPT
+    overlay, _ = controller.explain(str(other), fresh[-1], STANDARD_MODE, request)
+    assert overlay is not None
+
+
+def test_ood_state_is_isolated_between_sessions(service, image_file):
+    controller = DemoController(service)
+    a, b = SimpleNamespace(session_hash="A"), SimpleNamespace(session_hash="B")
+    service.model = OutOfScopeClassifier().eval()
+    ood_state = controller.predict(str(image_file), STANDARD_MODE, a)[-1]
+    service.model = TinyClassifier().eval()
+    id_state = controller.predict(str(image_file), STANDARD_MODE, b)[-1]
+    assert ood_state["status"] == STATUS_OOD_REJECT and id_state["status"] == STATUS_ACCEPT
+    assert controller.explain(str(image_file), ood_state, STANDARD_MODE, a)[0] is None
+    assert controller.explain(str(image_file), id_state, STANDARD_MODE, b)[0] is not None
