@@ -1,4 +1,4 @@
-"""Single-image E4/E6/E7 inference and Grad-CAM for the local demo."""
+"""Single-image E4/E6/E7 inference, automatic Energy OOD check and Grad-CAM for the local demo."""
 from __future__ import annotations
 
 import hashlib
@@ -16,12 +16,22 @@ from torchvision import transforms
 
 from src.data.transforms import build_transforms
 from src.explainability.gradcam import generate_gradcam
-from src.inference.predictor import load_e4_model
+from src.inference.predictor import EXPECTED_CHECKPOINT_SHA256, load_e4_model
+from src.ood import OOD_REJECT, EnergyOODDetector
 from src.selective.threshold import accept_mask, calibrated_predictions
 
 ROOT = Path(__file__).resolve().parents[1]
 TEMPERATURE = 0.80246283961825
 THRESHOLD = 0.5011672918550012
+# Task 07: Energy OOD detector locked on Calibration (outputs/metrics/OOD/energy_threshold.json).
+OOD_ENERGY_TEMPERATURE = 1.0
+OOD_THRESHOLD = -0.6801182939636002
+OOD_ARTIFACT = "outputs/metrics/OOD/energy_threshold.json"
+STATUS_ACCEPT = "ACCEPT"
+STATUS_E7_REJECT = "E7_REJECT"
+STATUS_OOD_REJECT = OOD_REJECT
+OOD_MESSAGE = ("Ảnh có thể nằm ngoài phạm vi 30 giống chó được hỗ trợ. "
+               "Hệ thống không đưa ra kết luận phân loại cho ảnh này.")
 MAX_FILE_BYTES = 10 * 1024 * 1024
 MAX_IMAGE_PIXELS = 25_000_000
 STANDARD_MODE = "standard"
@@ -86,6 +96,21 @@ def _artifacts(root: Path) -> tuple[list[str], float, float]:
     return [mapping[str(i)] for i in range(30)], TEMPERATURE, THRESHOLD
 
 
+def _ood_detector(root: Path) -> EnergyOODDetector:
+    """Load the locked Energy OOD threshold and refuse anything not selected on Calibration."""
+    ood = _json(root / OOD_ARTIFACT)
+    if (ood.get("experiment") != "OOD-Energy" or ood.get("split") != "calibration"
+            or ood.get("ood_200_used") is not False
+            or ood.get("energy_temperature") != OOD_ENERGY_TEMPERATURE
+            or ood.get("threshold") != OOD_THRESHOLD
+            or ood.get("checkpoint_sha256") != EXPECTED_CHECKPOINT_SHA256
+            or ood.get("e6_temperature_unchanged") != TEMPERATURE
+            or ood.get("e7_threshold_unchanged") != THRESHOLD
+            or not str(ood.get("decision_rule", "")).startswith("OOD_REJECT if energy_score > threshold")):
+        raise DemoError("Ngưỡng phát hiện ảnh ngoài phạm vi (OOD) không khớp cấu hình đã khóa.")
+    return EnergyOODDetector(threshold=OOD_THRESHOLD, temperature=OOD_ENERGY_TEMPERATURE)
+
+
 def read_image(path: str | Path | None) -> tuple[Image.Image, str]:
     """Validate and decode one JPEG, PNG or WebP without accepting unbounded input."""
     if not path:
@@ -123,6 +148,7 @@ class InferenceService:
     def __init__(self, root: Path = ROOT, checkpoint: Path | None = None, device: str = "auto"):
         self.root = Path(root).resolve()
         self.names, self.temperature, self.threshold = _artifacts(self.root)
+        self.ood_detector = _ood_detector(self.root)
         if device not in {"auto", "cpu", "cuda"}:
             raise DemoError("Thiết bị phải là auto, cpu hoặc cuda.")
         if device == "cuda" and not torch.cuda.is_available():
@@ -172,16 +198,22 @@ class InferenceService:
                 latency_ms = (time.perf_counter() - start) * 1000
             if not isinstance(logits, torch.Tensor) or tuple(logits.shape) != (1, 30):
                 raise ValueError("E4 output must have shape [1,30]")
-            result = calibrated_predictions(logits.detach().cpu().numpy(), self.temperature)
+            raw = logits.detach().cpu().numpy()
+            ood = self.ood_detector.predict(raw)
+            energy, is_ood = float(ood["energy"][0]), bool(ood["is_ood"][0])
+            result = calibrated_predictions(raw, self.temperature)
             probabilities = result["probabilities"][0]
             top1 = int(result["predictions"][0])
             confidence = float(result["confidences"][0])
             accepted = bool(accept_mask([confidence], self.threshold)[0])
+            status = STATUS_OOD_REJECT if is_ood else (STATUS_ACCEPT if accepted else STATUS_E7_REJECT)
             indices = np.argsort(-probabilities, kind="stable")[:5]
             return {"class_id": top1, "name": self.names[top1], "confidence": confidence,
                     "accepted": accepted, "latency_ms": latency_ms,
                     "top5": {self.names[int(i)]: float(probabilities[i]) for i in indices},
-                    "image_digest": digest, "mode": mode}
+                    "image_digest": digest, "mode": mode, "status": status,
+                    "ood": {"energy": energy, "threshold": self.ood_detector.threshold,
+                            "temperature": self.ood_detector.temperature, "is_ood": is_ood}}
         except DemoError:
             raise
         except Exception as exc:
@@ -192,6 +224,8 @@ class InferenceService:
         _validate_mode(mode)
         if not prediction:
             raise DemoError("Hãy dự đoán ảnh trước khi xem Grad-CAM.")
+        if prediction.get("status") == STATUS_OOD_REJECT:
+            raise DemoError("Ảnh có thể nằm ngoài phạm vi 30 giống chó được hỗ trợ nên không có Grad-CAM.")
         if mode != prediction.get("mode", STANDARD_MODE):
             raise DemoError("Chế độ xử lý đã thay đổi. Hãy dự đoán lại trước khi xem Grad-CAM.")
         image, digest = read_image(path)
