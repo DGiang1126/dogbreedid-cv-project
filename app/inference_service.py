@@ -184,7 +184,7 @@ class InferenceService:
         return self.predict_image(image, digest, mode)
 
     def predict_image(self, image: Image.Image, digest: str, mode: str = STANDARD_MODE) -> dict:
-        """Predict from the validated image and digest returned by read_image."""
+        """Predict from a validated image, omitting classification fields on OOD rejection."""
         prepared = prepare_image(image, mode, resize=self.resize, crop=self.crop)
         tensor = self.transform(prepared).unsqueeze(0).to(self.device)
         try:
@@ -202,18 +202,24 @@ class InferenceService:
             ood = self.ood_detector.predict(raw)
             energy, is_ood = float(ood["energy"][0]), bool(ood["is_ood"][0])
             result = calibrated_predictions(raw, self.temperature)
+            confidence = float(result["confidences"][0])
+            e7_accepted = bool(accept_mask([confidence], self.threshold)[0])
+            accepted = (not is_ood) and e7_accepted
+            prediction = {
+                "accepted": accepted, "latency_ms": latency_ms, "image_digest": digest, "mode": mode,
+                "ood": {"energy": energy, "threshold": self.ood_detector.threshold,
+                        "temperature": self.ood_detector.temperature, "is_ood": is_ood},
+            }
+            if is_ood:
+                return {**prediction, "status": STATUS_OOD_REJECT}
+
+            status = STATUS_ACCEPT if e7_accepted else STATUS_E7_REJECT
             probabilities = result["probabilities"][0]
             top1 = int(result["predictions"][0])
-            confidence = float(result["confidences"][0])
-            accepted = bool(accept_mask([confidence], self.threshold)[0])
-            status = STATUS_OOD_REJECT if is_ood else (STATUS_ACCEPT if accepted else STATUS_E7_REJECT)
             indices = np.argsort(-probabilities, kind="stable")[:5]
-            return {"class_id": top1, "name": self.names[top1], "confidence": confidence,
-                    "accepted": accepted, "latency_ms": latency_ms,
-                    "top5": {self.names[int(i)]: float(probabilities[i]) for i in indices},
-                    "image_digest": digest, "mode": mode, "status": status,
-                    "ood": {"energy": energy, "threshold": self.ood_detector.threshold,
-                            "temperature": self.ood_detector.temperature, "is_ood": is_ood}}
+            return {**prediction, "status": status,
+                    "class_id": top1, "name": self.names[top1], "confidence": confidence,
+                    "top5": {self.names[int(i)]: float(probabilities[i]) for i in indices}}
         except DemoError:
             raise
         except Exception as exc:

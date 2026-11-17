@@ -25,11 +25,15 @@ if str(ROOT) not in sys.path:
 
 from app.gradio_app import DemoController, build_app
 from app.inference_service import (
-    FIT_MODE, PADDING_RGB, STANDARD_MODE, TEMPERATURE, THRESHOLD,
+    FIT_MODE, OOD_MESSAGE, OOD_THRESHOLD, PADDING_RGB, STANDARD_MODE,
+    STATUS_ACCEPT, STATUS_E7_REJECT, STATUS_OOD_REJECT, TEMPERATURE, THRESHOLD,
     DemoError, InferenceService, _artifacts, read_image,
 )
 from src.data.transforms import build_transforms
 from src.selective.threshold import accept_mask, calibrated_predictions
+
+
+CLASSIFICATION_FIELDS = {"class_id", "name", "confidence", "top5"}
 
 
 class TinyClassifier(nn.Module):
@@ -297,8 +301,8 @@ def test_upload_validation_clears_preview_and_old_outputs(service, tmp_path, ima
     assert invalid[3:6] == ("", "", "") and invalid[-1] is None
 
 
-def test_corrupted_images_through_actual_gradio_http(service, tmp_path, image_file):
-    """Catch failures occurring before the controller, not just in read_image."""
+def test_predict_through_actual_gradio_http(service, tmp_path, image_file):
+    """Check preprocessing, invalid uploads and OOD rejection through the public API."""
     from gradio_client import Client, handle_file
     broken = tmp_path / "broken.png"
     broken.write_bytes(b"not an image")
@@ -327,6 +331,20 @@ def test_corrupted_images_through_actual_gradio_http(service, tmp_path, image_fi
             assert not result[4] and result[5] is None
         # The same session remains usable after the invalid uploads.
         assert client.predict(handle_file(str(image_file)), api_name="/predict")[1] == "Miniature Poodle"
+
+        service.model = OutOfScopeClassifier().eval()
+        result = client.predict(handle_file(str(image_file)), api_name="/predict")
+        assert len(result) == 7
+        status, breed, confidence, latency, top5, overlay, explain_text = result
+        assert "OOD REJECT" in status and OOD_MESSAGE in status
+        assert (breed, confidence, top5, overlay, explain_text) == ("", "", {}, None, "")
+        assert latency.endswith("ms")
+
+        state_id = next(component["id"] for component in demo.config["components"]
+                        if component["type"] == "state")
+        state = demo.state_holder[client.session_hash][state_id]
+        assert state["status"] == STATUS_OOD_REJECT and state["accepted"] is False
+        assert CLASSIFICATION_FIELDS.isdisjoint(state)
     finally:
         demo.close(verbose=False)
 
@@ -543,18 +561,14 @@ def test_gradio_event_contract():
 
 # ---------------- Task 07: automatic Energy OOD detection ----------------
 
-from app.inference_service import (  # noqa: E402
-    OOD_MESSAGE, OOD_THRESHOLD, STATUS_ACCEPT, STATUS_E7_REJECT, STATUS_OOD_REJECT,
-)
-
 
 class OutOfScopeClassifier(TinyClassifier):
     """All logits very low: confident top-1 for E7 but high energy (out of scope)."""
 
     def __init__(self):
         super().__init__()
-        self.scores[:] = -10.0
-        self.scores[7] = 0.0
+        self.scores[:] = -13.0
+        self.scores[7] = -3.0
 
 
 def _copy_locked_artifacts(dst, edit=None):
@@ -598,17 +612,25 @@ def test_three_decision_states_and_energy_diagnostics(service, image_file, mode)
     seen = []
     with service.model.register_forward_hook(lambda m, args, out: seen.append(out.detach().clone())):
         accepted = service.predict(image_file, mode)
-    assert accepted["status"] == STATUS_ACCEPT and accepted["ood"]["is_ood"] is False
-    logits = seen[0].numpy()
+    assert accepted["status"] == STATUS_ACCEPT and accepted["accepted"] is True
+    assert accepted["ood"]["is_ood"] is False
     service.model = TinyClassifier(confidence=0.45).eval()
     e7 = service.predict(image_file, mode)
     assert e7["status"] == STATUS_E7_REJECT and e7["accepted"] is False and e7["ood"]["is_ood"] is False
     service.model = OutOfScopeClassifier().eval()
-    ood = service.predict(image_file, mode)
+    with service.model.register_forward_hook(lambda m, args, out: seen.append(out.detach().clone())):
+        ood = service.predict(image_file, mode)
     # OOD has priority even when E7 alone would accept the prediction.
-    assert ood["accepted"] is True and ood["status"] == STATUS_OOD_REJECT
+    ood_confidence = calibrated_predictions(seen[1].numpy(), TEMPERATURE)["confidences"]
+    assert accept_mask(ood_confidence, THRESHOLD).tolist() == [True]
+    assert ood["status"] == STATUS_OOD_REJECT and ood["accepted"] is False
+    assert CLASSIFICATION_FIELDS.isdisjoint(ood)
+    assert ood["ood"]["is_ood"] is True
     assert ood["ood"]["energy"] > OOD_THRESHOLD and ood["ood"]["threshold"] == OOD_THRESHOLD
-    assert accepted["ood"]["energy"] == pytest.approx(-float(torch.logsumexp(torch.tensor(logits), 1)), abs=1e-5)
+    for prediction in (accepted, e7, ood):
+        assert prediction["accepted"] == (prediction["status"] == STATUS_ACCEPT)
+    for prediction, logits in zip((accepted, ood), seen, strict=True):
+        assert prediction["ood"]["energy"] == pytest.approx(-torch.logsumexp(logits, 1).item(), abs=1e-5)
 
 
 def test_ood_reject_hides_top1_top5_and_gradcam(service, image_file):
@@ -621,7 +643,7 @@ def test_ood_reject_hides_top1_top5_and_gradcam(service, image_file):
                            "Hệ thống không đưa ra kết luận phân loại cho ảnh này.")
     assert breed == "" and confidence == "" and top5 == {} and overlay is None and explain_text == ""
     assert latency.endswith("ms") and state["status"] == STATUS_OOD_REJECT
-    assert "Miniature Poodle" not in "".join(map(str, result[:7]))
+    assert state["accepted"] is False and CLASSIFICATION_FIELDS.isdisjoint(state)
     cam, message = controller.explain(str(image_file), state)
     assert cam is None and "ngoài phạm vi" in message
     with pytest.raises(DemoError, match="ngoài phạm vi"):
@@ -630,9 +652,15 @@ def test_ood_reject_hides_top1_top5_and_gradcam(service, image_file):
 
 def test_e7_reject_keeps_its_own_meaning(service, image_file):
     service.model = TinyClassifier(confidence=0.45).eval()
-    result = DemoController(service).predict(str(image_file))
+    controller = DemoController(service)
+    result = controller.predict(str(image_file))
     assert "E7 REJECT" in result[0] and "OOD" not in result[0] and OOD_MESSAGE not in result[0]
-    assert result[1] == "Chưa đủ tự tin để kết luận" and len(result[4]) == 5
+    assert result[1] == "Chưa đủ tự tin để kết luận" and result[2] == "45.00%"
+    assert len(result[4]) == 5 and "Miniature Poodle" in result[4]
+    state = result[-1]
+    assert state["status"] == STATUS_E7_REJECT and state["accepted"] is False
+    overlay, _ = controller.explain(str(image_file), state)
+    assert overlay.size == (224, 224)
 
 
 def test_ood_outputs_do_not_leak_after_clear_mode_change_or_new_image(service, image_file, tmp_path):
