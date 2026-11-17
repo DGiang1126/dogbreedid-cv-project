@@ -10,6 +10,8 @@ import torch.nn as nn
 import torchvision
 from torchvision.models import EfficientNet_B0_Weights, efficientnet_b0
 
+from src.research.extended_config import E11_PRETRAINED_WEIGHTS
+
 
 def _bind_frozen_backbone_train(model: nn.Module, head_attr: str) -> None:
     """Keep frozen backbone submodules in eval() even when model.train(True) is called."""
@@ -71,7 +73,7 @@ def build_efficientnet_b0(num_classes: int = 30, pretrained: bool = True) -> nn.
 def build_vit_tiny(num_classes: int = 30, pretrained: bool = True) -> nn.Module:
     """Build timm ViT-Tiny (patch16_224) with frozen backbone and 30-class head."""
     model = timm.create_model(
-        "vit_tiny_patch16_224",
+        E11_PRETRAINED_WEIGHTS.removeprefix("timm/"),
         pretrained=pretrained,
         num_classes=num_classes,
     )
@@ -112,8 +114,7 @@ def get_model_provenance(config: dict[str, Any]) -> dict[str, Any]:
         weight_id = "EfficientNet_B0_Weights.IMAGENET1K_V1"
         source_lib = f"torchvision=={torchvision.__version__}"
     else:
-        cfg = timm.get_pretrained_cfg("vit_tiny_patch16_224")
-        weight_id = getattr(cfg, "hf_hub_id", "timm/vit_tiny_patch16_224.augreg_in21k_ft_in1k")
+        weight_id = E11_PRETRAINED_WEIGHTS
         source_lib = f"timm=={timm.__version__}"
     return {
         "model_type": model_type,

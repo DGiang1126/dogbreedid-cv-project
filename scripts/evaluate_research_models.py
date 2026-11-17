@@ -61,7 +61,7 @@ def evaluate_single(
         raise FileNotFoundError(f"Missing best checkpoint for {exp_id}: {ckpt_path}")
 
     ckpt_sha = sha256_file(ckpt_path)
-    ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
+    ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=True)
     best_epoch = int(ckpt.get("epoch", -1))
 
     # Build architecture without downloading weights, then load saved checkpoint strictly.

@@ -24,8 +24,9 @@ class _SyntheticDogDataset(Dataset):
         return self.n
 
     def __getitem__(self, idx):
+        generator = torch.Generator().manual_seed(idx)
         return {
-            "image": torch.randn(3, 224, 224),
+            "image": torch.randn(3, 224, 224, generator=generator),
             "label": idx % 30,
             "relative_path": f"synthetic_{idx}.jpg",
         }
@@ -53,7 +54,7 @@ def test_invalid_configs_rejected(tmp_path):
     bad_freeze.write_text(
         yaml.safe_dump({
             "experiment": {"id": "E10-A", "name": "bad", "seed": 42},
-            "model": {"type": "efficientnet_b0", "source": "torchvision", "backbone_frozen": False, "num_classes": 30},
+            "model": {"type": "efficientnet_b0", "source": "torchvision", "weights": "IMAGENET1K_V1", "backbone_frozen": False, "num_classes": 30},
             "training": {"classifier_lr": 0.001},
             "augmentation": {"cutmix": {"enabled": False, "alpha": 1.0, "probability": 0.5}},
         }),
@@ -66,7 +67,7 @@ def test_invalid_configs_rejected(tmp_path):
     bad_cutmix.write_text(
         yaml.safe_dump({
             "experiment": {"id": "E10-B", "name": "bad", "seed": 42},
-            "model": {"type": "efficientnet_b0", "source": "torchvision", "backbone_frozen": True, "num_classes": 30},
+            "model": {"type": "efficientnet_b0", "source": "torchvision", "weights": "IMAGENET1K_V1", "backbone_frozen": True, "num_classes": 30},
             "training": {"classifier_lr": 0.001},
             "augmentation": {"cutmix": {"enabled": False, "alpha": 1.0, "probability": 0.5}},
         }),
@@ -74,6 +75,16 @@ def test_invalid_configs_rejected(tmp_path):
     )
     with pytest.raises(ValueError, match="cutmix"):
         load_research_config(bad_cutmix)
+
+
+def test_wrong_e11_pretrained_weights_rejected(tmp_path):
+    config_path = tmp_path / "wrong_weights.yaml"
+    config = load_research_config("configs/experiments/e11a_vit_no_cutmix.yaml")
+    config["model"]["weights"] = "timm/vit_tiny_patch16_224"
+    config_path.write_text(yaml.safe_dump(config), encoding="utf-8")
+
+    with pytest.raises(ValueError, match="must use pretrained weights"):
+        load_research_config(config_path)
 
 
 def test_synthetic_smoke_cutmix_checkpoint_reload(tmp_path):
@@ -99,7 +110,7 @@ def test_synthetic_smoke_cutmix_checkpoint_reload(tmp_path):
     ckpt_path = tmp_path / "best.pt"
     save_checkpoint(ckpt_path, model, optimizer, 1, val_res, config)
     reloaded = build_research_model(config, force_no_pretrained=True)
-    ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
+    ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=True)
     reloaded.load_state_dict(ckpt["model_state_dict"], strict=True)
     reloaded_val = validate_one_epoch(reloaded, loader, criterion, torch.device("cpu"))
     assert reloaded_val["macro_f1"] == pytest.approx(val_res["macro_f1"])

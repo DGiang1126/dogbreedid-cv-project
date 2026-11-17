@@ -46,7 +46,8 @@ def test_e10_efficientnet_contract_and_freeze(monkeypatch):
     assert opt.param_groups[0]["weight_decay"] == pytest.approx(1e-4)
 
 
-def test_e11_vit_tiny_contract_and_freeze(monkeypatch):
+@pytest.mark.parametrize("force_no_pretrained", [False, True])
+def test_e11_vit_tiny_contract_and_freeze(monkeypatch, force_no_pretrained):
     requested = {}
     orig_create = em.timm.create_model
 
@@ -58,13 +59,15 @@ def test_e11_vit_tiny_contract_and_freeze(monkeypatch):
 
     monkeypatch.setattr(em.timm, "create_model", offline_create)
     config = load_research_config("configs/experiments/e11a_vit_no_cutmix.yaml")
-    model = em.build_research_model(config)
+    model = em.build_research_model(config, force_no_pretrained=force_no_pretrained)
 
     assert requested == {
-        "model_name": "vit_tiny_patch16_224",
-        "pretrained": True,
+        "model_name": "vit_tiny_patch16_224.augreg_in21k_ft_in1k",
+        "pretrained": not force_no_pretrained,
         "num_classes": 30,
     }
+    assert model.pretrained_cfg["hf_hub_id"] == config["model"]["weights"]
+    assert em.get_model_provenance(config)["weight_identifier"] == config["model"]["weights"]
     x = torch.randn(2, 3, 224, 224)
     out = model(x)
     assert out.shape == (2, 30)

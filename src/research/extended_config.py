@@ -7,25 +7,32 @@ from typing import Any
 
 from src.utils.config import PROJECT_ROOT, _read_yaml, deep_merge
 
+E11_PRETRAINED_WEIGHTS = "timm/vit_tiny_patch16_224.augreg_in21k_ft_in1k"
+
+
 SUPPORTED_EXPERIMENTS: dict[str, dict[str, Any]] = {
     "E10-A": {
         "model_type": "efficientnet_b0",
         "source": "torchvision",
+        "weights": "IMAGENET1K_V1",
         "cutmix_enabled": False,
     },
     "E10-B": {
         "model_type": "efficientnet_b0",
         "source": "torchvision",
+        "weights": "IMAGENET1K_V1",
         "cutmix_enabled": True,
     },
     "E11-A": {
         "model_type": "vit_tiny_patch16_224",
         "source": "timm",
+        "weights": E11_PRETRAINED_WEIGHTS,
         "cutmix_enabled": False,
     },
     "E11-B": {
         "model_type": "vit_tiny_patch16_224",
         "source": "timm",
+        "weights": E11_PRETRAINED_WEIGHTS,
         "cutmix_enabled": True,
     },
 }
@@ -77,6 +84,9 @@ def load_research_config(experiment_path: str | Path) -> dict[str, Any]:
         raise ValueError(f"{exp_id} must use model source {spec['source']}.")
     if model_cfg.get("backbone_frozen") is not True:
         raise ValueError(f"{exp_id} must have backbone_frozen: true (no partial/full fine-tuning).")
+
+    if model_cfg.get("weights") != spec["weights"]:
+        raise ValueError(f"{exp_id} must use pretrained weights {spec['weights']}.")
 
     train_cfg = config["training"]
     if int(train_cfg.get("effective_batch_size", 0)) != 32:
