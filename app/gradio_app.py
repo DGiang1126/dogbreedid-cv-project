@@ -9,7 +9,9 @@ from pathlib import Path
 
 import gradio as gr
 
-from app.inference_service import FIT_MODE, STANDARD_MODE, DemoError, InferenceService, read_image
+from app.inference_service import (
+    FIT_MODE, OOD_MESSAGE, STANDARD_MODE, STATUS_OOD_REJECT, DemoError, InferenceService, read_image,
+)
 
 LOG = logging.getLogger(__name__)
 READY = "Tải ảnh lên rồi nhấn **Dự đoán**."
@@ -241,14 +243,19 @@ class DemoController:
                 digest_ready.set_result(digest)
             prediction = self.service.predict_image(image, digest, mode)
             prediction["revision"] = revision
-            if prediction["accepted"]:
-                status = "✅ **ACCEPT** · Mô hình đủ tự tin để đưa ra dự đoán."
-                breed = prediction["name"]
+            latency = f"{prediction['latency_ms']:.1f} ms"
+            if prediction.get("status") == STATUS_OOD_REJECT:
+                # Out of scope: no Top-1, confidence, Top-5 or Grad-CAM is shown.
+                updates = (f"🚫 **OOD REJECT** · {OOD_MESSAGE}", "", "", latency, {}, None, "", prediction)
             else:
-                status = "⚠️ **REJECT** · Mô hình chưa đủ tự tin để đưa ra kết luận. Top-5 chỉ để tham khảo."
-                breed = "Chưa đủ tự tin để kết luận"
-            updates = (status, breed, f"{prediction['confidence'] * 100:.2f}%",
-                       f"{prediction['latency_ms']:.1f} ms", prediction["top5"], None, "", prediction)
+                if prediction["accepted"]:
+                    status = "✅ **ACCEPT** · Mô hình đủ tự tin để đưa ra dự đoán."
+                    breed = prediction["name"]
+                else:
+                    status = "⚠️ **E7 REJECT** · Mô hình chưa đủ tự tin để đưa ra kết luận. Top-5 chỉ để tham khảo."
+                    breed = "Chưa đủ tự tin để kết luận"
+                updates = (status, breed, f"{prediction['confidence'] * 100:.2f}%",
+                           latency, prediction["top5"], None, "", prediction)
         except DemoError as exc:
             updates = self._empty_results(f"⚠️ {exc}")
         except Exception:
@@ -318,8 +325,10 @@ def build_app(service: InferenceService | None = None, startup_error: str | None
                                              elem_classes="dogbreed-metric", placeholder="—")
                     top5 = gr.Label(label="5 giống có khả năng cao nhất", num_top_classes=5,
                                     elem_classes="dogbreed-top5")
-                    gr.Markdown("Thời gian chỉ tính lượt chạy mô hình. REJECT nghĩa là dự đoán chưa đủ tin cậy. "
-                                "Trạng thái này không dùng để phát hiện giống ngoài 30 lớp.",
+                    gr.Markdown("Thời gian chỉ tính lượt chạy mô hình. Mỗi ảnh được tự động kiểm tra "
+                                "ngoài phạm vi (Energy OOD): OOD REJECT nghĩa là ảnh có thể không thuộc "
+                                "30 giống được hỗ trợ. E7 REJECT nghĩa là ảnh qua kiểm tra OOD "
+                                "nhưng dự đoán chưa đủ tin cậy.",
                                 elem_classes="dogbreed-note")
 
             with gr.Column(elem_id="dogbreed-gradcam", elem_classes="dogbreed-panel", min_width=0):
