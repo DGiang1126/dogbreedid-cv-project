@@ -1,4 +1,4 @@
-# Direct dependencies for data preparation and E0-E3 shared pipeline.
+# Direct dependencies for data preparation, the shared pipeline and research models.
 # Install matching torch/torchvision wheels for your CPU or CUDA environment.
 numpy
 pandas
@@ -8,6 +8,7 @@ Pillow
 PyYAML
 torch
 torchvision
+timm==1.0.31
 matplotlib
 tqdm
 pytest

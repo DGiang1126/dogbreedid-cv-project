@@ -161,14 +161,38 @@ def rehash(output):
     (output / '.complete').write_bytes(raw(c))
 
 
-def test_real_checkout_draft_default_deny_never_constructs_reader(tmp_path,monkeypatch):
-    monkeypatch.setattr(b1,'SOURCE_ROOT',REAL_ROOT)
-    monkeypatch.setattr(execution,'_make_reader',lambda *a:pytest.fail('input reader constructed'))
-    monkeypatch.setattr(b1.predictor,'verify_checkpoint_hash',lambda *a:pytest.fail('checkpoint read before authorization'))
-    result=execution.run_authorized_evaluation(auth.RunRequest('not-authorized',str(tmp_path/'result')),
-        execution.DatasetDescriptor('official','UNRESOLVED','0'*40,'DO_NOT_TOUCH'))
-    assert result.status=='BLOCKED' and result.code=='LOCK_DRAFT' and not result.claim_consumed
-    assert not (tmp_path/'result').exists()
+@pytest.mark.parametrize(('lock_state', 'expected_code'), [
+    pytest.param('BẢN NHÁP — CHƯA KHÓA CẤU HÌNH', 'LOCK_DRAFT', id='draft-lock'),
+    pytest.param('ĐÃ KHÓA CẤU HÌNH', 'TRUSTED_RELEASE_REQUIRED', id='approved-without-release'),
+])
+def test_default_deny_without_release_has_no_data_or_side_effects(tmp_path, monkeypatch, lock_state, expected_code):
+    root = tmp_path / 'checkout'
+    lock = root / execution.LOCK
+    write(root, execution.LOCK, f'**Trạng thái:** {lock_state}\n'.encode('utf-8'))
+    monkeypatch.setattr(b1, 'SOURCE_ROOT', root)
+    read_once = b1.preflight._read_once
+
+    def read_lock_only(path, *args, **kwargs):
+        assert path == lock, f'unexpected input read before authorization: {path}'
+        return read_once(path, *args, **kwargs)
+
+    monkeypatch.setattr(b1.preflight, '_read_once', read_lock_only)
+    monkeypatch.setattr(execution, '_git_buffers', lambda *a, **k: pytest.fail('Git inputs read without a trusted release'))
+    monkeypatch.setattr(execution, '_make_reader', lambda *a: pytest.fail('dataset reader constructed before authorization'))
+    monkeypatch.setattr(execution, '_capture_dataset', lambda *a: pytest.fail('dataset read before authorization'))
+    monkeypatch.setattr(execution._Snapshot, 'capture', lambda *a: pytest.fail('checkpoint captured before authorization'))
+    monkeypatch.setattr(b1.predictor, 'verify_checkpoint_hash', lambda *a: pytest.fail('checkpoint read before authorization'))
+    monkeypatch.setattr(auth, 'claim_authorization', lambda *a: pytest.fail('authorization claim attempted'))
+    output = tmp_path / 'result'
+    result = execution.run_authorized_evaluation(
+        auth.RunRequest('not-authorized', str(output)),
+        execution.DatasetDescriptor('official', 'UNRESOLVED', '0' * 40, str(tmp_path / 'absent-data')),
+        release=None,
+    )
+    assert (result.status, result.code) == ('BLOCKED', expected_code)
+    assert not result.claim_consumed
+    assert result.output_dir is None
+    assert not output.exists()
 
 
 @pytest.mark.parametrize('problem',['missing_release','pending','revoked','control_hash'])
