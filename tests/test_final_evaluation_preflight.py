@@ -26,7 +26,10 @@ def _fixture(tmp_path, mode="synthetic"):
     for name in runner.REFERENCE_FILES:
         destination = root / name
         destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_bytes((runner.SOURCE_ROOT / name).read_bytes())
+        if name == "docs/final_evaluation/configuration_lock.md":
+            destination.write_bytes("**Trạng thái:** BẢN NHÁP — CHƯA KHÓA CẤU HÌNH\n".encode("utf-8"))
+        else:
+            destination.write_bytes((runner.SOURCE_ROOT / name).read_bytes())
     n = 300 if mode == "validation" else 33
     labels = np.arange(n, dtype=np.int64) % 30
     ids = np.array([f'{"validation" if mode == "validation" else "synthetic"}/image_{i:03d}.jpg' for i in range(n)])

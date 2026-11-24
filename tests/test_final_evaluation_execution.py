@@ -48,7 +48,10 @@ def checkout(tmp_path, monkeypatch):
     for name in (*runner.SOURCE_FILES, *runner.REFERENCES):
         path = root / name
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes((REAL_ROOT / name).read_bytes())
+        if name == "docs/final_evaluation/configuration_lock.md":
+            path.write_bytes("**Trạng thái:** BẢN NHÁP — CHƯA KHÓA CẤU HÌNH\n".encode("utf-8"))
+        else:
+            path.write_bytes((REAL_ROOT / name).read_bytes())
     _git(root, "init", "-q")
     _git(root, "config", "core.autocrlf", "false")
     _commit(root)
