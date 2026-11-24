@@ -2,6 +2,8 @@
 
 Rà soát ngày 24/11/2026 trên nhánh `fix/final-regression-tests`, bắt đầu từ `main` tại `2a0df0581482a5487dc2a3748a99c480f00335b0`. Nhánh sửa lỗi nằm trong worktree riêng.
 
+Commit được nghiệm thu là `bb1aa4501542f834d476c236a79ee5c498d4cef2`. Full Tracked Suite chạy trên checkout biệt lập có cây Git trùng với commit này. Các lượt kiểm thử đại diện, ba tệp hồi quy và Full Local Suite dùng cùng nội dung mã và tệp test của commit được nghiệm thu, với phạm vi riêng được ghi bên dưới.
+
 ## Kết quả gốc
 
 | Lượt chạy | Passed | Failed | Errors | Skipped | Warnings |
@@ -38,15 +40,18 @@ python -m pytest tests/test_final_evaluation_execution.py tests/test_final_evalu
 
 **302 passed, 0 failed, 0 errors, 0 skipped trong 8 phút 54 giây.**
 
-## Full suite local có 27 ca E1 ngoài Git
+## Full Tracked Suite và Full Local Suite
 
 ```powershell
 python -m pytest tests/ -q --tb=short -ra
 ```
 
-**1.319 passed, 0 failed, 0 errors, 9 skipped, 25 warnings trong 12 phút 10 giây.**
+| Lượt chạy | Passed | Failed | Errors | Skipped | Warnings | Thời gian |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Full Tracked Suite | 1292 | 0 | 0 | 9 | 25 | 10 phút 06 giây |
+| Full Local Suite | 1319 | 0 | 0 | 9 | 25 | 12 phút 10 giây |
 
-Lượt này dùng bản sao biệt lập có 1.301 ca test thuộc Git và 27 ca E1 local từ ba tệp chưa theo dõi. Bốn tệp sửa phục vụ kiểm thử có SHA-256 khớp với worktree. Tổng số ca local tăng từ 1.327 lên 1.328 do hai nhánh default deny thay một ca cũ. Ba tệp test E1 local nằm ngoài PR.
+Full Tracked Suite chỉ gồm 1.301 ca test thuộc Git. Full Local Suite chạy thêm 27 ca E1 nội bộ từ ba tệp local chưa được Git theo dõi, tổng cộng 1.328 ca. Ba tệp E1 nội bộ nằm ngoài PR. Hai lượt có cùng lý do skip và warning.
 
 ### Skipped
 
@@ -61,7 +66,7 @@ Lượt này dùng bản sao biệt lập có 1.301 ca test thuộc Git và 27 c
 
 ## Môi trường kiểm thử
 
-Lượt ba file hoàn tất và lượt full suite dùng Python 3.12.4, torch 2.6.0+cu124, torchvision 0.21.0+cu124 và timm 1.0.31 từ `.venv` gốc. Các lượt thử ban đầu bị gián đoạn khi các tiến trình Git FSMonitor từ repo fixture tạm làm hết bộ nhớ commit của Windows. Lượt nghiệm thu tắt `core.fsmonitor` theo tiến trình, đặt các thư viện toán chạy một luồng và dùng backend Matplotlib Agg. Cấu hình Git hệ thống giữ nguyên.
+Lượt ba tệp hồi quy và hai lượt full suite dùng Python 3.12.4, torch 2.6.0+cu124, torchvision 0.21.0+cu124 và timm 1.0.31 từ `.venv` gốc. Các lượt thử ban đầu bị gián đoạn khi các tiến trình Git FSMonitor từ repo fixture tạm làm hết bộ nhớ commit của Windows. Lượt nghiệm thu tắt `core.fsmonitor` theo tiến trình, đặt các thư viện toán chạy một luồng và dùng backend Matplotlib Agg. Cấu hình Git hệ thống giữ nguyên.
 
 ## Protected artifacts
 
@@ -69,8 +74,8 @@ Configuration Lock thật, authorization, kết quả Official đã công bố, 
 
 ## Trạng thái Git
 
-`git diff --check` hoàn tất thành công. `git diff --stat` ghi nhận 4 tệp tracked thay đổi, 42 dòng thêm và 11 dòng xóa. `git status` trên nhánh sửa lỗi liệt kê 4 tệp sửa chưa stage và báo cáo mới. Checkout chính vẫn ở `main`.
+`fix/final-regression-tests` theo dõi `origin/fix/final-regression-tests` và là nhánh nguồn của PR #31 vào `main`. PR đang mở. Ở lần rà soát commit nghiệm thu, GitHub báo `MERGEABLE` và `CLEAN`. Bản cập nhật này chỉ sửa báo cáo Markdown và đã qua `git diff --check`. Checkout chính vẫn ở `main`. [PR #31](https://github.com/DGiang1126/dogbreedid-cv-project/pull/31)
 
-## Đề xuất merge
+## Kết luận nghiệm thu
 
-Đề nghị trưởng nhóm duyệt diff và log kiểm thử trước khi merge. Lượt nghiệm thu đạt tiêu chí 0 failed và 0 errors. Nhánh đang để ở worktree riêng, chưa push hoặc merge.
+Full Tracked Suite đạt tiêu chí nghiệm thu với 0 failed và 0 errors trên commit đã ghi ở trên. Các kết quả được giữ lại cho bản cập nhật Markdown. Không chạy lại full suite hoặc thực thi Official Test thật. Đề nghị trưởng nhóm duyệt diff và log kiểm thử trước khi merge PR #31.
