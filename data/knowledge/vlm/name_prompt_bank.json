@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "mapping_sha256": "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c",
+  "bank_version": "name-1",
+  "prompt_type": "name",
+  "entries": [
+    {
+      "class_id": 0,
+      "canonical_name": "Eskimo Dog",
+      "prompt_text": "A photo of the dog breed Eskimo Dog."
+    },
+    {
+      "class_id": 1,
+      "canonical_name": "Malamute",
+      "prompt_text": "A photo of the dog breed Malamute."
+    },
+    {
+      "class_id": 2,
+      "canonical_name": "Siberian Husky",
+      "prompt_text": "A photo of the dog breed Siberian Husky."
+    },
+    {
+      "class_id": 3,
+      "canonical_name": "Greater Swiss Mountain Dog",
+      "prompt_text": "A photo of the dog breed Greater Swiss Mountain Dog."
+    },
+    {
+      "class_id": 4,
+      "canonical_name": "Appenzeller",
+      "prompt_text": "A photo of the dog breed Appenzeller."
+    },
+    {
+      "class_id": 5,
+      "canonical_name": "EntleBucher",
+      "prompt_text": "A photo of the dog breed EntleBucher."
+    },
+    {
+      "class_id": 6,
+      "canonical_name": "Toy Poodle",
+      "prompt_text": "A photo of the dog breed Toy Poodle."
+    },
+    {
+      "class_id": 7,
+      "canonical_name": "Miniature Poodle",
+      "prompt_text": "A photo of the dog breed Miniature Poodle."
+    },
+    {
+      "class_id": 8,
+      "canonical_name": "Standard Poodle",
+      "prompt_text": "A photo of the dog breed Standard Poodle."
+    },
+    {
+      "class_id": 9,
+      "canonical_name": "Miniature Schnauzer",
+      "prompt_text": "A photo of the dog breed Miniature Schnauzer."
+    },
+    {
+      "class_id": 10,
+      "canonical_name": "Standard Schnauzer",
+      "prompt_text": "A photo of the dog breed Standard Schnauzer."
+    },
+    {
+      "class_id": 11,
+      "canonical_name": "Giant Schnauzer",
+      "prompt_text": "A photo of the dog breed Giant Schnauzer."
+    },
+    {
+      "class_id": 12,
+      "canonical_name": "English Setter",
+      "prompt_text": "A photo of the dog breed English Setter."
+    },
+    {
+      "class_id": 13,
+      "canonical_name": "Irish Setter",
+      "prompt_text": "A photo of the dog breed Irish Setter."
+    },
+    {
+      "class_id": 14,
+      "canonical_name": "Gordon Setter",
+      "prompt_text": "A photo of the dog breed Gordon Setter."
+    },
+    {
+      "class_id": 15,
+      "canonical_name": "English Springer",
+      "prompt_text": "A photo of the dog breed English Springer."
+    },
+    {
+      "class_id": 16,
+      "canonical_name": "Welsh Springer Spaniel",
+      "prompt_text": "A photo of the dog breed Welsh Springer Spaniel."
+    },
+    {
+      "class_id": 17,
+      "canonical_name": "Cocker Spaniel",
+      "prompt_text": "A photo of the dog breed Cocker Spaniel."
+    },
+    {
+      "class_id": 18,
+      "canonical_name": "Norfolk Terrier",
+      "prompt_text": "A photo of the dog breed Norfolk Terrier."
+    },
+    {
+      "class_id": 19,
+      "canonical_name": "Norwich Terrier",
+      "prompt_text": "A photo of the dog breed Norwich Terrier."
+    },
+    {
+      "class_id": 20,
+      "canonical_name": "Border Terrier",
+      "prompt_text": "A photo of the dog breed Border Terrier."
+    },
+    {
+      "class_id": 21,
+      "canonical_name": "Collie",
+      "prompt_text": "A photo of the dog breed Collie."
+    },
+    {
+      "class_id": 22,
+      "canonical_name": "Shetland Sheepdog",
+      "prompt_text": "A photo of the dog breed Shetland Sheepdog."
+    },
+    {
+      "class_id": 23,
+      "canonical_name": "Border Collie",
+      "prompt_text": "A photo of the dog breed Border Collie."
+    },
+    {
+      "class_id": 24,
+      "canonical_name": "Golden Retriever",
+      "prompt_text": "A photo of the dog breed Golden Retriever."
+    },
+    {
+      "class_id": 25,
+      "canonical_name": "Labrador Retriever",
+      "prompt_text": "A photo of the dog breed Labrador Retriever."
+    },
+    {
+      "class_id": 26,
+      "canonical_name": "Chesapeake Bay Retriever",
+      "prompt_text": "A photo of the dog breed Chesapeake Bay Retriever."
+    },
+    {
+      "class_id": 27,
+      "canonical_name": "Japanese Spaniel",
+      "prompt_text": "A photo of the dog breed Japanese Spaniel."
+    },
+    {
+      "class_id": 28,
+      "canonical_name": "Pekinese",
+      "prompt_text": "A photo of the dog breed Pekinese."
+    },
+    {
+      "class_id": 29,
+      "canonical_name": "Shih-Tzu",
+      "prompt_text": "A photo of the dog breed Shih-Tzu."
+    }
+  ]
+}
