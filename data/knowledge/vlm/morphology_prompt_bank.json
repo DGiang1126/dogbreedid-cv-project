@@ -1,0 +1,369 @@
+{
+  "schema_version": "1.0",
+  "mapping_sha256": "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c",
+  "bank_version": "morphology-draft-1",
+  "prompt_type": "morphology",
+  "kb_version": "breed-kb-draft-1",
+  "kb_sha256": "46d18d941c428c0ead52c74f4591827f855c02d1f618a7ad2becbda4f5a0df68",
+  "entries": [
+    {
+      "class_id": 0,
+      "canonical_name": "Eskimo Dog",
+      "prompt_text": "A photo of the dog breed Eskimo Dog, with a thick coat.",
+      "attribute_ids": [
+        "coat_texture"
+      ],
+      "source_ids": [
+        "stanford-wordnet"
+      ]
+    },
+    {
+      "class_id": 1,
+      "canonical_name": "Malamute",
+      "prompt_text": "A photo of the dog breed Malamute, with a sturdy build and deep chest and a dense double coat.",
+      "attribute_ids": [
+        "body_build",
+        "coat_texture"
+      ],
+      "source_ids": [
+        "fci-243"
+      ]
+    },
+    {
+      "class_id": 2,
+      "canonical_name": "Siberian Husky",
+      "prompt_text": "A photo of the dog breed Siberian Husky, with erect ears and a dense double coat.",
+      "attribute_ids": [
+        "ear_position",
+        "coat_texture"
+      ],
+      "source_ids": [
+        "fci-270"
+      ]
+    },
+    {
+      "class_id": 3,
+      "canonical_name": "Greater Swiss Mountain Dog",
+      "prompt_text": "A photo of the dog breed Greater Swiss Mountain Dog, with black, tan and white markings and a sturdy muscular body.",
+      "attribute_ids": [
+        "coat_color",
+        "body_build"
+      ],
+      "source_ids": [
+        "fci-058"
+      ]
+    },
+    {
+      "class_id": 4,
+      "canonical_name": "Appenzeller",
+      "prompt_text": "A photo of the dog breed Appenzeller, with a tail curling over the back when active and tan and white markings over a black or brown coat.",
+      "attribute_ids": [
+        "tail_shape",
+        "coat_color"
+      ],
+      "source_ids": [
+        "fci-046"
+      ]
+    },
+    {
+      "class_id": 5,
+      "canonical_name": "EntleBucher",
+      "prompt_text": "A photo of the dog breed EntleBucher, with a short close-fitting coat and black, tan and white markings.",
+      "attribute_ids": [
+        "coat_length",
+        "coat_color"
+      ],
+      "source_ids": [
+        "fci-047"
+      ]
+    },
+    {
+      "class_id": 6,
+      "canonical_name": "Toy Poodle",
+      "prompt_text": "A photo of the dog breed Toy Poodle, with a dense curly coat and ears hanging alongside the cheeks.",
+      "attribute_ids": [
+        "coat_texture",
+        "ear_position"
+      ],
+      "source_ids": [
+        "fci-172"
+      ]
+    },
+    {
+      "class_id": 7,
+      "canonical_name": "Miniature Poodle",
+      "prompt_text": "A photo of the dog breed Miniature Poodle, with a dense curly coat and ears hanging alongside the cheeks.",
+      "attribute_ids": [
+        "coat_texture",
+        "ear_position"
+      ],
+      "source_ids": [
+        "fci-172"
+      ]
+    },
+    {
+      "class_id": 8,
+      "canonical_name": "Standard Poodle",
+      "prompt_text": "A photo of the dog breed Standard Poodle, with a dense curly coat and ears hanging alongside the cheeks.",
+      "attribute_ids": [
+        "coat_texture",
+        "ear_position"
+      ],
+      "source_ids": [
+        "fci-172"
+      ]
+    },
+    {
+      "class_id": 9,
+      "canonical_name": "Miniature Schnauzer",
+      "prompt_text": "A photo of the dog breed Miniature Schnauzer, with a wiry coat and a beard around the muzzle and naturally folded drop ears.",
+      "attribute_ids": [
+        "coat_texture",
+        "ear_position"
+      ],
+      "source_ids": [
+        "fci-183"
+      ]
+    },
+    {
+      "class_id": 10,
+      "canonical_name": "Standard Schnauzer",
+      "prompt_text": "A photo of the dog breed Standard Schnauzer, with a wiry coat and a beard around the muzzle and naturally folded drop ears.",
+      "attribute_ids": [
+        "coat_texture",
+        "ear_position"
+      ],
+      "source_ids": [
+        "fci-182"
+      ]
+    },
+    {
+      "class_id": 11,
+      "canonical_name": "Giant Schnauzer",
+      "prompt_text": "A photo of the dog breed Giant Schnauzer, with a wiry coat and a beard around the muzzle and naturally folded drop ears.",
+      "attribute_ids": [
+        "coat_texture",
+        "ear_position"
+      ],
+      "source_ids": [
+        "fci-181"
+      ]
+    },
+    {
+      "class_id": 12,
+      "canonical_name": "English Setter",
+      "prompt_text": "A photo of the dog breed English Setter, with a slightly wavy coat and a flecked belton coat pattern.",
+      "attribute_ids": [
+        "coat_texture",
+        "coat_color"
+      ],
+      "source_ids": [
+        "fci-002"
+      ]
+    },
+    {
+      "class_id": 13,
+      "canonical_name": "Irish Setter",
+      "prompt_text": "A photo of the dog breed Irish Setter, with a rich chestnut-red coat and ears hanging close to the head.",
+      "attribute_ids": [
+        "coat_color",
+        "ear_position"
+      ],
+      "source_ids": [
+        "fci-120"
+      ]
+    },
+    {
+      "class_id": 14,
+      "canonical_name": "Gordon Setter",
+      "prompt_text": "A photo of the dog breed Gordon Setter, with a black coat with tan markings and low-set drop ears.",
+      "attribute_ids": [
+        "coat_color",
+        "ear_position"
+      ],
+      "source_ids": [
+        "fci-006"
+      ]
+    },
+    {
+      "class_id": 15,
+      "canonical_name": "English Springer",
+      "prompt_text": "A photo of the dog breed English Springer, with long broad ears and black-and-white or liver-and-white markings.",
+      "attribute_ids": [
+        "ear_shape",
+        "coat_color"
+      ],
+      "source_ids": [
+        "fci-125"
+      ]
+    },
+    {
+      "class_id": 16,
+      "canonical_name": "Welsh Springer Spaniel",
+      "prompt_text": "A photo of the dog breed Welsh Springer Spaniel, with rich red and white markings and a straight silky coat.",
+      "attribute_ids": [
+        "coat_color",
+        "coat_texture"
+      ],
+      "source_ids": [
+        "rkc-welsh-springer"
+      ]
+    },
+    {
+      "class_id": 17,
+      "canonical_name": "Cocker Spaniel",
+      "prompt_text": "A photo of the dog breed Cocker Spaniel, with long lobed ears and a flat silky coat.",
+      "attribute_ids": [
+        "ear_shape",
+        "coat_texture"
+      ],
+      "source_ids": [
+        "fci-005"
+      ]
+    },
+    {
+      "class_id": 18,
+      "canonical_name": "Norfolk Terrier",
+      "prompt_text": "A photo of the dog breed Norfolk Terrier, with forward-dropping V-shaped ears and a harsh wiry coat.",
+      "attribute_ids": [
+        "ear_position",
+        "coat_texture"
+      ],
+      "source_ids": [
+        "fci-272"
+      ]
+    },
+    {
+      "class_id": 19,
+      "canonical_name": "Norwich Terrier",
+      "prompt_text": "A photo of the dog breed Norwich Terrier, with upright pointed ears and a harsh wiry coat.",
+      "attribute_ids": [
+        "ear_position",
+        "coat_texture"
+      ],
+      "source_ids": [
+        "fci-072"
+      ]
+    },
+    {
+      "class_id": 20,
+      "canonical_name": "Border Terrier",
+      "prompt_text": "A photo of the dog breed Border Terrier, with small V-shaped drop ears and a dense harsh coat.",
+      "attribute_ids": [
+        "ear_position",
+        "coat_texture"
+      ],
+      "source_ids": [
+        "fci-010"
+      ]
+    },
+    {
+      "class_id": 21,
+      "canonical_name": "Collie",
+      "prompt_text": "A photo of the dog breed Collie, with semi-erect ears with tips folding forward when alert.",
+      "attribute_ids": [
+        "ear_position"
+      ],
+      "source_ids": [
+        "fci-156",
+        "fci-296"
+      ]
+    },
+    {
+      "class_id": 22,
+      "canonical_name": "Shetland Sheepdog",
+      "prompt_text": "A photo of the dog breed Shetland Sheepdog, with a long outer coat and a noticeable mane and semi-erect ears when alert.",
+      "attribute_ids": [
+        "coat_length",
+        "ear_position"
+      ],
+      "source_ids": [
+        "fci-088"
+      ]
+    },
+    {
+      "class_id": 23,
+      "canonical_name": "Border Collie",
+      "prompt_text": "A photo of the dog breed Border Collie, with erect or semi-erect ears and a low-set tail with an upward curve at the tip.",
+      "attribute_ids": [
+        "ear_position",
+        "tail_shape"
+      ],
+      "source_ids": [
+        "fci-297"
+      ]
+    },
+    {
+      "class_id": 24,
+      "canonical_name": "Golden Retriever",
+      "prompt_text": "A photo of the dog breed Golden Retriever, with a golden or cream coat and a flat or wavy feathered coat.",
+      "attribute_ids": [
+        "coat_color",
+        "coat_texture"
+      ],
+      "source_ids": [
+        "fci-111"
+      ]
+    },
+    {
+      "class_id": 25,
+      "canonical_name": "Labrador Retriever",
+      "prompt_text": "A photo of the dog breed Labrador Retriever, with a short dense coat and a thick tapering tail.",
+      "attribute_ids": [
+        "coat_length",
+        "tail_shape"
+      ],
+      "source_ids": [
+        "fci-122"
+      ]
+    },
+    {
+      "class_id": 26,
+      "canonical_name": "Chesapeake Bay Retriever",
+      "prompt_text": "A photo of the dog breed Chesapeake Bay Retriever, with a coat with waves over the shoulders, neck or back and a brown, sedge or deadgrass-colored coat.",
+      "attribute_ids": [
+        "coat_texture",
+        "coat_color"
+      ],
+      "source_ids": [
+        "fci-263"
+      ]
+    },
+    {
+      "class_id": 27,
+      "canonical_name": "Japanese Spaniel",
+      "prompt_text": "A photo of the dog breed Japanese Spaniel, with a very short broad muzzle and a straight silky coat.",
+      "attribute_ids": [
+        "muzzle_length",
+        "coat_texture"
+      ],
+      "source_ids": [
+        "fci-206"
+      ]
+    },
+    {
+      "class_id": 28,
+      "canonical_name": "Pekinese",
+      "prompt_text": "A photo of the dog breed Pekinese, with a short broad muzzle and a longer coat with a mane around the neck.",
+      "attribute_ids": [
+        "muzzle_length",
+        "coat_length"
+      ],
+      "source_ids": [
+        "fci-207"
+      ]
+    },
+    {
+      "class_id": 29,
+      "canonical_name": "Shih-Tzu",
+      "prompt_text": "A photo of the dog breed Shih-Tzu, with a long dense outer coat and a short broad muzzle.",
+      "attribute_ids": [
+        "coat_length",
+        "muzzle_length"
+      ],
+      "source_ids": [
+        "fci-208"
+      ]
+    }
+  ]
+}

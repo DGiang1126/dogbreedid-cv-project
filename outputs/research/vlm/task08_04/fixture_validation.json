@@ -1,0 +1,317 @@
+{
+  "scope": "synthetic_contract_verification",
+  "contract_schema_version": "1.0",
+  "foundation_commit": "e85e52c5e3bf6e0a2bc4b09079022cf4d2ca04ea",
+  "python_version": "3.10.11",
+  "pytest_version": "8.3.5",
+  "pytest_scope": "tests/vlm_foundation",
+  "pytest_exit_code": 0,
+  "artifact_sha256": {
+    "data/metadata/class_mapping.json": "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c",
+    "data/knowledge/vlm/name_prompt_bank.json": "c1bdfde5f1e809a3dcb55f0c0eaeceb8c612c7f57c6761c9def12a2e57174c30",
+    "data/knowledge/vlm/breed_kb.json": "46d18d941c428c0ead52c74f4591827f855c02d1f618a7ad2becbda4f5a0df68",
+    "data/knowledge/vlm/morphology_prompt_bank.json": "adbf665567f903b013a6d5cef261fc898a86690cb222694b9ccbf98724270dcd",
+    "src/vlm/knowledge_base.py": "0ad5c6c54ba0a6dfae2273a898a0ca066d7e3069eddd8a70514af48964afd3aa",
+    "src/vlm/retrieval.py": "98a38c8893b060b96ea0862c46f453b83f832709a5e12710e48489b7255c4f72"
+  },
+  "context_counter": "Fixture only: one token per rendered line; no native tokenizer.",
+  "retrieval_cases": [
+    {
+      "case": "exact_hit",
+      "question": "Border Collie",
+      "result": {
+        "status": "hit",
+        "per_breed": [
+          {
+            "mention": "border collie",
+            "class_id": 23,
+            "status": "hit",
+            "candidate_class_ids": []
+          }
+        ],
+        "resolved_class_ids": [
+          23
+        ],
+        "entries": [
+          {
+            "class_id": 23,
+            "canonical_name": "Border Collie",
+            "attributes": [
+              {
+                "attribute_id": "synthetic_coat",
+                "value": "synthetic value",
+                "source_ids": [
+                  "fixture-source-23"
+                ]
+              }
+            ]
+          }
+        ],
+        "context": "Border Collie | synthetic_coat: synthetic value [fixture-source-23]",
+        "source_ids": [
+          "fixture-source-23"
+        ],
+        "kb_version": "synthetic-kb-v1",
+        "kb_sha256": "cd5906e3ac3aada53126d10cc3d755fffd776db5817290bafe2846aafbcdfce4",
+        "truncation": {
+          "applied": false,
+          "budget_tokens": 20,
+          "used_tokens": 1,
+          "omitted_attribute_count": 0
+        },
+        "latency_ms": 0.3312000189907849,
+        "schema_version": "1.0"
+      }
+    },
+    {
+      "case": "budget_partial_hit",
+      "question": "Collie và Border Collie",
+      "result": {
+        "status": "partial_hit",
+        "per_breed": [
+          {
+            "mention": "collie",
+            "class_id": 21,
+            "status": "hit",
+            "candidate_class_ids": []
+          },
+          {
+            "mention": "border collie",
+            "class_id": 23,
+            "status": "miss",
+            "candidate_class_ids": [],
+            "reason": "budget_exhausted"
+          }
+        ],
+        "resolved_class_ids": [
+          21,
+          23
+        ],
+        "entries": [
+          {
+            "class_id": 21,
+            "canonical_name": "Collie",
+            "attributes": [
+              {
+                "attribute_id": "synthetic_coat",
+                "value": "synthetic value",
+                "source_ids": [
+                  "fixture-source-21"
+                ]
+              }
+            ]
+          }
+        ],
+        "context": "Collie | synthetic_coat: synthetic value [fixture-source-21]",
+        "source_ids": [
+          "fixture-source-21"
+        ],
+        "kb_version": "synthetic-kb-v1",
+        "kb_sha256": "cd5906e3ac3aada53126d10cc3d755fffd776db5817290bafe2846aafbcdfce4",
+        "truncation": {
+          "applied": true,
+          "budget_tokens": 1,
+          "used_tokens": 1,
+          "omitted_attribute_count": 1
+        },
+        "latency_ms": 0.3701000241562724,
+        "schema_version": "1.0"
+      }
+    },
+    {
+      "case": "unresolved_partial_hit",
+      "question": "So sánh Samoyed và Border Collie",
+      "result": {
+        "status": "partial_hit",
+        "per_breed": [
+          {
+            "mention": "samoyed",
+            "class_id": null,
+            "status": "miss",
+            "candidate_class_ids": [],
+            "reason": "no_alias_match"
+          },
+          {
+            "mention": "border collie",
+            "class_id": 23,
+            "status": "hit",
+            "candidate_class_ids": []
+          }
+        ],
+        "resolved_class_ids": [
+          23
+        ],
+        "entries": [
+          {
+            "class_id": 23,
+            "canonical_name": "Border Collie",
+            "attributes": [
+              {
+                "attribute_id": "synthetic_coat",
+                "value": "synthetic value",
+                "source_ids": [
+                  "fixture-source-23"
+                ]
+              }
+            ]
+          }
+        ],
+        "context": "Border Collie | synthetic_coat: synthetic value [fixture-source-23]",
+        "source_ids": [
+          "fixture-source-23"
+        ],
+        "kb_version": "synthetic-kb-v1",
+        "kb_sha256": "cd5906e3ac3aada53126d10cc3d755fffd776db5817290bafe2846aafbcdfce4",
+        "truncation": {
+          "applied": false,
+          "budget_tokens": 20,
+          "used_tokens": 1,
+          "omitted_attribute_count": 0
+        },
+        "latency_ms": 0.3254999755881727,
+        "schema_version": "1.0"
+      }
+    },
+    {
+      "case": "alias_collision",
+      "question": "shared fixture alias",
+      "result": {
+        "status": "ambiguous",
+        "per_breed": [
+          {
+            "mention": "shared fixture alias",
+            "class_id": null,
+            "status": "ambiguous",
+            "candidate_class_ids": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29
+            ]
+          }
+        ],
+        "resolved_class_ids": [],
+        "entries": [],
+        "context": "",
+        "source_ids": [],
+        "kb_version": "synthetic-kb-v1",
+        "kb_sha256": "cd5906e3ac3aada53126d10cc3d755fffd776db5817290bafe2846aafbcdfce4",
+        "truncation": {
+          "applied": false,
+          "budget_tokens": 20,
+          "used_tokens": 0,
+          "omitted_attribute_count": 0
+        },
+        "latency_ms": 0.3212000010535121,
+        "schema_version": "1.0"
+      }
+    },
+    {
+      "case": "plain_miss",
+      "question": "Samoyed",
+      "result": {
+        "status": "miss",
+        "per_breed": [
+          {
+            "mention": "samoyed",
+            "class_id": null,
+            "status": "miss",
+            "candidate_class_ids": [],
+            "reason": "no_alias_match"
+          }
+        ],
+        "resolved_class_ids": [],
+        "entries": [],
+        "context": "",
+        "source_ids": [],
+        "kb_version": "synthetic-kb-v1",
+        "kb_sha256": "cd5906e3ac3aada53126d10cc3d755fffd776db5817290bafe2846aafbcdfce4",
+        "truncation": {
+          "applied": false,
+          "budget_tokens": 20,
+          "used_tokens": 0,
+          "omitted_attribute_count": 0
+        },
+        "latency_ms": 0.2510999911464751,
+        "schema_version": "1.0"
+      }
+    },
+    {
+      "case": "not_applicable",
+      "question": "Border Collie",
+      "result": {
+        "status": "not_applicable",
+        "per_breed": [],
+        "resolved_class_ids": [],
+        "entries": [],
+        "context": "",
+        "source_ids": [],
+        "kb_version": "synthetic-kb-v1",
+        "kb_sha256": "cd5906e3ac3aada53126d10cc3d755fffd776db5817290bafe2846aafbcdfce4",
+        "truncation": {
+          "applied": false,
+          "budget_tokens": 20,
+          "used_tokens": 0,
+          "omitted_attribute_count": 0
+        },
+        "latency_ms": 0.022199994418770075,
+        "schema_version": "1.0"
+      }
+    },
+    {
+      "case": "snapshot_mismatch",
+      "question": "Border Collie",
+      "result": {
+        "status": "retrieval_error",
+        "per_breed": [],
+        "resolved_class_ids": [],
+        "entries": [],
+        "context": "",
+        "source_ids": [],
+        "kb_version": "synthetic-kb-v1",
+        "kb_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "truncation": {
+          "applied": false,
+          "budget_tokens": 20,
+          "used_tokens": 0,
+          "omitted_attribute_count": 0
+        },
+        "latency_ms": 0.032800016924738884,
+        "error": {
+          "code": "HASH_MISMATCH",
+          "message_vi": "Không thể truy xuất tri thức giống chó.",
+          "retryable": false
+        },
+        "schema_version": "1.0"
+      }
+    }
+  ],
+  "pytest_passed": 411,
+  "hash_scope": "Repository LF bytes"
+}
