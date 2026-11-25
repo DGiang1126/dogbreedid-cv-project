@@ -2,9 +2,12 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from collections.abc import Mapping
 from dataclasses import replace
+from functools import lru_cache
 import re
 from time import perf_counter
+from types import MappingProxyType
 import unicodedata
 
 from . import contracts as c
@@ -23,20 +26,26 @@ def render_context(entries: tuple[c.RetrievedEntry, ...]) -> str:
     )
 
 
+@lru_cache(maxsize=8)
+def _alias_index(breed_names: tuple[tuple[str, ...], ...]) -> Mapping[str, tuple[int, ...]]:
+    """Reuse a read-only index for snapshots with identical canonical names and aliases."""
+    by_alias: dict[str, set[int]] = defaultdict(set)
+    for class_id, names in enumerate(breed_names):
+        for name in names:
+            by_alias[_normalize(name)].add(class_id)
+    return MappingProxyType({alias: tuple(sorted(ids)) for alias, ids in by_alias.items()})
+
+
 def _resolve_targets(
     request: c.RetrievalRequest, knowledge: c.KnowledgeSnapshot,
     unresolved_mentions: tuple[str, ...], image_only: bool,
 ) -> list[c.BreedLookup]:
-    aliases: dict[str, set[int]] = defaultdict(set)
-    for breed in knowledge.data.breeds:
-        for alias in (breed.canonical_name, *breed.aliases["vi"], *breed.aliases["en"]):
-            aliases[_normalize(alias)].add(breed.class_id)
-    for mention in unresolved_mentions:
-        normalized = _normalize(mention)
-        if normalized:
-            aliases.setdefault(normalized, set())
-
-    ordered = sorted(aliases, key=lambda alias: (-len(alias), alias))
+    aliases = _alias_index(tuple(
+        (breed.canonical_name, *breed.aliases["vi"], *breed.aliases["en"])
+        for breed in knowledge.data.breeds
+    ))
+    unresolved = {_normalize(mention) for mention in unresolved_mentions} - {""}
+    ordered = sorted(aliases.keys() | unresolved, key=lambda alias: (-len(alias), alias))
     phrases = "|".join(re.escape(alias) for alias in ordered)
     matches = re.finditer(rf"(?<!\w)(?:{phrases})(?!\w)", _normalize(request.question))
     resolved = set(request.explicit_class_ids)
@@ -50,7 +59,7 @@ def _resolve_targets(
         if mention in seen_mentions:
             continue
         seen_mentions.add(mention)
-        candidates = tuple(sorted(aliases[mention]))
+        candidates = aliases.get(mention, ())
         if len(candidates) > 1:
             lookups.append(c.BreedLookup(
                 mention=mention, class_id=None, status=c.BreedLookupStatus.AMBIGUOUS,
@@ -71,7 +80,7 @@ def _resolve_targets(
         return lookups
 
     cnn = request.cnn_context
-    if image_only and not unresolved_mentions and cnn is not None and cnn.class_id is not c.MISSING:
+    if image_only and not unresolved and cnn is not None and cnn.class_id is not c.MISSING:
         return [c.BreedLookup(
             mention=None, class_id=cnn.class_id, status=c.BreedLookupStatus.HIT, candidate_class_ids=(),
         )]

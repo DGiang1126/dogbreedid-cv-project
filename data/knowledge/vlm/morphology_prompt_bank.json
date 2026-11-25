@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0",
   "mapping_sha256": "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c",
-  "bank_version": "morphology-draft-1",
+  "bank_version": "morphology-draft-2",
   "prompt_type": "morphology",
-  "kb_version": "breed-kb-draft-1",
-  "kb_sha256": "46d18d941c428c0ead52c74f4591827f855c02d1f618a7ad2becbda4f5a0df68",
+  "kb_version": "breed-kb-draft-2",
+  "kb_sha256": "5d3bc3cd66c017b4aeddfc07435f2cc6edd0dd5ba04bbf655478bb74ca3e9dd3",
   "entries": [
     {
       "class_id": 0,
@@ -80,7 +80,7 @@
     {
       "class_id": 6,
       "canonical_name": "Toy Poodle",
-      "prompt_text": "A photo of the dog breed Toy Poodle, with a dense curly coat and ears hanging alongside the cheeks.",
+      "prompt_text": "A photo of the dog breed Toy Poodle, with a dense curly or corded coat and ears hanging alongside the cheeks.",
       "attribute_ids": [
         "coat_texture",
         "ear_position"
@@ -92,7 +92,7 @@
     {
       "class_id": 7,
       "canonical_name": "Miniature Poodle",
-      "prompt_text": "A photo of the dog breed Miniature Poodle, with a dense curly coat and ears hanging alongside the cheeks.",
+      "prompt_text": "A photo of the dog breed Miniature Poodle, with a dense curly or corded coat and ears hanging alongside the cheeks.",
       "attribute_ids": [
         "coat_texture",
         "ear_position"
@@ -104,7 +104,7 @@
     {
       "class_id": 8,
       "canonical_name": "Standard Poodle",
-      "prompt_text": "A photo of the dog breed Standard Poodle, with a dense curly coat and ears hanging alongside the cheeks.",
+      "prompt_text": "A photo of the dog breed Standard Poodle, with a dense curly or corded coat and ears hanging alongside the cheeks.",
       "attribute_ids": [
         "coat_texture",
         "ear_position"
@@ -152,7 +152,7 @@
     {
       "class_id": 12,
       "canonical_name": "English Setter",
-      "prompt_text": "A photo of the dog breed English Setter, with a slightly wavy coat and a flecked belton coat pattern.",
+      "prompt_text": "A photo of the dog breed English Setter, with a long silky coat with slight waves behind the head and possible flecked belton ticking.",
       "attribute_ids": [
         "coat_texture",
         "coat_color"
@@ -188,7 +188,7 @@
     {
       "class_id": 15,
       "canonical_name": "English Springer",
-      "prompt_text": "A photo of the dog breed English Springer, with long broad ears and black-and-white or liver-and-white markings.",
+      "prompt_text": "A photo of the dog breed English Springer, with long broad ears and black-and-white or liver-and-white markings, sometimes with tan.",
       "attribute_ids": [
         "ear_shape",
         "coat_color"
@@ -200,7 +200,7 @@
     {
       "class_id": 16,
       "canonical_name": "Welsh Springer Spaniel",
-      "prompt_text": "A photo of the dog breed Welsh Springer Spaniel, with rich red and white markings and a straight silky coat.",
+      "prompt_text": "A photo of the dog breed Welsh Springer Spaniel, with rich red and white markings and a straight or flat, dense, silky coat.",
       "attribute_ids": [
         "coat_color",
         "coat_texture"
@@ -236,7 +236,7 @@
     {
       "class_id": 19,
       "canonical_name": "Norwich Terrier",
-      "prompt_text": "A photo of the dog breed Norwich Terrier, with upright pointed ears and a harsh wiry coat.",
+      "prompt_text": "A photo of the dog breed Norwich Terrier, with pointed ears that stand erect when alert and a harsh wiry coat.",
       "attribute_ids": [
         "ear_position",
         "coat_texture"
@@ -320,7 +320,7 @@
     {
       "class_id": 26,
       "canonical_name": "Chesapeake Bay Retriever",
-      "prompt_text": "A photo of the dog breed Chesapeake Bay Retriever, with a coat with waves over the shoulders, neck or back and a brown, sedge or deadgrass-colored coat.",
+      "prompt_text": "A photo of the dog breed Chesapeake Bay Retriever, with a short coat that may wave over the shoulders, neck, back, and loins, in brown, sedge or deadgrass colors.",
       "attribute_ids": [
         "coat_texture",
         "coat_color"
@@ -332,19 +332,20 @@
     {
       "class_id": 27,
       "canonical_name": "Japanese Spaniel",
-      "prompt_text": "A photo of the dog breed Japanese Spaniel, with a very short broad muzzle and a straight silky coat.",
+      "prompt_text": "A photo of the dog breed Japanese Spaniel, with a short broad muzzle and a straight silky coat.",
       "attribute_ids": [
         "muzzle_length",
         "coat_texture"
       ],
       "source_ids": [
+        "akc-japanese-chin",
         "fci-206"
       ]
     },
     {
       "class_id": 28,
       "canonical_name": "Pekinese",
-      "prompt_text": "A photo of the dog breed Pekinese, with a short broad muzzle and a longer coat with a mane around the neck.",
+      "prompt_text": "A photo of the dog breed Pekinese, with a defined muzzle that may be relatively short and broad and a moderately long coat with a mane.",
       "attribute_ids": [
         "muzzle_length",
         "coat_length"

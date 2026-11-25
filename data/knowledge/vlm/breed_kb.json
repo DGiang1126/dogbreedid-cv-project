@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "mapping_sha256": "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c",
-  "kb_version": "breed-kb-draft-1",
+  "kb_version": "breed-kb-draft-2",
   "breeds": [
     {
       "class_id": 0,
@@ -164,7 +164,7 @@
         },
         {
           "attribute_id": "coat_color",
-          "value": "nền đen với mảng nâu đỏ và trắng",
+          "value": "nền đen với mảng nâu vàng đến nâu đỏ và trắng",
           "source_ids": [
             "fci-047"
           ]
@@ -186,11 +186,11 @@
       "attributes": [
         {
           "attribute_id": "coat_texture",
-          "value": "lông thường xoăn dày",
+          "value": "lông dày, có thể xoăn hoặc bện dây",
           "source_ids": [
             "fci-172"
           ],
-          "variability_note": "Tiêu chuẩn cũng mô tả dạng lông bện dây. Cách tỉa có thể đổi bề ngoài."
+          "variability_note": "Cách tỉa có thể đổi bề ngoài."
         },
         {
           "attribute_id": "ear_position",
@@ -216,11 +216,11 @@
       "attributes": [
         {
           "attribute_id": "coat_texture",
-          "value": "lông thường xoăn dày",
+          "value": "lông dày, có thể xoăn hoặc bện dây",
           "source_ids": [
             "fci-172"
           ],
-          "variability_note": "Tiêu chuẩn cũng mô tả dạng lông bện dây. Cách tỉa có thể đổi bề ngoài."
+          "variability_note": "Cách tỉa có thể đổi bề ngoài."
         },
         {
           "attribute_id": "ear_position",
@@ -246,11 +246,11 @@
       "attributes": [
         {
           "attribute_id": "coat_texture",
-          "value": "lông thường xoăn dày",
+          "value": "lông dày, có thể xoăn hoặc bện dây",
           "source_ids": [
             "fci-172"
           ],
-          "variability_note": "Tiêu chuẩn cũng mô tả dạng lông bện dây. Cách tỉa có thể đổi bề ngoài."
+          "variability_note": "Cách tỉa có thể đổi bề ngoài."
         },
         {
           "attribute_id": "ear_position",
@@ -363,14 +363,14 @@
       "attributes": [
         {
           "attribute_id": "coat_texture",
-          "value": "lông dài có thể gợn nhẹ",
+          "value": "lông dài, mượt, hơi gợn ở sau đầu ngang tai",
           "source_ids": [
             "fci-002"
           ]
         },
         {
           "attribute_id": "coat_color",
-          "value": "lông có đốm màu kiểu belton",
+          "value": "lông có đốm lấm tấm kiểu belton, ưu tiên phân bố đều",
           "source_ids": [
             "fci-002"
           ]
@@ -455,7 +455,7 @@
         },
         {
           "attribute_id": "coat_color",
-          "value": "thường gặp lông đen trắng hoặc nâu gan trắng",
+          "value": "lông đen trắng hoặc nâu gan trắng, có thể kèm mảng nâu vàng",
           "source_ids": [
             "fci-125"
           ]
@@ -483,7 +483,7 @@
         },
         {
           "attribute_id": "coat_texture",
-          "value": "lông thẳng, mượt và ôm sát",
+          "value": "lông thẳng hoặc phẳng, mượt và dày",
           "source_ids": [
             "rkc-welsh-springer"
           ]
@@ -505,7 +505,7 @@
       "attributes": [
         {
           "attribute_id": "ear_shape",
-          "value": "tai dạng thùy, dài tới gần chóp mũi khi duỗi",
+          "value": "tai dạng thùy, phần vành tai kéo tới chóp mũi",
           "source_ids": [
             "fci-005"
           ]
@@ -561,7 +561,7 @@
       "attributes": [
         {
           "attribute_id": "ear_position",
-          "value": "tai dựng, chóp nhọn",
+          "value": "tai chóp nhọn, dựng khi chú ý",
           "source_ids": [
             "fci-072"
           ]
@@ -754,7 +754,7 @@
       "attributes": [
         {
           "attribute_id": "coat_texture",
-          "value": "lông có thể gợn trên vai, cổ và lưng",
+          "value": "lông có thể gợn ở vai, cổ, lưng và thắt lưng",
           "source_ids": [
             "fci-263"
           ]
@@ -782,9 +782,9 @@
       "attributes": [
         {
           "attribute_id": "muzzle_length",
-          "value": "mõm rất ngắn và rộng",
+          "value": "mõm ngắn và rộng",
           "source_ids": [
-            "fci-206"
+            "akc-japanese-chin"
           ]
         },
         {
@@ -811,7 +811,7 @@
       "attributes": [
         {
           "attribute_id": "muzzle_length",
-          "value": "mõm tương đối ngắn và rộng",
+          "value": "mõm rõ, có thể tương đối ngắn và rộng",
           "source_ids": [
             "fci-207"
           ]
@@ -1028,6 +1028,12 @@
       "source_id": "fci-208",
       "title": "FCI breed standard 208: Shih Tzu",
       "url": "https://www.fci.be/nomenclature/Standards/208g09-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "akc-japanese-chin",
+      "title": "AKC Official Standard of the Japanese Chin",
+      "url": "https://cdn.akc.org/JapaneseChin.pdf",
       "review_status": "pending"
     }
   ]

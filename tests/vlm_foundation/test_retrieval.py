@@ -4,7 +4,7 @@ import unicodedata
 import pytest
 
 from src.vlm import contracts as c
-from vlm_foundation import fixtures as f
+from vlm_foundation import fixtures as f, mocks
 
 
 POLICY = c.PolicyMode.BREED_CONTEXT_ALLOWED
@@ -66,6 +66,18 @@ def test_known_subphrase_cannot_replace_a_longer_out_of_scope_mention(kb):
     )
     assert result.status is c.RetrievalStatus.MISS
     assert result.per_breed[0].mention == "american cocker spaniel"
+
+
+def test_alias_index_uses_the_current_snapshot(kb):
+    question = "chó tai dựng"
+    assert run_lookup(kb, question).status is c.RetrievalStatus.MISS
+
+    breed = replace(kb.data.breeds[0], aliases={"vi": (question,), "en": ()})
+    updated = replace(kb, data=replace(kb.data, breeds=(breed, *kb.data.breeds[1:])),
+                      kb_sha256=f.digest(b"updated alias fixture"))
+
+    assert run_lookup(updated, question).resolved_class_ids == (0,)
+    assert run_lookup(kb, question).status is c.RetrievalStatus.MISS
 
 
 def test_cnn_fallback_needs_confirmed_image_only_scope(kb):
@@ -137,3 +149,29 @@ def test_unavailable_tokenizer_returns_safe_error(kb):
     assert result.status is c.RetrievalStatus.RETRIEVAL_ERROR
     assert result.error.code is c.ErrorCode.RETRIEVAL_ERROR
     assert "private path" not in result.error.message_vi
+
+
+def test_retrieval_context_is_accepted_by_the_assistant_contract(kb):
+    from src.vlm.retrieval import render_context, retrieve_knowledge
+
+    def count_tokens(text):
+        return len(text.split())
+
+    lookup = replace(f.make_retrieval_request(kb), question="Đặc điểm của Miniature Poodle?")
+    result = retrieve_knowledge(lookup, knowledge=kb, count_context_tokens=count_tokens, policy_mode=POLICY)
+    bound = c.validate_retrieval_result(
+        result, request=lookup, knowledge=kb, token_counter=count_tokens, render_context=render_context,
+        policy_mode=POLICY,
+    )
+    profile = f.make_profile("assistant")
+    request = replace(
+        f.make_assistant_request(
+            profile, operation=c.Operation.VQA, retrieval=bound.result, eval_ref=f.make_eval_ref("E14-B"),
+        ),
+        question=lookup.question,
+    )
+    response = mocks.MockGenerativeAssistant().execute(request, profile=profile)
+    c.validate_assistant_result(response, request=request, profile=profile, policy_mode=POLICY,
+                                retrieval=bound, offline=True)
+    assert request.allowed_source_ids == ("fixture-source-7",)
+    assert request.kb_context == result.context

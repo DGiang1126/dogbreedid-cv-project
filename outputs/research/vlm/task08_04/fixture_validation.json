@@ -9,10 +9,12 @@
   "artifact_sha256": {
     "data/metadata/class_mapping.json": "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c",
     "data/knowledge/vlm/name_prompt_bank.json": "c1bdfde5f1e809a3dcb55f0c0eaeceb8c612c7f57c6761c9def12a2e57174c30",
-    "data/knowledge/vlm/breed_kb.json": "46d18d941c428c0ead52c74f4591827f855c02d1f618a7ad2becbda4f5a0df68",
-    "data/knowledge/vlm/morphology_prompt_bank.json": "adbf665567f903b013a6d5cef261fc898a86690cb222694b9ccbf98724270dcd",
+    "data/knowledge/vlm/breed_kb.json": "5d3bc3cd66c017b4aeddfc07435f2cc6edd0dd5ba04bbf655478bb74ca3e9dd3",
+    "data/knowledge/vlm/morphology_prompt_bank.json": "68fe26a4be2df7d74b181042c570a91a3d078b2bc9444687d423ecfde3b7edac",
     "src/vlm/knowledge_base.py": "0ad5c6c54ba0a6dfae2273a898a0ca066d7e3069eddd8a70514af48964afd3aa",
-    "src/vlm/retrieval.py": "98a38c8893b060b96ea0862c46f453b83f832709a5e12710e48489b7255c4f72"
+    "src/vlm/retrieval.py": "b711e87a042e86fa782f17f25e2af059072ccbd6a6fb61f19cb85f5e91e34ff5",
+    "data/knowledge/vlm/prompt_tokenization_audit.json": "6c7873dc7de5cc09a68a59a60640f328823c35d29529bb675ca88e244f777814",
+    "scripts/audit_vlm_prompt_tokenization.py": "0a5bf56dcc126d3059be8efdc10e3021dc40bb9d4f134dafb70b80e738b07533"
   },
   "context_counter": "Fixture only: one token per rendered line; no native tokenizer.",
   "retrieval_cases": [
@@ -59,7 +61,7 @@
           "used_tokens": 1,
           "omitted_attribute_count": 0
         },
-        "latency_ms": 0.3312000189907849,
+        "latency_ms": 0.2376000047661364,
         "schema_version": "1.0"
       }
     },
@@ -114,7 +116,7 @@
           "used_tokens": 1,
           "omitted_attribute_count": 1
         },
-        "latency_ms": 0.3701000241562724,
+        "latency_ms": 0.2855999628081918,
         "schema_version": "1.0"
       }
     },
@@ -168,7 +170,7 @@
           "used_tokens": 1,
           "omitted_attribute_count": 0
         },
-        "latency_ms": 0.3254999755881727,
+        "latency_ms": 0.23659999715164304,
         "schema_version": "1.0"
       }
     },
@@ -228,7 +230,7 @@
           "used_tokens": 0,
           "omitted_attribute_count": 0
         },
-        "latency_ms": 0.3212000010535121,
+        "latency_ms": 0.36259996704757214,
         "schema_version": "1.0"
       }
     },
@@ -258,7 +260,7 @@
           "used_tokens": 0,
           "omitted_attribute_count": 0
         },
-        "latency_ms": 0.2510999911464751,
+        "latency_ms": 0.2582999877631664,
         "schema_version": "1.0"
       }
     },
@@ -280,7 +282,7 @@
           "used_tokens": 0,
           "omitted_attribute_count": 0
         },
-        "latency_ms": 0.022199994418770075,
+        "latency_ms": 0.024799956008791924,
         "schema_version": "1.0"
       }
     },
@@ -302,7 +304,7 @@
           "used_tokens": 0,
           "omitted_attribute_count": 0
         },
-        "latency_ms": 0.032800016924738884,
+        "latency_ms": 0.03609998384490609,
         "error": {
           "code": "HASH_MISMATCH",
           "message_vi": "Không thể truy xuất tri thức giống chó.",
@@ -312,6 +314,6 @@
       }
     }
   ],
-  "pytest_passed": 411,
+  "pytest_passed": 413,
   "hash_scope": "Repository LF bytes"
 }
