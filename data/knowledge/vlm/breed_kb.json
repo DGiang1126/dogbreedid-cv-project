@@ -1,0 +1,1040 @@
+{
+  "schema_version": "1.0",
+  "mapping_sha256": "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c",
+  "kb_version": "breed-kb-draft-2",
+  "breeds": [
+    {
+      "class_id": 0,
+      "canonical_name": "Eskimo Dog",
+      "aliases": {
+        "vi": [
+          "chó kéo xe eskimo"
+        ],
+        "en": [
+          "eskimo sled dog",
+          "husky"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "bộ lông dày",
+          "source_ids": [
+            "stanford-wordnet"
+          ],
+          "variability_note": "Nhãn synset n02109961, không đồng nhất với một giống kennel club cụ thể."
+        }
+      ]
+    },
+    {
+      "class_id": 1,
+      "canonical_name": "Malamute",
+      "aliases": {
+        "vi": [
+          "chó malamute alaska"
+        ],
+        "en": [
+          "alaskan malamute",
+          "alaska malamute"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "body_build",
+          "value": "thân chắc khỏe, ngực sâu",
+          "source_ids": [
+            "fci-243"
+          ]
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông hai lớp dày",
+          "source_ids": [
+            "fci-243"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 2,
+      "canonical_name": "Siberian Husky",
+      "aliases": {
+        "vi": [
+          "chó husky siberia"
+        ],
+        "en": [
+          "husky siberian",
+          "husky"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "ear_position",
+          "value": "tai dựng",
+          "source_ids": [
+            "fci-270"
+          ]
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "bộ lông hai lớp dày",
+          "source_ids": [
+            "fci-270"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 3,
+      "canonical_name": "Greater Swiss Mountain Dog",
+      "aliases": {
+        "vi": [
+          "chó núi thụy sĩ lớn"
+        ],
+        "en": [
+          "great swiss mountain dog",
+          "swissy"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_color",
+          "value": "nền đen với mảng nâu đỏ và trắng",
+          "source_ids": [
+            "fci-058"
+          ]
+        },
+        {
+          "attribute_id": "body_build",
+          "value": "thân cơ bắp chắc khỏe",
+          "source_ids": [
+            "fci-058"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 4,
+      "canonical_name": "Appenzeller",
+      "aliases": {
+        "vi": [
+          "chó chăn bò appenzell"
+        ],
+        "en": [
+          "appenzeller sennenhund",
+          "appenzell cattle dog"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "tail_shape",
+          "value": "đuôi cuộn cao trên lưng khi vận động",
+          "source_ids": [
+            "fci-046"
+          ]
+        },
+        {
+          "attribute_id": "coat_color",
+          "value": "nền đen hoặc nâu havana với mảng nâu đỏ và trắng",
+          "source_ids": [
+            "fci-046"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 5,
+      "canonical_name": "EntleBucher",
+      "aliases": {
+        "vi": [
+          "chó chăn bò entlebuch"
+        ],
+        "en": [
+          "entlebucher mountain dog",
+          "entlebuch cattle dog"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_length",
+          "value": "lông ngắn và ôm sát thân",
+          "source_ids": [
+            "fci-047"
+          ]
+        },
+        {
+          "attribute_id": "coat_color",
+          "value": "nền đen với mảng nâu vàng đến nâu đỏ và trắng",
+          "source_ids": [
+            "fci-047"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 6,
+      "canonical_name": "Toy Poodle",
+      "aliases": {
+        "vi": [
+          "poodle tí hon"
+        ],
+        "en": [
+          "toy-sized poodle",
+          "poodle"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông dày, có thể xoăn hoặc bện dây",
+          "source_ids": [
+            "fci-172"
+          ],
+          "variability_note": "Cách tỉa có thể đổi bề ngoài."
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai rủ dọc má",
+          "source_ids": [
+            "fci-172"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 7,
+      "canonical_name": "Miniature Poodle",
+      "aliases": {
+        "vi": [
+          "poodle nhỏ"
+        ],
+        "en": [
+          "mini poodle",
+          "poodle"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông dày, có thể xoăn hoặc bện dây",
+          "source_ids": [
+            "fci-172"
+          ],
+          "variability_note": "Cách tỉa có thể đổi bề ngoài."
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai rủ dọc má",
+          "source_ids": [
+            "fci-172"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 8,
+      "canonical_name": "Standard Poodle",
+      "aliases": {
+        "vi": [
+          "poodle tiêu chuẩn"
+        ],
+        "en": [
+          "standard-sized poodle",
+          "poodle"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông dày, có thể xoăn hoặc bện dây",
+          "source_ids": [
+            "fci-172"
+          ],
+          "variability_note": "Cách tỉa có thể đổi bề ngoài."
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai rủ dọc má",
+          "source_ids": [
+            "fci-172"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 9,
+      "canonical_name": "Miniature Schnauzer",
+      "aliases": {
+        "vi": [
+          "schnauzer nhỏ"
+        ],
+        "en": [
+          "mini schnauzer",
+          "zwergschnauzer",
+          "schnauzer"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông thô cứng với râu ở mõm",
+          "source_ids": [
+            "fci-183"
+          ]
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai tự nhiên gập và rủ",
+          "source_ids": [
+            "fci-183"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 10,
+      "canonical_name": "Standard Schnauzer",
+      "aliases": {
+        "vi": [
+          "schnauzer tiêu chuẩn"
+        ],
+        "en": [
+          "mittelschnauzer",
+          "schnauzer"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông thô cứng với râu ở mõm",
+          "source_ids": [
+            "fci-182"
+          ]
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai tự nhiên gập và rủ",
+          "source_ids": [
+            "fci-182"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 11,
+      "canonical_name": "Giant Schnauzer",
+      "aliases": {
+        "vi": [
+          "schnauzer khổng lồ"
+        ],
+        "en": [
+          "riesenschnauzer",
+          "schnauzer"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông thô cứng với râu ở mõm",
+          "source_ids": [
+            "fci-181"
+          ]
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai tự nhiên gập và rủ",
+          "source_ids": [
+            "fci-181"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 12,
+      "canonical_name": "English Setter",
+      "aliases": {
+        "vi": [
+          "chó setter anh"
+        ],
+        "en": [
+          "setter anglais"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông dài, mượt, hơi gợn ở sau đầu ngang tai",
+          "source_ids": [
+            "fci-002"
+          ]
+        },
+        {
+          "attribute_id": "coat_color",
+          "value": "lông có đốm lấm tấm kiểu belton, ưu tiên phân bố đều",
+          "source_ids": [
+            "fci-002"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 13,
+      "canonical_name": "Irish Setter",
+      "aliases": {
+        "vi": [
+          "chó setter ai-len"
+        ],
+        "en": [
+          "irish red setter",
+          "red setter"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_color",
+          "value": "lông màu hạt dẻ đậm",
+          "source_ids": [
+            "fci-120"
+          ]
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai thấp, rủ sát đầu",
+          "source_ids": [
+            "fci-120"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 14,
+      "canonical_name": "Gordon Setter",
+      "aliases": {
+        "vi": [
+          "chó setter gordon"
+        ],
+        "en": [
+          "gordon setter dog"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_color",
+          "value": "lông đen với mảng nâu đỏ",
+          "source_ids": [
+            "fci-006"
+          ]
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai thấp, nằm sát đầu",
+          "source_ids": [
+            "fci-006"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 15,
+      "canonical_name": "English Springer",
+      "aliases": {
+        "vi": [
+          "chó springer anh"
+        ],
+        "en": [
+          "english springer spaniel"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "ear_shape",
+          "value": "tai dạng thùy, dài và rộng",
+          "source_ids": [
+            "fci-125"
+          ]
+        },
+        {
+          "attribute_id": "coat_color",
+          "value": "lông đen trắng hoặc nâu gan trắng, có thể kèm mảng nâu vàng",
+          "source_ids": [
+            "fci-125"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 16,
+      "canonical_name": "Welsh Springer Spaniel",
+      "aliases": {
+        "vi": [
+          "chó springer xứ wales"
+        ],
+        "en": [
+          "welsh springer"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_color",
+          "value": "lông đỏ đậm và trắng",
+          "source_ids": [
+            "rkc-welsh-springer"
+          ]
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông thẳng hoặc phẳng, mượt và dày",
+          "source_ids": [
+            "rkc-welsh-springer"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 17,
+      "canonical_name": "Cocker Spaniel",
+      "aliases": {
+        "vi": [
+          "chó cocker anh"
+        ],
+        "en": [
+          "english cocker spaniel",
+          "english cocker"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "ear_shape",
+          "value": "tai dạng thùy, phần vành tai kéo tới chóp mũi",
+          "source_ids": [
+            "fci-005"
+          ]
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông phẳng và mượt",
+          "source_ids": [
+            "fci-005"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 18,
+      "canonical_name": "Norfolk Terrier",
+      "aliases": {
+        "vi": [
+          "chó sục norfolk"
+        ],
+        "en": [
+          "norfolk terrier dog"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "ear_position",
+          "value": "tai chữ V rủ về phía trước",
+          "source_ids": [
+            "fci-272"
+          ]
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông cứng và thô",
+          "source_ids": [
+            "fci-272"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 19,
+      "canonical_name": "Norwich Terrier",
+      "aliases": {
+        "vi": [
+          "chó sục norwich"
+        ],
+        "en": [
+          "norwich terrier dog"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "ear_position",
+          "value": "tai chóp nhọn, dựng khi chú ý",
+          "source_ids": [
+            "fci-072"
+          ]
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông cứng và thô",
+          "source_ids": [
+            "fci-072"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 20,
+      "canonical_name": "Border Terrier",
+      "aliases": {
+        "vi": [
+          "chó sục border"
+        ],
+        "en": [
+          "border terrier dog"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "ear_position",
+          "value": "tai chữ V nhỏ rủ về phía má",
+          "source_ids": [
+            "fci-010"
+          ]
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông thô và dày",
+          "source_ids": [
+            "fci-010"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 21,
+      "canonical_name": "Collie",
+      "aliases": {
+        "vi": [
+          "chó collie"
+        ],
+        "en": [
+          "scottish collie"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "ear_position",
+          "value": "tai bán dựng, chóp gập về trước khi chú ý",
+          "source_ids": [
+            "fci-156",
+            "fci-296"
+          ],
+          "variability_note": "Mô tả chung cho hai biến thể Rough và Smooth. Tư thế tai phụ thuộc mức chú ý."
+        }
+      ]
+    },
+    {
+      "class_id": 22,
+      "canonical_name": "Shetland Sheepdog",
+      "aliases": {
+        "vi": [
+          "chó chăn cừu shetland"
+        ],
+        "en": [
+          "sheltie"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_length",
+          "value": "lông ngoài dài, tạo bờm quanh cổ",
+          "source_ids": [
+            "fci-088"
+          ]
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai bán dựng khi chú ý",
+          "source_ids": [
+            "fci-088"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 23,
+      "canonical_name": "Border Collie",
+      "aliases": {
+        "vi": [
+          "chó chăn cừu border collie"
+        ],
+        "en": [
+          "border collie dog"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "ear_position",
+          "value": "tai dựng hoặc bán dựng",
+          "source_ids": [
+            "fci-297"
+          ]
+        },
+        {
+          "attribute_id": "tail_shape",
+          "value": "đuôi thấp với đoạn chót cong lên",
+          "source_ids": [
+            "fci-297"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 24,
+      "canonical_name": "Golden Retriever",
+      "aliases": {
+        "vi": [
+          "chó golden"
+        ],
+        "en": [
+          "golden retriever dog"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_color",
+          "value": "lông màu vàng hoặc kem",
+          "source_ids": [
+            "fci-111"
+          ]
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông phẳng hoặc gợn, có lông dài trang trí",
+          "source_ids": [
+            "fci-111"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 25,
+      "canonical_name": "Labrador Retriever",
+      "aliases": {
+        "vi": [
+          "chó labrador"
+        ],
+        "en": [
+          "labrador",
+          "lab retriever"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_length",
+          "value": "lông ngắn và dày",
+          "source_ids": [
+            "fci-122"
+          ]
+        },
+        {
+          "attribute_id": "tail_shape",
+          "value": "đuôi dày ở gốc và thuôn dần về chóp",
+          "source_ids": [
+            "fci-122"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 26,
+      "canonical_name": "Chesapeake Bay Retriever",
+      "aliases": {
+        "vi": [
+          "chó chesapeake bay"
+        ],
+        "en": [
+          "chesapeake retriever",
+          "chessie"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông có thể gợn ở vai, cổ, lưng và thắt lưng",
+          "source_ids": [
+            "fci-263"
+          ]
+        },
+        {
+          "attribute_id": "coat_color",
+          "value": "lông tông nâu, màu cói hoặc cỏ khô",
+          "source_ids": [
+            "fci-263"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 27,
+      "canonical_name": "Japanese Spaniel",
+      "aliases": {
+        "vi": [
+          "chó nhật lùn"
+        ],
+        "en": [
+          "japanese chin"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "muzzle_length",
+          "value": "mõm ngắn và rộng",
+          "source_ids": [
+            "akc-japanese-chin"
+          ]
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông thẳng và mượt",
+          "source_ids": [
+            "fci-206"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 28,
+      "canonical_name": "Pekinese",
+      "aliases": {
+        "vi": [
+          "chó bắc kinh"
+        ],
+        "en": [
+          "pekingese",
+          "peke"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "muzzle_length",
+          "value": "mõm rõ, có thể tương đối ngắn và rộng",
+          "source_ids": [
+            "fci-207"
+          ]
+        },
+        {
+          "attribute_id": "coat_length",
+          "value": "lông tương đối dài, có bờm ở cổ",
+          "source_ids": [
+            "fci-207"
+          ]
+        }
+      ]
+    },
+    {
+      "class_id": 29,
+      "canonical_name": "Shih-Tzu",
+      "aliases": {
+        "vi": [
+          "chó sư tử shih tzu"
+        ],
+        "en": [
+          "shih tzu",
+          "shih tzu dog"
+        ]
+      },
+      "attributes": [
+        {
+          "attribute_id": "coat_length",
+          "value": "lông ngoài dài và dày",
+          "source_ids": [
+            "fci-208"
+          ]
+        },
+        {
+          "attribute_id": "muzzle_length",
+          "value": "mõm ngắn, rộng",
+          "source_ids": [
+            "fci-208"
+          ]
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "stanford-wordnet",
+      "title": "Stanford CS231A WordNet taxonomy example for Eskimo dog",
+      "url": "https://cvgl.stanford.edu/teaching/cs231a_winter1415/lecture/lecture16_datasets_3D_scene_understanding.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-243",
+      "title": "FCI breed standard 243: Alaskan Malamute",
+      "url": "https://www.fci.be/nomenclature/Standards/243g05-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-270",
+      "title": "FCI breed standard 270: Siberian Husky",
+      "url": "https://www.fci.be/nomenclature/Standards/270g05-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-058",
+      "title": "FCI breed standard 058: Greater Swiss Mountain Dog",
+      "url": "https://www.fci.be/nomenclature/Standards/058g02-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-046",
+      "title": "FCI breed standard 046: Appenzell Cattle Dog",
+      "url": "https://www.fci.be/nomenclature/Standards/046g02-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-047",
+      "title": "FCI breed standard 047: Entlebuch Cattle Dog",
+      "url": "https://www.fci.be/nomenclature/Standards/047g02-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-172",
+      "title": "FCI breed standard 172: Poodle",
+      "url": "https://www.fci.be/nomenclature/Standards/172g09-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-183",
+      "title": "FCI breed standard 183: Miniature Schnauzer",
+      "url": "https://www.fci.be/nomenclature/Standards/183g02-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-182",
+      "title": "FCI breed standard 182: Schnauzer",
+      "url": "https://www.fci.be/nomenclature/Standards/182g02-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-181",
+      "title": "FCI breed standard 181: Giant Schnauzer",
+      "url": "https://www.fci.be/nomenclature/Standards/181g02-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-002",
+      "title": "FCI breed standard 002: English Setter",
+      "url": "https://www.fci.be/nomenclature/Standards/002g07-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-120",
+      "title": "FCI breed standard 120: Irish Red Setter",
+      "url": "https://www.fci.be/nomenclature/Standards/120g07-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-006",
+      "title": "FCI breed standard 006: Gordon Setter",
+      "url": "https://www.fci.be/nomenclature/Standards/006g07-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-125",
+      "title": "FCI breed standard 125: English Springer Spaniel",
+      "url": "https://www.fci.be/nomenclature/Standards/125g08-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "rkc-welsh-springer",
+      "title": "Royal Kennel Club breed standard: Welsh Springer Spaniel",
+      "url": "https://www.royalkennelclub.com/breed-standards/gundog/spaniel-welsh-springer/",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-005",
+      "title": "FCI breed standard 005: English Cocker Spaniel",
+      "url": "https://www.fci.be/nomenclature/Standards/005g08-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-272",
+      "title": "FCI breed standard 272: Norfolk Terrier",
+      "url": "https://www.fci.be/nomenclature/Standards/272g03-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-072",
+      "title": "FCI breed standard 072: Norwich Terrier",
+      "url": "https://www.fci.be/nomenclature/Standards/072g03-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-010",
+      "title": "FCI breed standard 010: Border Terrier",
+      "url": "https://www.fci.be/nomenclature/Standards/010g03-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-156",
+      "title": "FCI breed standard 156: Collie (Rough)",
+      "url": "https://www.fci.be/nomenclature/Standards/156g01-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-296",
+      "title": "FCI breed standard 296: Collie (Smooth)",
+      "url": "https://www.fci.be/nomenclature/Standards/296g01-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-088",
+      "title": "FCI breed standard 088: Shetland Sheepdog",
+      "url": "https://www.fci.be/nomenclature/Standards/088g01-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-297",
+      "title": "FCI breed standard 297: Border Collie",
+      "url": "https://www.fci.be/nomenclature/Standards/297g01-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-111",
+      "title": "FCI breed standard 111: Golden Retriever",
+      "url": "https://www.fci.be/nomenclature/Standards/111g08-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-122",
+      "title": "FCI breed standard 122: Labrador Retriever",
+      "url": "https://www.fci.be/nomenclature/Standards/122g08-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-263",
+      "title": "FCI breed standard 263: Chesapeake Bay Retriever",
+      "url": "https://www.fci.be/nomenclature/Standards/263g08-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-206",
+      "title": "FCI breed standard 206: Japanese Chin",
+      "url": "https://www.fci.be/nomenclature/Standards/206g09-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-207",
+      "title": "FCI breed standard 207: Pekingese",
+      "url": "https://www.fci.be/nomenclature/Standards/207g09-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "fci-208",
+      "title": "FCI breed standard 208: Shih Tzu",
+      "url": "https://www.fci.be/nomenclature/Standards/208g09-en.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "akc-japanese-chin",
+      "title": "AKC Official Standard of the Japanese Chin",
+      "url": "https://cdn.akc.org/JapaneseChin.pdf",
+      "review_status": "pending"
+    }
+  ]
+}

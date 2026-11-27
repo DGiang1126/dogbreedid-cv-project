@@ -1,0 +1,1597 @@
+{
+  "review_date": "2026-11-25",
+  "task": "08.04 Breed Knowledge Base and linked prompts",
+  "scope": "Public breed standards and lexical taxonomy tied to the local draft. The review provides evidence for the project approver. Access was limited to the local KB, prompt and mapping metadata, and public sources. The repository was inspected read-only.",
+  "source_locator_convention": "PDF page numbers are one-based. Line numbers are extracted-text coordinates used for this review and may change with rendering.",
+  "audited_files": [
+    {
+      "path": "data/metadata/class_mapping.json",
+      "sha256": "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c"
+    },
+    {
+      "path": "data/knowledge/vlm/breed_kb.json",
+      "sha256": "46d18d941c428c0ead52c74f4591827f855c02d1f618a7ad2becbda4f5a0df68"
+    },
+    {
+      "path": "data/knowledge/vlm/name_prompt_bank.json",
+      "sha256": "c1bdfde5f1e809a3dcb55f0c0eaeceb8c612c7f57c6761c9def12a2e57174c30"
+    },
+    {
+      "path": "data/knowledge/vlm/morphology_prompt_bank.json",
+      "sha256": "adbf665567f903b013a6d5cef261fc898a86690cb222694b9ccbf98724270dcd"
+    }
+  ],
+  "kb_version": "breed-kb-draft-1",
+  "morphology_bank_version": "morphology-draft-1",
+  "name_bank_version": "name-1",
+  "coverage": {
+    "canonical_classes": 30,
+    "registered_source_urls": 29,
+    "registered_sources_consulted": 29,
+    "attributes_reviewed": 58,
+    "attribute_status_counts": {
+      "supported_with_scope": 4,
+      "supported": 40,
+      "revise_kb": 3,
+      "revise_kb_and_prompt": 9,
+      "revise_citation_or_claim": 1,
+      "revise_prompt": 1
+    },
+    "structural_checks": {
+      "exact_mapping_names": true,
+      "name_prompt_ids_and_names": true,
+      "morphology_ids_names_and_claim_references": true,
+      "version_and_hash_bindings": true
+    },
+    "attribute_reviews_recommending_changes": 14,
+    "classes_with_recommended_changes": [
+      5,
+      6,
+      7,
+      8,
+      12,
+      15,
+      16,
+      17,
+      19,
+      26,
+      27,
+      28
+    ]
+  },
+  "aliases": {
+    "normalized_collisions": [
+      {
+        "alias": "husky",
+        "candidate_class_ids": [
+          0,
+          2
+        ]
+      },
+      {
+        "alias": "poodle",
+        "candidate_class_ids": [
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "alias": "schnauzer",
+        "candidate_class_ids": [
+          9,
+          10,
+          11
+        ]
+      }
+    ],
+    "contract": "NFC, casefold, NFC, and collapsed whitespace. Resolve the longest complete phrase. A standalone shared alias gives ambiguous with sorted candidates. Canonical IDs and exact names stay bound to the mapping.",
+    "review_notes": [
+      "Stanford WordNet labels Eskimo dog and husky together in the taxonomy example. The shared alias husky also occurs in the Siberian Husky class. Retain the ambiguous candidates 0 and 2 so the project does not silently map everyday usage to one class.",
+      "The interface contract explicitly illustrates poodle returning candidates 6, 7, 8. FCI 172 covers these three sizes within one standard. The two chosen morphology traits are shared and should not be used to distinguish Poodle sizes.",
+      "FCI 182 uses the name Schnauzer, while FCI 183 and FCI 181 use qualifying names. The project shares the broad term schnauzer across 9, 10, 11 in keeping with ambiguity handling. The selected coat and ear claims are shared.",
+      "FCI standard titles support Great Swiss Mountain Dog, Appenzeller Sennenhund / Appenzell Cattle Dog, Entlebuch Cattle Dog, Zwergschnauzer, Riesenschnauzer, Irish Red Setter, English Springer Spaniel, English Cocker Spaniel, Japanese Chin, Pekingese and Shih Tzu as source names behind the exact local labels. AKC directly documents Japanese Spaniel as the earlier name of Japanese Chin.",
+      "Local searchable translations, informal names and descriptive spellings were checked for class collision and intent. A lexical or official citation for every alias was outside the 29-source morphology review.",
+      "Suggested direct regression cases are husky, poodle, schnauzer, Siberian Husky, Toy Poodle, Standard Schnauzer and Border Collie. This review did not run the retrieval runtime."
+    ]
+  },
+  "registered_sources": [
+    {
+      "source_id": "stanford-wordnet",
+      "title": "Stanford CS231A WordNet taxonomy example for Eskimo dog",
+      "url": "https://cvgl.stanford.edu/teaching/cs231a_winter1415/lecture/lecture16_datasets_3D_scene_understanding.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": null,
+      "verification_note": "The PDF text index exposed the Taxonomy heading. Search indexing supplied the visual transcription of the WordNet gloss on the same slide. The direct screenshot service returned a cache miss."
+    },
+    {
+      "source_id": "fci-243",
+      "title": "FCI breed standard 243: Alaskan Malamute",
+      "url": "https://www.fci.be/nomenclature/Standards/243g05-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2023-03-10"
+    },
+    {
+      "source_id": "fci-270",
+      "title": "FCI breed standard 270: Siberian Husky",
+      "url": "https://www.fci.be/nomenclature/Standards/270g05-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2022-11-18"
+    },
+    {
+      "source_id": "fci-058",
+      "title": "FCI breed standard 058: Greater Swiss Mountain Dog",
+      "url": "https://www.fci.be/nomenclature/Standards/058g02-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2003-05-05"
+    },
+    {
+      "source_id": "fci-046",
+      "title": "FCI breed standard 046: Appenzell Cattle Dog",
+      "url": "https://www.fci.be/nomenclature/Standards/046g02-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2003-05-05"
+    },
+    {
+      "source_id": "fci-047",
+      "title": "FCI breed standard 047: Entlebuch Cattle Dog",
+      "url": "https://www.fci.be/nomenclature/Standards/047g02-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2002-06-28"
+    },
+    {
+      "source_id": "fci-172",
+      "title": "FCI breed standard 172: Poodle",
+      "url": "https://www.fci.be/nomenclature/Standards/172g09-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2024-04-05, valid from 2024-08-01"
+    },
+    {
+      "source_id": "fci-183",
+      "title": "FCI breed standard 183: Miniature Schnauzer",
+      "url": "https://www.fci.be/nomenclature/Standards/183g02-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2007-04-18"
+    },
+    {
+      "source_id": "fci-182",
+      "title": "FCI breed standard 182: Schnauzer",
+      "url": "https://www.fci.be/nomenclature/Standards/182g02-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2007-04-18"
+    },
+    {
+      "source_id": "fci-181",
+      "title": "FCI breed standard 181: Giant Schnauzer",
+      "url": "https://www.fci.be/nomenclature/Standards/181g02-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2021-06-10"
+    },
+    {
+      "source_id": "fci-002",
+      "title": "FCI breed standard 002: English Setter",
+      "url": "https://www.fci.be/nomenclature/Standards/002g07-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2026-10-06"
+    },
+    {
+      "source_id": "fci-120",
+      "title": "FCI breed standard 120: Irish Red Setter",
+      "url": "https://www.fci.be/nomenclature/Standards/120g07-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2001-04-02"
+    },
+    {
+      "source_id": "fci-006",
+      "title": "FCI breed standard 006: Gordon Setter",
+      "url": "https://www.fci.be/nomenclature/Standards/006g07-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2026-10-06"
+    },
+    {
+      "source_id": "fci-125",
+      "title": "FCI breed standard 125: English Springer Spaniel",
+      "url": "https://www.fci.be/nomenclature/Standards/125g08-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2026-10-06"
+    },
+    {
+      "source_id": "rkc-welsh-springer",
+      "title": "Royal Kennel Club breed standard: Welsh Springer Spaniel",
+      "url": "https://www.royalkennelclub.com/breed-standards/gundog/spaniel-welsh-springer/",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": null
+    },
+    {
+      "source_id": "fci-005",
+      "title": "FCI breed standard 005: English Cocker Spaniel",
+      "url": "https://www.fci.be/nomenclature/Standards/005g08-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2026-10-06"
+    },
+    {
+      "source_id": "fci-272",
+      "title": "FCI breed standard 272: Norfolk Terrier",
+      "url": "https://www.fci.be/nomenclature/Standards/272g03-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2026-10-06"
+    },
+    {
+      "source_id": "fci-072",
+      "title": "FCI breed standard 072: Norwich Terrier",
+      "url": "https://www.fci.be/nomenclature/Standards/072g03-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2026-10-06"
+    },
+    {
+      "source_id": "fci-010",
+      "title": "FCI breed standard 010: Border Terrier",
+      "url": "https://www.fci.be/nomenclature/Standards/010g03-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2026-10-06"
+    },
+    {
+      "source_id": "fci-156",
+      "title": "FCI breed standard 156: Collie (Rough)",
+      "url": "https://www.fci.be/nomenclature/Standards/156g01-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2026-10-06"
+    },
+    {
+      "source_id": "fci-296",
+      "title": "FCI breed standard 296: Collie (Smooth)",
+      "url": "https://www.fci.be/nomenclature/Standards/296g01-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2026-10-06"
+    },
+    {
+      "source_id": "fci-088",
+      "title": "FCI breed standard 088: Shetland Sheepdog",
+      "url": "https://www.fci.be/nomenclature/Standards/088g01-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2026-10-06"
+    },
+    {
+      "source_id": "fci-297",
+      "title": "FCI breed standard 297: Border Collie",
+      "url": "https://www.fci.be/nomenclature/Standards/297g01-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2009-10-28"
+    },
+    {
+      "source_id": "fci-111",
+      "title": "FCI breed standard 111: Golden Retriever",
+      "url": "https://www.fci.be/nomenclature/Standards/111g08-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2026-10-06"
+    },
+    {
+      "source_id": "fci-122",
+      "title": "FCI breed standard 122: Labrador Retriever",
+      "url": "https://www.fci.be/nomenclature/Standards/122g08-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2026-10-06"
+    },
+    {
+      "source_id": "fci-263",
+      "title": "FCI breed standard 263: Chesapeake Bay Retriever",
+      "url": "https://www.fci.be/nomenclature/Standards/263g08-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "1999-03-12"
+    },
+    {
+      "source_id": "fci-206",
+      "title": "FCI breed standard 206: Japanese Chin",
+      "url": "https://www.fci.be/nomenclature/Standards/206g09-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2016-06-03"
+    },
+    {
+      "source_id": "fci-207",
+      "title": "FCI breed standard 207: Pekingese",
+      "url": "https://www.fci.be/nomenclature/Standards/207g09-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2026-10-06"
+    },
+    {
+      "source_id": "fci-208",
+      "title": "FCI breed standard 208: Shih Tzu",
+      "url": "https://www.fci.be/nomenclature/Standards/208g09-en.pdf",
+      "review_status": "pending",
+      "access": "consulted",
+      "document_version": "2026-10-06"
+    }
+  ],
+  "proposed_supplemental_sources": [
+    {
+      "source_id": "akc-japanese-chin",
+      "url": "https://cdn.akc.org/JapaneseChin.pdf",
+      "locator": "PDF p. 1, Head / Muzzle, lines 8–10",
+      "purpose": "Direct confirmation of short broad muzzle for class ID 27."
+    },
+    {
+      "source_id": "akc-japanese-chin-history",
+      "url": "https://www.akc.org/dog-breeds/japanese-chin/",
+      "locator": "History",
+      "purpose": "Official historical crosswalk from Japanese Spaniel to Japanese Chin."
+    }
+  ],
+  "class_reviews": [
+    {
+      "class_id": 0,
+      "canonical_name": "Eskimo Dog",
+      "aliases": {
+        "vi": [
+          "chó kéo xe eskimo"
+        ],
+        "en": [
+          "eskimo sled dog",
+          "husky"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Eskimo Dog.",
+      "morphology_prompt": "A photo of the dog breed Eskimo Dog, with a thick coat.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "bộ lông dày",
+          "variability_note": "Nhãn synset n02109961, không đồng nhất với một giống kennel club cụ thể.",
+          "registered_evidence": [
+            {
+              "source_id": "stanford-wordnet",
+              "locator": "PDF p. 20, ImageNet knowledge ontology / Taxonomy visual"
+            }
+          ],
+          "status": "supported_with_scope",
+          "assessment": "The WordNet gloss identifies Eskimo dog / husky as a heavy-coated Arctic sled dog. This supports the coat description at the lexical synset level.",
+          "proposed_change": "Keep the existing synset note. Keep the canonical name. If wording can vary from the established prompt template, ‘A photo of an Eskimo Dog with a thick coat.’ avoids calling the lexical class a formally recognised breed."
+        }
+      ]
+    },
+    {
+      "class_id": 1,
+      "canonical_name": "Malamute",
+      "aliases": {
+        "vi": [
+          "chó malamute alaska"
+        ],
+        "en": [
+          "alaskan malamute",
+          "alaska malamute"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Malamute.",
+      "morphology_prompt": "A photo of the dog breed Malamute, with a sturdy build and deep chest and a dense double coat.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "body_build",
+          "value": "thân chắc khỏe, ngực sâu",
+          "registered_evidence": [
+            {
+              "source_id": "fci-243",
+              "locator": "PDF p. 2, General Appearance, lines 15–17"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Powerful, substantially built dog with a deep chest and strong body."
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông hai lớp dày",
+          "registered_evidence": [
+            {
+              "source_id": "fci-243",
+              "locator": "PDF p. 5, Coat / Hair, lines 126–130"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Thick and coarse outer guard coat over a dense, woolly undercoat."
+        }
+      ]
+    },
+    {
+      "class_id": 2,
+      "canonical_name": "Siberian Husky",
+      "aliases": {
+        "vi": [
+          "chó husky siberia"
+        ],
+        "en": [
+          "husky siberian",
+          "husky"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Siberian Husky.",
+      "morphology_prompt": "A photo of the dog breed Siberian Husky, with erect ears and a dense double coat.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "ear_position",
+          "value": "tai dựng",
+          "registered_evidence": [
+            {
+              "source_id": "fci-270",
+              "locator": "PDF p. 3, Ears, lines 63–65"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Ears strongly upright, with tips pointing up."
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "bộ lông hai lớp dày",
+          "registered_evidence": [
+            {
+              "source_id": "fci-270",
+              "locator": "PDF p. 5, Coat / Hair, lines 124–131"
+            }
+          ],
+          "status": "supported_with_scope",
+          "assessment": "Medium-length double coat with soft, dense undercoat. Seasonal shedding can remove the undercoat temporarily.",
+          "proposed_change": "Variability note may say ‘Lớp lông tơ có thể rụng theo mùa.’"
+        }
+      ]
+    },
+    {
+      "class_id": 3,
+      "canonical_name": "Greater Swiss Mountain Dog",
+      "aliases": {
+        "vi": [
+          "chó núi thụy sĩ lớn"
+        ],
+        "en": [
+          "great swiss mountain dog",
+          "swissy"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Greater Swiss Mountain Dog.",
+      "morphology_prompt": "A photo of the dog breed Greater Swiss Mountain Dog, with black, tan and white markings and a sturdy muscular body.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_color",
+          "value": "nền đen với mảng nâu đỏ và trắng",
+          "registered_evidence": [
+            {
+              "source_id": "fci-058",
+              "locator": "PDF p. 5, Coat / Colour, lines 126–133"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Main coat black with red-brown tan and white markings."
+        },
+        {
+          "attribute_id": "body_build",
+          "value": "thân cơ bắp chắc khỏe",
+          "registered_evidence": [
+            {
+              "source_id": "fci-058",
+              "locator": "PDF p. 3, General Appearance, lines 43–45"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Sturdily built, heavy-boned and well-muscled."
+        }
+      ]
+    },
+    {
+      "class_id": 4,
+      "canonical_name": "Appenzeller",
+      "aliases": {
+        "vi": [
+          "chó chăn bò appenzell"
+        ],
+        "en": [
+          "appenzeller sennenhund",
+          "appenzell cattle dog"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Appenzeller.",
+      "morphology_prompt": "A photo of the dog breed Appenzeller, with a tail curling over the back when active and tan and white markings over a black or brown coat.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "tail_shape",
+          "value": "đuôi cuộn cao trên lưng khi vận động",
+          "registered_evidence": [
+            {
+              "source_id": "fci-046",
+              "locator": "PDF p. 5, Tail, lines 105–108"
+            }
+          ],
+          "status": "supported_with_scope",
+          "assessment": "High-set tail curls tightly over the croup in movement and may hang in repose.",
+          "proposed_change": "For anatomical precision, use ‘đuôi đặt cao, cuộn chặt trên mông khi vận động’ and ‘a high-set tail curled tightly over the croup in motion’."
+        },
+        {
+          "attribute_id": "coat_color",
+          "value": "nền đen hoặc nâu havana với mảng nâu đỏ và trắng",
+          "registered_evidence": [
+            {
+              "source_id": "fci-046",
+              "locator": "PDF p. 6, Coat / Colour and Markings, lines 143–148"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Black or Havana-brown base with reddish-brown and white marks."
+        }
+      ]
+    },
+    {
+      "class_id": 5,
+      "canonical_name": "EntleBucher",
+      "aliases": {
+        "vi": [
+          "chó chăn bò entlebuch"
+        ],
+        "en": [
+          "entlebucher mountain dog",
+          "entlebuch cattle dog"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed EntleBucher.",
+      "morphology_prompt": "A photo of the dog breed EntleBucher, with a short close-fitting coat and black, tan and white markings.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_length",
+          "value": "lông ngắn và ôm sát thân",
+          "registered_evidence": [
+            {
+              "source_id": "fci-047",
+              "locator": "PDF p. 6, Coat / Hair, lines 129–132"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Short, close-fitting, harsh outer coat over dense undercoat."
+        },
+        {
+          "attribute_id": "coat_color",
+          "value": "nền đen với mảng nâu đỏ và trắng",
+          "registered_evidence": [
+            {
+              "source_id": "fci-047",
+              "locator": "PDF p. 6, Coat / Colour and Markings, lines 133–146"
+            }
+          ],
+          "status": "revise_kb",
+          "assessment": "Black base with tan ranging from yellow-brown to reddish-brown and prescribed white markings.",
+          "proposed_change": "Use ‘nền đen với mảng nâu vàng đến nâu đỏ và trắng’. The current English ‘tan’ already covers the range."
+        }
+      ]
+    },
+    {
+      "class_id": 6,
+      "canonical_name": "Toy Poodle",
+      "aliases": {
+        "vi": [
+          "poodle tí hon"
+        ],
+        "en": [
+          "toy-sized poodle",
+          "poodle"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Toy Poodle.",
+      "morphology_prompt": "A photo of the dog breed Toy Poodle, with a dense curly coat and ears hanging alongside the cheeks.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông thường xoăn dày",
+          "variability_note": "Tiêu chuẩn cũng mô tả dạng lông bện dây. Cách tỉa có thể đổi bề ngoài.",
+          "registered_evidence": [
+            {
+              "source_id": "fci-172",
+              "locator": "PDF p. 6, Coat / Hair, lines 154–160; p. 8, Size and Weight, lines 213–226"
+            }
+          ],
+          "status": "revise_kb_and_prompt",
+          "assessment": "The shared standard describes dense curly and dense corded coats. It supplies no prevalence comparison between the coat forms.",
+          "proposed_change": "Use ‘lông dày, có thể xoăn hoặc bện dây’ and ‘a dense curly or corded coat’. The existing variability note records cords and grooming."
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai rủ dọc má",
+          "registered_evidence": [
+            {
+              "source_id": "fci-172",
+              "locator": "PDF p. 4, Ears, lines 87–92"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Long ears fall along the cheeks."
+        }
+      ]
+    },
+    {
+      "class_id": 7,
+      "canonical_name": "Miniature Poodle",
+      "aliases": {
+        "vi": [
+          "poodle nhỏ"
+        ],
+        "en": [
+          "mini poodle",
+          "poodle"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Miniature Poodle.",
+      "morphology_prompt": "A photo of the dog breed Miniature Poodle, with a dense curly coat and ears hanging alongside the cheeks.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông thường xoăn dày",
+          "variability_note": "Tiêu chuẩn cũng mô tả dạng lông bện dây. Cách tỉa có thể đổi bề ngoài.",
+          "registered_evidence": [
+            {
+              "source_id": "fci-172",
+              "locator": "PDF p. 6, Coat / Hair, lines 154–160; p. 8, Size and Weight, lines 213–226"
+            }
+          ],
+          "status": "revise_kb_and_prompt",
+          "assessment": "The shared standard describes dense curly and dense corded coats. It supplies no prevalence comparison between the coat forms.",
+          "proposed_change": "Use ‘lông dày, có thể xoăn hoặc bện dây’ and ‘a dense curly or corded coat’. The existing variability note records cords and grooming."
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai rủ dọc má",
+          "registered_evidence": [
+            {
+              "source_id": "fci-172",
+              "locator": "PDF p. 4, Ears, lines 87–92"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Long ears fall along the cheeks."
+        }
+      ]
+    },
+    {
+      "class_id": 8,
+      "canonical_name": "Standard Poodle",
+      "aliases": {
+        "vi": [
+          "poodle tiêu chuẩn"
+        ],
+        "en": [
+          "standard-sized poodle",
+          "poodle"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Standard Poodle.",
+      "morphology_prompt": "A photo of the dog breed Standard Poodle, with a dense curly coat and ears hanging alongside the cheeks.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông thường xoăn dày",
+          "variability_note": "Tiêu chuẩn cũng mô tả dạng lông bện dây. Cách tỉa có thể đổi bề ngoài.",
+          "registered_evidence": [
+            {
+              "source_id": "fci-172",
+              "locator": "PDF p. 6, Coat / Hair, lines 154–160; p. 8, Size and Weight, lines 213–226"
+            }
+          ],
+          "status": "revise_kb_and_prompt",
+          "assessment": "The shared standard describes dense curly and dense corded coats. It supplies no prevalence comparison between the coat forms.",
+          "proposed_change": "Use ‘lông dày, có thể xoăn hoặc bện dây’ and ‘a dense curly or corded coat’. The existing variability note records cords and grooming."
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai rủ dọc má",
+          "registered_evidence": [
+            {
+              "source_id": "fci-172",
+              "locator": "PDF p. 4, Ears, lines 87–92"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Long ears fall along the cheeks."
+        }
+      ]
+    },
+    {
+      "class_id": 9,
+      "canonical_name": "Miniature Schnauzer",
+      "aliases": {
+        "vi": [
+          "schnauzer nhỏ"
+        ],
+        "en": [
+          "mini schnauzer",
+          "zwergschnauzer",
+          "schnauzer"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Miniature Schnauzer.",
+      "morphology_prompt": "A photo of the dog breed Miniature Schnauzer, with a wiry coat and a beard around the muzzle and naturally folded drop ears.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông thô cứng với râu ở mõm",
+          "registered_evidence": [
+            {
+              "source_id": "fci-183",
+              "locator": "PDF p. 5, Coat / Hair, lines 118–125"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Wiry, hard coat with a beard on the muzzle."
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai tự nhiên gập và rủ",
+          "registered_evidence": [
+            {
+              "source_id": "fci-183",
+              "locator": "PDF p. 3, Ears, lines 62–64"
+            }
+          ],
+          "status": "supported",
+          "assessment": "High-set V-shaped drop ears with parallel folds and inner edges close to cheeks."
+        }
+      ]
+    },
+    {
+      "class_id": 10,
+      "canonical_name": "Standard Schnauzer",
+      "aliases": {
+        "vi": [
+          "schnauzer tiêu chuẩn"
+        ],
+        "en": [
+          "mittelschnauzer",
+          "schnauzer"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Standard Schnauzer.",
+      "morphology_prompt": "A photo of the dog breed Standard Schnauzer, with a wiry coat and a beard around the muzzle and naturally folded drop ears.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông thô cứng với râu ở mõm",
+          "registered_evidence": [
+            {
+              "source_id": "fci-182",
+              "locator": "PDF p. 5, Coat / Hair, lines 119–126"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Wiry, hard coat with a beard on the muzzle."
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai tự nhiên gập và rủ",
+          "registered_evidence": [
+            {
+              "source_id": "fci-182",
+              "locator": "PDF p. 3, Ears, lines 63–65"
+            }
+          ],
+          "status": "supported",
+          "assessment": "High-set V-shaped drop ears with parallel folds and inner edges close to cheeks."
+        }
+      ]
+    },
+    {
+      "class_id": 11,
+      "canonical_name": "Giant Schnauzer",
+      "aliases": {
+        "vi": [
+          "schnauzer khổng lồ"
+        ],
+        "en": [
+          "riesenschnauzer",
+          "schnauzer"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Giant Schnauzer.",
+      "morphology_prompt": "A photo of the dog breed Giant Schnauzer, with a wiry coat and a beard around the muzzle and naturally folded drop ears.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông thô cứng với râu ở mõm",
+          "registered_evidence": [
+            {
+              "source_id": "fci-181",
+              "locator": "PDF p. 5, Coat / Hair, lines 121–128"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Wiry, hard coat with a beard on the muzzle."
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai tự nhiên gập và rủ",
+          "registered_evidence": [
+            {
+              "source_id": "fci-181",
+              "locator": "PDF p. 4, Ears, lines 64–66"
+            }
+          ],
+          "status": "supported",
+          "assessment": "High-set V-shaped drop ears with parallel folds and inner edges close to cheeks."
+        }
+      ]
+    },
+    {
+      "class_id": 12,
+      "canonical_name": "English Setter",
+      "aliases": {
+        "vi": [
+          "chó setter anh"
+        ],
+        "en": [
+          "setter anglais"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed English Setter.",
+      "morphology_prompt": "A photo of the dog breed English Setter, with a slightly wavy coat and a flecked belton coat pattern.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông dài có thể gợn nhẹ",
+          "registered_evidence": [
+            {
+              "source_id": "fci-002",
+              "locator": "PDF p. 4, Coat / Hair, lines 82–85"
+            }
+          ],
+          "status": "revise_kb_and_prompt",
+          "assessment": "The long silky hair is described as slightly wavy behind the head at ear level. The standard also describes separate feathering.",
+          "proposed_change": "Use ‘lông dài, mượt, hơi gợn ở sau đầu ngang tai’ and ‘a long silky coat with slight waves behind the head’."
+        },
+        {
+          "attribute_id": "coat_color",
+          "value": "lông có đốm màu kiểu belton",
+          "registered_evidence": [
+            {
+              "source_id": "fci-002",
+              "locator": "PDF p. 4, Coat / Colour and Standards Commission note, lines 86–95"
+            }
+          ],
+          "status": "revise_kb_and_prompt",
+          "assessment": "Belton is the coat-ticking term. Even flecking across the body is preferred, and the standard distinguishes this from extensive patches.",
+          "proposed_change": "Use ‘lông có đốm lấm tấm kiểu belton, ưu tiên phân bố đều’ and ‘a coat that may show flecked belton ticking’."
+        }
+      ]
+    },
+    {
+      "class_id": 13,
+      "canonical_name": "Irish Setter",
+      "aliases": {
+        "vi": [
+          "chó setter ai-len"
+        ],
+        "en": [
+          "irish red setter",
+          "red setter"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Irish Setter.",
+      "morphology_prompt": "A photo of the dog breed Irish Setter, with a rich chestnut-red coat and ears hanging close to the head.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_color",
+          "value": "lông màu hạt dẻ đậm",
+          "registered_evidence": [
+            {
+              "source_id": "fci-120",
+              "locator": "PDF p. 4, Coat / Colour, lines 86–88"
+            }
+          ],
+          "status": "supported_with_scope",
+          "assessment": "Rich chestnut. Limited white at specified sites is permitted.",
+          "proposed_change": "Optional note for visual variability ‘Có thể có ít lông trắng ở ngực, họng, ngón chân hoặc một vệt hẹp trên mặt.’"
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai thấp, rủ sát đầu",
+          "registered_evidence": [
+            {
+              "source_id": "fci-120",
+              "locator": "PDF p. 3, Ears, lines 49–50"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Ears set low and back, hanging folded close to head."
+        }
+      ]
+    },
+    {
+      "class_id": 14,
+      "canonical_name": "Gordon Setter",
+      "aliases": {
+        "vi": [
+          "chó setter gordon"
+        ],
+        "en": [
+          "gordon setter dog"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Gordon Setter.",
+      "morphology_prompt": "A photo of the dog breed Gordon Setter, with a black coat with tan markings and low-set drop ears.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_color",
+          "value": "lông đen với mảng nâu đỏ",
+          "registered_evidence": [
+            {
+              "source_id": "fci-006",
+              "locator": "PDF p. 4, Coat / Colour, lines 75–81"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Deep coal-black coat with chestnut-red tan markings."
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai thấp, nằm sát đầu",
+          "registered_evidence": [
+            {
+              "source_id": "fci-006",
+              "locator": "PDF p. 3, Ears, line 41"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Ears medium-sized, thin, low-set and lying close to the head."
+        }
+      ]
+    },
+    {
+      "class_id": 15,
+      "canonical_name": "English Springer",
+      "aliases": {
+        "vi": [
+          "chó springer anh"
+        ],
+        "en": [
+          "english springer spaniel"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed English Springer.",
+      "morphology_prompt": "A photo of the dog breed English Springer, with long broad ears and black-and-white or liver-and-white markings.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "ear_shape",
+          "value": "tai dạng thùy, dài và rộng",
+          "registered_evidence": [
+            {
+              "source_id": "fci-125",
+              "locator": "PDF p. 3, Ears, lines 46–47"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Lobular ears with good length and width."
+        },
+        {
+          "attribute_id": "coat_color",
+          "value": "thường gặp lông đen trắng hoặc nâu gan trắng",
+          "registered_evidence": [
+            {
+              "source_id": "fci-125",
+              "locator": "PDF p. 4, Coat / Colour, lines 80–82"
+            }
+          ],
+          "status": "revise_kb_and_prompt",
+          "assessment": "Black and white or liver and white, either with optional tan. A standard gives permissible colours and supplies no population frequency.",
+          "proposed_change": "Use ‘lông đen trắng hoặc nâu gan trắng, có thể kèm mảng nâu vàng’ and ‘black-and-white or liver-and-white markings, sometimes with tan’."
+        }
+      ]
+    },
+    {
+      "class_id": 16,
+      "canonical_name": "Welsh Springer Spaniel",
+      "aliases": {
+        "vi": [
+          "chó springer xứ wales"
+        ],
+        "en": [
+          "welsh springer"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Welsh Springer Spaniel.",
+      "morphology_prompt": "A photo of the dog breed Welsh Springer Spaniel, with rich red and white markings and a straight silky coat.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_color",
+          "value": "lông đỏ đậm và trắng",
+          "registered_evidence": [
+            {
+              "source_id": "rkc-welsh-springer",
+              "locator": "Colour heading, lines 293–297"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Deep or rich red with white only."
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông thẳng, mượt và ôm sát",
+          "registered_evidence": [
+            {
+              "source_id": "rkc-welsh-springer",
+              "locator": "Coat heading, lines 289–291"
+            }
+          ],
+          "status": "revise_kb",
+          "assessment": "Hair described as straight or flat, silky and dense. The source directly supports flatness and density.",
+          "proposed_change": "Use ‘lông thẳng hoặc phẳng, mượt và dày’. Optionally use ‘a straight or flat, dense, silky coat’ in the prompt to match the updated KB."
+        }
+      ]
+    },
+    {
+      "class_id": 17,
+      "canonical_name": "Cocker Spaniel",
+      "aliases": {
+        "vi": [
+          "chó cocker anh"
+        ],
+        "en": [
+          "english cocker spaniel",
+          "english cocker"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Cocker Spaniel.",
+      "morphology_prompt": "A photo of the dog breed Cocker Spaniel, with long lobed ears and a flat silky coat.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "ear_shape",
+          "value": "tai dạng thùy, dài tới gần chóp mũi khi duỗi",
+          "registered_evidence": [
+            {
+              "source_id": "fci-005",
+              "locator": "PDF p. 3, Ears, lines 49–50"
+            }
+          ],
+          "status": "revise_kb",
+          "assessment": "Lobular ears with fine leathers extending to the nose tip.",
+          "proposed_change": "Use ‘tai dạng thùy, phần vành tai kéo tới chóp mũi’. The current English ‘long lobed ears’ is supported."
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông phẳng và mượt",
+          "registered_evidence": [
+            {
+              "source_id": "fci-005",
+              "locator": "PDF p. 4, Coat / Hair, lines 86–89"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Flat, silky coat with feathering."
+        }
+      ]
+    },
+    {
+      "class_id": 18,
+      "canonical_name": "Norfolk Terrier",
+      "aliases": {
+        "vi": [
+          "chó sục norfolk"
+        ],
+        "en": [
+          "norfolk terrier dog"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Norfolk Terrier.",
+      "morphology_prompt": "A photo of the dog breed Norfolk Terrier, with forward-dropping V-shaped ears and a harsh wiry coat.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "ear_position",
+          "value": "tai chữ V rủ về phía trước",
+          "registered_evidence": [
+            {
+              "source_id": "fci-272",
+              "locator": "PDF p. 3, Ears, lines 53–54"
+            }
+          ],
+          "status": "supported",
+          "assessment": "V-shaped ears drop forward near the cheek."
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông cứng và thô",
+          "registered_evidence": [
+            {
+              "source_id": "fci-272",
+              "locator": "PDF p. 4, Coat / Hair, lines 82–85"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Hard, wiry, straight hair."
+        }
+      ]
+    },
+    {
+      "class_id": 19,
+      "canonical_name": "Norwich Terrier",
+      "aliases": {
+        "vi": [
+          "chó sục norwich"
+        ],
+        "en": [
+          "norwich terrier dog"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Norwich Terrier.",
+      "morphology_prompt": "A photo of the dog breed Norwich Terrier, with upright pointed ears and a harsh wiry coat.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "ear_position",
+          "value": "tai dựng, chóp nhọn",
+          "registered_evidence": [
+            {
+              "source_id": "fci-072",
+              "locator": "PDF p. 3, Ears, lines 56–58"
+            }
+          ],
+          "status": "revise_kb_and_prompt",
+          "assessment": "Pointed tips. Fully erect when alert, and ears may be held back at rest.",
+          "proposed_change": "Use ‘tai chóp nhọn, dựng khi chú ý’ and ‘pointed ears that stand erect when alert’."
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông cứng và thô",
+          "registered_evidence": [
+            {
+              "source_id": "fci-072",
+              "locator": "PDF p. 4, Coat / Hair, lines 89–92"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Hard, wiry, straight hair over a thick undercoat."
+        }
+      ]
+    },
+    {
+      "class_id": 20,
+      "canonical_name": "Border Terrier",
+      "aliases": {
+        "vi": [
+          "chó sục border"
+        ],
+        "en": [
+          "border terrier dog"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Border Terrier.",
+      "morphology_prompt": "A photo of the dog breed Border Terrier, with small V-shaped drop ears and a dense harsh coat.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "ear_position",
+          "value": "tai chữ V nhỏ rủ về phía má",
+          "registered_evidence": [
+            {
+              "source_id": "fci-010",
+              "locator": "PDF p. 2, Ears, lines 34–35"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Small V-shaped ears drop forward near cheek."
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông thô và dày",
+          "registered_evidence": [
+            {
+              "source_id": "fci-010",
+              "locator": "PDF p. 3, Coat / Hair, lines 53–54"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Harsh dense coat with a close undercoat."
+        }
+      ]
+    },
+    {
+      "class_id": 21,
+      "canonical_name": "Collie",
+      "aliases": {
+        "vi": [
+          "chó collie"
+        ],
+        "en": [
+          "scottish collie"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Collie.",
+      "morphology_prompt": "A photo of the dog breed Collie, with semi-erect ears with tips folding forward when alert.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "ear_position",
+          "value": "tai bán dựng, chóp gập về trước khi chú ý",
+          "variability_note": "Mô tả chung cho hai biến thể Rough và Smooth. Tư thế tai phụ thuộc mức chú ý.",
+          "registered_evidence": [
+            {
+              "source_id": "fci-156",
+              "locator": "FCI 156, PDF p. 4, Ears, lines 70–73"
+            },
+            {
+              "source_id": "fci-296",
+              "locator": "FCI 296, PDF p. 3, Ears, lines 59–63"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Rough and Smooth Collies both have semi-erect ears with natural forward tips when alert. Ears are laid back at rest."
+        }
+      ]
+    },
+    {
+      "class_id": 22,
+      "canonical_name": "Shetland Sheepdog",
+      "aliases": {
+        "vi": [
+          "chó chăn cừu shetland"
+        ],
+        "en": [
+          "sheltie"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Shetland Sheepdog.",
+      "morphology_prompt": "A photo of the dog breed Shetland Sheepdog, with a long outer coat and a noticeable mane and semi-erect ears when alert.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_length",
+          "value": "lông ngoài dài, tạo bờm quanh cổ",
+          "registered_evidence": [
+            {
+              "source_id": "fci-088",
+              "locator": "PDF p. 4, Coat / Hair, lines 86–90"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Long outer coat and abundant mane and frill."
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "tai bán dựng khi chú ý",
+          "registered_evidence": [
+            {
+              "source_id": "fci-088",
+              "locator": "PDF p. 3, Ears, lines 50–52"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Semi-erect ears with tips forward when alert."
+        }
+      ]
+    },
+    {
+      "class_id": 23,
+      "canonical_name": "Border Collie",
+      "aliases": {
+        "vi": [
+          "chó chăn cừu border collie"
+        ],
+        "en": [
+          "border collie dog"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Border Collie.",
+      "morphology_prompt": "A photo of the dog breed Border Collie, with erect or semi-erect ears and a low-set tail with an upward curve at the tip.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "ear_position",
+          "value": "tai dựng hoặc bán dựng",
+          "registered_evidence": [
+            {
+              "source_id": "fci-297",
+              "locator": "PDF p. 3, Ears, lines 46–47"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Ears carried erect or semi-erect."
+        },
+        {
+          "attribute_id": "tail_shape",
+          "value": "đuôi thấp với đoạn chót cong lên",
+          "registered_evidence": [
+            {
+              "source_id": "fci-297",
+              "locator": "PDF p. 3, Tail, lines 54–57"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Low-set tail with an upward curve toward the end; it may lift with excitement."
+        }
+      ]
+    },
+    {
+      "class_id": 24,
+      "canonical_name": "Golden Retriever",
+      "aliases": {
+        "vi": [
+          "chó golden"
+        ],
+        "en": [
+          "golden retriever dog"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Golden Retriever.",
+      "morphology_prompt": "A photo of the dog breed Golden Retriever, with a golden or cream coat and a flat or wavy feathered coat.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_color",
+          "value": "lông màu vàng hoặc kem",
+          "registered_evidence": [
+            {
+              "source_id": "fci-111",
+              "locator": "PDF p. 3, Coat / Colour, lines 64–66"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Any gold or cream shade, with a few white chest hairs permitted."
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông phẳng hoặc gợn, có lông dài trang trí",
+          "registered_evidence": [
+            {
+              "source_id": "fci-111",
+              "locator": "PDF p. 3, Coat / Hair, lines 61–63"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Flat or wavy coat with feathering."
+        }
+      ]
+    },
+    {
+      "class_id": 25,
+      "canonical_name": "Labrador Retriever",
+      "aliases": {
+        "vi": [
+          "chó labrador"
+        ],
+        "en": [
+          "labrador",
+          "lab retriever"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Labrador Retriever.",
+      "morphology_prompt": "A photo of the dog breed Labrador Retriever, with a short dense coat and a thick tapering tail.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_length",
+          "value": "lông ngắn và dày",
+          "registered_evidence": [
+            {
+              "source_id": "fci-122",
+              "locator": "PDF p. 4, Coat / Hair, lines 86–89"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Short, dense coat."
+        },
+        {
+          "attribute_id": "tail_shape",
+          "value": "đuôi dày ở gốc và thuôn dần về chóp",
+          "registered_evidence": [
+            {
+              "source_id": "fci-122",
+              "locator": "PDF p. 3, Tail, lines 63–67"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Very thick toward the base and gradually tapers toward the tip."
+        }
+      ]
+    },
+    {
+      "class_id": 26,
+      "canonical_name": "Chesapeake Bay Retriever",
+      "aliases": {
+        "vi": [
+          "chó chesapeake bay"
+        ],
+        "en": [
+          "chesapeake retriever",
+          "chessie"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Chesapeake Bay Retriever.",
+      "morphology_prompt": "A photo of the dog breed Chesapeake Bay Retriever, with a coat with waves over the shoulders, neck or back and a brown, sedge or deadgrass-colored coat.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông có thể gợn trên vai, cổ và lưng",
+          "registered_evidence": [
+            {
+              "source_id": "fci-263",
+              "locator": "PDF p. 5, Coat / Hair, lines 121–125; p. 3, General Appearance, lines 42–44"
+            }
+          ],
+          "status": "revise_kb_and_prompt",
+          "assessment": "Tendency to wave on shoulders, neck, back and loins. Face and leg hair are straight.",
+          "proposed_change": "Use ‘lông có thể gợn ở vai, cổ, lưng và thắt lưng’ and ‘a short coat that may wave over the shoulders, neck, back, and loins’."
+        },
+        {
+          "attribute_id": "coat_color",
+          "value": "lông tông nâu, màu cói hoặc cỏ khô",
+          "registered_evidence": [
+            {
+              "source_id": "fci-263",
+              "locator": "PDF p. 5, Coat / Colour, lines 134–136; p. 6, lines 139–142"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Brown, sedge, and deadgrass shades are accepted."
+        }
+      ]
+    },
+    {
+      "class_id": 27,
+      "canonical_name": "Japanese Spaniel",
+      "aliases": {
+        "vi": [
+          "chó nhật lùn"
+        ],
+        "en": [
+          "japanese chin"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Japanese Spaniel.",
+      "morphology_prompt": "A photo of the dog breed Japanese Spaniel, with a very short broad muzzle and a straight silky coat.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "muzzle_length",
+          "value": "mõm rất ngắn và rộng",
+          "registered_evidence": [
+            {
+              "source_id": "fci-206",
+              "locator": "PDF p. 3, Facial Region / Nose, lines 45–48"
+            }
+          ],
+          "status": "revise_citation_or_claim",
+          "assessment": "FCI directly describes the nasal bridge as very short and broad. The AKC standard directly describes the full muzzle as short and broad.",
+          "proposed_change": "Prefer adding proposed source ‘akc-japanese-chin’, Head / Muzzle on p. 1, and use ‘mõm ngắn và rộng’ / ‘a short broad muzzle’. Alternatively use ‘sống mũi rất ngắn và rộng’ / ‘a very short broad nasal bridge’ with the FCI source and verify the existing attribute identifier remains appropriate."
+        },
+        {
+          "attribute_id": "coat_texture",
+          "value": "lông thẳng và mượt",
+          "registered_evidence": [
+            {
+              "source_id": "fci-206",
+              "locator": "PDF p. 4, Coat / Hair, lines 76–78"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Silky, straight and long hair."
+        }
+      ]
+    },
+    {
+      "class_id": 28,
+      "canonical_name": "Pekinese",
+      "aliases": {
+        "vi": [
+          "chó bắc kinh"
+        ],
+        "en": [
+          "pekingese",
+          "peke"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Pekinese.",
+      "morphology_prompt": "A photo of the dog breed Pekinese, with a short broad muzzle and a longer coat with a mane around the neck.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "muzzle_length",
+          "value": "mõm tương đối ngắn và rộng",
+          "registered_evidence": [
+            {
+              "source_id": "fci-207",
+              "locator": "PDF p. 2, Facial Region / Muzzle, lines 38–39"
+            }
+          ],
+          "status": "revise_kb_and_prompt",
+          "assessment": "The muzzle must be evident and may be relatively short and wide.",
+          "proposed_change": "Use ‘mõm rõ, có thể tương đối ngắn và rộng’ and ‘a defined muzzle that may be relatively short and broad’."
+        },
+        {
+          "attribute_id": "coat_length",
+          "value": "lông tương đối dài, có bờm ở cổ",
+          "registered_evidence": [
+            {
+              "source_id": "fci-207",
+              "locator": "PDF p. 4, Coat / Hair, lines 84–89"
+            }
+          ],
+          "status": "revise_prompt",
+          "assessment": "Moderately long straight coat and a mane forming a cape around the neck.",
+          "proposed_change": "Vietnamese ‘tương đối dài’ is broadly aligned. The English ‘longer’ lacks a comparison point. Use ‘a moderately long coat with a mane around the neck’."
+        }
+      ]
+    },
+    {
+      "class_id": 29,
+      "canonical_name": "Shih-Tzu",
+      "aliases": {
+        "vi": [
+          "chó sư tử shih tzu"
+        ],
+        "en": [
+          "shih tzu",
+          "shih tzu dog"
+        ]
+      },
+      "name_prompt": "A photo of the dog breed Shih-Tzu.",
+      "morphology_prompt": "A photo of the dog breed Shih-Tzu, with a long dense outer coat and a short broad muzzle.",
+      "attribute_reviews": [
+        {
+          "attribute_id": "coat_length",
+          "value": "lông ngoài dài và dày",
+          "registered_evidence": [
+            {
+              "source_id": "fci-208",
+              "locator": "PDF p. 4, Coat / Hair, lines 85–88"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Long, dense outer coat. A slight wave is permitted."
+        },
+        {
+          "attribute_id": "muzzle_length",
+          "value": "mõm ngắn, rộng",
+          "registered_evidence": [
+            {
+              "source_id": "fci-208",
+              "locator": "PDF p. 3, Facial Region / Muzzle, lines 50–52"
+            }
+          ],
+          "status": "supported",
+          "assessment": "Short square muzzle of ample width."
+        }
+      ]
+    }
+  ],
+  "outstanding": [
+    "Apply and verify chosen wording adjustments in the KB and linked morphology prompts. Generate a new frozen revision and rerun native tokenizer audits for the new prompt hash where formal use requires it.",
+    "Trưởng nhóm approval and revision locking are pending. Source record states remain pending in the repository draft."
+  ],
+  "follow_up": {
+    "revised_kb": "breed-kb-draft-2",
+    "kb_sha256": "5d3bc3cd66c017b4aeddfc07435f2cc6edd0dd5ba04bbf655478bb74ca3e9dd3",
+    "revised_bank": "morphology-draft-2",
+    "bank_sha256": "68fe26a4be2df7d74b181042c570a91a3d078b2bc9444687d423ecfde3b7edac",
+    "status": "revised_after_technical_source_review_waiting_for_project_signoff",
+    "class_ids_revised": [
+      5,
+      6,
+      7,
+      8,
+      12,
+      15,
+      16,
+      17,
+      19,
+      26,
+      27,
+      28
+    ],
+    "supplemental_source_added": "akc-japanese-chin"
+  }
+}

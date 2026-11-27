@@ -1,0 +1,3 @@
+# Byte hashes in VLM snapshots are computed over the repository's LF bytes.
+data/metadata/class_mapping.json text eol=lf
+data/knowledge/vlm/*.json text eol=lf
