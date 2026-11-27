@@ -46,6 +46,102 @@ Import runtime contracts từ `src.vlm.contracts`. `ValidatedRgb` mang buffer RG
 
 Khi gặp blocker, ghi experiment hoặc handover bị ảnh hưởng, revision, fixture tái lập, lỗi hoặc quyền đang thiếu, evidence path và điều kiện gỡ chặn. Gửi trưởng nhóm hồ sơ pilot gồm mục tiêu, development inputs và audit, revisions đề xuất, nhu cầu máy, security review, kế hoạch đo và tiêu chí dừng. Chờ duyệt scope trước khi dùng input thật. [Pilot](../research/vlm/research_protocol.md#4-pilot) · [Nộp bàn giao](24_11_task.md#xi-nộp-bàn-giao-và-nghiệm-thu)
 
+### Windows checkout and LF verification
+
+Git có thể giữ CRLF trong canonical mapping khi cập nhật checkout Windows đã có sẵn. Blob của mapping giống nhau giữa Foundation và Task 08.04, nên Git có thể bỏ qua việc ghi lại file khi quy tắc `text eol=lf` mới có hiệu lực. Loader kiểm SHA-256 trên bytes thực tế của file.
+
+Ở repository root, sau khi checkout revision bàn giao đã có `.gitattributes`, kiểm tra mapping trong PowerShell:
+
+```powershell
+git check-attr text eol -- data/metadata/class_mapping.json
+git ls-files --eol -- data/metadata/class_mapping.json
+Get-FileHash -Algorithm SHA256 -LiteralPath data/metadata/class_mapping.json
+```
+
+Checkout mới cần báo `i/lf w/lf attr/text eol=lf` và SHA-256 `d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c`. Nếu checkout cũ còn `w/crlf`, chạy khối dưới đây khi đã dừng các thao tác Git và chỉnh sửa mapping trong checkout đó. Khối lệnh kiểm tra attributes, index stage 0 khớp HEAD, pin của blob và so sánh raw bytes sau khi đổi CRLF thành LF trong bộ nhớ. Khi đủ điều kiện, nó tạm cất bản cũ và yêu cầu Git ghi lại đúng một path.
+
+```powershell
+@'
+from pathlib import Path
+from hashlib import sha256
+import subprocess
+import tempfile
+
+rel = "data/metadata/class_mapping.json"
+pin = "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c"
+
+def git(*args):
+    return subprocess.check_output(["git", *args])
+
+if git("rev-parse", "--show-prefix").strip():
+    raise SystemExit("Run from the repository root.")
+path = Path(rel)
+if path.is_symlink() or not path.is_file():
+    raise SystemExit("Expected a regular mapping file.")
+if git("check-attr", "text", "eol", "--", rel).splitlines() != [
+    f"{rel}: text: set".encode(), f"{rel}: eol: lf".encode()
+]:
+    raise SystemExit("Expected text eol=lf. Check the checkout revision and attributes.")
+
+head = git("rev-parse", f"HEAD:{rel}").strip().decode()
+entry = f"100644 {head} 0\t{rel}".encode()
+if git("ls-files", "--stage", "--", rel).splitlines() != [entry]:
+    raise SystemExit("Mapping has staged changes or an unresolved index entry.")
+blob = git("cat-file", "blob", head)
+if sha256(blob).hexdigest() != pin:
+    raise SystemExit("HEAD mapping blob does not match the pinned SHA-256.")
+
+raw = path.read_bytes()
+if raw.replace(b"\r\n", b"\n") != blob:
+    raise SystemExit("Mapping has local changes beyond CRLF/LF. Original preserved.")
+
+def verify():
+    eol = git("ls-files", "--eol", "--", rel).decode().split()
+    if eol[:2] != ["i/lf", "w/lf"] or path.read_bytes() != blob:
+        raise SystemExit("Mapping verification failed. Check the attributes and SHA-256.")
+    if git("ls-files", "--stage", "--", rel).splitlines() != [entry]:
+        raise SystemExit("Mapping index entry changed. Stop and check the index.")
+
+print("SHA-256 before:", sha256(raw).hexdigest())
+if raw != blob:
+    backup_dir = Path(tempfile.mkdtemp(prefix=".mapping-lf-", dir=path.parent))
+    backup = backup_dir / path.name
+    try:
+        if path.read_bytes() != raw:
+            raise SystemExit("Mapping changed during verification. Original preserved.")
+        path.rename(backup)
+        git("checkout-index", "--index", "--", rel)
+        verify()
+    except BaseException:
+        if backup.exists() and not path.exists() and not path.is_symlink():
+            backup.rename(path)
+        if backup.exists():
+            print(f"Original preserved at {backup}", flush=True)
+        else:
+            backup_dir.rmdir()
+        raise
+    backup.unlink()
+    backup_dir.rmdir()
+else:
+    verify()
+print("SHA-256 after: ", sha256(path.read_bytes()).hexdigest())
+'@ | python -B -
+if ($LASTEXITCODE -ne 0) { throw 'Canonical mapping verification failed.' }
+```
+
+Nếu bước kiểm tra dừng hoặc hash vẫn lệch, giữ các bản hiện có, ghi lại HEAD, kết quả `git check-attr`, `git ls-files --stage`, `git ls-files --eol` của mapping và SHA-256 rồi báo trưởng nhóm. Nếu Git ghi file gặp lỗi, khối lệnh khôi phục bản cũ khi path còn trống hoặc in nơi giữ bản gốc. Có thể kiểm lại trên checkout mới của revision đã bàn giao.
+
+Khi mapping đã ở LF và đúng pin, chạy toàn bộ suite trong PowerShell riêng:
+
+```powershell
+$env:PYTEST_DISABLE_PLUGIN_AUTOLOAD = '1'
+$env:PYTEST_ADDOPTS = ''
+$env:PYTEST_PLUGINS = ''
+python -B -m pytest --noconftest -o addopts= -p no:cacheprovider -q tests/vlm_foundation
+```
+
+Ở head Task 08.04 `de338c6`, kết quả mong đợi là `413 passed`, exit code `0`.
+
 ## 3. Đức Anh — Task 08.02 · Zero-shot classifier
 
 Thử hai pretrained image-text encoders với 30 prompt. E12-A/B dùng `google/siglip2-base-patch16-224`. E13-A/B dùng `qihoo360/fg-clip2-base`. A dùng Name Bank, B dùng Morphology Bank. Giữ cùng cohort và phương pháp scoring trong mỗi cặp. Score vector có 30 phần tử theo canonical ID `0–29`. Top-1/Top-5 xếp score giảm dần, hòa thì ID tăng dần. Output khai `calibrated=false`. [Phân công IV](24_11_task.md#iv-task-0802--lê-hồ-đức-anh)
