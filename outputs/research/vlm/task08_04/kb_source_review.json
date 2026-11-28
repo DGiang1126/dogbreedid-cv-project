@@ -1593,5 +1593,3296 @@
       28
     ],
     "supplemental_source_added": "akc-japanese-chin"
+  },
+  "draft_3": {
+    "design": {
+      "status": "DESIGN_APPROVED",
+      "document": "Task08_04_GroupAware_KB_Design.md",
+      "document_sha256": "1f357e59e3bef38f2e60217ff54e32504c40d068820e369e25e8e84b3b98bbaf",
+      "integration_revision": "448e890ed5e85b8d543304f2cbcaaadbfe619fa2",
+      "source_approval": "pending"
+    },
+    "kb_version": "breed-kb-draft-3",
+    "kb_sha256": "f7eec9c50954427d6108a015140647c5481f57386ea8f1a4b737125e27a2ebe9",
+    "morphology_bank_version": "morphology-draft-3",
+    "morphology_bank_sha256": "41d4a04c8b8587db7f3a1089edf97c7fb55651005c0366218f24ed37dd37bf03",
+    "vocabulary": {
+      "version": "kb-morphology-v1",
+      "owner": "Trưởng nhóm"
+    },
+    "retrieval_order": "Discriminative V/C, common V/C, then S. Preserve design order within each tier.",
+    "sources": [
+      {
+        "source_id": "fci-243",
+        "title": "FCI #243 Alaskan Malamute",
+        "url": "https://www.fci.be/nomenclature/Standards/243g05-en.pdf",
+        "document_version": "Bản EN 10/03/2023, chuẩn có ngày 09/03/2023",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-270",
+        "title": "FCI #270 Siberian Husky",
+        "url": "https://www.fci.be/nomenclature/Standards/270g05-en.pdf",
+        "document_version": "Bản EN 18/11/2022, chuẩn có ngày 14/11/2022",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-211",
+        "title": "FCI #211 Canadian Eskimo Dog, đối chiếu taxonomy",
+        "url": "https://www.fci.be/nomenclature/Standards/211g05-en.pdf",
+        "document_version": "Bản EN 07/11/2018, chuẩn có ngày 28/02/2018",
+        "review_status": "pending",
+        "usage": "design_reference"
+      },
+      {
+        "source_id": "fci-058",
+        "title": "FCI #058 Great Swiss Mountain Dog",
+        "url": "https://www.fci.be/nomenclature/Standards/058g02-en.pdf",
+        "document_version": "Bản EN 05/05/2003, chuẩn có ngày 25/03/2003",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-046",
+        "title": "FCI #046 Appenzell Cattle Dog",
+        "url": "https://www.fci.be/nomenclature/Standards/046g02-en.pdf",
+        "document_version": "Bản EN 05/05/2003, chuẩn có ngày 25/03/2003",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-047",
+        "title": "FCI #047 Entlebuch Cattle Dog",
+        "url": "https://www.fci.be/nomenclature/Standards/047g02-en.pdf",
+        "document_version": "Bản EN 28/06/2002, chuẩn có ngày 28/11/2001",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-172",
+        "title": "FCI #172 Poodle",
+        "url": "https://www.fci.be/nomenclature/Standards/172g09-en.pdf",
+        "document_version": "Bản EN 05/04/2024, chuẩn có ngày 20/03/2024, áp dụng từ 01/08/2024",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-183",
+        "title": "FCI #183 Miniature Schnauzer",
+        "url": "https://www.fci.be/nomenclature/Standards/183g02-en.pdf",
+        "document_version": "Bản EN 18/04/2007, chuẩn có ngày 06/03/2007",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-182",
+        "title": "FCI #182 Schnauzer",
+        "url": "https://www.fci.be/nomenclature/Standards/182g02-en.pdf",
+        "document_version": "Bản EN 18/04/2007, chuẩn có ngày 06/03/2007",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-181",
+        "title": "FCI #181 Giant Schnauzer",
+        "url": "https://www.fci.be/nomenclature/Standards/181g02-en.pdf",
+        "document_version": "Bản EN 10/06/2021, chuẩn có ngày 25/05/2021",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-002",
+        "title": "FCI #002 English Setter",
+        "url": "https://www.fci.be/nomenclature/Standards/002g07-en.pdf",
+        "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-120",
+        "title": "FCI #120 Irish Red Setter",
+        "url": "https://www.fci.be/nomenclature/Standards/120g07-en.pdf",
+        "document_version": "Bản EN 02/04/2001, chuẩn có ngày 13/03/2001",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-006",
+        "title": "FCI #006 Gordon Setter",
+        "url": "https://www.fci.be/nomenclature/Standards/006g07-en.pdf",
+        "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-125",
+        "title": "FCI #125 English Springer Spaniel",
+        "url": "https://www.fci.be/nomenclature/Standards/125g08-en.pdf",
+        "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-126",
+        "title": "FCI #126 Welsh Springer Spaniel",
+        "url": "https://www.fci.be/nomenclature/Standards/126g08-en.pdf",
+        "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-005",
+        "title": "FCI #005 English Cocker Spaniel",
+        "url": "https://www.fci.be/nomenclature/Standards/005g08-en.pdf",
+        "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-272",
+        "title": "FCI #272 Norfolk Terrier",
+        "url": "https://www.fci.be/nomenclature/Standards/272g03-en.pdf",
+        "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-072",
+        "title": "FCI #072 Norwich Terrier",
+        "url": "https://www.fci.be/nomenclature/Standards/072g03-en.pdf",
+        "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-010",
+        "title": "FCI #010 Border Terrier",
+        "url": "https://www.fci.be/nomenclature/Standards/010g03-en.pdf",
+        "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-156",
+        "title": "FCI #156 Collie (Rough)",
+        "url": "https://www.fci.be/nomenclature/Standards/156g01-en.pdf",
+        "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-296",
+        "title": "FCI #296 Collie (Smooth)",
+        "url": "https://www.fci.be/nomenclature/Standards/296g01-en.pdf",
+        "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-088",
+        "title": "FCI #088 Shetland Sheepdog",
+        "url": "https://www.fci.be/nomenclature/Standards/088g01-en.pdf",
+        "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-297",
+        "title": "FCI #297 Border Collie",
+        "url": "https://www.fci.be/nomenclature/Standards/297g01-en.pdf",
+        "document_version": "Bản EN 28/10/2009, chuẩn có ngày 24/06/1987",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-111",
+        "title": "FCI #111 Golden Retriever",
+        "url": "https://www.fci.be/nomenclature/Standards/111g08-en.pdf",
+        "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-122",
+        "title": "FCI #122 Labrador Retriever",
+        "url": "https://www.fci.be/nomenclature/Standards/122g08-en.pdf",
+        "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-263",
+        "title": "FCI #263 Chesapeake Bay Retriever",
+        "url": "https://www.fci.be/nomenclature/Standards/263g08-en.pdf",
+        "document_version": "Bản EN 12/03/1999, chuẩn có ngày 14/02/1995",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-206",
+        "title": "FCI #206 Japanese Chin",
+        "url": "https://www.fci.be/nomenclature/Standards/206g09-en.pdf",
+        "document_version": "Bản EN 03/06/2016, chuẩn có ngày 04/04/2016",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-207",
+        "title": "FCI #207 Pekingese",
+        "url": "https://www.fci.be/nomenclature/Standards/207g09-en.pdf",
+        "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "fci-208",
+        "title": "FCI #208 Shih Tzu",
+        "url": "https://www.fci.be/nomenclature/Standards/208g09-en.pdf",
+        "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "akc-poodle",
+        "title": "AKC Official Standard of the Poodle",
+        "url": "https://images.akc.org/pdf/breeds/standards/Poodle.pdf",
+        "document_version": "Duyệt 14/08/1984",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "akc-japanese-chin",
+        "title": "AKC Official Standard of the Japanese Chin",
+        "url": "https://cdn.akc.org/JapaneseChin.pdf",
+        "document_version": "Duyệt 11/10/2011, hiệu lực 30/11/2011",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "rkc-welsh-springer",
+        "title": "Royal Kennel Club Welsh Springer Spaniel",
+        "url": "https://www.royalkennelclub.com/breed-standards/gundog/spaniel-welsh-springer/",
+        "document_version": "Trang cập nhật 01/01/2025",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "princeton-wordnet",
+        "title": "Princeton WordNet noun database",
+        "url": "https://wordnetcode.princeton.edu/3.0/WNdb-3.0.tar.gz",
+        "document_version": "WordNet 3.0, archive `WNdb-3.0.tar.gz`, file `dict/data.noun`",
+        "review_status": "pending",
+        "usage": "claim_provenance"
+      },
+      {
+        "source_id": "imagenet-synsets",
+        "title": "ImageNet danh mục synsets",
+        "url": "https://www.image-net.org/challenges/LSVRC/2012/browse-synsets.php",
+        "document_version": "ILSVRC 2012, mục Browse Synsets, định danh `n02109961`",
+        "review_status": "pending",
+        "usage": "design_reference"
+      },
+      {
+        "source_id": "stanford-wordnet",
+        "title": "Stanford CS231A, Silvio Savarese, Lecture 16",
+        "url": "https://cvgl.stanford.edu/teaching/cs231a_winter1415/lecture/lecture16_datasets_3D_scene_understanding.pdf",
+        "document_version": "04/03/2015, slide ‘WordNet taxonomy and definitions’",
+        "review_status": "pending",
+        "usage": "design_reference"
+      },
+      {
+        "source_id": "stanford-dogs-paper",
+        "title": "Khosla và cộng sự, Stanford Dogs",
+        "url": "https://people.csail.mit.edu/khosla/papers/fgvc2011.pdf",
+        "document_version": "2011, §2 ‘Stanford Dogs Dataset’, tr. 1",
+        "review_status": "pending",
+        "usage": "design_reference"
+      }
+    ],
+    "classes": [
+      {
+        "group_id": "G1",
+        "class_id": 0,
+        "canonical_name": "Eskimo Dog",
+        "morphology_prompt": "A photo of the dog breed Eskimo Dog, with a thick coat.",
+        "limitations": "IDs 1, 2. Gloss ở mức synset. Lông dày chồng lấn cả hai lớp cùng nhóm. Dáng, đuôi và quan hệ với một giống đăng ký chưa được xác lập.",
+        "claims": [
+          {
+            "attribute_id": "coat_fullness",
+            "role": "common",
+            "claim_vi": "Bộ lông trông dày, theo gloss của synset chó kéo xe Bắc Cực.",
+            "phrase_en": "a thick coat",
+            "observability": "C",
+            "observation_conditions": "Thân và phần lông ngoài thấy rõ, phụ thuộc mùa và hình chiếu.",
+            "sources": [
+              {
+                "source_id": "princeton-wordnet",
+                "locator": "`data.noun` offset 02109961"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "runtime_scope_note": "Nhãn WordNet n02109961 có phạm vi từ vựng; chưa xác lập đồng nhất với Canadian Eskimo Dog.",
+            "retrieval_order": 1
+          }
+        ]
+      },
+      {
+        "group_id": "G1",
+        "class_id": 1,
+        "canonical_name": "Malamute",
+        "morphology_prompt": "A photo of the dog breed Malamute, with a powerful deep-chested build and a bushy plumed tail.",
+        "limitations": "IDs 0, 2. Tư thế, mùa lông và góc máy đổi dáng đuôi/thân. Tai dựng chồng Siberian Husky.",
+        "claims": [
+          {
+            "attribute_id": "coat_texture",
+            "role": "common",
+            "claim_vi": "Lông bảo vệ thô trên lớp lót dày.",
+            "phrase_en": "a coarse outer coat",
+            "observability": "C",
+            "observation_conditions": "Vùng thân rõ, mức dày lớp lót phụ thuộc mùa, kết cấu sợi cần cận cảnh.",
+            "sources": [
+              {
+                "source_id": "fci-243",
+                "locator": "tr. 5, Coat"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "body_build",
+            "role": "discriminative",
+            "claim_vi": "Thân lực lưỡng, xương nặng và ngực sâu.",
+            "phrase_en": "a powerful deep-chested build",
+            "observability": "C",
+            "observation_conditions": "Thấy ngang thân và chân. Lông dày, mỡ và góc máy có thể làm thân trông rộng.",
+            "sources": [
+              {
+                "source_id": "fci-243",
+                "locator": "tr. 2–4, General Appearance, Proportions, Body"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "tail_shape",
+            "role": "discriminative",
+            "claim_vi": "Đuôi xù dạng chùm lông, thường đưa qua lưng khi không làm việc, không cuộn sát.",
+            "phrase_en": "a bushy plumed tail",
+            "observability": "C",
+            "observation_conditions": "Đuôi hiện đầy đủ và thấy đường viền lưng. Tư thế thay đổi cách mang.",
+            "sources": [
+              {
+                "source_id": "fci-243",
+                "locator": "tr. 4, Tail"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          }
+        ]
+      },
+      {
+        "group_id": "G1",
+        "class_id": 2,
+        "canonical_name": "Siberian Husky",
+        "morphology_prompt": "A photo of the dog breed Siberian Husky, with a moderately compact build and a brush tail curving like a sickle when alert.",
+        "limitations": "IDs 0, 1. Đuôi có thể rủ khi nghỉ. Dáng gọn và đuôi cong đều cần đọc có điều kiện.",
+        "claims": [
+          {
+            "attribute_id": "coat_texture",
+            "role": "common",
+            "claim_vi": "Lông ngoài thẳng, khá áp thân, trên lớp lót mềm dày có thể thay theo mùa.",
+            "phrase_en": "a smooth-lying outer coat",
+            "observability": "C",
+            "observation_conditions": "Lông khô, rõ vùng thân. Lớp lót không luôn nhìn thấy.",
+            "sources": [
+              {
+                "source_id": "fci-270",
+                "locator": "tr. 5, Coat"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "ear_position",
+            "role": "common",
+            "claim_vi": "Tai dựng, đặt cao và tương đối gần nhau.",
+            "phrase_en": "high-set upright ears",
+            "observability": "V",
+            "observation_conditions": "Chính diện khi hai tai hiện rõ.",
+            "sources": [
+              {
+                "source_id": "fci-270",
+                "locator": "tr. 3, Ears"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 4
+          },
+          {
+            "attribute_id": "body_build",
+            "role": "discriminative",
+            "claim_vi": "Dáng gọn vừa phải, ngực sâu nhưng không quá rộng.",
+            "phrase_en": "a moderately compact build",
+            "observability": "C",
+            "observation_conditions": "Ảnh ngang đủ thân, tránh góc rộng gần đầu. So với chuẩn của ID 1 chỉ là nhận định tương đối.",
+            "sources": [
+              {
+                "source_id": "fci-270",
+                "locator": "tr. 2, 4, General Appearance, Body"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "tail_shape",
+            "role": "discriminative",
+            "claim_vi": "Đuôi dạng chổi cong lưỡi liềm khi chú ý, có thể rủ lúc nghỉ.",
+            "phrase_en": "a brush tail curving like a sickle when alert",
+            "observability": "C",
+            "observation_conditions": "Thấy cả đuôi khi chú ý. Không dựa vào chỉ riêng việc mang cao.",
+            "sources": [
+              {
+                "source_id": "fci-270",
+                "locator": "tr. 4, Tail"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          }
+        ]
+      },
+      {
+        "group_id": "G2",
+        "class_id": 3,
+        "canonical_name": "Greater Swiss Mountain Dog",
+        "morphology_prompt": "A photo of the dog breed Greater Swiss Mountain Dog, with black, tan and white markings and a heavy-boned muscular build.",
+        "limitations": "IDs 4, 5. Tam thể và tỷ lệ 9:10 chồng Appenzeller. Cần thấy khung xương, ngực hoặc đuôi.",
+        "claims": [
+          {
+            "attribute_id": "coat_color",
+            "role": "common",
+            "claim_vi": "Nền đen với mảng nâu đỏ và trắng, kiểu tam thể điển hình.",
+            "phrase_en": "black, tan and white markings",
+            "observability": "V",
+            "observation_conditions": "Thân và mặt đủ sáng.",
+            "sources": [
+              {
+                "source_id": "fci-058",
+                "locator": "tr. 5, Colour"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "body_build",
+            "role": "discriminative",
+            "claim_vi": "Thân lực lưỡng, xương nặng và cơ bắp.",
+            "phrase_en": "a heavy-boned muscular build",
+            "observability": "C",
+            "observation_conditions": "Chó đứng ngang, thấy chân và thân, đối chiếu cùng tuổi trưởng thành khi có thể.",
+            "sources": [
+              {
+                "source_id": "fci-058",
+                "locator": "tr. 3–4, General Appearance, Body"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "tail_shape",
+            "role": "discriminative",
+            "claim_vi": "Đuôi nặng, rủ lúc nghỉ, chỉ cong nhẹ lên khi nâng.",
+            "phrase_en": "a heavy tail with a slight upward curve when raised",
+            "observability": "C",
+            "observation_conditions": "Thấy đuôi và tư thế, ảnh tĩnh lúc nghỉ ít phân biệt hơn.",
+            "sources": [
+              {
+                "source_id": "fci-058",
+                "locator": "tr. 4, Tail"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 2
+          }
+        ]
+      },
+      {
+        "group_id": "G2",
+        "class_id": 4,
+        "canonical_name": "Appenzeller",
+        "morphology_prompt": "A photo of the dog breed Appenzeller, with tan and white markings on a black or Havana-brown coat and a tightly curled tail over the rump when moving.",
+        "limitations": "IDs 3, 5. Chỉ dùng đuôi cuộn chặt khi thấy tư thế. Nền đen chồng hai lớp kia.",
+        "claims": [
+          {
+            "attribute_id": "coat_color",
+            "role": "common",
+            "claim_vi": "Tam thể với mảng nâu đỏ và trắng, nền có thể đen hoặc nâu Havana.",
+            "phrase_en": "tan and white markings on a black or Havana-brown coat",
+            "observability": "V",
+            "observation_conditions": "Ánh sáng trung tính. Nền đen chồng lấn ID 3 và 5.",
+            "sources": [
+              {
+                "source_id": "fci-046",
+                "locator": "tr. 6, Colour and Markings"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "body_build",
+            "role": "discriminative",
+            "claim_vi": "Dáng gọn gần vuông theo mô tả, tỷ lệ cao:dài chuẩn 9:10.",
+            "phrase_en": "a compact, nearly square build",
+            "observability": "C",
+            "observation_conditions": "Ảnh ngang, đủ điểm vai và mông. Tỷ lệ gần ID 3.",
+            "sources": [
+              {
+                "source_id": "fci-046",
+                "locator": "tr. 3, General Appearance, Important Proportions"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "tail_shape",
+            "role": "discriminative",
+            "claim_vi": "Đuôi cuộn chặt trên mông khi chuyển động. Khi nghỉ có thể thả.",
+            "phrase_en": "a tightly curled tail over the rump when moving",
+            "observability": "C",
+            "observation_conditions": "Ảnh đang di chuyển và thấy đường viền đuôi.",
+            "sources": [
+              {
+                "source_id": "fci-046",
+                "locator": "tr. 5, Tail"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          }
+        ]
+      },
+      {
+        "group_id": "G2",
+        "class_id": 5,
+        "canonical_name": "EntleBucher",
+        "morphology_prompt": "A photo of the dog breed EntleBucher, with black, tan and white markings and a compact, slightly elongated build.",
+        "limitations": "IDs 3, 4. Giữ biến thể đuôi ở phân tích nhóm. Bobtail không bắt buộc. Lông ngắn cũng có thể thấy ở ID 3.",
+        "claims": [
+          {
+            "attribute_id": "coat_color",
+            "role": "common",
+            "claim_vi": "Nền đen với mảng vàng nâu đến đỏ nâu và trắng.",
+            "phrase_en": "black, tan and white markings",
+            "observability": "V",
+            "observation_conditions": "Mặt và thân nhìn rõ. Màu tam thể chồng lấn.",
+            "sources": [
+              {
+                "source_id": "fci-047",
+                "locator": "tr. 6, Colour and Markings"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "coat_length",
+            "role": "common",
+            "claim_vi": "Lông ngoài ngắn, áp thân.",
+            "phrase_en": "a short close-fitting coat",
+            "observability": "V",
+            "observation_conditions": "Thân rõ, tránh lông bị nén. FCI 058 cũng cho phép lông ngoài ngắn.",
+            "sources": [
+              {
+                "source_id": "fci-047",
+                "locator": "tr. 6, Coat"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "body_build",
+            "role": "discriminative",
+            "claim_vi": "Dáng gọn hơi thuôn dài, tỷ lệ cao:dài chuẩn 8:10.",
+            "phrase_en": "a compact, slightly elongated build",
+            "observability": "C",
+            "observation_conditions": "Ảnh ngang trên mặt phẳng, đủ chân và thân. Tỷ lệ chuẩn không dùng như phép đo từ crop.",
+            "sources": [
+              {
+                "source_id": "fci-047",
+                "locator": "tr. 3, General Appearance, Important Proportions"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          }
+        ]
+      },
+      {
+        "group_id": "G3",
+        "class_id": 6,
+        "canonical_name": "Toy Poodle",
+        "morphology_prompt": "A photo of the dog breed Toy Poodle, with a curly or corded coat and ears hanging close to the cheeks.",
+        "limitations": "IDs 7, 8. Ảnh đơn không tỷ lệ khó tách cỡ. Grooming và khác ngưỡng FCI/AKC.",
+        "claims": [
+          {
+            "attribute_id": "coat_texture",
+            "role": "common",
+            "claim_vi": "Lông xoăn dày hoặc bện dây. Đây là hai kiểu lông chuẩn, các cỡ dùng chung.",
+            "phrase_en": "a curly or corded coat",
+            "observability": "C",
+            "observation_conditions": "Bộ lông đủ chi tiết ở vùng thân. Clip và grooming ảnh hưởng hình lông.",
+            "sources": [
+              {
+                "source_id": "fci-172",
+                "locator": "tr. 6, Coat"
+              },
+              {
+                "source_id": "akc-poodle",
+                "locator": "tr. 2, Coat"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "ear_position",
+            "role": "common",
+            "claim_vi": "Tai rủ dọc má.",
+            "phrase_en": "ears hanging close to the cheeks",
+            "observability": "C",
+            "observation_conditions": "Thấy vành và vị trí tai. Tua dài có thể che dáng.",
+            "sources": [
+              {
+                "source_id": "fci-172",
+                "locator": "tr. 4, Ears"
+              },
+              {
+                "source_id": "akc-poodle",
+                "locator": "tr. 1, Head and Expression"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "breed_size",
+            "role": "discriminative",
+            "claim_vi": "Chiều cao vai theo FCI trên 24 đến 28 cm, dung sai −1 cm (lý tưởng 25 cm). AKC đo ở điểm cao nhất của vai và giới hạn đến 10 in.",
+            "phrase_en": "very small stature",
+            "observability": "S",
+            "observation_conditions": "Chó trưởng thành đứng trên bề mặt phẳng, đo ở vai đúng hệ chuẩn. Không suy từ crop.",
+            "sources": [
+              {
+                "source_id": "fci-172",
+                "locator": "tr. 8, Size and Weight"
+              },
+              {
+                "source_id": "akc-poodle",
+                "locator": "tr. 1, Size, Proportion, Substance"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "runtime_scope_note": "Ngưỡng FCI và AKC là tham chiếu hình thái, không phải quy tắc gán nhãn Stanford Dogs.",
+            "retrieval_order": 3
+          }
+        ]
+      },
+      {
+        "group_id": "G3",
+        "class_id": 7,
+        "canonical_name": "Miniature Poodle",
+        "morphology_prompt": "A photo of the dog breed Miniature Poodle, with a curly or corded coat and ears hanging close to the cheeks.",
+        "limitations": "IDs 6, 8. Ảnh đơn không tỷ lệ khó tách cỡ. FCI Medium là một cỡ riêng ngoài 30 lớp.",
+        "claims": [
+          {
+            "attribute_id": "coat_texture",
+            "role": "common",
+            "claim_vi": "Lông xoăn dày hoặc bện dây. Đây là hai kiểu lông chuẩn, các cỡ dùng chung.",
+            "phrase_en": "a curly or corded coat",
+            "observability": "C",
+            "observation_conditions": "Bộ lông đủ chi tiết ở vùng thân. Clip và grooming ảnh hưởng hình lông.",
+            "sources": [
+              {
+                "source_id": "fci-172",
+                "locator": "tr. 6, Coat"
+              },
+              {
+                "source_id": "akc-poodle",
+                "locator": "tr. 2, Coat"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "ear_position",
+            "role": "common",
+            "claim_vi": "Tai rủ dọc má.",
+            "phrase_en": "ears hanging close to the cheeks",
+            "observability": "C",
+            "observation_conditions": "Thấy vành và vị trí tai. Tua dài có thể che dáng.",
+            "sources": [
+              {
+                "source_id": "fci-172",
+                "locator": "tr. 4, Ears"
+              },
+              {
+                "source_id": "akc-poodle",
+                "locator": "tr. 1, Head and Expression"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "breed_size",
+            "role": "discriminative",
+            "claim_vi": "Chiều cao vai theo FCI trên 28 đến 35 cm. AKC đo ở điểm cao nhất của vai và dùng ngưỡng trên 10 đến 15 in.",
+            "phrase_en": "small stature",
+            "observability": "S",
+            "observation_conditions": "Chó trưởng thành đứng trên bề mặt phẳng, đo ở vai đúng hệ chuẩn. Không suy từ crop.",
+            "sources": [
+              {
+                "source_id": "fci-172",
+                "locator": "tr. 8, Size and Weight"
+              },
+              {
+                "source_id": "akc-poodle",
+                "locator": "tr. 1, Size, Proportion, Substance"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "runtime_scope_note": "Ngưỡng FCI và AKC là tham chiếu hình thái, không phải quy tắc gán nhãn Stanford Dogs.",
+            "retrieval_order": 3
+          }
+        ]
+      },
+      {
+        "group_id": "G3",
+        "class_id": 8,
+        "canonical_name": "Standard Poodle",
+        "morphology_prompt": "A photo of the dog breed Standard Poodle, with a curly or corded coat and ears hanging close to the cheeks.",
+        "limitations": "IDs 6, 7. Ảnh đơn không tỷ lệ khó tách cỡ. FCI và AKC đặt ranh giới Standard khác nhau.",
+        "claims": [
+          {
+            "attribute_id": "coat_texture",
+            "role": "common",
+            "claim_vi": "Lông xoăn dày hoặc bện dây. Đây là hai kiểu lông chuẩn, các cỡ dùng chung.",
+            "phrase_en": "a curly or corded coat",
+            "observability": "C",
+            "observation_conditions": "Bộ lông đủ chi tiết ở vùng thân. Clip và grooming ảnh hưởng hình lông.",
+            "sources": [
+              {
+                "source_id": "fci-172",
+                "locator": "tr. 6, Coat"
+              },
+              {
+                "source_id": "akc-poodle",
+                "locator": "tr. 2, Coat"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "ear_position",
+            "role": "common",
+            "claim_vi": "Tai rủ dọc má.",
+            "phrase_en": "ears hanging close to the cheeks",
+            "observability": "C",
+            "observation_conditions": "Thấy vành và vị trí tai. Tua dài có thể che dáng.",
+            "sources": [
+              {
+                "source_id": "fci-172",
+                "locator": "tr. 4, Ears"
+              },
+              {
+                "source_id": "akc-poodle",
+                "locator": "tr. 1, Head and Expression"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "breed_size",
+            "role": "discriminative",
+            "claim_vi": "Chiều cao vai theo FCI trên 45 đến 60 cm, dung sai +2 cm. AKC đo ở điểm cao nhất của vai và dùng ngưỡng trên 15 in.",
+            "phrase_en": "larger stature",
+            "observability": "S",
+            "observation_conditions": "Chó trưởng thành đứng trên bề mặt phẳng, đo ở vai đúng hệ chuẩn. Không suy từ crop.",
+            "sources": [
+              {
+                "source_id": "fci-172",
+                "locator": "tr. 8, Size and Weight"
+              },
+              {
+                "source_id": "akc-poodle",
+                "locator": "tr. 1, Size, Proportion, Substance"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "runtime_scope_note": "Ngưỡng FCI và AKC là tham chiếu hình thái, không phải quy tắc gán nhãn Stanford Dogs.",
+            "retrieval_order": 3
+          }
+        ]
+      },
+      {
+        "group_id": "G4",
+        "class_id": 9,
+        "canonical_name": "Miniature Schnauzer",
+        "morphology_prompt": "A photo of the dog breed Miniature Schnauzer, with a wiry coat and a pronounced beard.",
+        "limitations": "IDs 10, 11. Cần đo chiều cao vai. Màu trắng là lựa chọn FCI theo scope, không phải dấu hiệu bắt buộc.",
+        "claims": [
+          {
+            "attribute_id": "coat_texture",
+            "role": "common",
+            "claim_vi": "Lông ngoài thô cứng dạng sợi, tương đối áp thân.",
+            "phrase_en": "a wiry coat",
+            "observability": "C",
+            "observation_conditions": "Thấy vùng lông thân chưa tỉa quá sát. Ảnh không kiểm độ cứng khi sờ.",
+            "sources": [
+              {
+                "source_id": "fci-183",
+                "locator": "tr. 5, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "facial_hair",
+            "role": "common",
+            "claim_vi": "Râu ở mõm và lông mày rậm.",
+            "phrase_en": "a pronounced beard",
+            "observability": "C",
+            "observation_conditions": "Mặt rõ và grooming phù hợp. Cụm prompt chỉ dùng phần râu.",
+            "sources": [
+              {
+                "source_id": "fci-183",
+                "locator": "tr. 5, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "ear_position",
+            "role": "common",
+            "claim_vi": "Tai tự nhiên gập rủ về phía trước.",
+            "phrase_en": "naturally folded drop ears",
+            "observability": "C",
+            "observation_conditions": "Tai nguyên vẹn và nhìn rõ. Tư thế hoặc can thiệp vào tai làm mất tín hiệu.",
+            "sources": [
+              {
+                "source_id": "fci-183",
+                "locator": "tr. 3, Ears"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "body_build",
+            "role": "common",
+            "claim_vi": "Dáng gần vuông theo tỷ lệ tiêu chuẩn.",
+            "phrase_en": "a nearly square build",
+            "observability": "C",
+            "observation_conditions": "Ảnh ngang đủ vai và thân, không dùng để phân biệt ba cỡ.",
+            "sources": [
+              {
+                "source_id": "fci-183",
+                "locator": "tr. 2, General Appearance and Important Proportions"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 4
+          },
+          {
+            "attribute_id": "breed_size",
+            "role": "discriminative",
+            "claim_vi": "Chiều cao vai chuẩn FCI 30–35 cm cho cả hai giới.",
+            "phrase_en": "small stature",
+            "observability": "S",
+            "observation_conditions": "Chó trưởng thành đứng thẳng, đo ở vai. Không xếp cỡ qua ảnh không có chuẩn tỷ lệ.",
+            "sources": [
+              {
+                "source_id": "fci-183",
+                "locator": "tr. 6, Size and Weight"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 5
+          }
+        ]
+      },
+      {
+        "group_id": "G4",
+        "class_id": 10,
+        "canonical_name": "Standard Schnauzer",
+        "morphology_prompt": "A photo of the dog breed Standard Schnauzer, with a wiry coat and a pronounced beard.",
+        "limitations": "IDs 9, 11. Cần đo chiều cao vai. Râu, tai và thân vuông là nét chung.",
+        "claims": [
+          {
+            "attribute_id": "coat_texture",
+            "role": "common",
+            "claim_vi": "Lông ngoài thô cứng dạng sợi, tương đối áp thân.",
+            "phrase_en": "a wiry coat",
+            "observability": "C",
+            "observation_conditions": "Thấy vùng lông thân chưa tỉa quá sát. Ảnh không kiểm độ cứng khi sờ.",
+            "sources": [
+              {
+                "source_id": "fci-182",
+                "locator": "tr. 5, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "facial_hair",
+            "role": "common",
+            "claim_vi": "Râu ở mõm và lông mày rậm.",
+            "phrase_en": "a pronounced beard",
+            "observability": "C",
+            "observation_conditions": "Mặt rõ và grooming phù hợp. Cụm prompt chỉ dùng phần râu.",
+            "sources": [
+              {
+                "source_id": "fci-182",
+                "locator": "tr. 5, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "ear_position",
+            "role": "common",
+            "claim_vi": "Tai tự nhiên gập rủ về phía trước.",
+            "phrase_en": "naturally folded drop ears",
+            "observability": "C",
+            "observation_conditions": "Tai nguyên vẹn và nhìn rõ. Tư thế hoặc can thiệp vào tai làm mất tín hiệu.",
+            "sources": [
+              {
+                "source_id": "fci-182",
+                "locator": "tr. 3, Ears"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "body_build",
+            "role": "common",
+            "claim_vi": "Dáng gần vuông theo tỷ lệ tiêu chuẩn.",
+            "phrase_en": "a nearly square build",
+            "observability": "C",
+            "observation_conditions": "Ảnh ngang đủ vai và thân, không dùng để phân biệt ba cỡ.",
+            "sources": [
+              {
+                "source_id": "fci-182",
+                "locator": "tr. 2, General Appearance and Important Proportions"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 4
+          },
+          {
+            "attribute_id": "breed_size",
+            "role": "discriminative",
+            "claim_vi": "Chiều cao vai chuẩn FCI 45–50 cm cho cả hai giới.",
+            "phrase_en": "medium stature",
+            "observability": "S",
+            "observation_conditions": "Chó trưởng thành đứng thẳng, đo ở vai. Không xếp cỡ qua ảnh không có chuẩn tỷ lệ.",
+            "sources": [
+              {
+                "source_id": "fci-182",
+                "locator": "tr. 6, Size and Weight"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 5
+          }
+        ]
+      },
+      {
+        "group_id": "G4",
+        "class_id": 11,
+        "canonical_name": "Giant Schnauzer",
+        "morphology_prompt": "A photo of the dog breed Giant Schnauzer, with a wiry coat and a pronounced beard.",
+        "limitations": "IDs 9, 10. Cần đo chiều cao vai. Dáng lực lưỡng phụ thuộc tuổi, giới, grooming và phối cảnh.",
+        "claims": [
+          {
+            "attribute_id": "coat_texture",
+            "role": "common",
+            "claim_vi": "Lông ngoài thô cứng dạng sợi, tương đối áp thân.",
+            "phrase_en": "a wiry coat",
+            "observability": "C",
+            "observation_conditions": "Thấy vùng lông thân chưa tỉa quá sát. Ảnh không kiểm độ cứng khi sờ.",
+            "sources": [
+              {
+                "source_id": "fci-181",
+                "locator": "tr. 5, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "facial_hair",
+            "role": "common",
+            "claim_vi": "Râu ở mõm và lông mày rậm.",
+            "phrase_en": "a pronounced beard",
+            "observability": "C",
+            "observation_conditions": "Mặt rõ và grooming phù hợp. Cụm prompt chỉ dùng phần râu.",
+            "sources": [
+              {
+                "source_id": "fci-181",
+                "locator": "tr. 5, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "ear_position",
+            "role": "common",
+            "claim_vi": "Tai tự nhiên gập rủ về phía trước.",
+            "phrase_en": "naturally folded drop ears",
+            "observability": "C",
+            "observation_conditions": "Tai nguyên vẹn và nhìn rõ. Tư thế hoặc can thiệp vào tai làm mất tín hiệu.",
+            "sources": [
+              {
+                "source_id": "fci-181",
+                "locator": "tr. 4, Ears"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "body_build",
+            "role": "common",
+            "claim_vi": "Dáng gần vuông theo tỷ lệ tiêu chuẩn.",
+            "phrase_en": "a nearly square build",
+            "observability": "C",
+            "observation_conditions": "Ảnh ngang đủ vai và thân, không dùng để phân biệt ba cỡ.",
+            "sources": [
+              {
+                "source_id": "fci-181",
+                "locator": "tr. 2, General Appearance and Important Proportions"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 4
+          },
+          {
+            "attribute_id": "breed_size",
+            "role": "discriminative",
+            "claim_vi": "Chiều cao vai chuẩn FCI 60–70 cm cho cả hai giới.",
+            "phrase_en": "large stature",
+            "observability": "S",
+            "observation_conditions": "Chó trưởng thành đứng thẳng, đo ở vai. Không xếp cỡ qua ảnh không có chuẩn tỷ lệ.",
+            "sources": [
+              {
+                "source_id": "fci-181",
+                "locator": "tr. 6, Size and Weight"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 5
+          }
+        ]
+      },
+      {
+        "group_id": "G5",
+        "class_id": 12,
+        "canonical_name": "English Setter",
+        "morphology_prompt": "A photo of the dog breed English Setter, with belton-style flecking.",
+        "limitations": "IDs 13, 14. Belton ưu tiên chấm rải. Có thể có mảng lớn hoặc phối tam thể, dễ nhầm khi crop.",
+        "claims": [
+          {
+            "attribute_id": "coat_texture",
+            "role": "common",
+            "claim_vi": "Lông thường dài mượt và hơi gợn ở vùng sau đầu ngang tai, có lông tua.",
+            "phrase_en": "silky, lightly wavy hair behind the head",
+            "observability": "C",
+            "observation_conditions": "Góc nghiêng, thấy lông sau đầu và tai, phụ thuộc grooming.",
+            "sources": [
+              {
+                "source_id": "fci-002",
+                "locator": "tr. 4, Coat"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "coat_color",
+            "role": "discriminative",
+            "claim_vi": "Các phối màu belton có nền trắng và chấm màu. Tiêu chuẩn ưu tiên chấm trải đều hơn mảng lớn.",
+            "phrase_en": "belton-style flecking",
+            "observability": "V",
+            "observation_conditions": "Thấy nhiều vùng thân. Mảng lớn và mẫu ba màu vẫn có thể có.",
+            "sources": [
+              {
+                "source_id": "fci-002",
+                "locator": "tr. 4, Colour"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          }
+        ]
+      },
+      {
+        "group_id": "G5",
+        "class_id": 13,
+        "canonical_name": "Irish Setter",
+        "morphology_prompt": "A photo of the dog breed Irish Setter, with a rich chestnut coat.",
+        "limitations": "IDs 12, 14. Dấu trắng nhỏ vẫn được phép. Ánh sáng ảnh ảnh hưởng phân biệt đỏ/hạt dẻ.",
+        "claims": [
+          {
+            "attribute_id": "ear_position",
+            "role": "common",
+            "claim_vi": "Tai đặt thấp về phía sau, rủ sát đầu.",
+            "phrase_en": "low-set ears hanging close to the head",
+            "observability": "V",
+            "observation_conditions": "Hai bên đầu rõ, phân biệt bờ tai với lông tua.",
+            "sources": [
+              {
+                "source_id": "fci-120",
+                "locator": "tr. 3, Ears"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED",
+            "used_in_prompt": false,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "coat_color",
+            "role": "discriminative",
+            "claim_vi": "Nền hạt dẻ đậm, không có đen theo FCI, cho phép dấu trắng nhỏ ở một số vị trí.",
+            "phrase_en": "a rich chestnut coat",
+            "observability": "V",
+            "observation_conditions": "Chiếu sáng trung tính, quan sát toàn nền lông.",
+            "sources": [
+              {
+                "source_id": "fci-120",
+                "locator": "tr. 4, Colour"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          }
+        ]
+      },
+      {
+        "group_id": "G5",
+        "class_id": 14,
+        "canonical_name": "Gordon Setter",
+        "morphology_prompt": "A photo of the dog breed Gordon Setter, with a black coat with tan points over the eyes and on the chest.",
+        "limitations": "IDs 12, 13. Cần thấy màu nền và điểm tan đồng thời. Ảnh chỉ một mảng tan dễ nhầm.",
+        "claims": [
+          {
+            "attribute_id": "ear_position",
+            "role": "common",
+            "claim_vi": "Tai đặt thấp và áp sát đầu.",
+            "phrase_en": "low-set drop ears",
+            "observability": "V",
+            "observation_conditions": "Thấy mặt bên và vị trí tai gắn.",
+            "sources": [
+              {
+                "source_id": "fci-006",
+                "locator": "tr. 3, Ears"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "coat_color",
+            "role": "discriminative",
+            "claim_vi": "Nền đen với các điểm tan ở vùng như trên mắt, mõm và ngực. Chấm trắng rất nhỏ ở ngực được phép.",
+            "phrase_en": "a black coat with tan points over the eyes and on the chest",
+            "observability": "V",
+            "observation_conditions": "Thấy đủ mặt và ngực, tránh tối vùng màu tan.",
+            "sources": [
+              {
+                "source_id": "fci-006",
+                "locator": "tr. 4, Colour and Tan Markings"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          }
+        ]
+      },
+      {
+        "group_id": "G6",
+        "class_id": 15,
+        "canonical_name": "English Springer",
+        "morphology_prompt": "A photo of the dog breed English Springer, with black-and-white or liver-and-white markings, sometimes with tan and an athletic, high-on-leg build.",
+        "limitations": "IDs 16, 17. Chồng màu với Cocker Spaniel. Cần thấy đủ chân để đánh giá cao chân tương đối.",
+        "claims": [
+          {
+            "attribute_id": "ear_shape",
+            "role": "common",
+            "claim_vi": "Tai dạng thùy, có chiều dài và chiều rộng rõ, có lông tua.",
+            "phrase_en": "long, broad lobed ears",
+            "observability": "C",
+            "observation_conditions": "Thấy dáng vành tai, lông tua có thể làm tai nhìn dài hoặc rộng hơn.",
+            "sources": [
+              {
+                "source_id": "fci-125",
+                "locator": "tr. 3, Ears"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "coat_color",
+            "role": "discriminative",
+            "claim_vi": "Đen-trắng hoặc nâu gan-trắng, có thể kèm mảng tan.",
+            "phrase_en": "black-and-white or liver-and-white markings, sometimes with tan",
+            "observability": "V",
+            "observation_conditions": "Ánh sáng trung tính, màu da và lông tránh lẫn. Chồng lấn ID 17.",
+            "sources": [
+              {
+                "source_id": "fci-125",
+                "locator": "tr. 4, Colour"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "body_build",
+            "role": "discriminative",
+            "claim_vi": "Dáng cân đối, chắc, tương đối cao chân trong nhóm spaniel đất liền Anh theo FCI.",
+            "phrase_en": "an athletic, high-on-leg build",
+            "observability": "C",
+            "observation_conditions": "Chó đứng ngang, nhìn đủ chân và thân. Không suy chiều cao thật từ pixel.",
+            "sources": [
+              {
+                "source_id": "fci-125",
+                "locator": "tr. 2, General Appearance"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          }
+        ]
+      },
+      {
+        "group_id": "G6",
+        "class_id": 16,
+        "canonical_name": "Welsh Springer Spaniel",
+        "morphology_prompt": "A photo of the dog breed Welsh Springer Spaniel, with rich red and white markings and small, tapering ears.",
+        "limitations": "IDs 15, 17. Cocker hai màu cam-trắng có thể gần sắc đỏ-trắng dưới ánh sáng khác. Tai giúp khi rõ vành.",
+        "claims": [
+          {
+            "attribute_id": "coat_texture",
+            "role": "common",
+            "claim_vi": "Lông thẳng hoặc phẳng, mượt và dày.",
+            "phrase_en": "a straight, silky coat",
+            "observability": "C",
+            "observation_conditions": "Quan sát lông khô rõ nét. Không suy cảm giác khi chạm từ ảnh.",
+            "sources": [
+              {
+                "source_id": "fci-126",
+                "locator": "tr. 4, Coat"
+              },
+              {
+                "source_id": "rkc-welsh-springer",
+                "locator": "Coat"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "coat_color",
+            "role": "discriminative",
+            "claim_vi": "Màu đỏ đậm và trắng theo hai tiêu chuẩn được đối chiếu.",
+            "phrase_en": "rich red and white markings",
+            "observability": "V",
+            "observation_conditions": "Thấy thân, kiểm ánh sáng đỏ/cam; dải màu ảnh có thể chồng ID 17.",
+            "sources": [
+              {
+                "source_id": "fci-126",
+                "locator": "tr. 4, Colour"
+              },
+              {
+                "source_id": "rkc-welsh-springer",
+                "locator": "Colour"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "ear_shape",
+            "role": "discriminative",
+            "claim_vi": "Vành tai tương đối nhỏ và thuôn dần về chóp.",
+            "phrase_en": "small, tapering ears",
+            "observability": "C",
+            "observation_conditions": "Cần thấy vành tai, góc ngang hoặc ba phần tư, tránh lông che.",
+            "sources": [
+              {
+                "source_id": "fci-126",
+                "locator": "tr. 3, Ears"
+              },
+              {
+                "source_id": "rkc-welsh-springer",
+                "locator": "Ears"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          }
+        ]
+      },
+      {
+        "group_id": "G6",
+        "class_id": 17,
+        "canonical_name": "Cocker Spaniel",
+        "morphology_prompt": "A photo of the dog breed Cocker Spaniel, with long, lobed ears and a compact, balanced build.",
+        "limitations": "IDs 15, 16. Scope English Cocker theo WordNet. Độ dài vành theo chuẩn không quy thành phép đo từ ảnh.",
+        "claims": [
+          {
+            "attribute_id": "coat_texture",
+            "role": "common",
+            "claim_vi": "Lông phẳng, mượt theo chuẩn English Cocker.",
+            "phrase_en": "a flat, silky coat",
+            "observability": "C",
+            "observation_conditions": "Thấy lông tự nhiên, không suy từ bóng phản chiếu. WordNet dùng để chọn tên tương đương.",
+            "sources": [
+              {
+                "source_id": "fci-005",
+                "locator": "tr. 4, Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "runtime_scope_note": "Phạm vi mô tả là English Cocker Spaniel.",
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "ear_shape",
+            "role": "discriminative",
+            "claim_vi": "Tai dạng thùy, vành mảnh dài tới chóp mũi khi duỗi theo phép đối chiếu chuẩn.",
+            "phrase_en": "long, lobed ears",
+            "observability": "C",
+            "observation_conditions": "Ảnh thường chỉ hỗ trợ độ dài tương đối. Cần thao tác đo thật để kiểm chính xác chóp mũi.",
+            "sources": [
+              {
+                "source_id": "fci-005",
+                "locator": "tr. 3, Ears"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "runtime_scope_note": "Phạm vi mô tả là English Cocker Spaniel.",
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "body_build",
+            "role": "discriminative",
+            "claim_vi": "Dáng gọn, chắc và cân đối, hai kích thước vai–đất và vai–gốc đuôi gần nhau theo tiêu chuẩn.",
+            "phrase_en": "a compact, balanced build",
+            "observability": "C",
+            "observation_conditions": "Ảnh bên đủ toàn thân, chân đứng tự nhiên. Không ước tính số đo từ crop.",
+            "sources": [
+              {
+                "source_id": "fci-005",
+                "locator": "tr. 2, General Appearance, Important Proportions"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "runtime_scope_note": "Phạm vi mô tả là English Cocker Spaniel.",
+            "retrieval_order": 2
+          }
+        ]
+      },
+      {
+        "group_id": "G7",
+        "class_id": 18,
+        "canonical_name": "Norfolk Terrier",
+        "morphology_prompt": "A photo of the dog breed Norfolk Terrier, with a hard wiry coat and forward-dropping ears close to the cheeks.",
+        "limitations": "IDs 19, 20. Tai rủ chồng Border Terrier. Dáng đầu gần Norwich hơn so với Border.",
+        "claims": [
+          {
+            "attribute_id": "coat_texture",
+            "role": "common",
+            "claim_vi": "Lông cứng, thẳng và thô, nằm sát thân.",
+            "phrase_en": "a hard wiry coat",
+            "observability": "C",
+            "observation_conditions": "Vùng thân rõ và không vừa tỉa sát.",
+            "sources": [
+              {
+                "source_id": "fci-272",
+                "locator": "tr. 4, Coat"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED",
+            "used_in_prompt": true,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "ear_position",
+            "role": "discriminative",
+            "claim_vi": "Tai rủ ra trước và áp gần má.",
+            "phrase_en": "forward-dropping ears close to the cheeks",
+            "observability": "C",
+            "observation_conditions": "Thấy hướng mang tai từ chính diện hoặc ba phần tư. Dáng tai chữ V là dấu hiệu hình tai riêng.",
+            "sources": [
+              {
+                "source_id": "fci-272",
+                "locator": "tr. 3, Ears"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "head_shape",
+            "role": "discriminative",
+            "claim_vi": "Đầu rộng hơi vồng, mõm nêm khỏe.",
+            "phrase_en": "a broad head with a wedge-shaped muzzle",
+            "observability": "C",
+            "observation_conditions": "Thấy mặt trước và profile, không dùng đầu để tách riêng Norfolk với Norwich.",
+            "sources": [
+              {
+                "source_id": "fci-272",
+                "locator": "tr. 3, Cranial and Facial Regions"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 2
+          }
+        ]
+      },
+      {
+        "group_id": "G7",
+        "class_id": 19,
+        "canonical_name": "Norwich Terrier",
+        "morphology_prompt": "A photo of the dog breed Norwich Terrier, with a hard wiry coat and ears held upright when alert.",
+        "limitations": "IDs 18, 20. Tai có thể ngả sau khi không chú ý. Đầu và coat gần Norfolk.",
+        "claims": [
+          {
+            "attribute_id": "coat_texture",
+            "role": "common",
+            "claim_vi": "Lông cứng, thẳng và thô, áp sát thân.",
+            "phrase_en": "a hard wiry coat",
+            "observability": "C",
+            "observation_conditions": "Grooming và độ phân giải có thể che kết cấu lông.",
+            "sources": [
+              {
+                "source_id": "fci-072",
+                "locator": "tr. 4, Coat"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "ear_position",
+            "role": "discriminative",
+            "claim_vi": "Tai dựng lúc chú ý, có thể ngả ra sau lúc nghỉ.",
+            "phrase_en": "ears held upright when alert",
+            "observability": "C",
+            "observation_conditions": "Hai tai rõ, chó đang chú ý. Tai nhọn thuộc hình tai, chưa cần xuất ID riêng ở lớp này.",
+            "sources": [
+              {
+                "source_id": "fci-072",
+                "locator": "tr. 3, Ears"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          }
+        ]
+      },
+      {
+        "group_id": "G7",
+        "class_id": 20,
+        "canonical_name": "Border Terrier",
+        "morphology_prompt": "A photo of the dog breed Border Terrier, with forward-dropping ears and an otter-like head.",
+        "limitations": "IDs 18, 19. Đầu kiểu rái cá cần đủ góc. Tai rủ và coat thô chồng Norfolk.",
+        "claims": [
+          {
+            "attribute_id": "coat_texture",
+            "role": "common",
+            "claim_vi": "Lông ngoài thô trên lớp lót sát thân.",
+            "phrase_en": "a harsh outer coat",
+            "observability": "C",
+            "observation_conditions": "Lông khô đủ chi tiết. Mật độ lớp lót không suy chắc từ ảnh.",
+            "sources": [
+              {
+                "source_id": "fci-010",
+                "locator": "tr. 3, Coat"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "ear_position",
+            "role": "common",
+            "claim_vi": "Tai rủ về trước gần má.",
+            "phrase_en": "forward-dropping ears",
+            "observability": "C",
+            "observation_conditions": "Tai hai bên rõ. Chồng lấn Norfolk.",
+            "sources": [
+              {
+                "source_id": "fci-010",
+                "locator": "tr. 2, Ears"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "head_shape",
+            "role": "discriminative",
+            "claim_vi": "Đầu kiểu rái cá, với sọ rộng vừa và mõm ngắn khỏe.",
+            "phrase_en": "an otter-like head",
+            "observability": "C",
+            "observation_conditions": "Chính diện và góc ngang rõ mõm, chỉ gợi ý khi thấy hình học đầu.",
+            "sources": [
+              {
+                "source_id": "fci-010",
+                "locator": "tr. 2, Head, Cranial Region, Facial Region"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          }
+        ]
+      },
+      {
+        "group_id": "G8",
+        "class_id": 21,
+        "canonical_name": "Collie",
+        "morphology_prompt": "A photo of the dog breed Collie, with semi-erect ears tipped forward when alert and a tapering blunt-wedge head with a slight stop.",
+        "limitations": "IDs 22, 23. Dạng Rough/Smooth tham chiếu chuẩn. Phân bố biến thể trong lớp ảnh chưa xác minh.",
+        "claims": [
+          {
+            "attribute_id": "ear_position",
+            "role": "common",
+            "claim_vi": "Tai bán dựng khi chú ý, chóp gập ra trước. Cả chuẩn Rough và Smooth mô tả cách mang này.",
+            "phrase_en": "semi-erect ears tipped forward when alert",
+            "observability": "C",
+            "observation_conditions": "Thấy hai tai, chó chú ý. Chồng lấn Sheltie và một số Border Collie.",
+            "sources": [
+              {
+                "source_id": "fci-156",
+                "locator": "tr. 4, Ears"
+              },
+              {
+                "source_id": "fci-296",
+                "locator": "tr. 3, Ears"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "head_shape",
+            "role": "discriminative",
+            "claim_vi": "Đầu dạng nêm tù, thon dần, với đoạn chuyển trán–mõm nhẹ nhưng thấy được.",
+            "phrase_en": "a tapering blunt-wedge head with a slight stop",
+            "observability": "C",
+            "observation_conditions": "Ưu tiên góc nghiêng đủ trán và mõm. Dạng nêm chồng lấn Sheltie.",
+            "sources": [
+              {
+                "source_id": "fci-156",
+                "locator": "tr. 3, Head"
+              },
+              {
+                "source_id": "fci-296",
+                "locator": "tr. 2–3, Head"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "runtime_scope_note": "Đặc điểm tương ứng trong cả hai chuẩn Rough và Smooth; phân bố biến thể trong lớp dữ liệu chưa xác minh.",
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "coat_length",
+            "role": "common",
+            "claim_vi": "Hai chuẩn tham chiếu mô tả Rough có bờm rõ và Smooth có lông ngoài ngắn; phân bố biến thể của lớp dữ liệu chưa xác minh.",
+            "phrase_en": "rough- or smooth-coated reference varieties",
+            "observability": "C",
+            "observation_conditions": "Chỉ dùng với bộ lông đủ rõ. Giữ biến thiên ở KB, không chèn vào prompt.",
+            "sources": [
+              {
+                "source_id": "fci-156",
+                "locator": "tr. 5, Coat"
+              },
+              {
+                "source_id": "fci-296",
+                "locator": "tr. 4, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 3
+          }
+        ]
+      },
+      {
+        "group_id": "G8",
+        "class_id": 22,
+        "canonical_name": "Shetland Sheepdog",
+        "morphology_prompt": "A photo of the dog breed Shetland Sheepdog, with a long outer coat with a distinct neck ruff and a long wedge-shaped head with a slight stop.",
+        "limitations": "IDs 21, 23. Bờm và tai chồng Rough Collie. Cần tỷ lệ để dùng chiều cao.",
+        "claims": [
+          {
+            "attribute_id": "ear_position",
+            "role": "common",
+            "claim_vi": "Tai bán dựng, chóp gập ra trước lúc chú ý.",
+            "phrase_en": "semi-erect ears with forward tips",
+            "observability": "C",
+            "observation_conditions": "Chó đang chú ý và thấy hai tai. Chồng lấn ID 21.",
+            "sources": [
+              {
+                "source_id": "fci-088",
+                "locator": "tr. 3, Ears"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "coat_length",
+            "role": "discriminative",
+            "claim_vi": "Lông ngoài dài, có bờm và diềm cổ rõ.",
+            "phrase_en": "a long outer coat with a distinct neck ruff",
+            "observability": "C",
+            "observation_conditions": "Cổ và thân thấy rõ, lông khô, chồng lấn Rough Collie.",
+            "sources": [
+              {
+                "source_id": "fci-088",
+                "locator": "tr. 2, 4, General Appearance, Coat"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "head_shape",
+            "role": "discriminative",
+            "claim_vi": "Đầu nêm tù dài từ tai tới mũi, stop nhẹ nhưng rõ.",
+            "phrase_en": "a long wedge-shaped head with a slight stop",
+            "observability": "C",
+            "observation_conditions": "Ảnh ngang rõ trán–mõm. Dùng để phân biệt có điều kiện với ID 23.",
+            "sources": [
+              {
+                "source_id": "fci-088",
+                "locator": "tr. 2, Head, Cranial Region"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "breed_size",
+            "role": "discriminative",
+            "claim_vi": "FCI ghi chiều cao vai lý tưởng đực 37 cm, cái 35,5 cm, sai khác quá 2,5 cm rất không mong muốn.",
+            "phrase_en": "smaller stature relative to Collie under FCI standards",
+            "observability": "S",
+            "observation_conditions": "Đo thật ở vai chó trưởng thành. Dùng chuẩn tham chiếu, không suy từ kích thước ảnh.",
+            "sources": [
+              {
+                "source_id": "fci-088",
+                "locator": "tr. 5, Size"
+              },
+              {
+                "source_id": "fci-156",
+                "locator": "tr. 5, Size"
+              },
+              {
+                "source_id": "fci-296",
+                "locator": "tr. 5, Size"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 4
+          }
+        ]
+      },
+      {
+        "group_id": "G8",
+        "class_id": 23,
+        "canonical_name": "Border Collie",
+        "morphology_prompt": "A photo of the dog breed Border Collie, with erect or semi-erect ears and a head with a clearly marked stop.",
+        "limitations": "IDs 21, 22. Tai bán dựng và coat dài vừa hoặc smooth chồng lấn. Stop rõ chỉ là tín hiệu hỗ trợ.",
+        "claims": [
+          {
+            "attribute_id": "ear_position",
+            "role": "common",
+            "claim_vi": "Tai dựng hoặc bán dựng và linh hoạt theo trạng thái.",
+            "phrase_en": "erect or semi-erect ears",
+            "observability": "C",
+            "observation_conditions": "Hai tai hiện rõ. Chồng lấn Collie và Sheltie.",
+            "sources": [
+              {
+                "source_id": "fci-297",
+                "locator": "tr. 3, Ears"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "tail_shape",
+            "role": "common",
+            "claim_vi": "Đuôi đặt thấp thường có đoạn chót cong lên.",
+            "phrase_en": "a tail with a slight upward sweep at the tip",
+            "observability": "C",
+            "observation_conditions": "Thấy toàn đuôi và tư thế. Chồng lấn cả ID 21 và 22.",
+            "sources": [
+              {
+                "source_id": "fci-297",
+                "locator": "tr. 3, Tail"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "head_shape",
+            "role": "discriminative",
+            "claim_vi": "Sọ khá rộng và đoạn chuyển trán–mõm rõ.",
+            "phrase_en": "a head with a clearly marked stop",
+            "observability": "C",
+            "observation_conditions": "Ảnh nghiêng, đọc đường chuyển trán–mõm; không dùng như điều kiện đủ.",
+            "sources": [
+              {
+                "source_id": "fci-297",
+                "locator": "tr. 2–3, Cranial and Facial Regions"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          }
+        ]
+      },
+      {
+        "group_id": "G9",
+        "class_id": 24,
+        "canonical_name": "Golden Retriever",
+        "morphology_prompt": "A photo of the dog breed Golden Retriever, with a golden or cream coat and distinct feathering.",
+        "limitations": "IDs 25, 26. Màu vàng/kem chồng Labrador nhạt. Feathering phụ thuộc góc và vùng bị crop.",
+        "claims": [
+          {
+            "attribute_id": "coat_color",
+            "role": "discriminative",
+            "claim_vi": "Lông trong dải vàng hoặc kem trong tiêu chuẩn, có thể có ít sợi trắng ở ngực.",
+            "phrase_en": "a golden or cream coat",
+            "observability": "V",
+            "observation_conditions": "Thân đủ sáng. Màu kem chồng lấn Labrador vàng nhạt.",
+            "sources": [
+              {
+                "source_id": "fci-111",
+                "locator": "tr. 3, Colour"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "coat_texture",
+            "role": "discriminative",
+            "claim_vi": "Lông phẳng hoặc gợn.",
+            "phrase_en": "flat or wavy hair",
+            "observability": "C",
+            "observation_conditions": "Góc đủ thấy thân, lông khô. Vài gợn lông đơn lẻ có thể chồng ID 26.",
+            "sources": [
+              {
+                "source_id": "fci-111",
+                "locator": "tr. 3, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "coat_length",
+            "role": "discriminative",
+            "claim_vi": "Lông dài trang trí rõ ở dạng feathering theo chuẩn; nguồn không nêu một chiều dài toàn thân cố định.",
+            "phrase_en": "distinct feathering",
+            "observability": "C",
+            "observation_conditions": "Thấy vùng lông tua, grooming hoặc crop có thể làm giảm tín hiệu.",
+            "sources": [
+              {
+                "source_id": "fci-111",
+                "locator": "tr. 3, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 3
+          }
+        ]
+      },
+      {
+        "group_id": "G9",
+        "class_id": 25,
+        "canonical_name": "Labrador Retriever",
+        "morphology_prompt": "A photo of the dog breed Labrador Retriever, with a short, dense coat and a thick-based, tapering otter tail.",
+        "limitations": "IDs 24, 26. Lông ngắn chồng Chesapeake. Đuôi phải thấy đủ từ gốc để dùng dáng otter.",
+        "claims": [
+          {
+            "attribute_id": "coat_length",
+            "role": "common",
+            "claim_vi": "Lông ngắn, dày, không có lông tua theo chuẩn.",
+            "phrase_en": "a short, dense coat",
+            "observability": "V",
+            "observation_conditions": "Thân khô, đủ độ phân giải. Chiều dài ngắn cũng có ở ID 26.",
+            "sources": [
+              {
+                "source_id": "fci-122",
+                "locator": "tr. 4, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "coat_texture",
+            "role": "discriminative",
+            "claim_vi": "Lông không gợn, sợi có độ cứng khi sờ.",
+            "phrase_en": "an even, unwaved coat",
+            "observability": "C",
+            "observation_conditions": "Thân khô, có ánh sáng. Ảnh không xác nhận trực tiếp độ cứng.",
+            "sources": [
+              {
+                "source_id": "fci-122",
+                "locator": "tr. 4, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "tail_shape",
+            "role": "discriminative",
+            "claim_vi": "Đuôi tròn, rất dày gần gốc rồi thon dần, không tua, dạng đuôi rái cá.",
+            "phrase_en": "a thick-based, tapering otter tail",
+            "observability": "C",
+            "observation_conditions": "Đuôi nhìn rõ từ gốc đến chóp, tránh góc foreshortening.",
+            "sources": [
+              {
+                "source_id": "fci-122",
+                "locator": "tr. 3, Tail"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          }
+        ]
+      },
+      {
+        "group_id": "G9",
+        "class_id": 26,
+        "canonical_name": "Chesapeake Bay Retriever",
+        "morphology_prompt": "A photo of the dog breed Chesapeake Bay Retriever, with a short coat and waves over the neck, shoulders and back.",
+        "limitations": "IDs 24, 25. Gợn là xu hướng theo vùng. Ảnh ướt hạn chế phân biệt với Labrador.",
+        "claims": [
+          {
+            "attribute_id": "coat_length",
+            "role": "common",
+            "claim_vi": "Lông thân ngắn, lông mặt và chân rất ngắn. Tua vừa ở vùng sau đùi và đuôi được phép.",
+            "phrase_en": "a short coat",
+            "observability": "V",
+            "observation_conditions": "Thấy thân. Phân biệt lông ngắn toàn thân với tua cục bộ.",
+            "sources": [
+              {
+                "source_id": "fci-263",
+                "locator": "tr. 5, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "coat_texture",
+            "role": "discriminative",
+            "claim_vi": "Lông có xu hướng gợn ở vai, cổ, lưng và thắt lưng. Lông mặt và chân thẳng.",
+            "phrase_en": "waves over the neck, shoulders and back",
+            "observability": "C",
+            "observation_conditions": "Lông khô, nhìn đủ vùng vai–lưng. Gợn là xu hướng, không bắt buộc thấy.",
+            "sources": [
+              {
+                "source_id": "fci-263",
+                "locator": "tr. 5, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "coat_color",
+            "role": "discriminative",
+            "claim_vi": "Dải tông màu nâu, sedge hoặc deadgrass theo FCI.",
+            "phrase_en": "brown, sedge or deadgrass coloring",
+            "observability": "V",
+            "observation_conditions": "Ánh sáng trung tính. Màu gần nâu Labrador hoặc vàng nhạt Golden.",
+            "sources": [
+              {
+                "source_id": "fci-263",
+                "locator": "tr. 5, Colour"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 2
+          }
+        ]
+      },
+      {
+        "group_id": "G10",
+        "class_id": 27,
+        "canonical_name": "Japanese Spaniel",
+        "morphology_prompt": "A photo of the dog breed Japanese Spaniel, with short facial hair and a white coat with black or red patches.",
+        "limitations": "IDs 28, 29. Màu và lông mặt chỉ hỗ trợ. FCI và AKC có phạm vi màu hơi khác.",
+        "claims": [
+          {
+            "attribute_id": "muzzle_length",
+            "role": "common",
+            "claim_vi": "Mõm ngắn theo AKC, FCI mô tả sống mũi rất ngắn.",
+            "phrase_en": "a short muzzle",
+            "observability": "C",
+            "observation_conditions": "Nhìn góc nghiêng rõ mũi và đoạn chuyển. Ít phân biệt trong G10.",
+            "sources": [
+              {
+                "source_id": "akc-japanese-chin",
+                "locator": "tr. 1, Head"
+              },
+              {
+                "source_id": "fci-206",
+                "locator": "tr. 3, Facial Region"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "coat_texture",
+            "role": "common",
+            "claim_vi": "Lông thân thẳng và mượt.",
+            "phrase_en": "a straight, silky coat",
+            "observability": "C",
+            "observation_conditions": "Lông khô, ảnh đủ nét để đánh giá bề ngoài.",
+            "sources": [
+              {
+                "source_id": "fci-206",
+                "locator": "tr. 4, Coat"
+              },
+              {
+                "source_id": "akc-japanese-chin",
+                "locator": "tr. 1–2, Coat"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED",
+            "used_in_prompt": false,
+            "retrieval_order": 4
+          },
+          {
+            "attribute_id": "facial_hair",
+            "role": "discriminative",
+            "claim_vi": "Lông trên mặt và mõm ngắn, lông tai dài và nhiều.",
+            "phrase_en": "short facial hair",
+            "observability": "C",
+            "observation_conditions": "Mặt và mõm rõ, tai ngoài vùng claim chính. Grooming làm biến đổi dấu hiệu.",
+            "sources": [
+              {
+                "source_id": "akc-japanese-chin",
+                "locator": "tr. 2, Coat"
+              },
+              {
+                "source_id": "fci-206",
+                "locator": "tr. 4, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "coat_color",
+            "role": "discriminative",
+            "claim_vi": "FCI mô tả nền trắng với mảng đen hoặc đỏ. AKC có quy định thêm về tan points, dùng nguồn FCI cho phrase.",
+            "phrase_en": "a white coat with black or red patches",
+            "observability": "V",
+            "observation_conditions": "Thấy đủ nền lông và mảng. Sắc độ ở vùng crop nhỏ có thể gây nhầm.",
+            "sources": [
+              {
+                "source_id": "fci-206",
+                "locator": "tr. 4, Colour"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 2
+          }
+        ]
+      },
+      {
+        "group_id": "G10",
+        "class_id": 28,
+        "canonical_name": "Pekinese",
+        "morphology_prompt": "A photo of the dog breed Pekinese, with a broad head flat between the ears and a moderate mane around the neck.",
+        "limitations": "IDs 27, 29. Bờm và đầu cần nhìn rõ, mức bẹt mặt không dùng để xếp loại.",
+        "claims": [
+          {
+            "attribute_id": "muzzle_length",
+            "role": "common",
+            "claim_vi": "Mõm phải hiện rõ, có thể tương đối ngắn. Chiều rộng được ghi riêng ở head_shape nếu cần.",
+            "phrase_en": "a visible, relatively short muzzle",
+            "observability": "C",
+            "observation_conditions": "Dùng góc nghiêng rõ đường viền. Không dùng độ bẹt để xếp loại.",
+            "sources": [
+              {
+                "source_id": "fci-207",
+                "locator": "tr. 2, Facial Region"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 4
+          },
+          {
+            "attribute_id": "head_shape",
+            "role": "discriminative",
+            "claim_vi": "Đầu tương đối rộng, đỉnh sọ phẳng giữa hai tai theo FCI.",
+            "phrase_en": "a broad head flat between the ears",
+            "observability": "C",
+            "observation_conditions": "Ảnh mặt thẳng hoặc ba phần tư, cần tách đường viền lông và sọ.",
+            "sources": [
+              {
+                "source_id": "fci-207",
+                "locator": "tr. 2, Head, Cranial Region"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "body_build",
+            "role": "discriminative",
+            "claim_vi": "Dáng nhỏ chắc vừa phải, thân cân bằng.",
+            "phrase_en": "a moderately thick-set build",
+            "observability": "C",
+            "observation_conditions": "Ảnh ngang đủ thân. Lông không được tính là khối thân.",
+            "sources": [
+              {
+                "source_id": "fci-207",
+                "locator": "tr. 2, General Appearance"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 2
+          },
+          {
+            "attribute_id": "coat_length",
+            "role": "discriminative",
+            "claim_vi": "Lông thẳng dài vừa, bờm quây quanh cổ như áo choàng và không vượt quá vai.",
+            "phrase_en": "a moderate mane around the neck",
+            "observability": "C",
+            "observation_conditions": "Cổ và vai hiện rõ. Bờm thay đổi do grooming.",
+            "sources": [
+              {
+                "source_id": "fci-207",
+                "locator": "tr. 4, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 3
+          }
+        ]
+      },
+      {
+        "group_id": "G10",
+        "class_id": 29,
+        "canonical_name": "Shih-Tzu",
+        "morphology_prompt": "A photo of the dog breed Shih-Tzu, with a long outer coat and muzzle hair growing upward.",
+        "limitations": "IDs 27, 28. Grooming có thể che lông mọc hướng lên. Mõm ngắn chồng hai lớp kia.",
+        "claims": [
+          {
+            "attribute_id": "muzzle_length",
+            "role": "common",
+            "claim_vi": "Mõm ngắn theo chuẩn. Chiều rộng và độ vuông là mô tả khác của hình mõm.",
+            "phrase_en": "a short muzzle",
+            "observability": "C",
+            "observation_conditions": "Ảnh ngang thấy mũi và điểm stop, tóc có thể che. Không suy 2,5 cm từ ảnh.",
+            "sources": [
+              {
+                "source_id": "fci-208",
+                "locator": "tr. 3, Muzzle"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 3
+          },
+          {
+            "attribute_id": "coat_length",
+            "role": "common",
+            "claim_vi": "Lông ngoài dài, dày, không xoăn theo chuẩn, có thể hơi gợn.",
+            "phrase_en": "a long outer coat",
+            "observability": "C",
+            "observation_conditions": "Lông khô và rõ thân. Grooming có thể làm lông thực tế ngắn.",
+            "sources": [
+              {
+                "source_id": "fci-208",
+                "locator": "tr. 4, Coat Hair"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 4
+          },
+          {
+            "attribute_id": "facial_hair",
+            "role": "discriminative",
+            "claim_vi": "Có râu, ria và lông mọc hướng lên trên mõm, tạo kiểu mặt như cánh hoa cúc.",
+            "phrase_en": "muzzle hair growing upward",
+            "observability": "C",
+            "observation_conditions": "Mặt và mõm đủ rõ, buộc hoặc tỉa lông có thể đổi viền mặt.",
+            "sources": [
+              {
+                "source_id": "fci-208",
+                "locator": "tr. 2–3, General Appearance, Head"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": true,
+            "retrieval_order": 1
+          },
+          {
+            "attribute_id": "body_build",
+            "role": "discriminative",
+            "claim_vi": "Thân chắc, chiều dài từ vai tới gốc đuôi lớn hơn chiều cao vai theo chuẩn.",
+            "phrase_en": "a sturdy build longer than tall",
+            "observability": "C",
+            "observation_conditions": "Dáng ngang đủ vai và gốc đuôi. Không suy tỷ lệ chính xác từ góc xiên.",
+            "sources": [
+              {
+                "source_id": "fci-208",
+                "locator": "tr. 2, General Appearance, Important Proportions"
+              }
+            ],
+            "semantic_review_status": "SUPPORTED_WITH_SCOPE",
+            "used_in_prompt": false,
+            "retrieval_order": 2
+          }
+        ]
+      }
+    ]
+  },
+  "draft_4": {
+    "review_date": "2026-11-28",
+    "revision_decision": {
+      "authority": "Trưởng nhóm",
+      "SA-01": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có.",
+      "SA-02": "Dùng câu thay thế về tai English Cocker Spaniel theo nội dung trưởng nhóm chốt.",
+      "source_approval": "pending"
+    },
+    "reviewed_draft_3": {
+      "kb_sha256": "f7eec9c50954427d6108a015140647c5481f57386ea8f1a4b737125e27a2ebe9",
+      "morphology_bank_sha256": "41d4a04c8b8587db7f3a1089edf97c7fb55651005c0366218f24ed37dd37bf03",
+      "tokenization_audit_sha256": "2865ec41cf4878849e6eec2166ede914a39e70c97efb81f4138ec0fa4c7419d5",
+      "source_evidence_sha256": "b1e7d97796253ae53c73f814490d4169ea7f0c1cbfbe2e9aa555216408737d3a",
+      "source_approval_review_sha256": "7f43ff40f83c88f66f7357523bf8d02c9741d533ecdd14b722450ecb41347290"
+    },
+    "design_sha256": "1f357e59e3bef38f2e60217ff54e32504c40d068820e369e25e8e84b3b98bbaf",
+    "kb_version": "breed-kb-draft-4",
+    "kb_sha256": "543243596553cd2ef903891f41417d5e51ab7904330917e22c1d3aa05c05e344",
+    "morphology_bank_version": "morphology-draft-4",
+    "morphology_bank_sha256": "ace2fb4b428648f98fd7628a3a773e9fae68dca13d6dfdebccda2f8d3b0fc6ca",
+    "vocabulary": {
+      "version": "kb-morphology-v1",
+      "owner": "Trưởng nhóm"
+    },
+    "carry_forward": {
+      "unchanged_attribute_objects": 77,
+      "unchanged_prompt_entries": 30,
+      "source_decisions": "inherit prior recommendation only when content, source IDs, and scope match"
+    },
+    "coverage": {
+      "attributes": 95,
+      "prompt_bindings": 56,
+      "reverified_prompt_bindings": 12,
+      "pending_sources": 36,
+      "runtime_referenced_sources": 32,
+      "design_only_sources": [
+        "fci-211",
+        "imagenet-synsets",
+        "stanford-dogs-paper",
+        "stanford-wordnet"
+      ]
+    },
+    "revisions": [
+      {
+        "class_id": 4,
+        "canonical_name": "Appenzeller",
+        "attribute_id": "coat_color",
+        "finding": "SA-01",
+        "before_value": "Tam thể với mảng nâu đỏ và trắng, nền có thể đen hoặc nâu Havana. Ánh sáng trung tính. Nền đen chồng lấn ID 3 và 5.",
+        "after_value": "Tam thể với mảng nâu đỏ và trắng, nền có thể đen hoặc nâu Havana. Ánh sáng trung tính.",
+        "removed_from_runtime": [
+          "Nền đen chồng lấn ID 3 và 5."
+        ],
+        "source_ids": [
+          "fci-046"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-046",
+            "url": "https://www.fci.be/nomenclature/Standards/046g02-en.pdf",
+            "locator": "tr. 6, Colour and Markings",
+            "document_version": "Bản EN 05/05/2003, chuẩn có ngày 25/03/2003",
+            "reviewed_sha256": "7ce4340c206ca632b1864a2cf723acc1182e2953e7455f8660ec345614b21c84",
+            "reverified_raw_sha256": "7ce4340c206ca632b1864a2cf723acc1182e2953e7455f8660ec345614b21c84",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-058",
+            "url": "https://www.fci.be/nomenclature/Standards/058g02-en.pdf",
+            "locator": "tr. 5, Colour",
+            "document_version": "Bản EN 05/05/2003, chuẩn có ngày 25/03/2003",
+            "reviewed_sha256": "24420566e064e227ea88300eb704a74046266c2363fb918f8093bfcbfaf97210",
+            "reverified_raw_sha256": "24420566e064e227ea88300eb704a74046266c2363fb918f8093bfcbfaf97210",
+            "verification_method": "exact_raw_sha256"
+          },
+          {
+            "source_id": "fci-047",
+            "url": "https://www.fci.be/nomenclature/Standards/047g02-en.pdf",
+            "locator": "tr. 6, Colour and markings",
+            "document_version": "Bản EN 28/06/2002, chuẩn có ngày 28/11/2001",
+            "reviewed_sha256": "aa8655990bcdc4205e5942461437cf7dcd0e81ad1833729db57053df60e46c59",
+            "reverified_raw_sha256": "aa8655990bcdc4205e5942461437cf7dcd0e81ad1833729db57053df60e46c59",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "Nền đen trong phối tam thể còn được nêu cho ID 3 và 5. Havana là lựa chọn của Appenzeller, không phải điều kiện bắt buộc.",
+        "runtime_scope_and_verification": "FCI 046 hỗ trợ nền đen hoặc nâu Havana, mảng đỏ-nâu và trắng; ánh sáng trung tính vẫn là điều kiện quan sát.",
+        "morphology_binding": {
+          "phrase": "tan and white markings on a black or Havana-brown coat",
+          "attribute_id": "coat_color",
+          "source_ids": [
+            "fci-046"
+          ]
+        },
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 4,
+        "canonical_name": "Appenzeller",
+        "attribute_id": "body_build",
+        "finding": "SA-01",
+        "before_value": "Dáng gọn gần vuông theo mô tả, tỷ lệ cao:dài chuẩn 9:10. Ảnh ngang, đủ điểm vai và mông. Tỷ lệ gần ID 3.",
+        "after_value": "Dáng gọn gần vuông theo mô tả, tỷ lệ cao:dài chuẩn 9:10. Ảnh ngang, đủ điểm vai và mông.",
+        "removed_from_runtime": [
+          "Tỷ lệ gần ID 3."
+        ],
+        "source_ids": [
+          "fci-046"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-046",
+            "url": "https://www.fci.be/nomenclature/Standards/046g02-en.pdf",
+            "locator": "tr. 3, General Appearance, Important Proportions",
+            "document_version": "Bản EN 05/05/2003, chuẩn có ngày 25/03/2003",
+            "reviewed_sha256": "7ce4340c206ca632b1864a2cf723acc1182e2953e7455f8660ec345614b21c84",
+            "reverified_raw_sha256": "7ce4340c206ca632b1864a2cf723acc1182e2953e7455f8660ec345614b21c84",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-058",
+            "url": "https://www.fci.be/nomenclature/Standards/058g02-en.pdf",
+            "locator": "tr. 3, Important Proportions",
+            "document_version": "Bản EN 05/05/2003, chuẩn có ngày 25/03/2003",
+            "reviewed_sha256": "24420566e064e227ea88300eb704a74046266c2363fb918f8093bfcbfaf97210",
+            "reverified_raw_sha256": "24420566e064e227ea88300eb704a74046266c2363fb918f8093bfcbfaf97210",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "FCI 058 ghi dài thân:cao vai 10:9, tương đương 9:10 sau đảo trật tự. Tỷ lệ danh định chồng lấn; không suy số đo từ crop.",
+        "runtime_scope_and_verification": "FCI 046 mô tả dáng gần vuông và tỷ lệ cao vai:dài thân 9:10; điều kiện ảnh ngang đủ vai/mông được giữ.",
+        "morphology_binding": null,
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_WITH_SCOPE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 5,
+        "canonical_name": "EntleBucher",
+        "attribute_id": "coat_length",
+        "finding": "SA-01",
+        "before_value": "Lông ngoài ngắn, áp thân. Thân rõ, tránh lông bị nén. FCI 058 cũng cho phép lông ngoài ngắn.",
+        "after_value": "Lông ngoài ngắn, áp thân. Thân rõ, tránh lông bị nén.",
+        "removed_from_runtime": [
+          "FCI 058 cũng cho phép lông ngoài ngắn."
+        ],
+        "source_ids": [
+          "fci-047"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-047",
+            "url": "https://www.fci.be/nomenclature/Standards/047g02-en.pdf",
+            "locator": "tr. 6, Coat",
+            "document_version": "Bản EN 28/06/2002, chuẩn có ngày 28/11/2001",
+            "reviewed_sha256": "aa8655990bcdc4205e5942461437cf7dcd0e81ad1833729db57053df60e46c59",
+            "reverified_raw_sha256": "aa8655990bcdc4205e5942461437cf7dcd0e81ad1833729db57053df60e46c59",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-058",
+            "url": "https://www.fci.be/nomenclature/Standards/058g02-en.pdf",
+            "locator": "tr. 5, Coat / Hair",
+            "document_version": "Bản EN 05/05/2003, chuẩn có ngày 25/03/2003",
+            "reviewed_sha256": "24420566e064e227ea88300eb704a74046266c2363fb918f8093bfcbfaf97210",
+            "reverified_raw_sha256": "24420566e064e227ea88300eb704a74046266c2363fb918f8093bfcbfaf97210",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "FCI 058 cho phép lông ngoài ngắn khi có lớp lót. Độ ngắn không đủ loại ID 3; giữ điều kiện lớp lót trong đối chiếu.",
+        "runtime_scope_and_verification": "FCI 047 xác nhận lông ngoài ngắn và áp thân. Quan sát rõ thân và tránh lông nén.",
+        "morphology_binding": null,
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 15,
+        "canonical_name": "English Springer",
+        "attribute_id": "coat_color",
+        "finding": "SA-01",
+        "before_value": "Đen-trắng hoặc nâu gan-trắng, có thể kèm mảng tan. Ánh sáng trung tính, màu da và lông tránh lẫn. Chồng lấn ID 17.",
+        "after_value": "Đen-trắng hoặc nâu gan-trắng, có thể kèm mảng tan. Ánh sáng trung tính, màu da và lông tránh lẫn.",
+        "removed_from_runtime": [
+          "Chồng lấn ID 17."
+        ],
+        "source_ids": [
+          "fci-125"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-125",
+            "url": "https://www.fci.be/nomenclature/Standards/125g08-en.pdf",
+            "locator": "tr. 4, Colour",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "c82bccc66292fdf8c8231ff9c24b62d38ccc641890a9f1b6481ceb897903e675",
+            "reverified_raw_sha256": "c82bccc66292fdf8c8231ff9c24b62d38ccc641890a9f1b6481ceb897903e675",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-005",
+            "url": "https://www.fci.be/nomenclature/Standards/005g08-en.pdf",
+            "locator": "tr. 4, Colour",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "d5b1869e073bf93adf5ffbf2b50c486fc76ed8b2babf75f69461a0ab557c7bde",
+            "reverified_raw_sha256": "d5b1869e073bf93adf5ffbf2b50c486fc76ed8b2babf75f69461a0ab557c7bde",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "FCI 005 liệt kê đen–trắng và liver–trắng, cùng phối ba màu tương ứng có tan. Hai chuẩn có phối màu giao nhau; không dùng riêng để nhận dạng.",
+        "runtime_scope_and_verification": "FCI 125 xác nhận đen–trắng hoặc nâu gan–trắng, có thể kèm tan. Giữ yêu cầu ánh sáng trung tính.",
+        "morphology_binding": {
+          "phrase": "black-and-white or liver-and-white markings, sometimes with tan",
+          "attribute_id": "coat_color",
+          "source_ids": [
+            "fci-125"
+          ]
+        },
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 16,
+        "canonical_name": "Welsh Springer Spaniel",
+        "attribute_id": "coat_color",
+        "finding": "SA-01",
+        "before_value": "Màu đỏ đậm và trắng theo hai tiêu chuẩn được đối chiếu. Thấy thân, kiểm ánh sáng đỏ/cam; dải màu ảnh có thể chồng ID 17.",
+        "after_value": "Màu đỏ đậm và trắng theo hai tiêu chuẩn được đối chiếu. Thấy thân, kiểm ánh sáng đỏ/cam.",
+        "removed_from_runtime": [
+          "; dải màu ảnh có thể chồng ID 17."
+        ],
+        "source_ids": [
+          "fci-126",
+          "rkc-welsh-springer"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-126",
+            "url": "https://www.fci.be/nomenclature/Standards/126g08-en.pdf",
+            "locator": "tr. 4, Colour",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "49a53567c53a75de9fbceb38712e1f06e40698d5882b64f22d2423dc35f854ff",
+            "reverified_raw_sha256": "49a53567c53a75de9fbceb38712e1f06e40698d5882b64f22d2423dc35f854ff",
+            "verification_method": "exact_raw_sha256"
+          },
+          {
+            "source_id": "rkc-welsh-springer",
+            "url": "https://www.royalkennelclub.com/breed-standards/gundog/spaniel-welsh-springer/",
+            "locator": "Colour",
+            "document_version": "Trang cập nhật 01/01/2025",
+            "reviewed_sha256": "8ad8107df1b0ca399f1a8730348f28852993961627b9785e39384a80c6954310",
+            "reverified_raw_sha256": "fc4ddd4ff3a41f116ce124405a84fd63513c324696cb65525a8f983acce6048b",
+            "verification_method": "reviewed_heading_text_sha256",
+            "heading_text_sha256": "2da2ec017e7af4a8727c6daf4fafe54ec73bb322e51dd98169f910bee1f820eb"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-005",
+            "url": "https://www.fci.be/nomenclature/Standards/005g08-en.pdf",
+            "locator": "tr. 4, Colour",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "d5b1869e073bf93adf5ffbf2b50c486fc76ed8b2babf75f69461a0ab557c7bde",
+            "reverified_raw_sha256": "d5b1869e073bf93adf5ffbf2b50c486fc76ed8b2babf75f69461a0ab557c7bde",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "English Cocker có cam–trắng. Khả năng nhầm sắc đỏ/cam do ánh sáng là giới hạn quan sát, chưa phải trùng màu chuẩn hoặc kết quả thực nghiệm.",
+        "runtime_scope_and_verification": "FCI 126 và RKC xác nhận đỏ đậm–trắng; giữ yêu cầu vùng thân và kiểm ánh sáng đỏ/cam.",
+        "morphology_binding": {
+          "phrase": "rich red and white markings",
+          "attribute_id": "coat_color",
+          "source_ids": [
+            "fci-126",
+            "rkc-welsh-springer"
+          ]
+        },
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 17,
+        "canonical_name": "Cocker Spaniel",
+        "attribute_id": "ear_shape",
+        "finding": "SA-02",
+        "before_value": "Tai dạng thùy, vành mảnh dài tới chóp mũi khi duỗi theo phép đối chiếu chuẩn. Ảnh thường chỉ hỗ trợ độ dài tương đối. Cần thao tác đo thật để kiểm chính xác chóp mũi. Phạm vi mô tả là English Cocker Spaniel.",
+        "after_value": "Tai dạng thùy, vành mảnh dài tới chóp mũi theo mô tả của tiêu chuẩn English Cocker Spaniel. Ảnh đơn lẻ thường chỉ hỗ trợ đánh giá độ dài tương đối của tai.",
+        "removed_from_runtime": [
+          "khi duỗi theo phép đối chiếu chuẩn",
+          "Cần thao tác đo thật để kiểm chính xác chóp mũi."
+        ],
+        "source_ids": [
+          "fci-005"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-005",
+            "url": "https://www.fci.be/nomenclature/Standards/005g08-en.pdf",
+            "locator": "tr. 3, Ears",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "d5b1869e073bf93adf5ffbf2b50c486fc76ed8b2babf75f69461a0ab557c7bde",
+            "reverified_raw_sha256": "d5b1869e073bf93adf5ffbf2b50c486fc76ed8b2babf75f69461a0ab557c7bde",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [],
+        "evidence_only_conclusion": "Nguyên văn cũ được bảo toàn trong before_value. Bỏ diễn giải duỗi tai hoặc thực hiện phép đo chuẩn, vì đoạn Ears không nêu thao tác. Cụm long, lobed ears vẫn có căn cứ.",
+        "runtime_scope_and_verification": "FCI 005 tr. 3 mục Ears mô tả vành mảnh dài đến chóp mũi và hình thùy. Phần quan sát ảnh là giới hạn của nhóm, không phải thủ tục đo do FCI quy định.",
+        "morphology_binding": {
+          "phrase": "long, lobed ears",
+          "attribute_id": "ear_shape",
+          "source_ids": [
+            "fci-005"
+          ]
+        },
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_WITH_SCOPE_CANDIDATE"
+        },
+        "leader_revision_decision": "Dùng câu thay thế về tai English Cocker Spaniel theo nội dung trưởng nhóm chốt."
+      },
+      {
+        "class_id": 20,
+        "canonical_name": "Border Terrier",
+        "attribute_id": "ear_position",
+        "finding": "SA-01",
+        "before_value": "Tai rủ về trước gần má. Tai hai bên rõ. Chồng lấn Norfolk.",
+        "after_value": "Tai rủ về trước gần má. Tai hai bên rõ.",
+        "removed_from_runtime": [
+          "Chồng lấn Norfolk."
+        ],
+        "source_ids": [
+          "fci-010"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-010",
+            "url": "https://www.fci.be/nomenclature/Standards/010g03-en.pdf",
+            "locator": "tr. 2, Ears",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "54fccc22bd2350beb9d5c68a9e662d6165f0f1afa0f96ec3b076c10185a764d9",
+            "reverified_raw_sha256": "54fccc22bd2350beb9d5c68a9e662d6165f0f1afa0f96ec3b076c10185a764d9",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-272",
+            "url": "https://www.fci.be/nomenclature/Standards/272g03-en.pdf",
+            "locator": "tr. 3, Ears",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "05634441b473a936a47cec7f4fa23cd006aad6c101081831637bf60ac8e9dc69",
+            "reverified_raw_sha256": "05634441b473a936a47cec7f4fa23cd006aad6c101081831637bf60ac8e9dc69",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "Norfolk cũng có tai rủ ra trước gần má theo FCI 272. Mô tả hướng mang có giao nhau; dạng đầu và các dấu hiệu khác vẫn cần xét.",
+        "runtime_scope_and_verification": "FCI 010 xác nhận tai rủ ra trước gần má. Điều kiện thấy rõ hai tai giữ nguyên.",
+        "morphology_binding": {
+          "phrase": "forward-dropping ears",
+          "attribute_id": "ear_position",
+          "source_ids": [
+            "fci-010"
+          ]
+        },
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 21,
+        "canonical_name": "Collie",
+        "attribute_id": "ear_position",
+        "finding": "SA-01",
+        "before_value": "Tai bán dựng khi chú ý, chóp gập ra trước. Cả chuẩn Rough và Smooth mô tả cách mang này. Thấy hai tai, chó chú ý. Chồng lấn Sheltie và một số Border Collie.",
+        "after_value": "Tai bán dựng khi chú ý, chóp gập ra trước. Cả chuẩn Rough và Smooth mô tả cách mang này. Thấy hai tai, chó chú ý.",
+        "removed_from_runtime": [
+          "Chồng lấn Sheltie và một số Border Collie."
+        ],
+        "source_ids": [
+          "fci-156",
+          "fci-296"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-156",
+            "url": "https://www.fci.be/nomenclature/Standards/156g01-en.pdf",
+            "locator": "tr. 4, Ears",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "d333e133b9855d5c37f2203f4c008ce17e1b93662b31d8d39d112d44d24afac4",
+            "reverified_raw_sha256": "d333e133b9855d5c37f2203f4c008ce17e1b93662b31d8d39d112d44d24afac4",
+            "verification_method": "exact_raw_sha256"
+          },
+          {
+            "source_id": "fci-296",
+            "url": "https://www.fci.be/nomenclature/Standards/296g01-en.pdf",
+            "locator": "tr. 3, Ears",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "4a1bff48c2c5abe219474e0faa8207f1d263b03c2f439e8488fc4087d8c00cc9",
+            "reverified_raw_sha256": "4a1bff48c2c5abe219474e0faa8207f1d263b03c2f439e8488fc4087d8c00cc9",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-088",
+            "url": "https://www.fci.be/nomenclature/Standards/088g01-en.pdf",
+            "locator": "tr. 3, Ears",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "7bd19e9f4b28efb72b552ae65372744f4d2cf1e559d395ab50283e4eb62eab55",
+            "reverified_raw_sha256": "7bd19e9f4b28efb72b552ae65372744f4d2cf1e559d395ab50283e4eb62eab55",
+            "verification_method": "exact_raw_sha256"
+          },
+          {
+            "source_id": "fci-297",
+            "url": "https://www.fci.be/nomenclature/Standards/297g01-en.pdf",
+            "locator": "tr. 3, Ears",
+            "document_version": "Bản EN 28/10/2009, chuẩn có ngày 24/06/1987",
+            "reviewed_sha256": "304e3ddcdce3a32e2e91f0ead1b3cc9a62cdec4f742ad6a39685282653461b22",
+            "reverified_raw_sha256": "304e3ddcdce3a32e2e91f0ead1b3cc9a62cdec4f742ad6a39685282653461b22",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "Sheltie cũng mô tả chóp gập về trước khi chú ý. Với Border Collie chỉ xác nhận có thể bán dựng; nguồn không xác lập cách gập chóp giống Collie.",
+        "runtime_scope_and_verification": "Cả chuẩn Rough và Smooth nêu bán dựng khi chó chú ý, chóp gập về trước. Giữ rõ tư thế và hai tai.",
+        "morphology_binding": {
+          "phrase": "semi-erect ears tipped forward when alert",
+          "attribute_id": "ear_position",
+          "source_ids": [
+            "fci-156",
+            "fci-296"
+          ]
+        },
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_WITH_SCOPE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 21,
+        "canonical_name": "Collie",
+        "attribute_id": "head_shape",
+        "finding": "SA-01",
+        "before_value": "Đầu dạng nêm tù, thon dần, với đoạn chuyển trán–mõm nhẹ nhưng thấy được. Ưu tiên góc nghiêng đủ trán và mõm. Dạng nêm chồng lấn Sheltie. Đặc điểm tương ứng trong cả hai chuẩn Rough và Smooth; phân bố biến thể trong lớp dữ liệu chưa xác minh.",
+        "after_value": "Đầu dạng nêm tù, thon dần, với đoạn chuyển trán–mõm nhẹ nhưng thấy được. Ưu tiên góc nghiêng đủ trán và mõm. Đặc điểm tương ứng trong cả hai chuẩn Rough và Smooth; phân bố biến thể trong lớp dữ liệu chưa xác minh.",
+        "removed_from_runtime": [
+          "Dạng nêm chồng lấn Sheltie."
+        ],
+        "source_ids": [
+          "fci-156",
+          "fci-296"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-156",
+            "url": "https://www.fci.be/nomenclature/Standards/156g01-en.pdf",
+            "locator": "tr. 3, Head",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "d333e133b9855d5c37f2203f4c008ce17e1b93662b31d8d39d112d44d24afac4",
+            "reverified_raw_sha256": "d333e133b9855d5c37f2203f4c008ce17e1b93662b31d8d39d112d44d24afac4",
+            "verification_method": "exact_raw_sha256"
+          },
+          {
+            "source_id": "fci-296",
+            "url": "https://www.fci.be/nomenclature/Standards/296g01-en.pdf",
+            "locator": "tr. 2–3, Head",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "4a1bff48c2c5abe219474e0faa8207f1d263b03c2f439e8488fc4087d8c00cc9",
+            "reverified_raw_sha256": "4a1bff48c2c5abe219474e0faa8207f1d263b03c2f439e8488fc4087d8c00cc9",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-088",
+            "url": "https://www.fci.be/nomenclature/Standards/088g01-en.pdf",
+            "locator": "tr. 2, Head",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "7bd19e9f4b28efb72b552ae65372744f4d2cf1e559d395ab50283e4eb62eab55",
+            "reverified_raw_sha256": "7bd19e9f4b28efb72b552ae65372744f4d2cf1e559d395ab50283e4eb62eab55",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "FCI 088 cũng mô tả đầu nêm tù dài và thon tới mũi. Đối chiếu dạng nêm là nhận định hình thái, không xác định cá thể từ một góc.",
+        "runtime_scope_and_verification": "Rough và Smooth cùng mô tả nêm tù, thon và stop nhẹ; giữ phạm vi hai chuẩn và giới hạn về phân bố biến thể trong ảnh.",
+        "morphology_binding": {
+          "phrase": "a tapering blunt-wedge head with a slight stop",
+          "attribute_id": "head_shape",
+          "source_ids": [
+            "fci-156",
+            "fci-296"
+          ]
+        },
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_WITH_SCOPE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 22,
+        "canonical_name": "Shetland Sheepdog",
+        "attribute_id": "ear_position",
+        "finding": "SA-01",
+        "before_value": "Tai bán dựng, chóp gập ra trước lúc chú ý. Chó đang chú ý và thấy hai tai. Chồng lấn ID 21.",
+        "after_value": "Tai bán dựng, chóp gập ra trước lúc chú ý. Chó đang chú ý và thấy hai tai.",
+        "removed_from_runtime": [
+          "Chồng lấn ID 21."
+        ],
+        "source_ids": [
+          "fci-088"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-088",
+            "url": "https://www.fci.be/nomenclature/Standards/088g01-en.pdf",
+            "locator": "tr. 3, Ears",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "7bd19e9f4b28efb72b552ae65372744f4d2cf1e559d395ab50283e4eb62eab55",
+            "reverified_raw_sha256": "7bd19e9f4b28efb72b552ae65372744f4d2cf1e559d395ab50283e4eb62eab55",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-156",
+            "url": "https://www.fci.be/nomenclature/Standards/156g01-en.pdf",
+            "locator": "tr. 4, Ears",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "d333e133b9855d5c37f2203f4c008ce17e1b93662b31d8d39d112d44d24afac4",
+            "reverified_raw_sha256": "d333e133b9855d5c37f2203f4c008ce17e1b93662b31d8d39d112d44d24afac4",
+            "verification_method": "exact_raw_sha256"
+          },
+          {
+            "source_id": "fci-296",
+            "url": "https://www.fci.be/nomenclature/Standards/296g01-en.pdf",
+            "locator": "tr. 3, Ears",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "4a1bff48c2c5abe219474e0faa8207f1d263b03c2f439e8488fc4087d8c00cc9",
+            "reverified_raw_sha256": "4a1bff48c2c5abe219474e0faa8207f1d263b03c2f439e8488fc4087d8c00cc9",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "Cả hai chuẩn Collie mô tả phần chóp ra trước khi chú ý; dấu hiệu không độc lập giữa Sheltie và Collie.",
+        "runtime_scope_and_verification": "FCI 088 hỗ trợ chóp gập ra trước, tai bán dựng lúc chú ý. Giữ yêu cầu thấy hai tai.",
+        "morphology_binding": null,
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_WITH_SCOPE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 22,
+        "canonical_name": "Shetland Sheepdog",
+        "attribute_id": "coat_length",
+        "finding": "SA-01",
+        "before_value": "Lông ngoài dài, có bờm và diềm cổ rõ. Cổ và thân thấy rõ, lông khô, chồng lấn Rough Collie.",
+        "after_value": "Lông ngoài dài, có bờm và diềm cổ rõ. Cổ và thân thấy rõ, lông khô.",
+        "removed_from_runtime": [
+          ", chồng lấn Rough Collie."
+        ],
+        "source_ids": [
+          "fci-088"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-088",
+            "url": "https://www.fci.be/nomenclature/Standards/088g01-en.pdf",
+            "locator": "tr. 2, 4, General Appearance, Coat",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "7bd19e9f4b28efb72b552ae65372744f4d2cf1e559d395ab50283e4eb62eab55",
+            "reverified_raw_sha256": "7bd19e9f4b28efb72b552ae65372744f4d2cf1e559d395ab50283e4eb62eab55",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-156",
+            "url": "https://www.fci.be/nomenclature/Standards/156g01-en.pdf",
+            "locator": "tr. 5, Coat",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "d333e133b9855d5c37f2203f4c008ce17e1b93662b31d8d39d112d44d24afac4",
+            "reverified_raw_sha256": "d333e133b9855d5c37f2203f4c008ce17e1b93662b31d8d39d112d44d24afac4",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "Rough Collie cũng có bờm và diềm rõ. Dấu hiệu cần được đối chiếu đúng biến thể, không áp sang Smooth.",
+        "runtime_scope_and_verification": "FCI 088 xác nhận lông ngoài dài, bờm/diềm rõ. Giữ điều kiện thấy cổ và thân, lông khô.",
+        "morphology_binding": {
+          "phrase": "a long outer coat with a distinct neck ruff",
+          "attribute_id": "coat_length",
+          "source_ids": [
+            "fci-088"
+          ]
+        },
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_WITH_SCOPE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 23,
+        "canonical_name": "Border Collie",
+        "attribute_id": "ear_position",
+        "finding": "SA-01",
+        "before_value": "Tai dựng hoặc bán dựng và linh hoạt theo trạng thái. Hai tai hiện rõ. Chồng lấn Collie và Sheltie.",
+        "after_value": "Tai dựng hoặc bán dựng và linh hoạt theo trạng thái. Hai tai hiện rõ.",
+        "removed_from_runtime": [
+          "Chồng lấn Collie và Sheltie."
+        ],
+        "source_ids": [
+          "fci-297"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-297",
+            "url": "https://www.fci.be/nomenclature/Standards/297g01-en.pdf",
+            "locator": "tr. 3, Ears",
+            "document_version": "Bản EN 28/10/2009, chuẩn có ngày 24/06/1987",
+            "reviewed_sha256": "304e3ddcdce3a32e2e91f0ead1b3cc9a62cdec4f742ad6a39685282653461b22",
+            "reverified_raw_sha256": "304e3ddcdce3a32e2e91f0ead1b3cc9a62cdec4f742ad6a39685282653461b22",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-156",
+            "url": "https://www.fci.be/nomenclature/Standards/156g01-en.pdf",
+            "locator": "tr. 4, Ears",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "d333e133b9855d5c37f2203f4c008ce17e1b93662b31d8d39d112d44d24afac4",
+            "reverified_raw_sha256": "d333e133b9855d5c37f2203f4c008ce17e1b93662b31d8d39d112d44d24afac4",
+            "verification_method": "exact_raw_sha256"
+          },
+          {
+            "source_id": "fci-296",
+            "url": "https://www.fci.be/nomenclature/Standards/296g01-en.pdf",
+            "locator": "tr. 3, Ears",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "4a1bff48c2c5abe219474e0faa8207f1d263b03c2f439e8488fc4087d8c00cc9",
+            "reverified_raw_sha256": "4a1bff48c2c5abe219474e0faa8207f1d263b03c2f439e8488fc4087d8c00cc9",
+            "verification_method": "exact_raw_sha256"
+          },
+          {
+            "source_id": "fci-088",
+            "url": "https://www.fci.be/nomenclature/Standards/088g01-en.pdf",
+            "locator": "tr. 3, Ears",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "7bd19e9f4b28efb72b552ae65372744f4d2cf1e559d395ab50283e4eb62eab55",
+            "reverified_raw_sha256": "7bd19e9f4b28efb72b552ae65372744f4d2cf1e559d395ab50283e4eb62eab55",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "Điểm giao là bán dựng. FCI 297 không nêu Border Collie có cách gập chóp giống các chuẩn Collie hoặc Sheltie.",
+        "runtime_scope_and_verification": "FCI 297 xác nhận tai dựng hoặc bán dựng và linh hoạt theo trạng thái, cần thấy hai tai.",
+        "morphology_binding": {
+          "phrase": "erect or semi-erect ears",
+          "attribute_id": "ear_position",
+          "source_ids": [
+            "fci-297"
+          ]
+        },
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_WITH_SCOPE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 23,
+        "canonical_name": "Border Collie",
+        "attribute_id": "tail_shape",
+        "finding": "SA-01",
+        "before_value": "Đuôi đặt thấp thường có đoạn chót cong lên. Thấy toàn đuôi và tư thế. Chồng lấn cả ID 21 và 22.",
+        "after_value": "Đuôi có điểm gắn thấp, đoạn chót thường cong lên. Thấy toàn đuôi và tư thế mang.",
+        "removed_from_runtime": [
+          "Chồng lấn cả ID 21 và 22."
+        ],
+        "source_ids": [
+          "fci-297"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-297",
+            "url": "https://www.fci.be/nomenclature/Standards/297g01-en.pdf",
+            "locator": "tr. 3, Tail",
+            "document_version": "Bản EN 28/10/2009, chuẩn có ngày 24/06/1987",
+            "reviewed_sha256": "304e3ddcdce3a32e2e91f0ead1b3cc9a62cdec4f742ad6a39685282653461b22",
+            "reverified_raw_sha256": "304e3ddcdce3a32e2e91f0ead1b3cc9a62cdec4f742ad6a39685282653461b22",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-156",
+            "url": "https://www.fci.be/nomenclature/Standards/156g01-en.pdf",
+            "locator": "tr. 4, Tail",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "d333e133b9855d5c37f2203f4c008ce17e1b93662b31d8d39d112d44d24afac4",
+            "reverified_raw_sha256": "d333e133b9855d5c37f2203f4c008ce17e1b93662b31d8d39d112d44d24afac4",
+            "verification_method": "exact_raw_sha256"
+          },
+          {
+            "source_id": "fci-296",
+            "url": "https://www.fci.be/nomenclature/Standards/296g01-en.pdf",
+            "locator": "tr. 4, Tail",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "4a1bff48c2c5abe219474e0faa8207f1d263b03c2f439e8488fc4087d8c00cc9",
+            "reverified_raw_sha256": "4a1bff48c2c5abe219474e0faa8207f1d263b03c2f439e8488fc4087d8c00cc9",
+            "verification_method": "exact_raw_sha256"
+          },
+          {
+            "source_id": "fci-088",
+            "url": "https://www.fci.be/nomenclature/Standards/088g01-en.pdf",
+            "locator": "tr. 3, Tail",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "7bd19e9f4b28efb72b552ae65372744f4d2cf1e559d395ab50283e4eb62eab55",
+            "reverified_raw_sha256": "7bd19e9f4b28efb72b552ae65372744f4d2cf1e559d395ab50283e4eb62eab55",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "Chót cong lên là điểm có thể chồng lấn. Rough/Smooth nêu mang thấp lúc yên, Sheltie nêu đặt thấp. Không đồng nhất điểm gắn với cách mang.",
+        "runtime_scope_and_verification": "FCI 297 tách điểm gắn đuôi thấp khỏi tư thế, ghi đuôi có thể nâng khi hưng phấn. Claim chỉ giữ điểm gắn, độ cong chót và điều kiện quan sát.",
+        "morphology_binding": null,
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_WITH_SCOPE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 24,
+        "canonical_name": "Golden Retriever",
+        "attribute_id": "coat_color",
+        "finding": "SA-01",
+        "before_value": "Lông trong dải vàng hoặc kem trong tiêu chuẩn, có thể có ít sợi trắng ở ngực. Thân đủ sáng. Màu kem chồng lấn Labrador vàng nhạt.",
+        "after_value": "Lông trong dải vàng hoặc kem trong tiêu chuẩn, có thể có ít sợi trắng ở ngực. Thân đủ sáng.",
+        "removed_from_runtime": [
+          "Màu kem chồng lấn Labrador vàng nhạt."
+        ],
+        "source_ids": [
+          "fci-111"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-111",
+            "url": "https://www.fci.be/nomenclature/Standards/111g08-en.pdf",
+            "locator": "tr. 3, Colour",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "7b66440ee28628e726edec3b281fa7991dd28ece96a97e91acd9c81fb47f5fdf",
+            "reverified_raw_sha256": "7b66440ee28628e726edec3b281fa7991dd28ece96a97e91acd9c81fb47f5fdf",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-122",
+            "url": "https://www.fci.be/nomenclature/Standards/122g08-en.pdf",
+            "locator": "tr. 4, Colour",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "66d4f356db0b61bb66b59cf2e44cf2c382b0572e0a8c7551558bcd0ec3526035",
+            "reverified_raw_sha256": "66d4f356db0b61bb66b59cf2e44cf2c382b0572e0a8c7551558bcd0ec3526035",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "Vàng Labrador có thể từ kem nhạt tới đỏ cáo, giao với vùng kem Golden. Điều kiện ánh sáng vẫn ảnh hưởng so sánh.",
+        "runtime_scope_and_verification": "FCI 111 hỗ trợ dải vàng hoặc kem và ít sợi trắng ngực, giữ điều kiện chiếu sáng.",
+        "morphology_binding": {
+          "phrase": "a golden or cream coat",
+          "attribute_id": "coat_color",
+          "source_ids": [
+            "fci-111"
+          ]
+        },
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 24,
+        "canonical_name": "Golden Retriever",
+        "attribute_id": "coat_texture",
+        "finding": "SA-01",
+        "before_value": "Lông phẳng hoặc gợn. Góc đủ thấy thân, lông khô. Vài gợn lông đơn lẻ có thể chồng ID 26.",
+        "after_value": "Lông phẳng hoặc gợn. Góc đủ thấy thân, lông khô.",
+        "removed_from_runtime": [
+          "Vài gợn lông đơn lẻ có thể chồng ID 26."
+        ],
+        "source_ids": [
+          "fci-111"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-111",
+            "url": "https://www.fci.be/nomenclature/Standards/111g08-en.pdf",
+            "locator": "tr. 3, Coat Hair",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "7b66440ee28628e726edec3b281fa7991dd28ece96a97e91acd9c81fb47f5fdf",
+            "reverified_raw_sha256": "7b66440ee28628e726edec3b281fa7991dd28ece96a97e91acd9c81fb47f5fdf",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-263",
+            "url": "https://www.fci.be/nomenclature/Standards/263g08-en.pdf",
+            "locator": "tr. 5, Coat / Hair",
+            "document_version": "Bản EN 12/03/1999, chuẩn có ngày 14/02/1995",
+            "reviewed_sha256": "6103f90923ef28db3e52f5d63cc44ab6df61eaebe8b2a63d9e843ddbc0e523b0",
+            "reverified_raw_sha256": "6103f90923ef28db3e52f5d63cc44ab6df61eaebe8b2a63d9e843ddbc0e523b0",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "Chesapeake gợn có tính vùng ở vai, cổ, lưng và thắt lưng. Một vài gợn lông không đủ phân biệt; không coi mọi kiểu gợn tương đương.",
+        "runtime_scope_and_verification": "FCI 111 hỗ trợ lông phẳng hoặc gợn. Giữ góc thấy rõ thân và lông khô.",
+        "morphology_binding": null,
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_WITH_SCOPE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 25,
+        "canonical_name": "Labrador Retriever",
+        "attribute_id": "coat_length",
+        "finding": "SA-01",
+        "before_value": "Lông ngắn, dày, không có lông tua theo chuẩn. Thân khô, đủ độ phân giải. Chiều dài ngắn cũng có ở ID 26.",
+        "after_value": "Lông ngắn, dày, không có lông tua theo chuẩn. Thân khô, đủ độ phân giải.",
+        "removed_from_runtime": [
+          "Chiều dài ngắn cũng có ở ID 26."
+        ],
+        "source_ids": [
+          "fci-122"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-122",
+            "url": "https://www.fci.be/nomenclature/Standards/122g08-en.pdf",
+            "locator": "tr. 4, Coat Hair",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "66d4f356db0b61bb66b59cf2e44cf2c382b0572e0a8c7551558bcd0ec3526035",
+            "reverified_raw_sha256": "66d4f356db0b61bb66b59cf2e44cf2c382b0572e0a8c7551558bcd0ec3526035",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-263",
+            "url": "https://www.fci.be/nomenclature/Standards/263g08-en.pdf",
+            "locator": "tr. 5, Coat / Hair",
+            "document_version": "Bản EN 12/03/1999, chuẩn có ngày 14/02/1995",
+            "reviewed_sha256": "6103f90923ef28db3e52f5d63cc44ab6df61eaebe8b2a63d9e843ddbc0e523b0",
+            "reverified_raw_sha256": "6103f90923ef28db3e52f5d63cc44ab6df61eaebe8b2a63d9e843ddbc0e523b0",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "FCI 263 mô tả lông thân Chesapeake ngắn, có thể có tua vừa ở sau đùi và đuôi. Giao nhau ở chiều dài thân; không suy texture hay độ tua giống nhau.",
+        "runtime_scope_and_verification": "FCI 122 xác nhận lông ngắn, dày và không tua; giữ lông khô và ảnh đủ nét.",
+        "morphology_binding": {
+          "phrase": "a short, dense coat",
+          "attribute_id": "coat_length",
+          "source_ids": [
+            "fci-122"
+          ]
+        },
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 26,
+        "canonical_name": "Chesapeake Bay Retriever",
+        "attribute_id": "coat_color",
+        "finding": "SA-01",
+        "before_value": "Dải tông màu nâu, sedge hoặc deadgrass theo FCI. Ánh sáng trung tính. Màu gần nâu Labrador hoặc vàng nhạt Golden.",
+        "after_value": "Dải tông màu nâu, sedge hoặc deadgrass theo FCI. Ánh sáng trung tính.",
+        "removed_from_runtime": [
+          "Màu gần nâu Labrador hoặc vàng nhạt Golden."
+        ],
+        "source_ids": [
+          "fci-263"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-263",
+            "url": "https://www.fci.be/nomenclature/Standards/263g08-en.pdf",
+            "locator": "tr. 5, Colour",
+            "document_version": "Bản EN 12/03/1999, chuẩn có ngày 14/02/1995",
+            "reviewed_sha256": "6103f90923ef28db3e52f5d63cc44ab6df61eaebe8b2a63d9e843ddbc0e523b0",
+            "reverified_raw_sha256": "6103f90923ef28db3e52f5d63cc44ab6df61eaebe8b2a63d9e843ddbc0e523b0",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "fci-122",
+            "url": "https://www.fci.be/nomenclature/Standards/122g08-en.pdf",
+            "locator": "tr. 4, Colour",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "66d4f356db0b61bb66b59cf2e44cf2c382b0572e0a8c7551558bcd0ec3526035",
+            "reverified_raw_sha256": "66d4f356db0b61bb66b59cf2e44cf2c382b0572e0a8c7551558bcd0ec3526035",
+            "verification_method": "exact_raw_sha256"
+          },
+          {
+            "source_id": "fci-111",
+            "url": "https://www.fci.be/nomenclature/Standards/111g08-en.pdf",
+            "locator": "tr. 3, Colour",
+            "document_version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+            "reviewed_sha256": "7b66440ee28628e726edec3b281fa7991dd28ece96a97e91acd9c81fb47f5fdf",
+            "reverified_raw_sha256": "7b66440ee28628e726edec3b281fa7991dd28ece96a97e91acd9c81fb47f5fdf",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "Nâu Labrador và vàng/kem Golden có thể gần một số sắc độ Chesapeake khi nhìn ảnh. Đây là giới hạn đối chiếu màu, không phải kết quả thực nghiệm hoặc phép đồng nhất tên màu.",
+        "runtime_scope_and_verification": "FCI 263 hỗ trợ nâu, sedge hoặc deadgrass. Giữ ánh sáng trung tính và ghi rõ theo FCI.",
+        "morphology_binding": null,
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      },
+      {
+        "class_id": 27,
+        "canonical_name": "Japanese Spaniel",
+        "attribute_id": "coat_color",
+        "finding": "SA-01",
+        "before_value": "FCI mô tả nền trắng với mảng đen hoặc đỏ. AKC có quy định thêm về tan points, dùng nguồn FCI cho phrase. Thấy đủ nền lông và mảng. Sắc độ ở vùng crop nhỏ có thể gây nhầm.",
+        "after_value": "FCI mô tả nền trắng với mảng đen hoặc đỏ. Thấy đủ nền lông và mảng. Sắc độ ở vùng crop nhỏ có thể gây nhầm.",
+        "removed_from_runtime": [
+          "AKC có quy định thêm về tan points, dùng nguồn FCI cho phrase."
+        ],
+        "source_ids": [
+          "fci-206"
+        ],
+        "runtime_evidence": [
+          {
+            "source_id": "fci-206",
+            "url": "https://www.fci.be/nomenclature/Standards/206g09-en.pdf",
+            "locator": "tr. 4, Colour",
+            "document_version": "Bản EN 03/06/2016, chuẩn có ngày 04/04/2016",
+            "reviewed_sha256": "f6f5f45e04763bcc89715475880f376385c82288d8e99dfca2ef3a1a2b4db607",
+            "reverified_raw_sha256": "f6f5f45e04763bcc89715475880f376385c82288d8e99dfca2ef3a1a2b4db607",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_sources": [
+          {
+            "source_id": "akc-japanese-chin",
+            "url": "https://cdn.akc.org/JapaneseChin.pdf",
+            "locator": "tr. 2, Color",
+            "document_version": "Duyệt 11/10/2011, hiệu lực 30/11/2011",
+            "reviewed_sha256": "601f5a428a73ca3e2bbbbb26eacba902c0e3a1287f284cd05e8924ab43d85bb4",
+            "reverified_raw_sha256": "601f5a428a73ca3e2bbbbb26eacba902c0e3a1287f284cd05e8924ab43d85bb4",
+            "verification_method": "exact_raw_sha256"
+          }
+        ],
+        "evidence_only_conclusion": "AKC chấp nhận thêm phương án đen–trắng có tan points. Bằng chứng AKC chỉ dùng đối chiếu chuẩn ở mục này; nguồn dùng cho phrase màu vẫn là FCI 206.",
+        "runtime_scope_and_verification": "FCI 206 hỗ trợ nền trắng với mảng đen hoặc đỏ. Phần màu ở runtime và cụm tiếng Anh chỉ dùng phạm vi FCI, giữ điều kiện thấy đủ nền/mảng.",
+        "morphology_binding": {
+          "phrase": "a white coat with black or red patches",
+          "attribute_id": "coat_color",
+          "source_ids": [
+            "fci-206"
+          ]
+        },
+        "reverification": {
+          "finding_status": "CLOSED",
+          "recommended_decision": "APPROVE_WITH_SCOPE_CANDIDATE"
+        },
+        "leader_revision_decision": "Phương án B: lưu so sánh trong evidence, giữ nguồn runtime hiện có."
+      }
+    ],
+    "source_approval": "pending",
+    "tokenization_audit_sha256": "9d893f5750e98b56fe7fef3a1cf23f1544d465103f71fff5e9b5549f4143f15e"
   }
 }

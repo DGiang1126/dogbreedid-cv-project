@@ -1,0 +1,3036 @@
+{
+  "schema_version": 1,
+  "approval_id": "task08.04-kb-v1-20261128",
+  "decision_status": "APPROVED",
+  "decided_by": "Đỗ Đông Giang",
+  "authority": "Trưởng nhóm DogBreedID",
+  "decision_date": "2026-11-28",
+  "recorded_at": "2026-11-28T10:10:38+07:00",
+  "leader_decision": {
+    "reference": "Task 08.04 — Leader Source Approval and Official KB Snapshot Finalization, mục 2",
+    "direct_claims": 20,
+    "claims_with_scope": 75,
+    "runtime_sources": 32,
+    "design_only_sources": 4,
+    "conditions": [
+      "Giữ nguyên phạm vi đã review, 30 prompt, 56 bindings và vocabulary.",
+      "Giữ nguyên ba giới hạn nghiên cứu đã kiểm.",
+      "Kiểm và bảo vệ LF cho evidence và snapshot.",
+      "Hoàn tất kiểm chứng snapshot trước publication."
+    ],
+    "formal_evaluation_authorized": false
+  },
+  "reviewed_candidate_hashes": {
+    "kb": "543243596553cd2ef903891f41417d5e51ab7904330917e22c1d3aa05c05e344",
+    "morphology_bank": "ace2fb4b428648f98fd7628a3a773e9fae68dca13d6dfdebccda2f8d3b0fc6ca",
+    "mapping": "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c",
+    "name_bank": "c1bdfde5f1e809a3dcb55f0c0eaeceb8c612c7f57c6761c9def12a2e57174c30",
+    "tokenization_audit": "9d893f5750e98b56fe7fef3a1cf23f1544d465103f71fff5e9b5549f4143f15e",
+    "source_evidence": "5d9c5b6cacc453762785cda2a6656994698b9015a48383c55537456226c3e003"
+  },
+  "design_sha256": "1f357e59e3bef38f2e60217ff54e32504c40d068820e369e25e8e84b3b98bbaf",
+  "revision_report_sha256": "2891ca3ef5861004a701fa1204d4529658a62ef3c05593440e9ab9369d8ddedf",
+  "source_evidence": {
+    "revision": "draft_4",
+    "sha256": "5d9c5b6cacc453762785cda2a6656994698b9015a48383c55537456226c3e003"
+  },
+  "kb_vocabulary_version": "kb-morphology-v1",
+  "claim_scope_encoding": "SHA-256 of compact UTF-8 JSON without newline, keys class_id, attribute_id, value, source_ids in that order; exact source order.",
+  "claims": [
+    {
+      "class_id": 0,
+      "attribute_id": "coat_fullness",
+      "value": "Bộ lông trông dày, theo gloss của synset chó kéo xe Bắc Cực. Thân và phần lông ngoài thấy rõ, phụ thuộc mùa và hình chiếu. Nhãn WordNet n02109961 có phạm vi từ vựng; chưa xác lập đồng nhất với Canadian Eskimo Dog.",
+      "source_ids": [
+        "princeton-wordnet"
+      ],
+      "canonical_name": "Eskimo Dog",
+      "uncertainty_note": "Gloss không xác định kết cấu sợi, độ dài, số lớp lông hoặc dáng đuôi.",
+      "scope_sha256": "3c71218cd9082e8dc4db4ead4469ab4862cce762d799dec09e1a40c39abe1c21",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Phạm vi synset. Lông nhìn dày phụ thuộc mùa, góc và không tách được riêng ID 0.",
+      "morphology_phrase": "a thick coat",
+      "runtime_evidence": [
+        {
+          "source_id": "princeton-wordnet",
+          "locator": "`data.noun` offset 02109961"
+        }
+      ]
+    },
+    {
+      "class_id": 1,
+      "attribute_id": "body_build",
+      "value": "Thân lực lưỡng, xương nặng và ngực sâu. Thấy ngang thân và chân. Lông dày, mỡ và góc máy có thể làm thân trông rộng.",
+      "source_ids": [
+        "fci-243"
+      ],
+      "canonical_name": "Malamute",
+      "scope_sha256": "cc13f5c1c55cb259e27e0c4f79fdb88d3158a670c87fc38375b624ae9f062a4b",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Nhìn ngang đủ thân/chân; lông và phối cảnh ảnh hưởng cảm nhận khối thân.",
+      "morphology_phrase": "a powerful deep-chested build",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-243",
+          "locator": "tr. 2–4, General Appearance, Proportions, Body"
+        }
+      ]
+    },
+    {
+      "class_id": 1,
+      "attribute_id": "tail_shape",
+      "value": "Đuôi xù dạng chùm lông, thường đưa qua lưng khi không làm việc, không cuộn sát. Đuôi hiện đầy đủ và thấy đường viền lưng. Tư thế thay đổi cách mang.",
+      "source_ids": [
+        "fci-243"
+      ],
+      "canonical_name": "Malamute",
+      "scope_sha256": "a638238878942d729277193514869ee357b0b1f1a2e74ab2d78a614ca6561d6f",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Mang đuôi theo tư thế. Cụm prompt chọn dáng lông xù; ảnh riêng không chứng minh trạng thái làm việc.",
+      "morphology_phrase": "a bushy plumed tail",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-243",
+          "locator": "tr. 4, Tail"
+        }
+      ]
+    },
+    {
+      "class_id": 1,
+      "attribute_id": "coat_texture",
+      "value": "Lông bảo vệ thô trên lớp lót dày. Vùng thân rõ, mức dày lớp lót phụ thuộc mùa, kết cấu sợi cần cận cảnh.",
+      "source_ids": [
+        "fci-243"
+      ],
+      "canonical_name": "Malamute",
+      "scope_sha256": "7b4683ac8a3575b5c08ad8cf13d8dc98a9fa6773d093b5cff5ca2fb535560e85",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Chỉ đánh giá bề mặt khi rõ; không dùng ảnh để xác định số đo lớp lót.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-243",
+          "locator": "tr. 5, Coat"
+        }
+      ]
+    },
+    {
+      "class_id": 2,
+      "attribute_id": "body_build",
+      "value": "Dáng gọn vừa phải, ngực sâu nhưng không quá rộng. Ảnh ngang đủ thân, tránh góc rộng gần đầu. So với chuẩn của ID 1 chỉ là nhận định tương đối.",
+      "source_ids": [
+        "fci-270"
+      ],
+      "canonical_name": "Siberian Husky",
+      "scope_sha256": "f7f455176689b4abc38ed3714e66435d7c0a8b07565e182678994d643d5da02b",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Mô tả tương đối về dáng thân, không dùng làm phép đo hay điều kiện đủ so với Malamute.",
+      "morphology_phrase": "a moderately compact build",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-270",
+          "locator": "tr. 2, 4, General Appearance, Body"
+        }
+      ],
+      "interpretation": {
+        "methodology_only": true,
+        "rationale": "FCI 270 mô tả thân gọn vừa phải và ngực sâu nhưng không quá rộng. Câu cuối chỉ giới hạn phép so sánh ảnh ngang với chuẩn tham chiếu, không nêu đặc điểm nào của Malamute và không thiết lập phép đo hoặc tiêu chí đủ.",
+        "review_locators": [
+          {
+            "source_id": "fci-270",
+            "locator": "tr. 2, 4, General Appearance, Body"
+          }
+        ]
+      }
+    },
+    {
+      "class_id": 2,
+      "attribute_id": "tail_shape",
+      "value": "Đuôi dạng chổi cong lưỡi liềm khi chú ý, có thể rủ lúc nghỉ. Thấy cả đuôi khi chú ý. Không dựa vào chỉ riêng việc mang cao.",
+      "source_ids": [
+        "fci-270"
+      ],
+      "canonical_name": "Siberian Husky",
+      "scope_sha256": "d25a1bb705f927ea80a104b841f948ef4805919f50f6f59e359531a7a9af24d8",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Prompt giữ điều kiện when alert. So khi thấy cả đuôi; dáng mang cao cũng có thể gặp ở Malamute.",
+      "morphology_phrase": "a brush tail curving like a sickle when alert",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-270",
+          "locator": "tr. 4, Tail"
+        }
+      ]
+    },
+    {
+      "class_id": 2,
+      "attribute_id": "coat_texture",
+      "value": "Lông ngoài thẳng, khá áp thân, trên lớp lót mềm dày có thể thay theo mùa. Lông khô, rõ vùng thân. Lớp lót không luôn nhìn thấy.",
+      "source_ids": [
+        "fci-270"
+      ],
+      "canonical_name": "Siberian Husky",
+      "scope_sha256": "418d54c8ff960cc834fc59ee28137952476d8f84b326059dd15d0ae3c2aceb0d",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Phải thấy lông khô rõ; lớp lót có thể khuất.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-270",
+          "locator": "tr. 5, Coat"
+        }
+      ]
+    },
+    {
+      "class_id": 2,
+      "attribute_id": "ear_position",
+      "value": "Tai dựng, đặt cao và tương đối gần nhau. Chính diện khi hai tai hiện rõ.",
+      "source_ids": [
+        "fci-270"
+      ],
+      "canonical_name": "Siberian Husky",
+      "scope_sha256": "4e0edfa79c9a5411a6e7ad082d9c0d5f079ac81bee18e8d9264f38b277bd7032",
+      "decision": "APPROVED",
+      "usage_limitations": "V · Nhìn cả hai tai từ trước. Không suy tư thế lúc nghỉ từ một ảnh.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-270",
+          "locator": "tr. 3, Ears"
+        }
+      ]
+    },
+    {
+      "class_id": 3,
+      "attribute_id": "body_build",
+      "value": "Thân lực lưỡng, xương nặng và cơ bắp. Chó đứng ngang, thấy chân và thân, đối chiếu cùng tuổi trưởng thành khi có thể.",
+      "source_ids": [
+        "fci-058"
+      ],
+      "canonical_name": "Greater Swiss Mountain Dog",
+      "scope_sha256": "4d8296c4e5f68768c6fce020b6b86558130ae23b367aa31526964eb1564bd022",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · So dáng đứng đủ chân và thân; cân nhắc tuổi, giới, độ rõ.",
+      "morphology_phrase": "a heavy-boned muscular build",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-058",
+          "locator": "tr. 3–4, General Appearance, Body"
+        }
+      ]
+    },
+    {
+      "class_id": 3,
+      "attribute_id": "tail_shape",
+      "value": "Đuôi nặng, rủ lúc nghỉ, chỉ cong nhẹ lên khi nâng. Thấy đuôi và tư thế, ảnh tĩnh lúc nghỉ ít phân biệt hơn.",
+      "source_ids": [
+        "fci-058"
+      ],
+      "canonical_name": "Greater Swiss Mountain Dog",
+      "scope_sha256": "3974f2c8220e65f15ef1f376db712747f9082b4ce2d2c56fb10fe72b82c457b3",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Điều kiện tư thế quan trọng, một ảnh lúc nghỉ cho ít tín hiệu.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-058",
+          "locator": "tr. 4, Tail"
+        }
+      ]
+    },
+    {
+      "class_id": 3,
+      "attribute_id": "coat_color",
+      "value": "Nền đen với mảng nâu đỏ và trắng, kiểu tam thể điển hình. Thân và mặt đủ sáng.",
+      "source_ids": [
+        "fci-058"
+      ],
+      "canonical_name": "Greater Swiss Mountain Dog",
+      "scope_sha256": "5eff083a00c6bae853f95d5fd53993c10989f82d9751d4ab4d2d45f723be618b",
+      "decision": "APPROVED",
+      "usage_limitations": "V · Màu tam thể điển hình theo chuẩn; cần thấy nền lông.",
+      "morphology_phrase": "black, tan and white markings",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-058",
+          "locator": "tr. 5, Colour"
+        }
+      ]
+    },
+    {
+      "class_id": 4,
+      "attribute_id": "body_build",
+      "value": "Dáng gọn gần vuông theo mô tả, tỷ lệ cao:dài chuẩn 9:10. Ảnh ngang, đủ điểm vai và mông.",
+      "source_ids": [
+        "fci-046"
+      ],
+      "canonical_name": "Appenzeller",
+      "scope_sha256": "635f72f4455432852389f5a01a29c13469b44805864fc9c1b8b2bd4519cbc093",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "FCI 046 mô tả dáng gần vuông và tỷ lệ cao vai:dài thân 9:10; điều kiện ảnh ngang đủ vai/mông được giữ.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-046",
+          "locator": "tr. 3, General Appearance, Important Proportions"
+        }
+      ]
+    },
+    {
+      "class_id": 4,
+      "attribute_id": "tail_shape",
+      "value": "Đuôi cuộn chặt trên mông khi chuyển động. Khi nghỉ có thể thả. Ảnh đang di chuyển và thấy đường viền đuôi.",
+      "source_ids": [
+        "fci-046"
+      ],
+      "canonical_name": "Appenzeller",
+      "scope_sha256": "9d43d5c7a311c8be45bdf52cadbaddd1e6adce9c418b0e9bc1a8ae417cf3bccd",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Prompt giữ when moving. Dáng mang ở tư thế khác không đủ loại hay xác lập lớp.",
+      "morphology_phrase": "a tightly curled tail over the rump when moving",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-046",
+          "locator": "tr. 5, Tail"
+        }
+      ]
+    },
+    {
+      "class_id": 4,
+      "attribute_id": "coat_color",
+      "value": "Tam thể với mảng nâu đỏ và trắng, nền có thể đen hoặc nâu Havana. Ánh sáng trung tính.",
+      "source_ids": [
+        "fci-046"
+      ],
+      "canonical_name": "Appenzeller",
+      "scope_sha256": "93b7d7795eb8a00468d8910fd95965cc397719091d9319635abd4db036c541a3",
+      "decision": "APPROVED",
+      "usage_limitations": "FCI 046 hỗ trợ nền đen hoặc nâu Havana, mảng đỏ-nâu và trắng; ánh sáng trung tính vẫn là điều kiện quan sát.",
+      "morphology_phrase": "tan and white markings on a black or Havana-brown coat",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-046",
+          "locator": "tr. 6, Colour and Markings"
+        }
+      ]
+    },
+    {
+      "class_id": 5,
+      "attribute_id": "body_build",
+      "value": "Dáng gọn hơi thuôn dài, tỷ lệ cao:dài chuẩn 8:10. Ảnh ngang trên mặt phẳng, đủ chân và thân. Tỷ lệ chuẩn không dùng như phép đo từ crop.",
+      "source_ids": [
+        "fci-047"
+      ],
+      "canonical_name": "EntleBucher",
+      "scope_sha256": "8511f01a9f2f8a1a88b7ccf8391a62a08e23b55ad6a755df11b60bbfdd217763",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Dáng ngang đủ chân/thân; tỷ lệ chuẩn không phải số đo crop. Đuôi dài và bobtail đều được chuẩn chấp nhận.",
+      "morphology_phrase": "a compact, slightly elongated build",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-047",
+          "locator": "tr. 3, General Appearance, Important Proportions"
+        }
+      ]
+    },
+    {
+      "class_id": 5,
+      "attribute_id": "coat_color",
+      "value": "Nền đen với mảng vàng nâu đến đỏ nâu và trắng. Mặt và thân nhìn rõ. Màu tam thể chồng lấn.",
+      "source_ids": [
+        "fci-047"
+      ],
+      "canonical_name": "EntleBucher",
+      "scope_sha256": "447eaec73c2eaa699a7a6d621e700c1fcbb6d3b60b3b0c44dc0f6eaa5df560b9",
+      "decision": "APPROVED",
+      "usage_limitations": "V · Quan sát đủ thân và mặt. Tam thể là nét chung, không phải tín hiệu độc lập.",
+      "morphology_phrase": "black, tan and white markings",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-047",
+          "locator": "tr. 6, Colour and Markings"
+        }
+      ],
+      "interpretation": {
+        "methodology_only": true,
+        "rationale": "FCI 047 hỗ trợ màu nền và mảng của EntleBucher. Trong evidence G2, FCI 058 và FCI 046 cũng mô tả nền đen với mảng tan và trắng. Câu cuối giới hạn sức phân biệt của màu đơn lẻ; không định danh comparator trong runtime, không khẳng định mọi cá thể có màu này và không đo hiệu quả phân lớp.",
+        "review_locators": [
+          {
+            "source_id": "fci-047",
+            "locator": "tr. 6, Colour and Markings"
+          },
+          {
+            "source_id": "fci-058",
+            "locator": "tr. 5, Colour"
+          },
+          {
+            "source_id": "fci-046",
+            "locator": "tr. 6, Colour and Markings"
+          }
+        ]
+      }
+    },
+    {
+      "class_id": 5,
+      "attribute_id": "coat_length",
+      "value": "Lông ngoài ngắn, áp thân. Thân rõ, tránh lông bị nén.",
+      "source_ids": [
+        "fci-047"
+      ],
+      "canonical_name": "EntleBucher",
+      "scope_sha256": "a35ca2efd597c5ebbfa32d481040e9c75f40343fd556eebc9a8d6a42e8ed47e5",
+      "decision": "APPROVED",
+      "usage_limitations": "FCI 047 xác nhận lông ngoài ngắn và áp thân. Quan sát rõ thân và tránh lông nén.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-047",
+          "locator": "tr. 6, Coat"
+        }
+      ]
+    },
+    {
+      "class_id": 6,
+      "attribute_id": "coat_texture",
+      "value": "Lông xoăn dày hoặc bện dây. Đây là hai kiểu lông chuẩn, các cỡ dùng chung. Bộ lông đủ chi tiết ở vùng thân. Clip và grooming ảnh hưởng hình lông.",
+      "source_ids": [
+        "fci-172",
+        "akc-poodle"
+      ],
+      "canonical_name": "Toy Poodle",
+      "scope_sha256": "0c14bc07e57bab626729ab29931087985ce7b4755b73eb1f94c70ce779e64054",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Kiểu chung giữa các cỡ. Tỉa lông ảnh hưởng quan sát.",
+      "morphology_phrase": "a curly or corded coat",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-172",
+          "locator": "tr. 6, Coat"
+        },
+        {
+          "source_id": "akc-poodle",
+          "locator": "tr. 2, Coat"
+        }
+      ]
+    },
+    {
+      "class_id": 6,
+      "attribute_id": "ear_position",
+      "value": "Tai rủ dọc má. Thấy vành và vị trí tai. Tua dài có thể che dáng.",
+      "source_ids": [
+        "fci-172",
+        "akc-poodle"
+      ],
+      "canonical_name": "Toy Poodle",
+      "scope_sha256": "97c1fea8b2bc7c533505f9327495f49a16f4a92ba55e3753a2788d01b0046d09",
+      "decision": "APPROVED",
+      "usage_limitations": "C · Tua lông có thể che vành. Kiểu tai không phân cỡ.",
+      "morphology_phrase": "ears hanging close to the cheeks",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-172",
+          "locator": "tr. 4, Ears"
+        },
+        {
+          "source_id": "akc-poodle",
+          "locator": "tr. 1, Head and Expression"
+        }
+      ]
+    },
+    {
+      "class_id": 6,
+      "attribute_id": "breed_size",
+      "value": "Chiều cao vai theo FCI trên 24 đến 28 cm, dung sai −1 cm (lý tưởng 25 cm). AKC đo ở điểm cao nhất của vai và giới hạn đến 10 in. Chó trưởng thành đứng trên bề mặt phẳng, đo ở vai đúng hệ chuẩn. Không suy từ crop. Ngưỡng FCI và AKC là tham chiếu hình thái, không phải quy tắc gán nhãn Stanford Dogs.",
+      "source_ids": [
+        "fci-172",
+        "akc-poodle"
+      ],
+      "canonical_name": "Toy Poodle",
+      "scope_sha256": "87877704dc380b6ca37f741ecce201ab1cd4f6c28bce53ffbfb73f3d1c686652",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "S · Số đo chó trưởng thành theo đúng hệ, không suy cỡ từ crop. Không dùng làm quy tắc nhãn Stanford Dogs.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-172",
+          "locator": "tr. 8, Size and Weight"
+        },
+        {
+          "source_id": "akc-poodle",
+          "locator": "tr. 1, Size, Proportion, Substance"
+        }
+      ]
+    },
+    {
+      "class_id": 7,
+      "attribute_id": "coat_texture",
+      "value": "Lông xoăn dày hoặc bện dây. Đây là hai kiểu lông chuẩn, các cỡ dùng chung. Bộ lông đủ chi tiết ở vùng thân. Clip và grooming ảnh hưởng hình lông.",
+      "source_ids": [
+        "fci-172",
+        "akc-poodle"
+      ],
+      "canonical_name": "Miniature Poodle",
+      "scope_sha256": "f3a743395e91d176a6708ac649568f414bf07f5715d5aeef212ceda772830ece",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Cận vùng lông rõ; grooming có thể thay hình lông.",
+      "morphology_phrase": "a curly or corded coat",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-172",
+          "locator": "tr. 6, Coat"
+        },
+        {
+          "source_id": "akc-poodle",
+          "locator": "tr. 2, Coat"
+        }
+      ]
+    },
+    {
+      "class_id": 7,
+      "attribute_id": "ear_position",
+      "value": "Tai rủ dọc má. Thấy vành và vị trí tai. Tua dài có thể che dáng.",
+      "source_ids": [
+        "fci-172",
+        "akc-poodle"
+      ],
+      "canonical_name": "Miniature Poodle",
+      "scope_sha256": "dfa2d11e7e2e5671c747c07154584e1b809e6a845f4f7ef5cee7f9cfb4c3a59d",
+      "decision": "APPROVED",
+      "usage_limitations": "C · Tua dài có thể che mốc tai; không dùng để phân cỡ.",
+      "morphology_phrase": "ears hanging close to the cheeks",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-172",
+          "locator": "tr. 4, Ears"
+        },
+        {
+          "source_id": "akc-poodle",
+          "locator": "tr. 1, Head and Expression"
+        }
+      ]
+    },
+    {
+      "class_id": 7,
+      "attribute_id": "breed_size",
+      "value": "Chiều cao vai theo FCI trên 28 đến 35 cm. AKC đo ở điểm cao nhất của vai và dùng ngưỡng trên 10 đến 15 in. Chó trưởng thành đứng trên bề mặt phẳng, đo ở vai đúng hệ chuẩn. Không suy từ crop. Ngưỡng FCI và AKC là tham chiếu hình thái, không phải quy tắc gán nhãn Stanford Dogs.",
+      "source_ids": [
+        "fci-172",
+        "akc-poodle"
+      ],
+      "canonical_name": "Miniature Poodle",
+      "scope_sha256": "3729e23c179f9c1cc9a5d5e065bff198a06d097448f6450620b50fe6f6235b09",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "S · Cần đo hoặc ảnh có tỷ lệ. FCI Medium là một cỡ riêng; nguồn dataset không xác lập ánh xạ ngưỡng.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-172",
+          "locator": "tr. 8, Size and Weight"
+        },
+        {
+          "source_id": "akc-poodle",
+          "locator": "tr. 1, Size, Proportion, Substance"
+        }
+      ]
+    },
+    {
+      "class_id": 8,
+      "attribute_id": "coat_texture",
+      "value": "Lông xoăn dày hoặc bện dây. Đây là hai kiểu lông chuẩn, các cỡ dùng chung. Bộ lông đủ chi tiết ở vùng thân. Clip và grooming ảnh hưởng hình lông.",
+      "source_ids": [
+        "fci-172",
+        "akc-poodle"
+      ],
+      "canonical_name": "Standard Poodle",
+      "scope_sha256": "4b206581f4fc86c06a4b5a4bc0ee292dfca976f41734a807ff9e273c1850e9a9",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Ảnh đủ chi tiết; clip và tuổi ảnh hưởng bề ngoài.",
+      "morphology_phrase": "a curly or corded coat",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-172",
+          "locator": "tr. 6, Coat"
+        },
+        {
+          "source_id": "akc-poodle",
+          "locator": "tr. 2, Coat"
+        }
+      ]
+    },
+    {
+      "class_id": 8,
+      "attribute_id": "ear_position",
+      "value": "Tai rủ dọc má. Thấy vành và vị trí tai. Tua dài có thể che dáng.",
+      "source_ids": [
+        "fci-172",
+        "akc-poodle"
+      ],
+      "canonical_name": "Standard Poodle",
+      "scope_sha256": "108d21ce3e37ca87b49a6852d7f37e18540f68351a2eb84a409bb6517272be9b",
+      "decision": "APPROVED",
+      "usage_limitations": "C · Hình tai tương đồng Toy/Miniature; lông tua có thể che.",
+      "morphology_phrase": "ears hanging close to the cheeks",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-172",
+          "locator": "tr. 4, Ears"
+        },
+        {
+          "source_id": "akc-poodle",
+          "locator": "tr. 1, Head and Expression"
+        }
+      ]
+    },
+    {
+      "class_id": 8,
+      "attribute_id": "breed_size",
+      "value": "Chiều cao vai theo FCI trên 45 đến 60 cm, dung sai +2 cm. AKC đo ở điểm cao nhất của vai và dùng ngưỡng trên 15 in. Chó trưởng thành đứng trên bề mặt phẳng, đo ở vai đúng hệ chuẩn. Không suy từ crop. Ngưỡng FCI và AKC là tham chiếu hình thái, không phải quy tắc gán nhãn Stanford Dogs.",
+      "source_ids": [
+        "fci-172",
+        "akc-poodle"
+      ],
+      "canonical_name": "Standard Poodle",
+      "scope_sha256": "139bc593e33e6e655a50eb20c3f111ad2e4d36e19fdbde7d44265892c5b720cc",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "S · Cần đo vai ở chó trưởng thành, không suy kích cỡ trong ảnh crop. Hai hệ chuẩn giữ riêng.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-172",
+          "locator": "tr. 8, Size and Weight"
+        },
+        {
+          "source_id": "akc-poodle",
+          "locator": "tr. 1, Size, Proportion, Substance"
+        }
+      ]
+    },
+    {
+      "class_id": 9,
+      "attribute_id": "coat_texture",
+      "value": "Lông ngoài thô cứng dạng sợi, tương đối áp thân. Thấy vùng lông thân chưa tỉa quá sát. Ảnh không kiểm độ cứng khi sờ.",
+      "source_ids": [
+        "fci-183"
+      ],
+      "canonical_name": "Miniature Schnauzer",
+      "scope_sha256": "18d39c73dc9c1f5a9b224663cb27ba6237674c2febe9f9bbd37fd907cb3f514d",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Tỉa sát làm mất dấu hiệu. Độ cứng khi chạm không quan sát trực tiếp.",
+      "morphology_phrase": "a wiry coat",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-183",
+          "locator": "tr. 5, Coat Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 9,
+      "attribute_id": "facial_hair",
+      "value": "Râu ở mõm và lông mày rậm. Mặt rõ và grooming phù hợp. Cụm prompt chỉ dùng phần râu.",
+      "source_ids": [
+        "fci-183"
+      ],
+      "canonical_name": "Miniature Schnauzer",
+      "scope_sha256": "0d20544b7ef05e27347a6ea9c561b46b88f159182a03a3a687906e4b2fc271fd",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Grooming và góc mặt. Từ pronounced mô tả hình ảnh điển hình, không phải ngưỡng độ dày râu.",
+      "morphology_phrase": "a pronounced beard",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-183",
+          "locator": "tr. 5, Coat Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 9,
+      "attribute_id": "ear_position",
+      "value": "Tai tự nhiên gập rủ về phía trước. Tai nguyên vẹn và nhìn rõ. Tư thế hoặc can thiệp vào tai làm mất tín hiệu.",
+      "source_ids": [
+        "fci-183"
+      ],
+      "canonical_name": "Miniature Schnauzer",
+      "scope_sha256": "248c0afc2f9bc072b8edcba372083b5bb271afe104920e3ad6ee8a9f0164861d",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Áp dụng tai nguyên vẹn, định hướng theo tư thế; không suy từ tai đã can thiệp.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-183",
+          "locator": "tr. 3, Ears"
+        }
+      ]
+    },
+    {
+      "class_id": 9,
+      "attribute_id": "body_build",
+      "value": "Dáng gần vuông theo tỷ lệ tiêu chuẩn. Ảnh ngang đủ vai và thân, không dùng để phân biệt ba cỡ.",
+      "source_ids": [
+        "fci-183"
+      ],
+      "canonical_name": "Miniature Schnauzer",
+      "scope_sha256": "c2702acda6d7fd6c41aebb075aa44e82621b9271b823d0f0626d9cc238fdcab9",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Dáng gần vuông dùng chung trong G4; cần ảnh ngang.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-183",
+          "locator": "tr. 2, General Appearance and Important Proportions"
+        }
+      ]
+    },
+    {
+      "class_id": 9,
+      "attribute_id": "breed_size",
+      "value": "Chiều cao vai chuẩn FCI 30–35 cm cho cả hai giới. Chó trưởng thành đứng thẳng, đo ở vai. Không xếp cỡ qua ảnh không có chuẩn tỷ lệ.",
+      "source_ids": [
+        "fci-183"
+      ],
+      "canonical_name": "Miniature Schnauzer",
+      "scope_sha256": "064a8028869a3a1c97d830d6e758445ab7ef8af125f2758e63839a5fbf4dd714",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "S · Phép đo tại vai; không xác định cỡ từ ảnh thiếu tỷ lệ.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-183",
+          "locator": "tr. 6, Size and Weight"
+        }
+      ]
+    },
+    {
+      "class_id": 10,
+      "attribute_id": "coat_texture",
+      "value": "Lông ngoài thô cứng dạng sợi, tương đối áp thân. Thấy vùng lông thân chưa tỉa quá sát. Ảnh không kiểm độ cứng khi sờ.",
+      "source_ids": [
+        "fci-182"
+      ],
+      "canonical_name": "Standard Schnauzer",
+      "scope_sha256": "a53cb33d14ba94c3c0514eb32832f3830e0c825035bd6e327e82343ed2b6139d",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Grooming quyết định mức nhìn thấy; ảnh không xác nhận xúc giác.",
+      "morphology_phrase": "a wiry coat",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-182",
+          "locator": "tr. 5, Coat Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 10,
+      "attribute_id": "facial_hair",
+      "value": "Râu ở mõm và lông mày rậm. Mặt rõ và grooming phù hợp. Cụm prompt chỉ dùng phần râu.",
+      "source_ids": [
+        "fci-182"
+      ],
+      "canonical_name": "Standard Schnauzer",
+      "scope_sha256": "949076c624601d7b5e67223ef6a40d8297427441ecdb8b4e7bc7b5a7e2483557",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Độ rõ của râu phụ thuộc grooming. Không dùng râu để phân ba cỡ.",
+      "morphology_phrase": "a pronounced beard",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-182",
+          "locator": "tr. 5, Coat Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 10,
+      "attribute_id": "ear_position",
+      "value": "Tai tự nhiên gập rủ về phía trước. Tai nguyên vẹn và nhìn rõ. Tư thế hoặc can thiệp vào tai làm mất tín hiệu.",
+      "source_ids": [
+        "fci-182"
+      ],
+      "canonical_name": "Standard Schnauzer",
+      "scope_sha256": "8f8a977aae8e578727641d1cec1d6f8eb4332552a9118b41075113c929b0fbab",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Tai tự nhiên, rõ hai bên mặt; tư thế làm thay đổi biểu hiện.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-182",
+          "locator": "tr. 3, Ears"
+        }
+      ]
+    },
+    {
+      "class_id": 10,
+      "attribute_id": "body_build",
+      "value": "Dáng gần vuông theo tỷ lệ tiêu chuẩn. Ảnh ngang đủ vai và thân, không dùng để phân biệt ba cỡ.",
+      "source_ids": [
+        "fci-182"
+      ],
+      "canonical_name": "Standard Schnauzer",
+      "scope_sha256": "ef2c243e58046d9503a5fbe05c8e38f4647c269dc879337e6c89b6e5ecc458eb",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Ảnh bên hạn chế sai phối cảnh; nét gần vuông không phân cỡ.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-182",
+          "locator": "tr. 2, General Appearance and Important Proportions"
+        }
+      ]
+    },
+    {
+      "class_id": 10,
+      "attribute_id": "breed_size",
+      "value": "Chiều cao vai chuẩn FCI 45–50 cm cho cả hai giới. Chó trưởng thành đứng thẳng, đo ở vai. Không xếp cỡ qua ảnh không có chuẩn tỷ lệ.",
+      "source_ids": [
+        "fci-182"
+      ],
+      "canonical_name": "Standard Schnauzer",
+      "scope_sha256": "c94c870b1d786bf8a3d1cf9e30c72c405d6ae178514e392c668340f6d369f74c",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "S · Cần đo thật hoặc ảnh có tỷ lệ đúng mặt phẳng.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-182",
+          "locator": "tr. 6, Size and Weight"
+        }
+      ]
+    },
+    {
+      "class_id": 11,
+      "attribute_id": "coat_texture",
+      "value": "Lông ngoài thô cứng dạng sợi, tương đối áp thân. Thấy vùng lông thân chưa tỉa quá sát. Ảnh không kiểm độ cứng khi sờ.",
+      "source_ids": [
+        "fci-181"
+      ],
+      "canonical_name": "Giant Schnauzer",
+      "scope_sha256": "09182bceadd25d34ec24fc684afb4f183801a0ca92dfab3e368568f336343bbf",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Coat sau tỉa hoặc vùng chân có thể nhìn khác; không suy độ cứng khi chạm.",
+      "morphology_phrase": "a wiry coat",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-181",
+          "locator": "tr. 5, Coat Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 11,
+      "attribute_id": "facial_hair",
+      "value": "Râu ở mõm và lông mày rậm. Mặt rõ và grooming phù hợp. Cụm prompt chỉ dùng phần râu.",
+      "source_ids": [
+        "fci-181"
+      ],
+      "canonical_name": "Giant Schnauzer",
+      "scope_sha256": "dc2e596f7421604db01d1186041dad0cdba06a1360e67548fa5865ec6b2f4006",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Thấy phần mặt và xét grooming; độ rậm không phải tiêu chí cỡ.",
+      "morphology_phrase": "a pronounced beard",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-181",
+          "locator": "tr. 5, Coat Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 11,
+      "attribute_id": "ear_position",
+      "value": "Tai tự nhiên gập rủ về phía trước. Tai nguyên vẹn và nhìn rõ. Tư thế hoặc can thiệp vào tai làm mất tín hiệu.",
+      "source_ids": [
+        "fci-181"
+      ],
+      "canonical_name": "Giant Schnauzer",
+      "scope_sha256": "af8ff8f51cb7002fb5cb39d646c5ed199d89007ab4087b87d0ee6ef152ae43d1",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Áp cho tai nguyên vẹn và khi nhìn thấy nếp gập.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-181",
+          "locator": "tr. 4, Ears"
+        }
+      ]
+    },
+    {
+      "class_id": 11,
+      "attribute_id": "body_build",
+      "value": "Dáng gần vuông theo tỷ lệ tiêu chuẩn. Ảnh ngang đủ vai và thân, không dùng để phân biệt ba cỡ.",
+      "source_ids": [
+        "fci-181"
+      ],
+      "canonical_name": "Giant Schnauzer",
+      "scope_sha256": "8d112530d64d34689460d6ba26d70e2083d4c1659b9052bdc2c42f732976faee",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Không suy số đo từ phối cảnh hoặc nhầm với dáng do lông tạo.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-181",
+          "locator": "tr. 2, General Appearance and Important Proportions"
+        }
+      ]
+    },
+    {
+      "class_id": 11,
+      "attribute_id": "breed_size",
+      "value": "Chiều cao vai chuẩn FCI 60–70 cm cho cả hai giới. Chó trưởng thành đứng thẳng, đo ở vai. Không xếp cỡ qua ảnh không có chuẩn tỷ lệ.",
+      "source_ids": [
+        "fci-181"
+      ],
+      "canonical_name": "Giant Schnauzer",
+      "scope_sha256": "83e69a1b2a2108794b5761043b83430319b207a52ea80acd6321450638738a94",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "S · Cần đo vai ở chó trưởng thành; không xác định từ crop.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-181",
+          "locator": "tr. 6, Size and Weight"
+        }
+      ]
+    },
+    {
+      "class_id": 12,
+      "attribute_id": "coat_color",
+      "value": "Các phối màu belton có nền trắng và chấm màu. Tiêu chuẩn ưu tiên chấm trải đều hơn mảng lớn. Thấy nhiều vùng thân. Mảng lớn và mẫu ba màu vẫn có thể có.",
+      "source_ids": [
+        "fci-002"
+      ],
+      "canonical_name": "English Setter",
+      "scope_sha256": "f8959b94bc0c354b6723746f932bc0002d2fbbe441377a1e7c52c88c89999f5c",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "V · Prompt belton là mẫu hình điển hình, không khẳng định chấm phủ đều ở mọi cá thể.",
+      "morphology_phrase": "belton-style flecking",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-002",
+          "locator": "tr. 4, Colour"
+        }
+      ]
+    },
+    {
+      "class_id": 12,
+      "attribute_id": "coat_texture",
+      "value": "Lông thường dài mượt và hơi gợn ở vùng sau đầu ngang tai, có lông tua. Góc nghiêng, thấy lông sau đầu và tai, phụ thuộc grooming.",
+      "source_ids": [
+        "fci-002"
+      ],
+      "canonical_name": "English Setter",
+      "scope_sha256": "54713abb14946eddcab1e71eb90b98356aa6f0da5fb98e4a9023271ab494fa34",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Góc nghiêng và grooming quan trọng; không suy lông xoăn từ câu này.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-002",
+          "locator": "tr. 4, Coat"
+        }
+      ]
+    },
+    {
+      "class_id": 13,
+      "attribute_id": "coat_color",
+      "value": "Nền hạt dẻ đậm, không có đen theo FCI, cho phép dấu trắng nhỏ ở một số vị trí. Chiếu sáng trung tính, quan sát toàn nền lông.",
+      "source_ids": [
+        "fci-120"
+      ],
+      "canonical_name": "Irish Setter",
+      "scope_sha256": "bd3e69b9a2f7ce41ff44ae65114fec87aa46b63fdf8c2fa3f698eaa9143cfe2c",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "V · Giải thích là màu nền của coat; không loại chó chỉ vì dấu trắng nhỏ theo chuẩn.",
+      "morphology_phrase": "a rich chestnut coat",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-120",
+          "locator": "tr. 4, Colour"
+        }
+      ]
+    },
+    {
+      "class_id": 13,
+      "attribute_id": "ear_position",
+      "value": "Tai đặt thấp về phía sau, rủ sát đầu. Hai bên đầu rõ, phân biệt bờ tai với lông tua.",
+      "source_ids": [
+        "fci-120"
+      ],
+      "canonical_name": "Irish Setter",
+      "scope_sha256": "84f34685b8fbbf828800e55e6502bb2c7a9d6b03c3459f091385d9fc46acad53",
+      "decision": "APPROVED",
+      "usage_limitations": "V · Cần thấy điểm gắn và phân biệt vành với tua.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-120",
+          "locator": "tr. 3, Ears"
+        }
+      ]
+    },
+    {
+      "class_id": 14,
+      "attribute_id": "coat_color",
+      "value": "Nền đen với các điểm tan ở vùng như trên mắt, mõm và ngực. Chấm trắng rất nhỏ ở ngực được phép. Thấy đủ mặt và ngực, tránh tối vùng màu tan.",
+      "source_ids": [
+        "fci-006"
+      ],
+      "canonical_name": "Gordon Setter",
+      "scope_sha256": "b132d88ed3c8ebbfa30a642dfcbab16699dad348237ea5e883cc90248171951f",
+      "decision": "APPROVED",
+      "usage_limitations": "V · Prompt chọn hai vị trí đặc trưng, không liệt kê tất cả vị trí tan.",
+      "morphology_phrase": "a black coat with tan points over the eyes and on the chest",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-006",
+          "locator": "tr. 4, Colour and Tan Markings"
+        }
+      ]
+    },
+    {
+      "class_id": 14,
+      "attribute_id": "ear_position",
+      "value": "Tai đặt thấp và áp sát đầu. Thấy mặt bên và vị trí tai gắn.",
+      "source_ids": [
+        "fci-006"
+      ],
+      "canonical_name": "Gordon Setter",
+      "scope_sha256": "8dd4c97648aa3f63da4af5ae52cb00fb1f8773270c3300b818425a5a7690d3bd",
+      "decision": "APPROVED",
+      "usage_limitations": "V · Mô tả từ bên mặt; góc chụp có thể che điểm gắn.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-006",
+          "locator": "tr. 3, Ears"
+        }
+      ]
+    },
+    {
+      "class_id": 15,
+      "attribute_id": "coat_color",
+      "value": "Đen-trắng hoặc nâu gan-trắng, có thể kèm mảng tan. Ánh sáng trung tính, màu da và lông tránh lẫn.",
+      "source_ids": [
+        "fci-125"
+      ],
+      "canonical_name": "English Springer",
+      "scope_sha256": "b7e8d03afe66ec83488492dda9314b7ebdef1668cf6f2340b159ce615138c9d6",
+      "decision": "APPROVED",
+      "usage_limitations": "FCI 125 xác nhận đen–trắng hoặc nâu gan–trắng, có thể kèm tan. Giữ yêu cầu ánh sáng trung tính.",
+      "morphology_phrase": "black-and-white or liver-and-white markings, sometimes with tan",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-125",
+          "locator": "tr. 4, Colour"
+        }
+      ]
+    },
+    {
+      "class_id": 15,
+      "attribute_id": "body_build",
+      "value": "Dáng cân đối, chắc, tương đối cao chân trong nhóm spaniel đất liền Anh theo FCI. Chó đứng ngang, nhìn đủ chân và thân. Không suy chiều cao thật từ pixel.",
+      "source_ids": [
+        "fci-125"
+      ],
+      "canonical_name": "English Springer",
+      "scope_sha256": "2b2c681b20379bf1d9499b7a2eeffb05a50c59880b0f0c996c584d2edc13014c",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · High-on-leg là tỷ lệ ngoại hình, không phải chiều cao vai quan sát từ pixel.",
+      "morphology_phrase": "an athletic, high-on-leg build",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-125",
+          "locator": "tr. 2, General Appearance"
+        }
+      ]
+    },
+    {
+      "class_id": 15,
+      "attribute_id": "ear_shape",
+      "value": "Tai dạng thùy, có chiều dài và chiều rộng rõ, có lông tua. Thấy dáng vành tai, lông tua có thể làm tai nhìn dài hoặc rộng hơn.",
+      "source_ids": [
+        "fci-125"
+      ],
+      "canonical_name": "English Springer",
+      "scope_sha256": "f4da0f5e19bb97b1ec970802b14a4cda998095894d4357f62733781cbf1ffdd6",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Không suy kích cỡ vành khi chỉ thấy tua lông.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-125",
+          "locator": "tr. 3, Ears"
+        }
+      ]
+    },
+    {
+      "class_id": 16,
+      "attribute_id": "coat_color",
+      "value": "Màu đỏ đậm và trắng theo hai tiêu chuẩn được đối chiếu. Thấy thân, kiểm ánh sáng đỏ/cam.",
+      "source_ids": [
+        "fci-126",
+        "rkc-welsh-springer"
+      ],
+      "canonical_name": "Welsh Springer Spaniel",
+      "scope_sha256": "a120c4dfd3a746fc0b3aa40fc9d287413967bac2a7cae3d06a16daa7a6f94104",
+      "decision": "APPROVED",
+      "usage_limitations": "FCI 126 và RKC xác nhận đỏ đậm–trắng; giữ yêu cầu vùng thân và kiểm ánh sáng đỏ/cam.",
+      "morphology_phrase": "rich red and white markings",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-126",
+          "locator": "tr. 4, Colour"
+        },
+        {
+          "source_id": "rkc-welsh-springer",
+          "locator": "Colour"
+        }
+      ]
+    },
+    {
+      "class_id": 16,
+      "attribute_id": "ear_shape",
+      "value": "Vành tai tương đối nhỏ và thuôn dần về chóp. Cần thấy vành tai, góc ngang hoặc ba phần tư, tránh lông che.",
+      "source_ids": [
+        "fci-126",
+        "rkc-welsh-springer"
+      ],
+      "canonical_name": "Welsh Springer Spaniel",
+      "scope_sha256": "2c7e9f217e9062acef882dfdabc5db8e0c9e25f2c5701cfb847dccb5024898cf",
+      "decision": "APPROVED",
+      "usage_limitations": "C · Góc sát mặt hoặc ba phần tư; cần thấy vành dưới lông.",
+      "morphology_phrase": "small, tapering ears",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-126",
+          "locator": "tr. 3, Ears"
+        },
+        {
+          "source_id": "rkc-welsh-springer",
+          "locator": "Ears"
+        }
+      ]
+    },
+    {
+      "class_id": 16,
+      "attribute_id": "coat_texture",
+      "value": "Lông thẳng hoặc phẳng, mượt và dày. Quan sát lông khô rõ nét. Không suy cảm giác khi chạm từ ảnh.",
+      "source_ids": [
+        "fci-126",
+        "rkc-welsh-springer"
+      ],
+      "canonical_name": "Welsh Springer Spaniel",
+      "scope_sha256": "472ee1ec3fb42872c24fe21f2b6eede3e058f6b3ae3f2a36582fc567119a1374",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Ảnh lông khô có thể gợi ý texture; xúc giác chưa xác nhận.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-126",
+          "locator": "tr. 4, Coat"
+        },
+        {
+          "source_id": "rkc-welsh-springer",
+          "locator": "Coat"
+        }
+      ]
+    },
+    {
+      "class_id": 17,
+      "attribute_id": "ear_shape",
+      "value": "Tai dạng thùy, vành mảnh dài tới chóp mũi theo mô tả của tiêu chuẩn English Cocker Spaniel. Ảnh đơn lẻ thường chỉ hỗ trợ đánh giá độ dài tương đối của tai.",
+      "source_ids": [
+        "fci-005"
+      ],
+      "canonical_name": "Cocker Spaniel",
+      "scope_sha256": "d5b0d45b6b8fe48d04451b527d73fd61295a3a1b1933f5b3ee886c248f9032d0",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "FCI 005 tr. 3 mục Ears mô tả vành mảnh dài đến chóp mũi và hình thùy. Phần quan sát ảnh là giới hạn của nhóm, không phải thủ tục đo do FCI quy định.",
+      "morphology_phrase": "long, lobed ears",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-005",
+          "locator": "tr. 3, Ears"
+        }
+      ]
+    },
+    {
+      "class_id": 17,
+      "attribute_id": "body_build",
+      "value": "Dáng gọn, chắc và cân đối, hai kích thước vai–đất và vai–gốc đuôi gần nhau theo tiêu chuẩn. Ảnh bên đủ toàn thân, chân đứng tự nhiên. Không ước tính số đo từ crop. Phạm vi mô tả là English Cocker Spaniel.",
+      "source_ids": [
+        "fci-005"
+      ],
+      "canonical_name": "Cocker Spaniel",
+      "scope_sha256": "9fbe755ba33ba81e42a2136d94f0f9502e1a7fe14398c44701ad320da69cd2c8",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · So hình học ở góc ngang; không đo bằng crop hoặc hình bị méo.",
+      "morphology_phrase": "a compact, balanced build",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-005",
+          "locator": "tr. 2, General Appearance, Important Proportions"
+        }
+      ]
+    },
+    {
+      "class_id": 17,
+      "attribute_id": "coat_texture",
+      "value": "Lông phẳng, mượt theo chuẩn English Cocker. Thấy lông tự nhiên, không suy từ bóng phản chiếu. WordNet dùng để chọn tên tương đương. Phạm vi mô tả là English Cocker Spaniel.",
+      "source_ids": [
+        "fci-005"
+      ],
+      "canonical_name": "Cocker Spaniel",
+      "scope_sha256": "aa0c81a02096cb3184b8743166eaf59712f0766fb393c29735d701157c305e35",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Scope morphology theo FCI English Cocker. Lông khô, xét grooming và ánh sáng.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-005",
+          "locator": "tr. 4, Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 18,
+      "attribute_id": "ear_position",
+      "value": "Tai rủ ra trước và áp gần má. Thấy hướng mang tai từ chính diện hoặc ba phần tư. Dáng tai chữ V là dấu hiệu hình tai riêng.",
+      "source_ids": [
+        "fci-272"
+      ],
+      "canonical_name": "Norfolk Terrier",
+      "scope_sha256": "ed5cf8ad7d83433ab5fe3efac483bc6dc176e374807a02f8fbe52657f56fab1a",
+      "decision": "APPROVED",
+      "usage_limitations": "C · Nhìn đủ tai; mô hình không cần suy shape từ position.",
+      "morphology_phrase": "forward-dropping ears close to the cheeks",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-272",
+          "locator": "tr. 3, Ears"
+        }
+      ]
+    },
+    {
+      "class_id": 18,
+      "attribute_id": "head_shape",
+      "value": "Đầu rộng hơi vồng, mõm nêm khỏe. Thấy mặt trước và profile, không dùng đầu để tách riêng Norfolk với Norwich.",
+      "source_ids": [
+        "fci-272"
+      ],
+      "canonical_name": "Norfolk Terrier",
+      "scope_sha256": "344503ee08f9534e4892f073012e26e4ad87f55ef013a5a3ca1691ada9738a23",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Cảnh báo giới hạn suy luận; cần góc trước/nghiêng và kết hợp tai.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-272",
+          "locator": "tr. 3, Cranial and Facial Regions"
+        }
+      ]
+    },
+    {
+      "class_id": 18,
+      "attribute_id": "coat_texture",
+      "value": "Lông cứng, thẳng và thô, nằm sát thân. Vùng thân rõ và không vừa tỉa sát.",
+      "source_ids": [
+        "fci-272"
+      ],
+      "canonical_name": "Norfolk Terrier",
+      "scope_sha256": "13c0b353b208dd19a9f6a11c78f2d028e93572049843234666e7956b43efadd7",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Grooming có thể che texture; ảnh không kiểm xúc giác.",
+      "morphology_phrase": "a hard wiry coat",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-272",
+          "locator": "tr. 4, Coat"
+        }
+      ]
+    },
+    {
+      "class_id": 19,
+      "attribute_id": "ear_position",
+      "value": "Tai dựng lúc chú ý, có thể ngả ra sau lúc nghỉ. Hai tai rõ, chó đang chú ý. Tai nhọn thuộc hình tai, chưa cần xuất ID riêng ở lớp này.",
+      "source_ids": [
+        "fci-072"
+      ],
+      "canonical_name": "Norwich Terrier",
+      "scope_sha256": "7d441afc56b5774dcc51bef20a1204b396e88f85cf44bc9601d99f80b09c9bef",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Prompt giữ when alert. Tai nghỉ không đủ kết luận ngược.",
+      "morphology_phrase": "ears held upright when alert",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-072",
+          "locator": "tr. 3, Ears"
+        }
+      ]
+    },
+    {
+      "class_id": 19,
+      "attribute_id": "coat_texture",
+      "value": "Lông cứng, thẳng và thô, áp sát thân. Grooming và độ phân giải có thể che kết cấu lông.",
+      "source_ids": [
+        "fci-072"
+      ],
+      "canonical_name": "Norwich Terrier",
+      "scope_sha256": "925652aec5d573dcb9ab1fa3e29b9fe1e42bb87d69eb373bf60735018ac5280c",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Ảnh chỉ gợi ý bề mặt. Grooming và độ phân giải ảnh hưởng quan sát.",
+      "morphology_phrase": "a hard wiry coat",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-072",
+          "locator": "tr. 4, Coat"
+        }
+      ]
+    },
+    {
+      "class_id": 20,
+      "attribute_id": "head_shape",
+      "value": "Đầu kiểu rái cá, với sọ rộng vừa và mõm ngắn khỏe. Chính diện và góc ngang rõ mõm, chỉ gợi ý khi thấy hình học đầu.",
+      "source_ids": [
+        "fci-010"
+      ],
+      "canonical_name": "Border Terrier",
+      "scope_sha256": "e3b250ea68fcf6a566bbc8d91ab0599740cd2f6e8c7888b59572fd4a0fea17ac",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Cần nhiều góc, tránh dựa vào tóc quanh đầu.",
+      "morphology_phrase": "an otter-like head",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-010",
+          "locator": "tr. 2, Head, Cranial Region, Facial Region"
+        }
+      ]
+    },
+    {
+      "class_id": 20,
+      "attribute_id": "coat_texture",
+      "value": "Lông ngoài thô trên lớp lót sát thân. Lông khô đủ chi tiết. Mật độ lớp lót không suy chắc từ ảnh.",
+      "source_ids": [
+        "fci-010"
+      ],
+      "canonical_name": "Border Terrier",
+      "scope_sha256": "cab820ec9ce982b23fb6f3c30b5c564ffe8ace7f432058846694816d039a51a5",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Lông khô và độ nét ảnh. Lớp lót cần quan sát riêng.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-010",
+          "locator": "tr. 3, Coat"
+        }
+      ]
+    },
+    {
+      "class_id": 20,
+      "attribute_id": "ear_position",
+      "value": "Tai rủ về trước gần má. Tai hai bên rõ.",
+      "source_ids": [
+        "fci-010"
+      ],
+      "canonical_name": "Border Terrier",
+      "scope_sha256": "6e10c405dd80451a2bed15e799656b0a6c82294d181a6ac298d49b91ed760e5d",
+      "decision": "APPROVED",
+      "usage_limitations": "FCI 010 xác nhận tai rủ ra trước gần má. Điều kiện thấy rõ hai tai giữ nguyên.",
+      "morphology_phrase": "forward-dropping ears",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-010",
+          "locator": "tr. 2, Ears"
+        }
+      ]
+    },
+    {
+      "class_id": 21,
+      "attribute_id": "head_shape",
+      "value": "Đầu dạng nêm tù, thon dần, với đoạn chuyển trán–mõm nhẹ nhưng thấy được. Ưu tiên góc nghiêng đủ trán và mõm. Đặc điểm tương ứng trong cả hai chuẩn Rough và Smooth; phân bố biến thể trong lớp dữ liệu chưa xác minh.",
+      "source_ids": [
+        "fci-156",
+        "fci-296"
+      ],
+      "canonical_name": "Collie",
+      "scope_sha256": "bebff6cc853118ffc2d03afed2542e6cb86ec9e93b30f56e2bbb16fe771276a9",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "Rough và Smooth cùng mô tả nêm tù, thon và stop nhẹ; giữ phạm vi hai chuẩn và giới hạn về phân bố biến thể trong ảnh.",
+      "morphology_phrase": "a tapering blunt-wedge head with a slight stop",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-156",
+          "locator": "tr. 3, Head"
+        },
+        {
+          "source_id": "fci-296",
+          "locator": "tr. 2–3, Head"
+        }
+      ]
+    },
+    {
+      "class_id": 21,
+      "attribute_id": "ear_position",
+      "value": "Tai bán dựng khi chú ý, chóp gập ra trước. Cả chuẩn Rough và Smooth mô tả cách mang này. Thấy hai tai, chó chú ý.",
+      "source_ids": [
+        "fci-156",
+        "fci-296"
+      ],
+      "canonical_name": "Collie",
+      "scope_sha256": "d636cc36fa9f8f15cb019d93d3f82bc31faad03c9e20a7d502c193b1d36ebc3e",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "Cả chuẩn Rough và Smooth nêu bán dựng khi chó chú ý, chóp gập về trước. Giữ rõ tư thế và hai tai.",
+      "morphology_phrase": "semi-erect ears tipped forward when alert",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-156",
+          "locator": "tr. 4, Ears"
+        },
+        {
+          "source_id": "fci-296",
+          "locator": "tr. 3, Ears"
+        }
+      ]
+    },
+    {
+      "class_id": 21,
+      "attribute_id": "coat_length",
+      "value": "Hai chuẩn tham chiếu mô tả Rough có bờm rõ và Smooth có lông ngoài ngắn; phân bố biến thể của lớp dữ liệu chưa xác minh. Chỉ dùng với bộ lông đủ rõ. Giữ biến thiên ở KB, không chèn vào prompt.",
+      "source_ids": [
+        "fci-156",
+        "fci-296"
+      ],
+      "canonical_name": "Collie",
+      "scope_sha256": "80045e656f6629d3e50ff41749c2d5bbafd4e67e52e947b643854b37f9c0fea8",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Hai biến thể chỉ là đối chiếu tiêu chuẩn. Dữ liệu ảnh không được dùng để suy tỉ lệ biến thể.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-156",
+          "locator": "tr. 5, Coat"
+        },
+        {
+          "source_id": "fci-296",
+          "locator": "tr. 4, Coat Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 22,
+      "attribute_id": "coat_length",
+      "value": "Lông ngoài dài, có bờm và diềm cổ rõ. Cổ và thân thấy rõ, lông khô.",
+      "source_ids": [
+        "fci-088"
+      ],
+      "canonical_name": "Shetland Sheepdog",
+      "scope_sha256": "30131291658187ae512f696706280e93840c16e967424f5beac904f3048324ee",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "FCI 088 xác nhận lông ngoài dài, bờm/diềm rõ. Giữ điều kiện thấy cổ và thân, lông khô.",
+      "morphology_phrase": "a long outer coat with a distinct neck ruff",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-088",
+          "locator": "tr. 2, 4, General Appearance, Coat"
+        }
+      ]
+    },
+    {
+      "class_id": 22,
+      "attribute_id": "head_shape",
+      "value": "Đầu nêm tù dài từ tai tới mũi, stop nhẹ nhưng rõ. Ảnh ngang rõ trán–mõm. Dùng để phân biệt có điều kiện với ID 23.",
+      "source_ids": [
+        "fci-088"
+      ],
+      "canonical_name": "Shetland Sheepdog",
+      "scope_sha256": "db5cfa8536bbe21ca7dea7c24cf55b06f5d700c472619951c9d9085173edb0d0",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Dùng góc ngang, không dùng làm dấu hiệu đủ và không coi mọi cá thể như tiêu chuẩn.",
+      "morphology_phrase": "a long wedge-shaped head with a slight stop",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-088",
+          "locator": "tr. 2, Head, Cranial Region"
+        }
+      ],
+      "interpretation": {
+        "methodology_only": true,
+        "rationale": "FCI 088 hỗ trợ đầu nêm tù dài với stop nhẹ nhưng rõ. Evidence đối chiếu FCI 297 mô tả stop rất rõ; câu là hướng dẫn xem đặc điểm ở ảnh ngang, không phát biểu thuộc tính mới của Border Collie hay chứng minh độ chính xác phân loại.",
+        "review_locators": [
+          {
+            "source_id": "fci-088",
+            "locator": "tr. 2, Head, Cranial Region"
+          },
+          {
+            "source_id": "fci-297",
+            "locator": "tr. 2, Head"
+          }
+        ]
+      }
+    },
+    {
+      "class_id": 22,
+      "attribute_id": "ear_position",
+      "value": "Tai bán dựng, chóp gập ra trước lúc chú ý. Chó đang chú ý và thấy hai tai.",
+      "source_ids": [
+        "fci-088"
+      ],
+      "canonical_name": "Shetland Sheepdog",
+      "scope_sha256": "904579a9dbd3bff84f1da8a0c1af9181ec47f8f2eff50e6b2e84d4358407015c",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "FCI 088 hỗ trợ chóp gập ra trước, tai bán dựng lúc chú ý. Giữ yêu cầu thấy hai tai.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-088",
+          "locator": "tr. 3, Ears"
+        }
+      ]
+    },
+    {
+      "class_id": 22,
+      "attribute_id": "breed_size",
+      "value": "FCI ghi chiều cao vai lý tưởng đực 37 cm, cái 35,5 cm, sai khác quá 2,5 cm rất không mong muốn. Đo thật ở vai chó trưởng thành. Dùng chuẩn tham chiếu, không suy từ kích thước ảnh.",
+      "source_ids": [
+        "fci-088",
+        "fci-156",
+        "fci-296"
+      ],
+      "canonical_name": "Shetland Sheepdog",
+      "scope_sha256": "6cd8386508e466ceb9a771f0acb8fa121e82876a9f9c5b78804321c62adf4311",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "S · Điều kiện đo vai chó trưởng thành; các ngưỡng là tham chiếu, không phải kết quả từ ảnh.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-088",
+          "locator": "tr. 5, Size"
+        },
+        {
+          "source_id": "fci-156",
+          "locator": "tr. 5, Size"
+        },
+        {
+          "source_id": "fci-296",
+          "locator": "tr. 5, Size"
+        }
+      ]
+    },
+    {
+      "class_id": 23,
+      "attribute_id": "head_shape",
+      "value": "Sọ khá rộng và đoạn chuyển trán–mõm rõ. Ảnh nghiêng, đọc đường chuyển trán–mõm; không dùng như điều kiện đủ.",
+      "source_ids": [
+        "fci-297"
+      ],
+      "canonical_name": "Border Collie",
+      "scope_sha256": "27574f915f2df81a1fd3c6c70c0dadc7c0f8c6e7342e9382ba500f4aeabf221c",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Cần thấy giao đoạn trán–mõm ở profile, chỉ dùng làm một dấu hiệu.",
+      "morphology_phrase": "a head with a clearly marked stop",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-297",
+          "locator": "tr. 2–3, Cranial and Facial Regions"
+        }
+      ]
+    },
+    {
+      "class_id": 23,
+      "attribute_id": "ear_position",
+      "value": "Tai dựng hoặc bán dựng và linh hoạt theo trạng thái. Hai tai hiện rõ.",
+      "source_ids": [
+        "fci-297"
+      ],
+      "canonical_name": "Border Collie",
+      "scope_sha256": "02e7d109d5d7a57f7c28e5af13655d3c22b8bddd52c456082ac59fd9ee33ab49",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "FCI 297 xác nhận tai dựng hoặc bán dựng và linh hoạt theo trạng thái, cần thấy hai tai.",
+      "morphology_phrase": "erect or semi-erect ears",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-297",
+          "locator": "tr. 3, Ears"
+        }
+      ]
+    },
+    {
+      "class_id": 23,
+      "attribute_id": "tail_shape",
+      "value": "Đuôi có điểm gắn thấp, đoạn chót thường cong lên. Thấy toàn đuôi và tư thế mang.",
+      "source_ids": [
+        "fci-297"
+      ],
+      "canonical_name": "Border Collie",
+      "scope_sha256": "0d519c273bd465e432d6a22a3cf74b235d01d4821f0d19ccb991702910357153",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "FCI 297 tách điểm gắn đuôi thấp khỏi tư thế, ghi đuôi có thể nâng khi hưng phấn. Claim chỉ giữ điểm gắn, độ cong chót và điều kiện quan sát.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-297",
+          "locator": "tr. 3, Tail"
+        }
+      ]
+    },
+    {
+      "class_id": 24,
+      "attribute_id": "coat_color",
+      "value": "Lông trong dải vàng hoặc kem trong tiêu chuẩn, có thể có ít sợi trắng ở ngực. Thân đủ sáng.",
+      "source_ids": [
+        "fci-111"
+      ],
+      "canonical_name": "Golden Retriever",
+      "scope_sha256": "211e46b4cd057f3cc000b17c9e755a151c0e6aef41db7870977209e67d854f37",
+      "decision": "APPROVED",
+      "usage_limitations": "FCI 111 hỗ trợ dải vàng hoặc kem và ít sợi trắng ngực, giữ điều kiện chiếu sáng.",
+      "morphology_phrase": "a golden or cream coat",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-111",
+          "locator": "tr. 3, Colour"
+        }
+      ]
+    },
+    {
+      "class_id": 24,
+      "attribute_id": "coat_texture",
+      "value": "Lông phẳng hoặc gợn. Góc đủ thấy thân, lông khô.",
+      "source_ids": [
+        "fci-111"
+      ],
+      "canonical_name": "Golden Retriever",
+      "scope_sha256": "3cdb21608a2e0052e60604721bcd66ba56ef65212068a1d7fa9417eedf7fd80f",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "FCI 111 hỗ trợ lông phẳng hoặc gợn. Giữ góc thấy rõ thân và lông khô.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-111",
+          "locator": "tr. 3, Coat Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 24,
+      "attribute_id": "coat_length",
+      "value": "Lông dài trang trí rõ ở dạng feathering theo chuẩn; nguồn không nêu một chiều dài toàn thân cố định. Thấy vùng lông tua, grooming hoặc crop có thể làm giảm tín hiệu.",
+      "source_ids": [
+        "fci-111"
+      ],
+      "canonical_name": "Golden Retriever",
+      "scope_sha256": "df93c3d2a116650df31d65863b46c5a28bbb3c3ad465223915360bd3695f7fd0",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Quan sát đúng vùng lông tua; grooming hoặc crop ảnh hưởng.",
+      "morphology_phrase": "distinct feathering",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-111",
+          "locator": "tr. 3, Coat Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 25,
+      "attribute_id": "coat_texture",
+      "value": "Lông không gợn, sợi có độ cứng khi sờ. Thân khô, có ánh sáng. Ảnh không xác nhận trực tiếp độ cứng.",
+      "source_ids": [
+        "fci-122"
+      ],
+      "canonical_name": "Labrador Retriever",
+      "scope_sha256": "51f43c8c4a7230ab29dfe6f26e83bb34fcd853dae6a57808b180c40cf055a6fa",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Chỉ kiểm trạng thái không gợn từ ảnh đủ rõ; không suy cảm giác khi chạm.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-122",
+          "locator": "tr. 4, Coat Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 25,
+      "attribute_id": "tail_shape",
+      "value": "Đuôi tròn, rất dày gần gốc rồi thon dần, không tua, dạng đuôi rái cá. Đuôi nhìn rõ từ gốc đến chóp, tránh góc foreshortening.",
+      "source_ids": [
+        "fci-122"
+      ],
+      "canonical_name": "Labrador Retriever",
+      "scope_sha256": "5a7a690cc2ddd38620009f0628f883b2cddbebb6f2d2087a2ec9f4132be5998e",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Thấy cả gốc và chót, tránh thu ngắn do phối cảnh.",
+      "morphology_phrase": "a thick-based, tapering otter tail",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-122",
+          "locator": "tr. 3, Tail"
+        }
+      ]
+    },
+    {
+      "class_id": 25,
+      "attribute_id": "coat_length",
+      "value": "Lông ngắn, dày, không có lông tua theo chuẩn. Thân khô, đủ độ phân giải.",
+      "source_ids": [
+        "fci-122"
+      ],
+      "canonical_name": "Labrador Retriever",
+      "scope_sha256": "2424158e628e8107753b3d78165635a851966eefd11bd1dc7fab2324320737c2",
+      "decision": "APPROVED",
+      "usage_limitations": "FCI 122 xác nhận lông ngắn, dày và không tua; giữ lông khô và ảnh đủ nét.",
+      "morphology_phrase": "a short, dense coat",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-122",
+          "locator": "tr. 4, Coat Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 26,
+      "attribute_id": "coat_texture",
+      "value": "Lông có xu hướng gợn ở vai, cổ, lưng và thắt lưng. Lông mặt và chân thẳng. Lông khô, nhìn đủ vùng vai–lưng. Gợn là xu hướng, không bắt buộc thấy.",
+      "source_ids": [
+        "fci-263"
+      ],
+      "canonical_name": "Chesapeake Bay Retriever",
+      "scope_sha256": "90e27a7c017c53ef5dfb5ccf439c465f02be605a900d23193f8c8030ec91c1cc",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Cụm waves là kiểu nguyên mẫu, không khẳng định phải thấy trên mọi cá thể; giữ xu hướng và điều kiện lông khô của KB.",
+      "morphology_phrase": "waves over the neck, shoulders and back",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-263",
+          "locator": "tr. 5, Coat Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 26,
+      "attribute_id": "coat_color",
+      "value": "Dải tông màu nâu, sedge hoặc deadgrass theo FCI. Ánh sáng trung tính.",
+      "source_ids": [
+        "fci-263"
+      ],
+      "canonical_name": "Chesapeake Bay Retriever",
+      "scope_sha256": "2bd8b0142b272a70b3e1eaf37b78f04b4deaee37e4a04a366482de0c0b170e43",
+      "decision": "APPROVED",
+      "usage_limitations": "FCI 263 hỗ trợ nâu, sedge hoặc deadgrass. Giữ ánh sáng trung tính và ghi rõ theo FCI.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-263",
+          "locator": "tr. 5, Colour"
+        }
+      ]
+    },
+    {
+      "class_id": 26,
+      "attribute_id": "coat_length",
+      "value": "Lông thân ngắn, lông mặt và chân rất ngắn. Tua vừa ở vùng sau đùi và đuôi được phép. Thấy thân. Phân biệt lông ngắn toàn thân với tua cục bộ.",
+      "source_ids": [
+        "fci-263"
+      ],
+      "canonical_name": "Chesapeake Bay Retriever",
+      "scope_sha256": "a02da746b0e4287083bc3ce3dac57ee379f00b60cfb32419e1de97e4064c2983",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "V · Ảnh thân rõ. Lông tua cục bộ không phủ định chiều dài thân ngắn.",
+      "morphology_phrase": "a short coat",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-263",
+          "locator": "tr. 5, Coat Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 27,
+      "attribute_id": "facial_hair",
+      "value": "Lông trên mặt và mõm ngắn, lông tai dài và nhiều. Mặt và mõm rõ, tai ngoài vùng claim chính. Grooming làm biến đổi dấu hiệu.",
+      "source_ids": [
+        "akc-japanese-chin",
+        "fci-206"
+      ],
+      "canonical_name": "Japanese Spaniel",
+      "scope_sha256": "6b87bf872af9d473190dd26255566a01e0a5eabfd959e64407e0088ef76c3a30",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Phân biệt vùng mặt với tai. Grooming có thể giảm khả năng quan sát.",
+      "morphology_phrase": "short facial hair",
+      "runtime_evidence": [
+        {
+          "source_id": "akc-japanese-chin",
+          "locator": "tr. 2, Coat"
+        },
+        {
+          "source_id": "fci-206",
+          "locator": "tr. 4, Coat Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 27,
+      "attribute_id": "coat_color",
+      "value": "FCI mô tả nền trắng với mảng đen hoặc đỏ. Thấy đủ nền lông và mảng. Sắc độ ở vùng crop nhỏ có thể gây nhầm.",
+      "source_ids": [
+        "fci-206"
+      ],
+      "canonical_name": "Japanese Spaniel",
+      "scope_sha256": "e56d7406f21688b1934cd53aeab4fb36dac4117fd17d3dda74d12e574999e4ce",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "FCI 206 hỗ trợ nền trắng với mảng đen hoặc đỏ. Phần màu ở runtime và cụm tiếng Anh chỉ dùng phạm vi FCI, giữ điều kiện thấy đủ nền/mảng.",
+      "morphology_phrase": "a white coat with black or red patches",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-206",
+          "locator": "tr. 4, Colour"
+        }
+      ]
+    },
+    {
+      "class_id": 27,
+      "attribute_id": "muzzle_length",
+      "value": "Mõm ngắn theo AKC, FCI mô tả sống mũi rất ngắn. Nhìn góc nghiêng rõ mũi và đoạn chuyển. Ít phân biệt trong G10.",
+      "source_ids": [
+        "akc-japanese-chin",
+        "fci-206"
+      ],
+      "canonical_name": "Japanese Spaniel",
+      "scope_sha256": "29669e62de228dcfedb761b58dd1f5ccf771308d460fc5f932626e3170cd32c4",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Profile rõ mũi và điểm stop; không dùng độ ngắn làm căn cứ duy nhất.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "akc-japanese-chin",
+          "locator": "tr. 1, Head"
+        },
+        {
+          "source_id": "fci-206",
+          "locator": "tr. 3, Facial Region"
+        }
+      ]
+    },
+    {
+      "class_id": 27,
+      "attribute_id": "coat_texture",
+      "value": "Lông thân thẳng và mượt. Lông khô, ảnh đủ nét để đánh giá bề ngoài.",
+      "source_ids": [
+        "fci-206",
+        "akc-japanese-chin"
+      ],
+      "canonical_name": "Japanese Spaniel",
+      "scope_sha256": "fbb3bc9269fc4939c6c6cec2697acaab5690953202f6408383797c98ddfbb31b",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Độ mượt gợi ý ở bề mặt, ảnh không cho phép kết luận xúc giác.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-206",
+          "locator": "tr. 4, Coat"
+        },
+        {
+          "source_id": "akc-japanese-chin",
+          "locator": "tr. 1–2, Coat"
+        }
+      ]
+    },
+    {
+      "class_id": 28,
+      "attribute_id": "head_shape",
+      "value": "Đầu tương đối rộng, đỉnh sọ phẳng giữa hai tai theo FCI. Ảnh mặt thẳng hoặc ba phần tư, cần tách đường viền lông và sọ.",
+      "source_ids": [
+        "fci-207"
+      ],
+      "canonical_name": "Pekinese",
+      "scope_sha256": "267ea306f65e75ca3aa2986f0d0271fc8c69447a77c91068d588ef260945b1e4",
+      "decision": "APPROVED",
+      "usage_limitations": "C · Góc trước hoặc ba phần tư; tránh nhầm biên lông thành hình sọ.",
+      "morphology_phrase": "a broad head flat between the ears",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-207",
+          "locator": "tr. 2, Head, Cranial Region"
+        }
+      ]
+    },
+    {
+      "class_id": 28,
+      "attribute_id": "body_build",
+      "value": "Dáng nhỏ chắc vừa phải, thân cân bằng. Ảnh ngang đủ thân. Lông không được tính là khối thân.",
+      "source_ids": [
+        "fci-207"
+      ],
+      "canonical_name": "Pekinese",
+      "scope_sha256": "6fd40f02d1dbf356150bbbf6cb1ec185367687a8ec5a12802a964567989f8b9e",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Cần ảnh ngang rõ thân; khối lông không phải thể tích thân.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-207",
+          "locator": "tr. 2, General Appearance"
+        }
+      ]
+    },
+    {
+      "class_id": 28,
+      "attribute_id": "coat_length",
+      "value": "Lông thẳng dài vừa, bờm quây quanh cổ như áo choàng và không vượt quá vai. Cổ và vai hiện rõ. Bờm thay đổi do grooming.",
+      "source_ids": [
+        "fci-207"
+      ],
+      "canonical_name": "Pekinese",
+      "scope_sha256": "d2678f584111ac496384096d64263abf548d0f1d8ed56b089b4a9fae250791bc",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Grooming ảnh hưởng lông bờm; prompt không kéo dài bờm ra ngoài phạm vi chuẩn.",
+      "morphology_phrase": "a moderate mane around the neck",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-207",
+          "locator": "tr. 4, Coat Hair"
+        }
+      ]
+    },
+    {
+      "class_id": 28,
+      "attribute_id": "muzzle_length",
+      "value": "Mõm phải hiện rõ, có thể tương đối ngắn. Chiều rộng được ghi riêng ở head_shape nếu cần. Dùng góc nghiêng rõ đường viền. Không dùng độ bẹt để xếp loại.",
+      "source_ids": [
+        "fci-207"
+      ],
+      "canonical_name": "Pekinese",
+      "scope_sha256": "6332c5fcf236e5a803a9ac5ced3669ce82fd08874b6afd77589099a5ca0ca65b",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Profile đủ mũi/viền. Không suy độ bẹt cực đoan.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-207",
+          "locator": "tr. 2, Facial Region"
+        }
+      ]
+    },
+    {
+      "class_id": 29,
+      "attribute_id": "facial_hair",
+      "value": "Có râu, ria và lông mọc hướng lên trên mõm, tạo kiểu mặt như cánh hoa cúc. Mặt và mõm đủ rõ, buộc hoặc tỉa lông có thể đổi viền mặt.",
+      "source_ids": [
+        "fci-208"
+      ],
+      "canonical_name": "Shih-Tzu",
+      "scope_sha256": "39ba72359d16fc5e481e1f61f97ab2846c8212337d60e9fcb190703283c48761",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Buộc/tỉa lông làm biến đổi hình ảnh; prompt chỉ chọn hướng mọc ở mõm.",
+      "morphology_phrase": "muzzle hair growing upward",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-208",
+          "locator": "tr. 2–3, General Appearance, Head"
+        }
+      ]
+    },
+    {
+      "class_id": 29,
+      "attribute_id": "body_build",
+      "value": "Thân chắc, chiều dài từ vai tới gốc đuôi lớn hơn chiều cao vai theo chuẩn. Dáng ngang đủ vai và gốc đuôi. Không suy tỷ lệ chính xác từ góc xiên.",
+      "source_ids": [
+        "fci-208"
+      ],
+      "canonical_name": "Shih-Tzu",
+      "scope_sha256": "49dce8037e75fa9e5441caa45f50d68b1a2457df670057d2909c2294c3ba976d",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Ảnh ngang đúng tư thế, tránh suy tỷ lệ đo được từ góc xiên.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-208",
+          "locator": "tr. 2, General Appearance, Important Proportions"
+        }
+      ]
+    },
+    {
+      "class_id": 29,
+      "attribute_id": "muzzle_length",
+      "value": "Mõm ngắn theo chuẩn. Chiều rộng và độ vuông là mô tả khác của hình mõm. Ảnh ngang thấy mũi và điểm stop, tóc có thể che. Không suy 2,5 cm từ ảnh.",
+      "source_ids": [
+        "fci-208"
+      ],
+      "canonical_name": "Shih-Tzu",
+      "scope_sha256": "88b3603dc4d808b307f983d8f24825ee9e031992b9d93565beac8703c53b6ec9",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Không đo từ ảnh. Lông mặt dễ che mốc.",
+      "morphology_phrase": null,
+      "runtime_evidence": [
+        {
+          "source_id": "fci-208",
+          "locator": "tr. 3, Muzzle"
+        }
+      ]
+    },
+    {
+      "class_id": 29,
+      "attribute_id": "coat_length",
+      "value": "Lông ngoài dài, dày, không xoăn theo chuẩn, có thể hơi gợn. Lông khô và rõ thân. Grooming có thể làm lông thực tế ngắn.",
+      "source_ids": [
+        "fci-208"
+      ],
+      "canonical_name": "Shih-Tzu",
+      "scope_sha256": "fbb4a59544d23f997c4c5762bfa72b8d84d169bf0ad47134ea32189de1354227",
+      "decision": "APPROVED_WITH_SCOPE",
+      "usage_limitations": "C · Grooming có thể làm lông ngắn hơn; không xác lập cả hai lớp lông từ một ảnh.",
+      "morphology_phrase": "a long outer coat",
+      "runtime_evidence": [
+        {
+          "source_id": "fci-208",
+          "locator": "tr. 4, Coat Hair"
+        }
+      ]
+    }
+  ],
+  "runtime_sources": [
+    {
+      "source_id": "akc-japanese-chin",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://cdn.akc.org/JapaneseChin.pdf",
+        "version": "Duyệt 11/10/2011, hiệu lực 30/11/2011",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "601f5a428a73ca3e2bbbbb26eacba902c0e3a1287f284cd05e8924ab43d85bb4"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/akc-japanese-chin",
+      "claim_scope": [
+        {
+          "class_id": 27,
+          "attribute_id": "facial_hair",
+          "scope_sha256": "6b87bf872af9d473190dd26255566a01e0a5eabfd959e64407e0088ef76c3a30"
+        },
+        {
+          "class_id": 27,
+          "attribute_id": "muzzle_length",
+          "scope_sha256": "29669e62de228dcfedb761b58dd1f5ccf771308d460fc5f932626e3170cd32c4"
+        },
+        {
+          "class_id": 27,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "fbb3bc9269fc4939c6c6cec2697acaab5690953202f6408383797c98ddfbb31b"
+        }
+      ]
+    },
+    {
+      "source_id": "akc-poodle",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://images.akc.org/pdf/breeds/standards/Poodle.pdf",
+        "version": "Duyệt 14/08/1984",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "6d7a947a1ec6549ffc135974b0a1155d62458891780228d713a0ead5a939633b"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/akc-poodle",
+      "claim_scope": [
+        {
+          "class_id": 6,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "0c14bc07e57bab626729ab29931087985ce7b4755b73eb1f94c70ce779e64054"
+        },
+        {
+          "class_id": 6,
+          "attribute_id": "ear_position",
+          "scope_sha256": "97c1fea8b2bc7c533505f9327495f49a16f4a92ba55e3753a2788d01b0046d09"
+        },
+        {
+          "class_id": 6,
+          "attribute_id": "breed_size",
+          "scope_sha256": "87877704dc380b6ca37f741ecce201ab1cd4f6c28bce53ffbfb73f3d1c686652"
+        },
+        {
+          "class_id": 7,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "f3a743395e91d176a6708ac649568f414bf07f5715d5aeef212ceda772830ece"
+        },
+        {
+          "class_id": 7,
+          "attribute_id": "ear_position",
+          "scope_sha256": "dfa2d11e7e2e5671c747c07154584e1b809e6a845f4f7ef5cee7f9cfb4c3a59d"
+        },
+        {
+          "class_id": 7,
+          "attribute_id": "breed_size",
+          "scope_sha256": "3729e23c179f9c1cc9a5d5e065bff198a06d097448f6450620b50fe6f6235b09"
+        },
+        {
+          "class_id": 8,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "4b206581f4fc86c06a4b5a4bc0ee292dfca976f41734a807ff9e273c1850e9a9"
+        },
+        {
+          "class_id": 8,
+          "attribute_id": "ear_position",
+          "scope_sha256": "108d21ce3e37ca87b49a6852d7f37e18540f68351a2eb84a409bb6517272be9b"
+        },
+        {
+          "class_id": 8,
+          "attribute_id": "breed_size",
+          "scope_sha256": "139bc593e33e6e655a50eb20c3f111ad2e4d36e19fdbde7d44265892c5b720cc"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-002",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/002g07-en.pdf",
+        "version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "352ec3a9921bf0e3ba8cadc09d816da26552e329d1e344fd4fea92edc5d47cf2"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-002",
+      "claim_scope": [
+        {
+          "class_id": 12,
+          "attribute_id": "coat_color",
+          "scope_sha256": "f8959b94bc0c354b6723746f932bc0002d2fbbe441377a1e7c52c88c89999f5c"
+        },
+        {
+          "class_id": 12,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "54713abb14946eddcab1e71eb90b98356aa6f0da5fb98e4a9023271ab494fa34"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-005",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/005g08-en.pdf",
+        "version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "d5b1869e073bf93adf5ffbf2b50c486fc76ed8b2babf75f69461a0ab557c7bde"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-005",
+      "claim_scope": [
+        {
+          "class_id": 17,
+          "attribute_id": "ear_shape",
+          "scope_sha256": "d5b0d45b6b8fe48d04451b527d73fd61295a3a1b1933f5b3ee886c248f9032d0"
+        },
+        {
+          "class_id": 17,
+          "attribute_id": "body_build",
+          "scope_sha256": "9fbe755ba33ba81e42a2136d94f0f9502e1a7fe14398c44701ad320da69cd2c8"
+        },
+        {
+          "class_id": 17,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "aa0c81a02096cb3184b8743166eaf59712f0766fb393c29735d701157c305e35"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-006",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/006g07-en.pdf",
+        "version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "fdc7ab580285e67fb21a0b727d3c490101131bc0aab2a353ec6faea495a77ca4"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-006",
+      "claim_scope": [
+        {
+          "class_id": 14,
+          "attribute_id": "coat_color",
+          "scope_sha256": "b132d88ed3c8ebbfa30a642dfcbab16699dad348237ea5e883cc90248171951f"
+        },
+        {
+          "class_id": 14,
+          "attribute_id": "ear_position",
+          "scope_sha256": "8dd4c97648aa3f63da4af5ae52cb00fb1f8773270c3300b818425a5a7690d3bd"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-010",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/010g03-en.pdf",
+        "version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "54fccc22bd2350beb9d5c68a9e662d6165f0f1afa0f96ec3b076c10185a764d9"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-010",
+      "claim_scope": [
+        {
+          "class_id": 20,
+          "attribute_id": "head_shape",
+          "scope_sha256": "e3b250ea68fcf6a566bbc8d91ab0599740cd2f6e8c7888b59572fd4a0fea17ac"
+        },
+        {
+          "class_id": 20,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "cab820ec9ce982b23fb6f3c30b5c564ffe8ace7f432058846694816d039a51a5"
+        },
+        {
+          "class_id": 20,
+          "attribute_id": "ear_position",
+          "scope_sha256": "6e10c405dd80451a2bed15e799656b0a6c82294d181a6ac298d49b91ed760e5d"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-046",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/046g02-en.pdf",
+        "version": "Bản EN 05/05/2003, chuẩn có ngày 25/03/2003",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "7ce4340c206ca632b1864a2cf723acc1182e2953e7455f8660ec345614b21c84"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-046",
+      "claim_scope": [
+        {
+          "class_id": 4,
+          "attribute_id": "body_build",
+          "scope_sha256": "635f72f4455432852389f5a01a29c13469b44805864fc9c1b8b2bd4519cbc093"
+        },
+        {
+          "class_id": 4,
+          "attribute_id": "tail_shape",
+          "scope_sha256": "9d43d5c7a311c8be45bdf52cadbaddd1e6adce9c418b0e9bc1a8ae417cf3bccd"
+        },
+        {
+          "class_id": 4,
+          "attribute_id": "coat_color",
+          "scope_sha256": "93b7d7795eb8a00468d8910fd95965cc397719091d9319635abd4db036c541a3"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-047",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/047g02-en.pdf",
+        "version": "Bản EN 28/06/2002, chuẩn có ngày 28/11/2001",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "aa8655990bcdc4205e5942461437cf7dcd0e81ad1833729db57053df60e46c59"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-047",
+      "claim_scope": [
+        {
+          "class_id": 5,
+          "attribute_id": "body_build",
+          "scope_sha256": "8511f01a9f2f8a1a88b7ccf8391a62a08e23b55ad6a755df11b60bbfdd217763"
+        },
+        {
+          "class_id": 5,
+          "attribute_id": "coat_color",
+          "scope_sha256": "447eaec73c2eaa699a7a6d621e700c1fcbb6d3b60b3b0c44dc0f6eaa5df560b9"
+        },
+        {
+          "class_id": 5,
+          "attribute_id": "coat_length",
+          "scope_sha256": "a35ca2efd597c5ebbfa32d481040e9c75f40343fd556eebc9a8d6a42e8ed47e5"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-058",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/058g02-en.pdf",
+        "version": "Bản EN 05/05/2003, chuẩn có ngày 25/03/2003",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "24420566e064e227ea88300eb704a74046266c2363fb918f8093bfcbfaf97210"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-058",
+      "claim_scope": [
+        {
+          "class_id": 3,
+          "attribute_id": "body_build",
+          "scope_sha256": "4d8296c4e5f68768c6fce020b6b86558130ae23b367aa31526964eb1564bd022"
+        },
+        {
+          "class_id": 3,
+          "attribute_id": "tail_shape",
+          "scope_sha256": "3974f2c8220e65f15ef1f376db712747f9082b4ce2d2c56fb10fe72b82c457b3"
+        },
+        {
+          "class_id": 3,
+          "attribute_id": "coat_color",
+          "scope_sha256": "5eff083a00c6bae853f95d5fd53993c10989f82d9751d4ab4d2d45f723be618b"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-072",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/072g03-en.pdf",
+        "version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "a47ae82bf13b696c90ce1b582cfc62ba25da6f4af5619547ff410ae39c3d61ca"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-072",
+      "claim_scope": [
+        {
+          "class_id": 19,
+          "attribute_id": "ear_position",
+          "scope_sha256": "7d441afc56b5774dcc51bef20a1204b396e88f85cf44bc9601d99f80b09c9bef"
+        },
+        {
+          "class_id": 19,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "925652aec5d573dcb9ab1fa3e29b9fe1e42bb87d69eb373bf60735018ac5280c"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-088",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/088g01-en.pdf",
+        "version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "7bd19e9f4b28efb72b552ae65372744f4d2cf1e559d395ab50283e4eb62eab55"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-088",
+      "claim_scope": [
+        {
+          "class_id": 22,
+          "attribute_id": "coat_length",
+          "scope_sha256": "30131291658187ae512f696706280e93840c16e967424f5beac904f3048324ee"
+        },
+        {
+          "class_id": 22,
+          "attribute_id": "head_shape",
+          "scope_sha256": "db5cfa8536bbe21ca7dea7c24cf55b06f5d700c472619951c9d9085173edb0d0"
+        },
+        {
+          "class_id": 22,
+          "attribute_id": "ear_position",
+          "scope_sha256": "904579a9dbd3bff84f1da8a0c1af9181ec47f8f2eff50e6b2e84d4358407015c"
+        },
+        {
+          "class_id": 22,
+          "attribute_id": "breed_size",
+          "scope_sha256": "6cd8386508e466ceb9a771f0acb8fa121e82876a9f9c5b78804321c62adf4311"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-111",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/111g08-en.pdf",
+        "version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "7b66440ee28628e726edec3b281fa7991dd28ece96a97e91acd9c81fb47f5fdf"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-111",
+      "claim_scope": [
+        {
+          "class_id": 24,
+          "attribute_id": "coat_color",
+          "scope_sha256": "211e46b4cd057f3cc000b17c9e755a151c0e6aef41db7870977209e67d854f37"
+        },
+        {
+          "class_id": 24,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "3cdb21608a2e0052e60604721bcd66ba56ef65212068a1d7fa9417eedf7fd80f"
+        },
+        {
+          "class_id": 24,
+          "attribute_id": "coat_length",
+          "scope_sha256": "df93c3d2a116650df31d65863b46c5a28bbb3c3ad465223915360bd3695f7fd0"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-120",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/120g07-en.pdf",
+        "version": "Bản EN 02/04/2001, chuẩn có ngày 13/03/2001",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "26f34102abea713c627150b7b007a73cae7b33d31144bfa3c473c6a7de0060b7"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-120",
+      "claim_scope": [
+        {
+          "class_id": 13,
+          "attribute_id": "coat_color",
+          "scope_sha256": "bd3e69b9a2f7ce41ff44ae65114fec87aa46b63fdf8c2fa3f698eaa9143cfe2c"
+        },
+        {
+          "class_id": 13,
+          "attribute_id": "ear_position",
+          "scope_sha256": "84f34685b8fbbf828800e55e6502bb2c7a9d6b03c3459f091385d9fc46acad53"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-122",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/122g08-en.pdf",
+        "version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "66d4f356db0b61bb66b59cf2e44cf2c382b0572e0a8c7551558bcd0ec3526035"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-122",
+      "claim_scope": [
+        {
+          "class_id": 25,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "51f43c8c4a7230ab29dfe6f26e83bb34fcd853dae6a57808b180c40cf055a6fa"
+        },
+        {
+          "class_id": 25,
+          "attribute_id": "tail_shape",
+          "scope_sha256": "5a7a690cc2ddd38620009f0628f883b2cddbebb6f2d2087a2ec9f4132be5998e"
+        },
+        {
+          "class_id": 25,
+          "attribute_id": "coat_length",
+          "scope_sha256": "2424158e628e8107753b3d78165635a851966eefd11bd1dc7fab2324320737c2"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-125",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/125g08-en.pdf",
+        "version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "c82bccc66292fdf8c8231ff9c24b62d38ccc641890a9f1b6481ceb897903e675"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-125",
+      "claim_scope": [
+        {
+          "class_id": 15,
+          "attribute_id": "coat_color",
+          "scope_sha256": "b7e8d03afe66ec83488492dda9314b7ebdef1668cf6f2340b159ce615138c9d6"
+        },
+        {
+          "class_id": 15,
+          "attribute_id": "body_build",
+          "scope_sha256": "2b2c681b20379bf1d9499b7a2eeffb05a50c59880b0f0c996c584d2edc13014c"
+        },
+        {
+          "class_id": 15,
+          "attribute_id": "ear_shape",
+          "scope_sha256": "f4da0f5e19bb97b1ec970802b14a4cda998095894d4357f62733781cbf1ffdd6"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-126",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/126g08-en.pdf",
+        "version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "49a53567c53a75de9fbceb38712e1f06e40698d5882b64f22d2423dc35f854ff"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-126",
+      "claim_scope": [
+        {
+          "class_id": 16,
+          "attribute_id": "coat_color",
+          "scope_sha256": "a120c4dfd3a746fc0b3aa40fc9d287413967bac2a7cae3d06a16daa7a6f94104"
+        },
+        {
+          "class_id": 16,
+          "attribute_id": "ear_shape",
+          "scope_sha256": "2c7e9f217e9062acef882dfdabc5db8e0c9e25f2c5701cfb847dccb5024898cf"
+        },
+        {
+          "class_id": 16,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "472ee1ec3fb42872c24fe21f2b6eede3e058f6b3ae3f2a36582fc567119a1374"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-156",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/156g01-en.pdf",
+        "version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "d333e133b9855d5c37f2203f4c008ce17e1b93662b31d8d39d112d44d24afac4"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-156",
+      "claim_scope": [
+        {
+          "class_id": 21,
+          "attribute_id": "head_shape",
+          "scope_sha256": "bebff6cc853118ffc2d03afed2542e6cb86ec9e93b30f56e2bbb16fe771276a9"
+        },
+        {
+          "class_id": 21,
+          "attribute_id": "ear_position",
+          "scope_sha256": "d636cc36fa9f8f15cb019d93d3f82bc31faad03c9e20a7d502c193b1d36ebc3e"
+        },
+        {
+          "class_id": 21,
+          "attribute_id": "coat_length",
+          "scope_sha256": "80045e656f6629d3e50ff41749c2d5bbafd4e67e52e947b643854b37f9c0fea8"
+        },
+        {
+          "class_id": 22,
+          "attribute_id": "breed_size",
+          "scope_sha256": "6cd8386508e466ceb9a771f0acb8fa121e82876a9f9c5b78804321c62adf4311"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-172",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/172g09-en.pdf",
+        "version": "Bản EN 05/04/2024, chuẩn có ngày 20/03/2024, áp dụng từ 01/08/2024",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "24e9e2e62b75d137616d03f450a7281ca35b565db58eba105a9108ae1e6d5708"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-172",
+      "claim_scope": [
+        {
+          "class_id": 6,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "0c14bc07e57bab626729ab29931087985ce7b4755b73eb1f94c70ce779e64054"
+        },
+        {
+          "class_id": 6,
+          "attribute_id": "ear_position",
+          "scope_sha256": "97c1fea8b2bc7c533505f9327495f49a16f4a92ba55e3753a2788d01b0046d09"
+        },
+        {
+          "class_id": 6,
+          "attribute_id": "breed_size",
+          "scope_sha256": "87877704dc380b6ca37f741ecce201ab1cd4f6c28bce53ffbfb73f3d1c686652"
+        },
+        {
+          "class_id": 7,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "f3a743395e91d176a6708ac649568f414bf07f5715d5aeef212ceda772830ece"
+        },
+        {
+          "class_id": 7,
+          "attribute_id": "ear_position",
+          "scope_sha256": "dfa2d11e7e2e5671c747c07154584e1b809e6a845f4f7ef5cee7f9cfb4c3a59d"
+        },
+        {
+          "class_id": 7,
+          "attribute_id": "breed_size",
+          "scope_sha256": "3729e23c179f9c1cc9a5d5e065bff198a06d097448f6450620b50fe6f6235b09"
+        },
+        {
+          "class_id": 8,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "4b206581f4fc86c06a4b5a4bc0ee292dfca976f41734a807ff9e273c1850e9a9"
+        },
+        {
+          "class_id": 8,
+          "attribute_id": "ear_position",
+          "scope_sha256": "108d21ce3e37ca87b49a6852d7f37e18540f68351a2eb84a409bb6517272be9b"
+        },
+        {
+          "class_id": 8,
+          "attribute_id": "breed_size",
+          "scope_sha256": "139bc593e33e6e655a50eb20c3f111ad2e4d36e19fdbde7d44265892c5b720cc"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-181",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/181g02-en.pdf",
+        "version": "Bản EN 10/06/2021, chuẩn có ngày 25/05/2021",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "c3a2f270f436025584a57bb4497a1e4537032985bf79dd12d20776f5694960d4"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-181",
+      "claim_scope": [
+        {
+          "class_id": 11,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "09182bceadd25d34ec24fc684afb4f183801a0ca92dfab3e368568f336343bbf"
+        },
+        {
+          "class_id": 11,
+          "attribute_id": "facial_hair",
+          "scope_sha256": "dc2e596f7421604db01d1186041dad0cdba06a1360e67548fa5865ec6b2f4006"
+        },
+        {
+          "class_id": 11,
+          "attribute_id": "ear_position",
+          "scope_sha256": "af8ff8f51cb7002fb5cb39d646c5ed199d89007ab4087b87d0ee6ef152ae43d1"
+        },
+        {
+          "class_id": 11,
+          "attribute_id": "body_build",
+          "scope_sha256": "8d112530d64d34689460d6ba26d70e2083d4c1659b9052bdc2c42f732976faee"
+        },
+        {
+          "class_id": 11,
+          "attribute_id": "breed_size",
+          "scope_sha256": "83e69a1b2a2108794b5761043b83430319b207a52ea80acd6321450638738a94"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-182",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/182g02-en.pdf",
+        "version": "Bản EN 18/04/2007, chuẩn có ngày 06/03/2007",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "45099306af3e2c6a41174374773a77140a3012bd7ec604758461adf9e5446bfd"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-182",
+      "claim_scope": [
+        {
+          "class_id": 10,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "a53cb33d14ba94c3c0514eb32832f3830e0c825035bd6e327e82343ed2b6139d"
+        },
+        {
+          "class_id": 10,
+          "attribute_id": "facial_hair",
+          "scope_sha256": "949076c624601d7b5e67223ef6a40d8297427441ecdb8b4e7bc7b5a7e2483557"
+        },
+        {
+          "class_id": 10,
+          "attribute_id": "ear_position",
+          "scope_sha256": "8f8a977aae8e578727641d1cec1d6f8eb4332552a9118b41075113c929b0fbab"
+        },
+        {
+          "class_id": 10,
+          "attribute_id": "body_build",
+          "scope_sha256": "ef2c243e58046d9503a5fbe05c8e38f4647c269dc879337e6c89b6e5ecc458eb"
+        },
+        {
+          "class_id": 10,
+          "attribute_id": "breed_size",
+          "scope_sha256": "c94c870b1d786bf8a3d1cf9e30c72c405d6ae178514e392c668340f6d369f74c"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-183",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/183g02-en.pdf",
+        "version": "Bản EN 18/04/2007, chuẩn có ngày 06/03/2007",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "e1f3b7a49519d0bd6edb4ab6d88e22adb96065f1e33c034261c7b09daa9c0bab"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-183",
+      "claim_scope": [
+        {
+          "class_id": 9,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "18d39c73dc9c1f5a9b224663cb27ba6237674c2febe9f9bbd37fd907cb3f514d"
+        },
+        {
+          "class_id": 9,
+          "attribute_id": "facial_hair",
+          "scope_sha256": "0d20544b7ef05e27347a6ea9c561b46b88f159182a03a3a687906e4b2fc271fd"
+        },
+        {
+          "class_id": 9,
+          "attribute_id": "ear_position",
+          "scope_sha256": "248c0afc2f9bc072b8edcba372083b5bb271afe104920e3ad6ee8a9f0164861d"
+        },
+        {
+          "class_id": 9,
+          "attribute_id": "body_build",
+          "scope_sha256": "c2702acda6d7fd6c41aebb075aa44e82621b9271b823d0f0626d9cc238fdcab9"
+        },
+        {
+          "class_id": 9,
+          "attribute_id": "breed_size",
+          "scope_sha256": "064a8028869a3a1c97d830d6e758445ab7ef8af125f2758e63839a5fbf4dd714"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-206",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/206g09-en.pdf",
+        "version": "Bản EN 03/06/2016, chuẩn có ngày 04/04/2016",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "f6f5f45e04763bcc89715475880f376385c82288d8e99dfca2ef3a1a2b4db607"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-206",
+      "claim_scope": [
+        {
+          "class_id": 27,
+          "attribute_id": "facial_hair",
+          "scope_sha256": "6b87bf872af9d473190dd26255566a01e0a5eabfd959e64407e0088ef76c3a30"
+        },
+        {
+          "class_id": 27,
+          "attribute_id": "coat_color",
+          "scope_sha256": "e56d7406f21688b1934cd53aeab4fb36dac4117fd17d3dda74d12e574999e4ce"
+        },
+        {
+          "class_id": 27,
+          "attribute_id": "muzzle_length",
+          "scope_sha256": "29669e62de228dcfedb761b58dd1f5ccf771308d460fc5f932626e3170cd32c4"
+        },
+        {
+          "class_id": 27,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "fbb3bc9269fc4939c6c6cec2697acaab5690953202f6408383797c98ddfbb31b"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-207",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/207g09-en.pdf",
+        "version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "400b1517fc1f8482e0145d2eb340011f5b02ea6a73831a717168d2ee402a8afe"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-207",
+      "claim_scope": [
+        {
+          "class_id": 28,
+          "attribute_id": "head_shape",
+          "scope_sha256": "267ea306f65e75ca3aa2986f0d0271fc8c69447a77c91068d588ef260945b1e4"
+        },
+        {
+          "class_id": 28,
+          "attribute_id": "body_build",
+          "scope_sha256": "6fd40f02d1dbf356150bbbf6cb1ec185367687a8ec5a12802a964567989f8b9e"
+        },
+        {
+          "class_id": 28,
+          "attribute_id": "coat_length",
+          "scope_sha256": "d2678f584111ac496384096d64263abf548d0f1d8ed56b089b4a9fae250791bc"
+        },
+        {
+          "class_id": 28,
+          "attribute_id": "muzzle_length",
+          "scope_sha256": "6332c5fcf236e5a803a9ac5ced3669ce82fd08874b6afd77589099a5ca0ca65b"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-208",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/208g09-en.pdf",
+        "version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "a00f0e68749fd11c201cadfbbb8918492d9ae650ed8e31e8309cd0d1e3b39439"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-208",
+      "claim_scope": [
+        {
+          "class_id": 29,
+          "attribute_id": "facial_hair",
+          "scope_sha256": "39ba72359d16fc5e481e1f61f97ab2846c8212337d60e9fcb190703283c48761"
+        },
+        {
+          "class_id": 29,
+          "attribute_id": "body_build",
+          "scope_sha256": "49dce8037e75fa9e5441caa45f50d68b1a2457df670057d2909c2294c3ba976d"
+        },
+        {
+          "class_id": 29,
+          "attribute_id": "muzzle_length",
+          "scope_sha256": "88b3603dc4d808b307f983d8f24825ee9e031992b9d93565beac8703c53b6ec9"
+        },
+        {
+          "class_id": 29,
+          "attribute_id": "coat_length",
+          "scope_sha256": "fbb4a59544d23f997c4c5762bfa72b8d84d169bf0ad47134ea32189de1354227"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-243",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/243g05-en.pdf",
+        "version": "Bản EN 10/03/2023, chuẩn có ngày 09/03/2023",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "2b8963c321a1a57a782d6def9ff36dfcb772442fae1405eedcd85882c4cae0ce"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-243",
+      "claim_scope": [
+        {
+          "class_id": 1,
+          "attribute_id": "body_build",
+          "scope_sha256": "cc13f5c1c55cb259e27e0c4f79fdb88d3158a670c87fc38375b624ae9f062a4b"
+        },
+        {
+          "class_id": 1,
+          "attribute_id": "tail_shape",
+          "scope_sha256": "a638238878942d729277193514869ee357b0b1f1a2e74ab2d78a614ca6561d6f"
+        },
+        {
+          "class_id": 1,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "7b4683ac8a3575b5c08ad8cf13d8dc98a9fa6773d093b5cff5ca2fb535560e85"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-263",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/263g08-en.pdf",
+        "version": "Bản EN 12/03/1999, chuẩn có ngày 14/02/1995",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "6103f90923ef28db3e52f5d63cc44ab6df61eaebe8b2a63d9e843ddbc0e523b0"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-263",
+      "claim_scope": [
+        {
+          "class_id": 26,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "90e27a7c017c53ef5dfb5ccf439c465f02be605a900d23193f8c8030ec91c1cc"
+        },
+        {
+          "class_id": 26,
+          "attribute_id": "coat_color",
+          "scope_sha256": "2bd8b0142b272a70b3e1eaf37b78f04b4deaee37e4a04a366482de0c0b170e43"
+        },
+        {
+          "class_id": 26,
+          "attribute_id": "coat_length",
+          "scope_sha256": "a02da746b0e4287083bc3ce3dac57ee379f00b60cfb32419e1de97e4064c2983"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-270",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/270g05-en.pdf",
+        "version": "Bản EN 18/11/2022, chuẩn có ngày 14/11/2022",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "0676cc426cc3e63c58f4c4c8065ff86e2252ac441efeadfa534646d2f4d742d2"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-270",
+      "claim_scope": [
+        {
+          "class_id": 2,
+          "attribute_id": "body_build",
+          "scope_sha256": "f7f455176689b4abc38ed3714e66435d7c0a8b07565e182678994d643d5da02b"
+        },
+        {
+          "class_id": 2,
+          "attribute_id": "tail_shape",
+          "scope_sha256": "d25a1bb705f927ea80a104b841f948ef4805919f50f6f59e359531a7a9af24d8"
+        },
+        {
+          "class_id": 2,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "418d54c8ff960cc834fc59ee28137952476d8f84b326059dd15d0ae3c2aceb0d"
+        },
+        {
+          "class_id": 2,
+          "attribute_id": "ear_position",
+          "scope_sha256": "4e0edfa79c9a5411a6e7ad082d9c0d5f079ac81bee18e8d9264f38b277bd7032"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-272",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/272g03-en.pdf",
+        "version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "05634441b473a936a47cec7f4fa23cd006aad6c101081831637bf60ac8e9dc69"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-272",
+      "claim_scope": [
+        {
+          "class_id": 18,
+          "attribute_id": "ear_position",
+          "scope_sha256": "ed5cf8ad7d83433ab5fe3efac483bc6dc176e374807a02f8fbe52657f56fab1a"
+        },
+        {
+          "class_id": 18,
+          "attribute_id": "head_shape",
+          "scope_sha256": "344503ee08f9534e4892f073012e26e4ad87f55ef013a5a3ca1691ada9738a23"
+        },
+        {
+          "class_id": 18,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "13c0b353b208dd19a9f6a11c78f2d028e93572049843234666e7956b43efadd7"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-296",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/296g01-en.pdf",
+        "version": "Bản EN 06/10/2026, chuẩn có ngày 08/09/2026",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "4a1bff48c2c5abe219474e0faa8207f1d263b03c2f439e8488fc4087d8c00cc9"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-296",
+      "claim_scope": [
+        {
+          "class_id": 21,
+          "attribute_id": "head_shape",
+          "scope_sha256": "bebff6cc853118ffc2d03afed2542e6cb86ec9e93b30f56e2bbb16fe771276a9"
+        },
+        {
+          "class_id": 21,
+          "attribute_id": "ear_position",
+          "scope_sha256": "d636cc36fa9f8f15cb019d93d3f82bc31faad03c9e20a7d502c193b1d36ebc3e"
+        },
+        {
+          "class_id": 21,
+          "attribute_id": "coat_length",
+          "scope_sha256": "80045e656f6629d3e50ff41749c2d5bbafd4e67e52e947b643854b37f9c0fea8"
+        },
+        {
+          "class_id": 22,
+          "attribute_id": "breed_size",
+          "scope_sha256": "6cd8386508e466ceb9a771f0acb8fa121e82876a9f9c5b78804321c62adf4311"
+        }
+      ]
+    },
+    {
+      "source_id": "fci-297",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/297g01-en.pdf",
+        "version": "Bản EN 28/10/2009, chuẩn có ngày 24/06/1987",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "304e3ddcdce3a32e2e91f0ead1b3cc9a62cdec4f742ad6a39685282653461b22"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-297",
+      "claim_scope": [
+        {
+          "class_id": 23,
+          "attribute_id": "head_shape",
+          "scope_sha256": "27574f915f2df81a1fd3c6c70c0dadc7c0f8c6e7342e9382ba500f4aeabf221c"
+        },
+        {
+          "class_id": 23,
+          "attribute_id": "ear_position",
+          "scope_sha256": "02e7d109d5d7a57f7c28e5af13655d3c22b8bddd52c456082ac59fd9ee33ab49"
+        },
+        {
+          "class_id": 23,
+          "attribute_id": "tail_shape",
+          "scope_sha256": "0d519c273bd465e432d6a22a3cf74b235d01d4821f0d19ccb991702910357153"
+        }
+      ]
+    },
+    {
+      "source_id": "princeton-wordnet",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://wordnetcode.princeton.edu/3.0/WNdb-3.0.tar.gz",
+        "version": "WordNet 3.0, archive `WNdb-3.0.tar.gz`, file `dict/data.noun`",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "658b1ba191f5f98c2e9bae3e25c186013158f30ef779f191d2a44e5d25046dc8",
+        "data_noun_sha256": "489f145e0f68877c0be5bd0eb4117adaaac52f38f6204eb8d85dbe2158b614cc",
+        "lexical_entry_02109961_sha256": "2881796177aad8fff4ad3a32d9a1e91d4b484eed1390f74bda012d79cf2361d4"
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/princeton-wordnet",
+      "claim_scope": [
+        {
+          "class_id": 0,
+          "attribute_id": "coat_fullness",
+          "scope_sha256": "3c71218cd9082e8dc4db4ead4469ab4862cce762d799dec09e1a40c39abe1c21"
+        }
+      ]
+    },
+    {
+      "source_id": "rkc-welsh-springer",
+      "decision": "APPROVED_FOR_LISTED_SCOPE",
+      "document": {
+        "url": "https://www.royalkennelclub.com/breed-standards/gundog/spaniel-welsh-springer/",
+        "version": "Trang cập nhật 01/01/2025",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "8ad8107df1b0ca399f1a8730348f28852993961627b9785e39384a80c6954310",
+        "reverified_raw_sha256": "fc4ddd4ff3a41f116ce124405a84fd63513c324696cb65525a8f983acce6048b",
+        "verified_heading_text_sha256": "2da2ec017e7af4a8727c6daf4fafe54ec73bb322e51dd98169f910bee1f820eb",
+        "verified_headings": [
+          "Last updated",
+          "Ears",
+          "Coat",
+          "Colour"
+        ]
+      },
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/rkc-welsh-springer",
+      "claim_scope": [
+        {
+          "class_id": 16,
+          "attribute_id": "coat_color",
+          "scope_sha256": "a120c4dfd3a746fc0b3aa40fc9d287413967bac2a7cae3d06a16daa7a6f94104"
+        },
+        {
+          "class_id": 16,
+          "attribute_id": "ear_shape",
+          "scope_sha256": "2c7e9f217e9062acef882dfdabc5db8e0c9e25f2c5701cfb847dccb5024898cf"
+        },
+        {
+          "class_id": 16,
+          "attribute_id": "coat_texture",
+          "scope_sha256": "472ee1ec3fb42872c24fe21f2b6eede3e058f6b3ae3f2a36582fc567119a1374"
+        }
+      ]
+    }
+  ],
+  "design_only_sources": [
+    {
+      "source_id": "fci-211",
+      "decision": "OUTSIDE_RUNTIME_APPROVAL",
+      "document": {
+        "url": "https://www.fci.be/nomenclature/Standards/211g05-en.pdf",
+        "version": "Bản EN 07/11/2018, chuẩn có ngày 28/02/2018",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "4aef4149301d67ef0f0122695c05934690b4a6284ae77597a863c6fb7a707c2f"
+      }
+    },
+    {
+      "source_id": "imagenet-synsets",
+      "decision": "OUTSIDE_RUNTIME_APPROVAL",
+      "document": {
+        "url": "https://www.image-net.org/challenges/LSVRC/2012/browse-synsets.php",
+        "version": "ILSVRC 2012, mục Browse Synsets, định danh `n02109961`",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": null,
+        "limitation": "Raw bytes unavailable in historical review; design reference only."
+      }
+    },
+    {
+      "source_id": "stanford-dogs-paper",
+      "decision": "OUTSIDE_RUNTIME_APPROVAL",
+      "document": {
+        "url": "https://people.csail.mit.edu/khosla/papers/fgvc2011.pdf",
+        "version": "2011, §2 ‘Stanford Dogs Dataset’, tr. 1",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": "9c88f21529e4ff052ab0d8fde6930111569ea8ab209e81d0508b685e4529f316"
+      }
+    },
+    {
+      "source_id": "stanford-wordnet",
+      "decision": "OUTSIDE_RUNTIME_APPROVAL",
+      "document": {
+        "url": "https://cvgl.stanford.edu/teaching/cs231a_winter1415/lecture/lecture16_datasets_3D_scene_understanding.pdf",
+        "version": "04/03/2015, slide ‘WordNet taxonomy and definitions’",
+        "accessed_on": "2026-11-28",
+        "reviewed_raw_sha256": null,
+        "limitation": "Raw bytes unavailable in historical review; design reference only."
+      }
+    }
+  ]
+}

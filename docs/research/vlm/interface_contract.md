@@ -47,6 +47,8 @@ Phê duyệt áp dụng cho thiết kế và lập kế hoạch triển khai. C�
 | `PromptEntry` | Nested trong bank | R `class_id`, `canonical_name`, `prompt_text: str` có nội dung. Với morphology, R `attribute_ids: str[]` và `source_ids: str[]`, đều không rỗng, tham chiếu cùng breed trong KB đã pin. Name entry chỉ chứa ba trường chung. |
 | `PromptTokenAudit` | `data/knowledge/vlm/prompt_tokenization_audit.json` | R `schema_version` và `audits: TokenAudit[]`. Mỗi audit ràng buộc `prompt_bank_sha256`, `profile_id`, `tokenizer_revision`, `token_limit: int` dương, `entries[30]` có `class_id`, `token_count: int` dương và `truncated: bool`. |
 
+**Vocabulary KB `kb-morphology-v1`.** Trưởng nhóm sở hữu allowlist. Caller truyền `src.vlm.knowledge_base.KB_MORPHOLOGY_V1` vào `allowed_attribute_ids` và ghi `KB_MORPHOLOGY_VERSION` trong cấu hình bàn giao. Tập gồm 8 ID Visual Observation hiện tại và 4 ID dành riêng cho KB là `breed_size`, `head_shape`, `facial_hair` và `coat_fullness`. Contract 04 tiếp tục dùng vocabulary Visual Observation v1 gồm 8 ID. Với `breed_size`, ghi rõ hệ chuẩn và yêu cầu tỷ lệ hoặc số đo trong `value` để điều kiện đến được context. Schema KB và các trường wire hiện tại giữ nguyên.
+
 Kiểm file hash trước khi dùng, xác nhận đủ tập ID, tên exact, source refs tồn tại, nguồn reviewed, mô tả morphology giữ tên giống và token audit khớp bank/profile. Bất kỳ prompt rỗng, sai type, duplicate/missing ID, hash mismatch, source thiếu hoặc `truncated=true` đều từ chối snapshot cho profile đó. Lỗi trả `INVALID_SNAPSHOT`, `MAPPING_MISMATCH`, `HASH_MISMATCH`, `UNREVIEWED_SOURCE` hoặc `TOKEN_TRUNCATION`. Runtime KB/prompt schema cấm trường label, rubric, expected answers và eval annotations.
 
 **Illustrative fixture hợp lệ.** Ví dụ record con `BreedRecord` và `PromptEntry` morphology, trong snapshot giả đủ 30 lớp. Nguồn `src-fixture` là source giả đã cấp trạng thái approved trong fixture, chỉ dùng test schema. Tên và nguồn thuộc tính thật cần review riêng.
@@ -126,7 +128,9 @@ Kiểm file hash trước khi dùng, xác nhận đủ tập ID, tên exact, sou
 **Proposed Python**
 
 ```python
-def load_knowledge_base(raw: bytes, *, mapping: CanonicalMapping, expected_sha256: Sha256) -> KnowledgeSnapshot: ...
+def load_knowledge_base(raw: bytes, *, mapping: CanonicalMapping, expected_sha256: Sha256,
+                        reviewed_sources: Mapping[str, str],
+                        allowed_attribute_ids: Collection[str]) -> KnowledgeSnapshot: ...
 def load_prompt_bank(raw: bytes, *, mapping: CanonicalMapping, expected_sha256: Sha256,
                      knowledge: KnowledgeSnapshot | None) -> PromptSnapshot: ...
 def validate_prompt_token_audit(audit: PromptTokenAudit, *, bank: PromptSnapshot, profile: ApprovedProfile) -> None: ...
