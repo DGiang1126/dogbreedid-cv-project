@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "approval_id": "task08.04-kb-v1-20261128",
+  "approval_record": {
+    "path": "outputs/research/vlm/task08_04/kb_source_approval.json",
+    "sha256": "c9ca2acbbd6beaf1a9a8fa1013122662d9342ad158ff475d4d148fc56525683f"
+  },
+  "reviewed_candidate_hashes": {
+    "kb": "543243596553cd2ef903891f41417d5e51ab7904330917e22c1d3aa05c05e344",
+    "morphology_bank": "ace2fb4b428648f98fd7628a3a773e9fae68dca13d6dfdebccda2f8d3b0fc6ca",
+    "mapping": "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c",
+    "name_bank": "c1bdfde5f1e809a3dcb55f0c0eaeceb8c612c7f57c6761c9def12a2e57174c30",
+    "tokenization_audit": "9d893f5750e98b56fe7fef3a1cf23f1544d465103f71fff5e9b5549f4143f15e",
+    "source_evidence": "5d9c5b6cacc453762785cda2a6656994698b9015a48383c55537456226c3e003"
+  },
+  "design_sha256": "1f357e59e3bef38f2e60217ff54e32504c40d068820e369e25e8e84b3b98bbaf",
+  "revision_report_sha256": "2891ca3ef5861004a701fa1204d4529658a62ef3c05593440e9ab9369d8ddedf",
+  "source_evidence": {
+    "revision": "draft_4",
+    "path": "outputs/research/vlm/task08_04/kb_source_review.json",
+    "sha256": "5d9c5b6cacc453762785cda2a6656994698b9015a48383c55537456226c3e003"
+  },
+  "kb": {
+    "version": "breed-kb-v1",
+    "path": "data/knowledge/vlm/breed_kb.json",
+    "sha256": "baaa9742278ba30d27de6a73d31ac7b47f58f5b52ed171cb0f783f00d74b46f5"
+  },
+  "morphology_bank": {
+    "version": "morphology-v1",
+    "path": "data/knowledge/vlm/morphology_prompt_bank.json",
+    "sha256": "776a9d566655c167b0b10f8d61f556802bb7c9545c1c0d143191659426cf6bfc"
+  },
+  "name_bank": {
+    "version": "name-1",
+    "path": "data/knowledge/vlm/name_prompt_bank.json",
+    "sha256": "c1bdfde5f1e809a3dcb55f0c0eaeceb8c612c7f57c6761c9def12a2e57174c30"
+  },
+  "canonical_mapping": {
+    "path": "data/metadata/class_mapping.json",
+    "sha256": "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c"
+  },
+  "tokenization_audit": {
+    "path": "data/knowledge/vlm/prompt_tokenization_audit.json",
+    "sha256": "a8df7ce60a60dcfd777e6e5fea31ee1825dd0e1250a5a404256772573e550df5"
+  },
+  "kb_vocabulary_version": "kb-morphology-v1",
+  "runtime_approved_source_ids": [
+    "akc-japanese-chin",
+    "akc-poodle",
+    "fci-002",
+    "fci-005",
+    "fci-006",
+    "fci-010",
+    "fci-046",
+    "fci-047",
+    "fci-058",
+    "fci-072",
+    "fci-088",
+    "fci-111",
+    "fci-120",
+    "fci-122",
+    "fci-125",
+    "fci-126",
+    "fci-156",
+    "fci-172",
+    "fci-181",
+    "fci-182",
+    "fci-183",
+    "fci-206",
+    "fci-207",
+    "fci-208",
+    "fci-243",
+    "fci-263",
+    "fci-270",
+    "fci-272",
+    "fci-296",
+    "fci-297",
+    "princeton-wordnet",
+    "rkc-welsh-springer"
+  ],
+  "design_only_source_ids": [
+    "fci-211",
+    "imagenet-synsets",
+    "stanford-dogs-paper",
+    "stanford-wordnet"
+  ],
+  "native_tokenizer_status": "PENDING",
+  "native_retrieval_f2_status": "PENDING",
+  "data_acceptance": "PENDING",
+  "formal_evaluation_readiness": "BLOCKED",
+  "publication_readiness": "APPROVED_KB_SNAPSHOT_READY_FOR_PUBLICATION",
+  "publication_status": "UNPUBLISHED",
+  "trust_boundary": "The caller must independently obtain the expected manifest SHA-256 and verify leader authority, candidate pins and scope before deriving reviewed_sources from the approval record."
+}

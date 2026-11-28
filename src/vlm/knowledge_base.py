@@ -4,6 +4,23 @@ from collections.abc import Callable, Collection, Mapping
 from . import contracts as c
 
 
+KB_MORPHOLOGY_VERSION = "kb-morphology-v1"
+KB_MORPHOLOGY_V1 = frozenset({
+    "ear_position",
+    "ear_shape",
+    "coat_color",
+    "coat_length",
+    "coat_texture",
+    "muzzle_length",
+    "tail_shape",
+    "body_build",
+    "breed_size",
+    "head_shape",
+    "facial_hair",
+    "coat_fullness",
+})
+
+
 def load_knowledge_base(
     raw: bytes,
     *,

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "mapping_sha256": "d86b3a3a232babea289070299727d20d56b8f1607593ce1aaf8b174465690c3c",
-  "kb_version": "breed-kb-draft-2",
+  "kb_version": "breed-kb-v1",
   "breeds": [
     {
       "class_id": 0,
@@ -17,12 +17,12 @@
       },
       "attributes": [
         {
-          "attribute_id": "coat_texture",
-          "value": "bộ lông dày",
+          "attribute_id": "coat_fullness",
+          "value": "Bộ lông trông dày, theo gloss của synset chó kéo xe Bắc Cực. Thân và phần lông ngoài thấy rõ, phụ thuộc mùa và hình chiếu. Nhãn WordNet n02109961 có phạm vi từ vựng; chưa xác lập đồng nhất với Canadian Eskimo Dog.",
           "source_ids": [
-            "stanford-wordnet"
+            "princeton-wordnet"
           ],
-          "variability_note": "Nhãn synset n02109961, không đồng nhất với một giống kennel club cụ thể."
+          "uncertainty_note": "Gloss không xác định kết cấu sợi, độ dài, số lớp lông hoặc dáng đuôi."
         }
       ]
     },
@@ -41,14 +41,21 @@
       "attributes": [
         {
           "attribute_id": "body_build",
-          "value": "thân chắc khỏe, ngực sâu",
+          "value": "Thân lực lưỡng, xương nặng và ngực sâu. Thấy ngang thân và chân. Lông dày, mỡ và góc máy có thể làm thân trông rộng.",
+          "source_ids": [
+            "fci-243"
+          ]
+        },
+        {
+          "attribute_id": "tail_shape",
+          "value": "Đuôi xù dạng chùm lông, thường đưa qua lưng khi không làm việc, không cuộn sát. Đuôi hiện đầy đủ và thấy đường viền lưng. Tư thế thay đổi cách mang.",
           "source_ids": [
             "fci-243"
           ]
         },
         {
           "attribute_id": "coat_texture",
-          "value": "lông hai lớp dày",
+          "value": "Lông bảo vệ thô trên lớp lót dày. Vùng thân rõ, mức dày lớp lót phụ thuộc mùa, kết cấu sợi cần cận cảnh.",
           "source_ids": [
             "fci-243"
           ]
@@ -69,15 +76,29 @@
       },
       "attributes": [
         {
-          "attribute_id": "ear_position",
-          "value": "tai dựng",
+          "attribute_id": "body_build",
+          "value": "Dáng gọn vừa phải, ngực sâu nhưng không quá rộng. Ảnh ngang đủ thân, tránh góc rộng gần đầu. So với chuẩn của ID 1 chỉ là nhận định tương đối.",
+          "source_ids": [
+            "fci-270"
+          ]
+        },
+        {
+          "attribute_id": "tail_shape",
+          "value": "Đuôi dạng chổi cong lưỡi liềm khi chú ý, có thể rủ lúc nghỉ. Thấy cả đuôi khi chú ý. Không dựa vào chỉ riêng việc mang cao.",
           "source_ids": [
             "fci-270"
           ]
         },
         {
           "attribute_id": "coat_texture",
-          "value": "bộ lông hai lớp dày",
+          "value": "Lông ngoài thẳng, khá áp thân, trên lớp lót mềm dày có thể thay theo mùa. Lông khô, rõ vùng thân. Lớp lót không luôn nhìn thấy.",
+          "source_ids": [
+            "fci-270"
+          ]
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "Tai dựng, đặt cao và tương đối gần nhau. Chính diện khi hai tai hiện rõ.",
           "source_ids": [
             "fci-270"
           ]
@@ -98,15 +119,22 @@
       },
       "attributes": [
         {
-          "attribute_id": "coat_color",
-          "value": "nền đen với mảng nâu đỏ và trắng",
+          "attribute_id": "body_build",
+          "value": "Thân lực lưỡng, xương nặng và cơ bắp. Chó đứng ngang, thấy chân và thân, đối chiếu cùng tuổi trưởng thành khi có thể.",
           "source_ids": [
             "fci-058"
           ]
         },
         {
-          "attribute_id": "body_build",
-          "value": "thân cơ bắp chắc khỏe",
+          "attribute_id": "tail_shape",
+          "value": "Đuôi nặng, rủ lúc nghỉ, chỉ cong nhẹ lên khi nâng. Thấy đuôi và tư thế, ảnh tĩnh lúc nghỉ ít phân biệt hơn.",
+          "source_ids": [
+            "fci-058"
+          ]
+        },
+        {
+          "attribute_id": "coat_color",
+          "value": "Nền đen với mảng nâu đỏ và trắng, kiểu tam thể điển hình. Thân và mặt đủ sáng.",
           "source_ids": [
             "fci-058"
           ]
@@ -127,15 +155,22 @@
       },
       "attributes": [
         {
+          "attribute_id": "body_build",
+          "value": "Dáng gọn gần vuông theo mô tả, tỷ lệ cao:dài chuẩn 9:10. Ảnh ngang, đủ điểm vai và mông.",
+          "source_ids": [
+            "fci-046"
+          ]
+        },
+        {
           "attribute_id": "tail_shape",
-          "value": "đuôi cuộn cao trên lưng khi vận động",
+          "value": "Đuôi cuộn chặt trên mông khi chuyển động. Khi nghỉ có thể thả. Ảnh đang di chuyển và thấy đường viền đuôi.",
           "source_ids": [
             "fci-046"
           ]
         },
         {
           "attribute_id": "coat_color",
-          "value": "nền đen hoặc nâu havana với mảng nâu đỏ và trắng",
+          "value": "Tam thể với mảng nâu đỏ và trắng, nền có thể đen hoặc nâu Havana. Ánh sáng trung tính.",
           "source_ids": [
             "fci-046"
           ]
@@ -156,15 +191,22 @@
       },
       "attributes": [
         {
-          "attribute_id": "coat_length",
-          "value": "lông ngắn và ôm sát thân",
+          "attribute_id": "body_build",
+          "value": "Dáng gọn hơi thuôn dài, tỷ lệ cao:dài chuẩn 8:10. Ảnh ngang trên mặt phẳng, đủ chân và thân. Tỷ lệ chuẩn không dùng như phép đo từ crop.",
           "source_ids": [
             "fci-047"
           ]
         },
         {
           "attribute_id": "coat_color",
-          "value": "nền đen với mảng nâu vàng đến nâu đỏ và trắng",
+          "value": "Nền đen với mảng vàng nâu đến đỏ nâu và trắng. Mặt và thân nhìn rõ. Màu tam thể chồng lấn.",
+          "source_ids": [
+            "fci-047"
+          ]
+        },
+        {
+          "attribute_id": "coat_length",
+          "value": "Lông ngoài ngắn, áp thân. Thân rõ, tránh lông bị nén.",
           "source_ids": [
             "fci-047"
           ]
@@ -186,17 +228,26 @@
       "attributes": [
         {
           "attribute_id": "coat_texture",
-          "value": "lông dày, có thể xoăn hoặc bện dây",
+          "value": "Lông xoăn dày hoặc bện dây. Đây là hai kiểu lông chuẩn, các cỡ dùng chung. Bộ lông đủ chi tiết ở vùng thân. Clip và grooming ảnh hưởng hình lông.",
           "source_ids": [
-            "fci-172"
-          ],
-          "variability_note": "Cách tỉa có thể đổi bề ngoài."
+            "fci-172",
+            "akc-poodle"
+          ]
         },
         {
           "attribute_id": "ear_position",
-          "value": "tai rủ dọc má",
+          "value": "Tai rủ dọc má. Thấy vành và vị trí tai. Tua dài có thể che dáng.",
           "source_ids": [
-            "fci-172"
+            "fci-172",
+            "akc-poodle"
+          ]
+        },
+        {
+          "attribute_id": "breed_size",
+          "value": "Chiều cao vai theo FCI trên 24 đến 28 cm, dung sai −1 cm (lý tưởng 25 cm). AKC đo ở điểm cao nhất của vai và giới hạn đến 10 in. Chó trưởng thành đứng trên bề mặt phẳng, đo ở vai đúng hệ chuẩn. Không suy từ crop. Ngưỡng FCI và AKC là tham chiếu hình thái, không phải quy tắc gán nhãn Stanford Dogs.",
+          "source_ids": [
+            "fci-172",
+            "akc-poodle"
           ]
         }
       ]
@@ -216,17 +267,26 @@
       "attributes": [
         {
           "attribute_id": "coat_texture",
-          "value": "lông dày, có thể xoăn hoặc bện dây",
+          "value": "Lông xoăn dày hoặc bện dây. Đây là hai kiểu lông chuẩn, các cỡ dùng chung. Bộ lông đủ chi tiết ở vùng thân. Clip và grooming ảnh hưởng hình lông.",
           "source_ids": [
-            "fci-172"
-          ],
-          "variability_note": "Cách tỉa có thể đổi bề ngoài."
+            "fci-172",
+            "akc-poodle"
+          ]
         },
         {
           "attribute_id": "ear_position",
-          "value": "tai rủ dọc má",
+          "value": "Tai rủ dọc má. Thấy vành và vị trí tai. Tua dài có thể che dáng.",
           "source_ids": [
-            "fci-172"
+            "fci-172",
+            "akc-poodle"
+          ]
+        },
+        {
+          "attribute_id": "breed_size",
+          "value": "Chiều cao vai theo FCI trên 28 đến 35 cm. AKC đo ở điểm cao nhất của vai và dùng ngưỡng trên 10 đến 15 in. Chó trưởng thành đứng trên bề mặt phẳng, đo ở vai đúng hệ chuẩn. Không suy từ crop. Ngưỡng FCI và AKC là tham chiếu hình thái, không phải quy tắc gán nhãn Stanford Dogs.",
+          "source_ids": [
+            "fci-172",
+            "akc-poodle"
           ]
         }
       ]
@@ -246,17 +306,26 @@
       "attributes": [
         {
           "attribute_id": "coat_texture",
-          "value": "lông dày, có thể xoăn hoặc bện dây",
+          "value": "Lông xoăn dày hoặc bện dây. Đây là hai kiểu lông chuẩn, các cỡ dùng chung. Bộ lông đủ chi tiết ở vùng thân. Clip và grooming ảnh hưởng hình lông.",
           "source_ids": [
-            "fci-172"
-          ],
-          "variability_note": "Cách tỉa có thể đổi bề ngoài."
+            "fci-172",
+            "akc-poodle"
+          ]
         },
         {
           "attribute_id": "ear_position",
-          "value": "tai rủ dọc má",
+          "value": "Tai rủ dọc má. Thấy vành và vị trí tai. Tua dài có thể che dáng.",
           "source_ids": [
-            "fci-172"
+            "fci-172",
+            "akc-poodle"
+          ]
+        },
+        {
+          "attribute_id": "breed_size",
+          "value": "Chiều cao vai theo FCI trên 45 đến 60 cm, dung sai +2 cm. AKC đo ở điểm cao nhất của vai và dùng ngưỡng trên 15 in. Chó trưởng thành đứng trên bề mặt phẳng, đo ở vai đúng hệ chuẩn. Không suy từ crop. Ngưỡng FCI và AKC là tham chiếu hình thái, không phải quy tắc gán nhãn Stanford Dogs.",
+          "source_ids": [
+            "fci-172",
+            "akc-poodle"
           ]
         }
       ]
@@ -277,14 +346,35 @@
       "attributes": [
         {
           "attribute_id": "coat_texture",
-          "value": "lông thô cứng với râu ở mõm",
+          "value": "Lông ngoài thô cứng dạng sợi, tương đối áp thân. Thấy vùng lông thân chưa tỉa quá sát. Ảnh không kiểm độ cứng khi sờ.",
+          "source_ids": [
+            "fci-183"
+          ]
+        },
+        {
+          "attribute_id": "facial_hair",
+          "value": "Râu ở mõm và lông mày rậm. Mặt rõ và grooming phù hợp. Cụm prompt chỉ dùng phần râu.",
           "source_ids": [
             "fci-183"
           ]
         },
         {
           "attribute_id": "ear_position",
-          "value": "tai tự nhiên gập và rủ",
+          "value": "Tai tự nhiên gập rủ về phía trước. Tai nguyên vẹn và nhìn rõ. Tư thế hoặc can thiệp vào tai làm mất tín hiệu.",
+          "source_ids": [
+            "fci-183"
+          ]
+        },
+        {
+          "attribute_id": "body_build",
+          "value": "Dáng gần vuông theo tỷ lệ tiêu chuẩn. Ảnh ngang đủ vai và thân, không dùng để phân biệt ba cỡ.",
+          "source_ids": [
+            "fci-183"
+          ]
+        },
+        {
+          "attribute_id": "breed_size",
+          "value": "Chiều cao vai chuẩn FCI 30–35 cm cho cả hai giới. Chó trưởng thành đứng thẳng, đo ở vai. Không xếp cỡ qua ảnh không có chuẩn tỷ lệ.",
           "source_ids": [
             "fci-183"
           ]
@@ -306,14 +396,35 @@
       "attributes": [
         {
           "attribute_id": "coat_texture",
-          "value": "lông thô cứng với râu ở mõm",
+          "value": "Lông ngoài thô cứng dạng sợi, tương đối áp thân. Thấy vùng lông thân chưa tỉa quá sát. Ảnh không kiểm độ cứng khi sờ.",
+          "source_ids": [
+            "fci-182"
+          ]
+        },
+        {
+          "attribute_id": "facial_hair",
+          "value": "Râu ở mõm và lông mày rậm. Mặt rõ và grooming phù hợp. Cụm prompt chỉ dùng phần râu.",
           "source_ids": [
             "fci-182"
           ]
         },
         {
           "attribute_id": "ear_position",
-          "value": "tai tự nhiên gập và rủ",
+          "value": "Tai tự nhiên gập rủ về phía trước. Tai nguyên vẹn và nhìn rõ. Tư thế hoặc can thiệp vào tai làm mất tín hiệu.",
+          "source_ids": [
+            "fci-182"
+          ]
+        },
+        {
+          "attribute_id": "body_build",
+          "value": "Dáng gần vuông theo tỷ lệ tiêu chuẩn. Ảnh ngang đủ vai và thân, không dùng để phân biệt ba cỡ.",
+          "source_ids": [
+            "fci-182"
+          ]
+        },
+        {
+          "attribute_id": "breed_size",
+          "value": "Chiều cao vai chuẩn FCI 45–50 cm cho cả hai giới. Chó trưởng thành đứng thẳng, đo ở vai. Không xếp cỡ qua ảnh không có chuẩn tỷ lệ.",
           "source_ids": [
             "fci-182"
           ]
@@ -335,14 +446,35 @@
       "attributes": [
         {
           "attribute_id": "coat_texture",
-          "value": "lông thô cứng với râu ở mõm",
+          "value": "Lông ngoài thô cứng dạng sợi, tương đối áp thân. Thấy vùng lông thân chưa tỉa quá sát. Ảnh không kiểm độ cứng khi sờ.",
+          "source_ids": [
+            "fci-181"
+          ]
+        },
+        {
+          "attribute_id": "facial_hair",
+          "value": "Râu ở mõm và lông mày rậm. Mặt rõ và grooming phù hợp. Cụm prompt chỉ dùng phần râu.",
           "source_ids": [
             "fci-181"
           ]
         },
         {
           "attribute_id": "ear_position",
-          "value": "tai tự nhiên gập và rủ",
+          "value": "Tai tự nhiên gập rủ về phía trước. Tai nguyên vẹn và nhìn rõ. Tư thế hoặc can thiệp vào tai làm mất tín hiệu.",
+          "source_ids": [
+            "fci-181"
+          ]
+        },
+        {
+          "attribute_id": "body_build",
+          "value": "Dáng gần vuông theo tỷ lệ tiêu chuẩn. Ảnh ngang đủ vai và thân, không dùng để phân biệt ba cỡ.",
+          "source_ids": [
+            "fci-181"
+          ]
+        },
+        {
+          "attribute_id": "breed_size",
+          "value": "Chiều cao vai chuẩn FCI 60–70 cm cho cả hai giới. Chó trưởng thành đứng thẳng, đo ở vai. Không xếp cỡ qua ảnh không có chuẩn tỷ lệ.",
           "source_ids": [
             "fci-181"
           ]
@@ -362,15 +494,15 @@
       },
       "attributes": [
         {
-          "attribute_id": "coat_texture",
-          "value": "lông dài, mượt, hơi gợn ở sau đầu ngang tai",
+          "attribute_id": "coat_color",
+          "value": "Các phối màu belton có nền trắng và chấm màu. Tiêu chuẩn ưu tiên chấm trải đều hơn mảng lớn. Thấy nhiều vùng thân. Mảng lớn và mẫu ba màu vẫn có thể có.",
           "source_ids": [
             "fci-002"
           ]
         },
         {
-          "attribute_id": "coat_color",
-          "value": "lông có đốm lấm tấm kiểu belton, ưu tiên phân bố đều",
+          "attribute_id": "coat_texture",
+          "value": "Lông thường dài mượt và hơi gợn ở vùng sau đầu ngang tai, có lông tua. Góc nghiêng, thấy lông sau đầu và tai, phụ thuộc grooming.",
           "source_ids": [
             "fci-002"
           ]
@@ -392,14 +524,14 @@
       "attributes": [
         {
           "attribute_id": "coat_color",
-          "value": "lông màu hạt dẻ đậm",
+          "value": "Nền hạt dẻ đậm, không có đen theo FCI, cho phép dấu trắng nhỏ ở một số vị trí. Chiếu sáng trung tính, quan sát toàn nền lông.",
           "source_ids": [
             "fci-120"
           ]
         },
         {
           "attribute_id": "ear_position",
-          "value": "tai thấp, rủ sát đầu",
+          "value": "Tai đặt thấp về phía sau, rủ sát đầu. Hai bên đầu rõ, phân biệt bờ tai với lông tua.",
           "source_ids": [
             "fci-120"
           ]
@@ -420,14 +552,14 @@
       "attributes": [
         {
           "attribute_id": "coat_color",
-          "value": "lông đen với mảng nâu đỏ",
+          "value": "Nền đen với các điểm tan ở vùng như trên mắt, mõm và ngực. Chấm trắng rất nhỏ ở ngực được phép. Thấy đủ mặt và ngực, tránh tối vùng màu tan.",
           "source_ids": [
             "fci-006"
           ]
         },
         {
           "attribute_id": "ear_position",
-          "value": "tai thấp, nằm sát đầu",
+          "value": "Tai đặt thấp và áp sát đầu. Thấy mặt bên và vị trí tai gắn.",
           "source_ids": [
             "fci-006"
           ]
@@ -447,15 +579,22 @@
       },
       "attributes": [
         {
-          "attribute_id": "ear_shape",
-          "value": "tai dạng thùy, dài và rộng",
+          "attribute_id": "coat_color",
+          "value": "Đen-trắng hoặc nâu gan-trắng, có thể kèm mảng tan. Ánh sáng trung tính, màu da và lông tránh lẫn.",
           "source_ids": [
             "fci-125"
           ]
         },
         {
-          "attribute_id": "coat_color",
-          "value": "lông đen trắng hoặc nâu gan trắng, có thể kèm mảng nâu vàng",
+          "attribute_id": "body_build",
+          "value": "Dáng cân đối, chắc, tương đối cao chân trong nhóm spaniel đất liền Anh theo FCI. Chó đứng ngang, nhìn đủ chân và thân. Không suy chiều cao thật từ pixel.",
+          "source_ids": [
+            "fci-125"
+          ]
+        },
+        {
+          "attribute_id": "ear_shape",
+          "value": "Tai dạng thùy, có chiều dài và chiều rộng rõ, có lông tua. Thấy dáng vành tai, lông tua có thể làm tai nhìn dài hoặc rộng hơn.",
           "source_ids": [
             "fci-125"
           ]
@@ -476,15 +615,25 @@
       "attributes": [
         {
           "attribute_id": "coat_color",
-          "value": "lông đỏ đậm và trắng",
+          "value": "Màu đỏ đậm và trắng theo hai tiêu chuẩn được đối chiếu. Thấy thân, kiểm ánh sáng đỏ/cam.",
           "source_ids": [
+            "fci-126",
+            "rkc-welsh-springer"
+          ]
+        },
+        {
+          "attribute_id": "ear_shape",
+          "value": "Vành tai tương đối nhỏ và thuôn dần về chóp. Cần thấy vành tai, góc ngang hoặc ba phần tư, tránh lông che.",
+          "source_ids": [
+            "fci-126",
             "rkc-welsh-springer"
           ]
         },
         {
           "attribute_id": "coat_texture",
-          "value": "lông thẳng hoặc phẳng, mượt và dày",
+          "value": "Lông thẳng hoặc phẳng, mượt và dày. Quan sát lông khô rõ nét. Không suy cảm giác khi chạm từ ảnh.",
           "source_ids": [
+            "fci-126",
             "rkc-welsh-springer"
           ]
         }
@@ -505,14 +654,21 @@
       "attributes": [
         {
           "attribute_id": "ear_shape",
-          "value": "tai dạng thùy, phần vành tai kéo tới chóp mũi",
+          "value": "Tai dạng thùy, vành mảnh dài tới chóp mũi theo mô tả của tiêu chuẩn English Cocker Spaniel. Ảnh đơn lẻ thường chỉ hỗ trợ đánh giá độ dài tương đối của tai.",
+          "source_ids": [
+            "fci-005"
+          ]
+        },
+        {
+          "attribute_id": "body_build",
+          "value": "Dáng gọn, chắc và cân đối, hai kích thước vai–đất và vai–gốc đuôi gần nhau theo tiêu chuẩn. Ảnh bên đủ toàn thân, chân đứng tự nhiên. Không ước tính số đo từ crop. Phạm vi mô tả là English Cocker Spaniel.",
           "source_ids": [
             "fci-005"
           ]
         },
         {
           "attribute_id": "coat_texture",
-          "value": "lông phẳng và mượt",
+          "value": "Lông phẳng, mượt theo chuẩn English Cocker. Thấy lông tự nhiên, không suy từ bóng phản chiếu. WordNet dùng để chọn tên tương đương. Phạm vi mô tả là English Cocker Spaniel.",
           "source_ids": [
             "fci-005"
           ]
@@ -533,14 +689,21 @@
       "attributes": [
         {
           "attribute_id": "ear_position",
-          "value": "tai chữ V rủ về phía trước",
+          "value": "Tai rủ ra trước và áp gần má. Thấy hướng mang tai từ chính diện hoặc ba phần tư. Dáng tai chữ V là dấu hiệu hình tai riêng.",
+          "source_ids": [
+            "fci-272"
+          ]
+        },
+        {
+          "attribute_id": "head_shape",
+          "value": "Đầu rộng hơi vồng, mõm nêm khỏe. Thấy mặt trước và profile, không dùng đầu để tách riêng Norfolk với Norwich.",
           "source_ids": [
             "fci-272"
           ]
         },
         {
           "attribute_id": "coat_texture",
-          "value": "lông cứng và thô",
+          "value": "Lông cứng, thẳng và thô, nằm sát thân. Vùng thân rõ và không vừa tỉa sát.",
           "source_ids": [
             "fci-272"
           ]
@@ -561,14 +724,14 @@
       "attributes": [
         {
           "attribute_id": "ear_position",
-          "value": "tai chóp nhọn, dựng khi chú ý",
+          "value": "Tai dựng lúc chú ý, có thể ngả ra sau lúc nghỉ. Hai tai rõ, chó đang chú ý. Tai nhọn thuộc hình tai, chưa cần xuất ID riêng ở lớp này.",
           "source_ids": [
             "fci-072"
           ]
         },
         {
           "attribute_id": "coat_texture",
-          "value": "lông cứng và thô",
+          "value": "Lông cứng, thẳng và thô, áp sát thân. Grooming và độ phân giải có thể che kết cấu lông.",
           "source_ids": [
             "fci-072"
           ]
@@ -588,15 +751,22 @@
       },
       "attributes": [
         {
-          "attribute_id": "ear_position",
-          "value": "tai chữ V nhỏ rủ về phía má",
+          "attribute_id": "head_shape",
+          "value": "Đầu kiểu rái cá, với sọ rộng vừa và mõm ngắn khỏe. Chính diện và góc ngang rõ mõm, chỉ gợi ý khi thấy hình học đầu.",
           "source_ids": [
             "fci-010"
           ]
         },
         {
           "attribute_id": "coat_texture",
-          "value": "lông thô và dày",
+          "value": "Lông ngoài thô trên lớp lót sát thân. Lông khô đủ chi tiết. Mật độ lớp lót không suy chắc từ ảnh.",
+          "source_ids": [
+            "fci-010"
+          ]
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "Tai rủ về trước gần má. Tai hai bên rõ.",
           "source_ids": [
             "fci-010"
           ]
@@ -616,13 +786,28 @@
       },
       "attributes": [
         {
-          "attribute_id": "ear_position",
-          "value": "tai bán dựng, chóp gập về trước khi chú ý",
+          "attribute_id": "head_shape",
+          "value": "Đầu dạng nêm tù, thon dần, với đoạn chuyển trán–mõm nhẹ nhưng thấy được. Ưu tiên góc nghiêng đủ trán và mõm. Đặc điểm tương ứng trong cả hai chuẩn Rough và Smooth; phân bố biến thể trong lớp dữ liệu chưa xác minh.",
           "source_ids": [
             "fci-156",
             "fci-296"
-          ],
-          "variability_note": "Mô tả chung cho hai biến thể Rough và Smooth. Tư thế tai phụ thuộc mức chú ý."
+          ]
+        },
+        {
+          "attribute_id": "ear_position",
+          "value": "Tai bán dựng khi chú ý, chóp gập ra trước. Cả chuẩn Rough và Smooth mô tả cách mang này. Thấy hai tai, chó chú ý.",
+          "source_ids": [
+            "fci-156",
+            "fci-296"
+          ]
+        },
+        {
+          "attribute_id": "coat_length",
+          "value": "Hai chuẩn tham chiếu mô tả Rough có bờm rõ và Smooth có lông ngoài ngắn; phân bố biến thể của lớp dữ liệu chưa xác minh. Chỉ dùng với bộ lông đủ rõ. Giữ biến thiên ở KB, không chèn vào prompt.",
+          "source_ids": [
+            "fci-156",
+            "fci-296"
+          ]
         }
       ]
     },
@@ -640,16 +825,32 @@
       "attributes": [
         {
           "attribute_id": "coat_length",
-          "value": "lông ngoài dài, tạo bờm quanh cổ",
+          "value": "Lông ngoài dài, có bờm và diềm cổ rõ. Cổ và thân thấy rõ, lông khô.",
+          "source_ids": [
+            "fci-088"
+          ]
+        },
+        {
+          "attribute_id": "head_shape",
+          "value": "Đầu nêm tù dài từ tai tới mũi, stop nhẹ nhưng rõ. Ảnh ngang rõ trán–mõm. Dùng để phân biệt có điều kiện với ID 23.",
           "source_ids": [
             "fci-088"
           ]
         },
         {
           "attribute_id": "ear_position",
-          "value": "tai bán dựng khi chú ý",
+          "value": "Tai bán dựng, chóp gập ra trước lúc chú ý. Chó đang chú ý và thấy hai tai.",
           "source_ids": [
             "fci-088"
+          ]
+        },
+        {
+          "attribute_id": "breed_size",
+          "value": "FCI ghi chiều cao vai lý tưởng đực 37 cm, cái 35,5 cm, sai khác quá 2,5 cm rất không mong muốn. Đo thật ở vai chó trưởng thành. Dùng chuẩn tham chiếu, không suy từ kích thước ảnh.",
+          "source_ids": [
+            "fci-088",
+            "fci-156",
+            "fci-296"
           ]
         }
       ]
@@ -667,15 +868,22 @@
       },
       "attributes": [
         {
+          "attribute_id": "head_shape",
+          "value": "Sọ khá rộng và đoạn chuyển trán–mõm rõ. Ảnh nghiêng, đọc đường chuyển trán–mõm; không dùng như điều kiện đủ.",
+          "source_ids": [
+            "fci-297"
+          ]
+        },
+        {
           "attribute_id": "ear_position",
-          "value": "tai dựng hoặc bán dựng",
+          "value": "Tai dựng hoặc bán dựng và linh hoạt theo trạng thái. Hai tai hiện rõ.",
           "source_ids": [
             "fci-297"
           ]
         },
         {
           "attribute_id": "tail_shape",
-          "value": "đuôi thấp với đoạn chót cong lên",
+          "value": "Đuôi có điểm gắn thấp, đoạn chót thường cong lên. Thấy toàn đuôi và tư thế mang.",
           "source_ids": [
             "fci-297"
           ]
@@ -696,14 +904,21 @@
       "attributes": [
         {
           "attribute_id": "coat_color",
-          "value": "lông màu vàng hoặc kem",
+          "value": "Lông trong dải vàng hoặc kem trong tiêu chuẩn, có thể có ít sợi trắng ở ngực. Thân đủ sáng.",
           "source_ids": [
             "fci-111"
           ]
         },
         {
           "attribute_id": "coat_texture",
-          "value": "lông phẳng hoặc gợn, có lông dài trang trí",
+          "value": "Lông phẳng hoặc gợn. Góc đủ thấy thân, lông khô.",
+          "source_ids": [
+            "fci-111"
+          ]
+        },
+        {
+          "attribute_id": "coat_length",
+          "value": "Lông dài trang trí rõ ở dạng feathering theo chuẩn; nguồn không nêu một chiều dài toàn thân cố định. Thấy vùng lông tua, grooming hoặc crop có thể làm giảm tín hiệu.",
           "source_ids": [
             "fci-111"
           ]
@@ -724,15 +939,22 @@
       },
       "attributes": [
         {
-          "attribute_id": "coat_length",
-          "value": "lông ngắn và dày",
+          "attribute_id": "coat_texture",
+          "value": "Lông không gợn, sợi có độ cứng khi sờ. Thân khô, có ánh sáng. Ảnh không xác nhận trực tiếp độ cứng.",
           "source_ids": [
             "fci-122"
           ]
         },
         {
           "attribute_id": "tail_shape",
-          "value": "đuôi dày ở gốc và thuôn dần về chóp",
+          "value": "Đuôi tròn, rất dày gần gốc rồi thon dần, không tua, dạng đuôi rái cá. Đuôi nhìn rõ từ gốc đến chóp, tránh góc foreshortening.",
+          "source_ids": [
+            "fci-122"
+          ]
+        },
+        {
+          "attribute_id": "coat_length",
+          "value": "Lông ngắn, dày, không có lông tua theo chuẩn. Thân khô, đủ độ phân giải.",
           "source_ids": [
             "fci-122"
           ]
@@ -754,14 +976,21 @@
       "attributes": [
         {
           "attribute_id": "coat_texture",
-          "value": "lông có thể gợn ở vai, cổ, lưng và thắt lưng",
+          "value": "Lông có xu hướng gợn ở vai, cổ, lưng và thắt lưng. Lông mặt và chân thẳng. Lông khô, nhìn đủ vùng vai–lưng. Gợn là xu hướng, không bắt buộc thấy.",
           "source_ids": [
             "fci-263"
           ]
         },
         {
           "attribute_id": "coat_color",
-          "value": "lông tông nâu, màu cói hoặc cỏ khô",
+          "value": "Dải tông màu nâu, sedge hoặc deadgrass theo FCI. Ánh sáng trung tính.",
+          "source_ids": [
+            "fci-263"
+          ]
+        },
+        {
+          "attribute_id": "coat_length",
+          "value": "Lông thân ngắn, lông mặt và chân rất ngắn. Tua vừa ở vùng sau đùi và đuôi được phép. Thấy thân. Phân biệt lông ngắn toàn thân với tua cục bộ.",
           "source_ids": [
             "fci-263"
           ]
@@ -781,17 +1010,34 @@
       },
       "attributes": [
         {
-          "attribute_id": "muzzle_length",
-          "value": "mõm ngắn và rộng",
+          "attribute_id": "facial_hair",
+          "value": "Lông trên mặt và mõm ngắn, lông tai dài và nhiều. Mặt và mõm rõ, tai ngoài vùng claim chính. Grooming làm biến đổi dấu hiệu.",
           "source_ids": [
-            "akc-japanese-chin"
+            "akc-japanese-chin",
+            "fci-206"
+          ]
+        },
+        {
+          "attribute_id": "coat_color",
+          "value": "FCI mô tả nền trắng với mảng đen hoặc đỏ. Thấy đủ nền lông và mảng. Sắc độ ở vùng crop nhỏ có thể gây nhầm.",
+          "source_ids": [
+            "fci-206"
+          ]
+        },
+        {
+          "attribute_id": "muzzle_length",
+          "value": "Mõm ngắn theo AKC, FCI mô tả sống mũi rất ngắn. Nhìn góc nghiêng rõ mũi và đoạn chuyển. Ít phân biệt trong G10.",
+          "source_ids": [
+            "akc-japanese-chin",
+            "fci-206"
           ]
         },
         {
           "attribute_id": "coat_texture",
-          "value": "lông thẳng và mượt",
+          "value": "Lông thân thẳng và mượt. Lông khô, ảnh đủ nét để đánh giá bề ngoài.",
           "source_ids": [
-            "fci-206"
+            "fci-206",
+            "akc-japanese-chin"
           ]
         }
       ]
@@ -810,15 +1056,29 @@
       },
       "attributes": [
         {
-          "attribute_id": "muzzle_length",
-          "value": "mõm rõ, có thể tương đối ngắn và rộng",
+          "attribute_id": "head_shape",
+          "value": "Đầu tương đối rộng, đỉnh sọ phẳng giữa hai tai theo FCI. Ảnh mặt thẳng hoặc ba phần tư, cần tách đường viền lông và sọ.",
+          "source_ids": [
+            "fci-207"
+          ]
+        },
+        {
+          "attribute_id": "body_build",
+          "value": "Dáng nhỏ chắc vừa phải, thân cân bằng. Ảnh ngang đủ thân. Lông không được tính là khối thân.",
           "source_ids": [
             "fci-207"
           ]
         },
         {
           "attribute_id": "coat_length",
-          "value": "lông tương đối dài, có bờm ở cổ",
+          "value": "Lông thẳng dài vừa, bờm quây quanh cổ như áo choàng và không vượt quá vai. Cổ và vai hiện rõ. Bờm thay đổi do grooming.",
+          "source_ids": [
+            "fci-207"
+          ]
+        },
+        {
+          "attribute_id": "muzzle_length",
+          "value": "Mõm phải hiện rõ, có thể tương đối ngắn. Chiều rộng được ghi riêng ở head_shape nếu cần. Dùng góc nghiêng rõ đường viền. Không dùng độ bẹt để xếp loại.",
           "source_ids": [
             "fci-207"
           ]
@@ -839,15 +1099,29 @@
       },
       "attributes": [
         {
-          "attribute_id": "coat_length",
-          "value": "lông ngoài dài và dày",
+          "attribute_id": "facial_hair",
+          "value": "Có râu, ria và lông mọc hướng lên trên mõm, tạo kiểu mặt như cánh hoa cúc. Mặt và mõm đủ rõ, buộc hoặc tỉa lông có thể đổi viền mặt.",
+          "source_ids": [
+            "fci-208"
+          ]
+        },
+        {
+          "attribute_id": "body_build",
+          "value": "Thân chắc, chiều dài từ vai tới gốc đuôi lớn hơn chiều cao vai theo chuẩn. Dáng ngang đủ vai và gốc đuôi. Không suy tỷ lệ chính xác từ góc xiên.",
           "source_ids": [
             "fci-208"
           ]
         },
         {
           "attribute_id": "muzzle_length",
-          "value": "mõm ngắn, rộng",
+          "value": "Mõm ngắn theo chuẩn. Chiều rộng và độ vuông là mô tả khác của hình mõm. Ảnh ngang thấy mũi và điểm stop, tóc có thể che. Không suy 2,5 cm từ ảnh.",
+          "source_ids": [
+            "fci-208"
+          ]
+        },
+        {
+          "attribute_id": "coat_length",
+          "value": "Lông ngoài dài, dày, không xoăn theo chuẩn, có thể hơi gợn. Lông khô và rõ thân. Grooming có thể làm lông thực tế ngắn.",
           "source_ids": [
             "fci-208"
           ]
@@ -857,183 +1131,251 @@
   ],
   "sources": [
     {
-      "source_id": "stanford-wordnet",
-      "title": "Stanford CS231A WordNet taxonomy example for Eskimo dog",
-      "url": "https://cvgl.stanford.edu/teaching/cs231a_winter1415/lecture/lecture16_datasets_3D_scene_understanding.pdf",
-      "review_status": "pending"
-    },
-    {
       "source_id": "fci-243",
-      "title": "FCI breed standard 243: Alaskan Malamute",
+      "title": "FCI #243 Alaskan Malamute",
       "url": "https://www.fci.be/nomenclature/Standards/243g05-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-243"
     },
     {
       "source_id": "fci-270",
-      "title": "FCI breed standard 270: Siberian Husky",
+      "title": "FCI #270 Siberian Husky",
       "url": "https://www.fci.be/nomenclature/Standards/270g05-en.pdf",
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-270"
+    },
+    {
+      "source_id": "fci-211",
+      "title": "FCI #211 Canadian Eskimo Dog, đối chiếu taxonomy",
+      "url": "https://www.fci.be/nomenclature/Standards/211g05-en.pdf",
       "review_status": "pending"
     },
     {
       "source_id": "fci-058",
-      "title": "FCI breed standard 058: Greater Swiss Mountain Dog",
+      "title": "FCI #058 Great Swiss Mountain Dog",
       "url": "https://www.fci.be/nomenclature/Standards/058g02-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-058"
     },
     {
       "source_id": "fci-046",
-      "title": "FCI breed standard 046: Appenzell Cattle Dog",
+      "title": "FCI #046 Appenzell Cattle Dog",
       "url": "https://www.fci.be/nomenclature/Standards/046g02-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-046"
     },
     {
       "source_id": "fci-047",
-      "title": "FCI breed standard 047: Entlebuch Cattle Dog",
+      "title": "FCI #047 Entlebuch Cattle Dog",
       "url": "https://www.fci.be/nomenclature/Standards/047g02-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-047"
     },
     {
       "source_id": "fci-172",
-      "title": "FCI breed standard 172: Poodle",
+      "title": "FCI #172 Poodle",
       "url": "https://www.fci.be/nomenclature/Standards/172g09-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-172"
     },
     {
       "source_id": "fci-183",
-      "title": "FCI breed standard 183: Miniature Schnauzer",
+      "title": "FCI #183 Miniature Schnauzer",
       "url": "https://www.fci.be/nomenclature/Standards/183g02-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-183"
     },
     {
       "source_id": "fci-182",
-      "title": "FCI breed standard 182: Schnauzer",
+      "title": "FCI #182 Schnauzer",
       "url": "https://www.fci.be/nomenclature/Standards/182g02-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-182"
     },
     {
       "source_id": "fci-181",
-      "title": "FCI breed standard 181: Giant Schnauzer",
+      "title": "FCI #181 Giant Schnauzer",
       "url": "https://www.fci.be/nomenclature/Standards/181g02-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-181"
     },
     {
       "source_id": "fci-002",
-      "title": "FCI breed standard 002: English Setter",
+      "title": "FCI #002 English Setter",
       "url": "https://www.fci.be/nomenclature/Standards/002g07-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-002"
     },
     {
       "source_id": "fci-120",
-      "title": "FCI breed standard 120: Irish Red Setter",
+      "title": "FCI #120 Irish Red Setter",
       "url": "https://www.fci.be/nomenclature/Standards/120g07-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-120"
     },
     {
       "source_id": "fci-006",
-      "title": "FCI breed standard 006: Gordon Setter",
+      "title": "FCI #006 Gordon Setter",
       "url": "https://www.fci.be/nomenclature/Standards/006g07-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-006"
     },
     {
       "source_id": "fci-125",
-      "title": "FCI breed standard 125: English Springer Spaniel",
+      "title": "FCI #125 English Springer Spaniel",
       "url": "https://www.fci.be/nomenclature/Standards/125g08-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-125"
     },
     {
-      "source_id": "rkc-welsh-springer",
-      "title": "Royal Kennel Club breed standard: Welsh Springer Spaniel",
-      "url": "https://www.royalkennelclub.com/breed-standards/gundog/spaniel-welsh-springer/",
-      "review_status": "pending"
+      "source_id": "fci-126",
+      "title": "FCI #126 Welsh Springer Spaniel",
+      "url": "https://www.fci.be/nomenclature/Standards/126g08-en.pdf",
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-126"
     },
     {
       "source_id": "fci-005",
-      "title": "FCI breed standard 005: English Cocker Spaniel",
+      "title": "FCI #005 English Cocker Spaniel",
       "url": "https://www.fci.be/nomenclature/Standards/005g08-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-005"
     },
     {
       "source_id": "fci-272",
-      "title": "FCI breed standard 272: Norfolk Terrier",
+      "title": "FCI #272 Norfolk Terrier",
       "url": "https://www.fci.be/nomenclature/Standards/272g03-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-272"
     },
     {
       "source_id": "fci-072",
-      "title": "FCI breed standard 072: Norwich Terrier",
+      "title": "FCI #072 Norwich Terrier",
       "url": "https://www.fci.be/nomenclature/Standards/072g03-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-072"
     },
     {
       "source_id": "fci-010",
-      "title": "FCI breed standard 010: Border Terrier",
+      "title": "FCI #010 Border Terrier",
       "url": "https://www.fci.be/nomenclature/Standards/010g03-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-010"
     },
     {
       "source_id": "fci-156",
-      "title": "FCI breed standard 156: Collie (Rough)",
+      "title": "FCI #156 Collie (Rough)",
       "url": "https://www.fci.be/nomenclature/Standards/156g01-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-156"
     },
     {
       "source_id": "fci-296",
-      "title": "FCI breed standard 296: Collie (Smooth)",
+      "title": "FCI #296 Collie (Smooth)",
       "url": "https://www.fci.be/nomenclature/Standards/296g01-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-296"
     },
     {
       "source_id": "fci-088",
-      "title": "FCI breed standard 088: Shetland Sheepdog",
+      "title": "FCI #088 Shetland Sheepdog",
       "url": "https://www.fci.be/nomenclature/Standards/088g01-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-088"
     },
     {
       "source_id": "fci-297",
-      "title": "FCI breed standard 297: Border Collie",
+      "title": "FCI #297 Border Collie",
       "url": "https://www.fci.be/nomenclature/Standards/297g01-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-297"
     },
     {
       "source_id": "fci-111",
-      "title": "FCI breed standard 111: Golden Retriever",
+      "title": "FCI #111 Golden Retriever",
       "url": "https://www.fci.be/nomenclature/Standards/111g08-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-111"
     },
     {
       "source_id": "fci-122",
-      "title": "FCI breed standard 122: Labrador Retriever",
+      "title": "FCI #122 Labrador Retriever",
       "url": "https://www.fci.be/nomenclature/Standards/122g08-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-122"
     },
     {
       "source_id": "fci-263",
-      "title": "FCI breed standard 263: Chesapeake Bay Retriever",
+      "title": "FCI #263 Chesapeake Bay Retriever",
       "url": "https://www.fci.be/nomenclature/Standards/263g08-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-263"
     },
     {
       "source_id": "fci-206",
-      "title": "FCI breed standard 206: Japanese Chin",
+      "title": "FCI #206 Japanese Chin",
       "url": "https://www.fci.be/nomenclature/Standards/206g09-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-206"
     },
     {
       "source_id": "fci-207",
-      "title": "FCI breed standard 207: Pekingese",
+      "title": "FCI #207 Pekingese",
       "url": "https://www.fci.be/nomenclature/Standards/207g09-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-207"
     },
     {
       "source_id": "fci-208",
-      "title": "FCI breed standard 208: Shih Tzu",
+      "title": "FCI #208 Shih Tzu",
       "url": "https://www.fci.be/nomenclature/Standards/208g09-en.pdf",
-      "review_status": "pending"
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/fci-208"
+    },
+    {
+      "source_id": "akc-poodle",
+      "title": "AKC Official Standard of the Poodle",
+      "url": "https://images.akc.org/pdf/breeds/standards/Poodle.pdf",
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/akc-poodle"
     },
     {
       "source_id": "akc-japanese-chin",
       "title": "AKC Official Standard of the Japanese Chin",
       "url": "https://cdn.akc.org/JapaneseChin.pdf",
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/akc-japanese-chin"
+    },
+    {
+      "source_id": "rkc-welsh-springer",
+      "title": "Royal Kennel Club Welsh Springer Spaniel",
+      "url": "https://www.royalkennelclub.com/breed-standards/gundog/spaniel-welsh-springer/",
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/rkc-welsh-springer"
+    },
+    {
+      "source_id": "princeton-wordnet",
+      "title": "Princeton WordNet noun database",
+      "url": "https://wordnetcode.princeton.edu/3.0/WNdb-3.0.tar.gz",
+      "review_status": "approved",
+      "review_ref": "task08.04/source/task08.04-kb-v1-20261128/princeton-wordnet"
+    },
+    {
+      "source_id": "imagenet-synsets",
+      "title": "ImageNet danh mục synsets",
+      "url": "https://www.image-net.org/challenges/LSVRC/2012/browse-synsets.php",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "stanford-wordnet",
+      "title": "Stanford CS231A, Silvio Savarese, Lecture 16",
+      "url": "https://cvgl.stanford.edu/teaching/cs231a_winter1415/lecture/lecture16_datasets_3D_scene_understanding.pdf",
+      "review_status": "pending"
+    },
+    {
+      "source_id": "stanford-dogs-paper",
+      "title": "Khosla và cộng sự, Stanford Dogs",
+      "url": "https://people.csail.mit.edu/khosla/papers/fgvc2011.pdf",
       "review_status": "pending"
     }
   ]

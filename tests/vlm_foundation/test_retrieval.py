@@ -175,3 +175,109 @@ def test_retrieval_context_is_accepted_by_the_assistant_contract(kb):
                                 retrieval=bound, offline=True)
     assert request.allowed_source_ids == ("fixture-source-7",)
     assert request.kb_context == result.context
+
+
+@pytest.fixture
+def group_aware_fixture():
+    """Exercise the 95-attribute shape with synthetic text and independent review refs."""
+    import json
+
+    from src.vlm.knowledge_base import KB_MORPHOLOGY_V1, load_knowledge_base
+
+    artifacts = f.make_artifacts()
+    payload = json.loads(artifacts.knowledge_raw)
+    default = ("coat_texture", "ear_position", "body_build")
+    layout = {
+        3: ("body_build", "tail_shape", "coat_color"),
+        4: ("tail_shape", "body_build", "coat_color"),
+        6: ("coat_texture", "ear_position", "breed_size"),
+        7: ("coat_texture", "ear_position", "breed_size"),
+        8: ("coat_texture", "ear_position", "breed_size"),
+    }
+    for breed in payload["breeds"]:
+        class_id = breed["class_id"]
+        attribute_ids = layout.get(class_id, default)
+        if class_id < 5:
+            attribute_ids += ("head_shape",)
+        if class_id in (6, 7, 8):
+            breed["aliases"]["en"] = ["poodle"]
+        breed["attributes"] = [
+            {"attribute_id": attribute_id, "value": f"fixture-only {attribute_id}",
+             "source_ids": [f"fixture-source-{class_id}"]}
+            for attribute_id in attribute_ids
+        ]
+    raw = f.json_bytes(payload)
+    snapshot = load_knowledge_base(
+        raw, mapping=artifacts.mapping, expected_sha256=f.digest(raw),
+        reviewed_sources=f.REVIEWED_SOURCES, allowed_attribute_ids=KB_MORPHOLOGY_V1,
+    )
+    assert sum(len(breed.attributes) for breed in snapshot.data.breeds) == 95
+    return snapshot
+
+
+def test_group_aware_single_breed_prioritizes_visual_discrimination_at_small_budget(group_aware_fixture):
+    result = run_lookup(
+        group_aware_fixture, "Appenzeller", tokens=lambda text: len(text.split()),
+        request_fields={"context_budget": c.ContextBudget(max_tokens=6, tokenizer_revision="fixture-words")},
+    )
+    assert result.status is c.RetrievalStatus.HIT
+    assert tuple(item.attribute_id for item in result.entries[0].attributes) == ("tail_shape",)
+    assert result.source_ids == ("fixture-source-4",)
+    assert result.context == "Appenzeller | tail_shape: fixture-only tail_shape [fixture-source-4]"
+    assert result.truncation.used_tokens == 6
+    assert result.truncation.omitted_attribute_count == 3
+
+
+@pytest.mark.parametrize(("budget", "status", "entries", "omitted"), [
+    (2, c.RetrievalStatus.PARTIAL_HIT, ((4, ("tail_shape", "body_build")),), 6),
+    (5, c.RetrievalStatus.HIT, (
+        (4, ("tail_shape", "body_build", "coat_color", "head_shape")), (3, ("body_build",)),
+    ), 3),
+])
+def test_group_aware_comparison_preserves_breed_order_and_source_union(
+    group_aware_fixture, budget, status, entries, omitted,
+):
+    kwargs = {
+        "tokens": lambda text: len(text.splitlines()),
+        "request_fields": {"context_budget": c.ContextBudget(max_tokens=budget, tokenizer_revision="fixture-lines")},
+    }
+    question = "So sánh Appenzeller và Greater Swiss Mountain Dog"
+    first = run_lookup(group_aware_fixture, question, **kwargs)
+    second = run_lookup(group_aware_fixture, question, **kwargs)
+    assert replace(first, latency_ms=0) == replace(second, latency_ms=0)
+    assert first.status is status
+    assert first.resolved_class_ids == (4, 3)
+    assert tuple((entry.class_id, tuple(a.attribute_id for a in entry.attributes))
+                 for entry in first.entries) == entries
+    assert first.source_ids == tuple(f"fixture-source-{class_id}" for class_id, _ in entries)
+    assert first.truncation.used_tokens == budget
+    assert first.truncation.omitted_attribute_count == omitted
+
+
+def test_group_aware_scale_claims_follow_shared_visual_claims(group_aware_fixture):
+    result = run_lookup(
+        group_aware_fixture, "Toy Poodle", tokens=lambda text: len(text.splitlines()),
+        request_fields={"context_budget": c.ContextBudget(max_tokens=2, tokenizer_revision="fixture-lines")},
+    )
+    assert result.status is c.RetrievalStatus.HIT
+    assert tuple(item.attribute_id for item in result.entries[0].attributes) == ("coat_texture", "ear_position")
+    assert result.truncation.omitted_attribute_count == 1
+
+
+@pytest.mark.parametrize(("question", "unresolved", "status", "resolved", "candidates"), [
+    ("Poodle", (), c.RetrievalStatus.AMBIGUOUS, (), (6, 7, 8)),
+    ("American Cocker Spaniel", ("American Cocker Spaniel",), c.RetrievalStatus.MISS, (), ()),
+    ("Samoyed và Toy Poodle", ("Samoyed",), c.RetrievalStatus.PARTIAL_HIT, (6,), ()),
+])
+def test_group_aware_caller_targets_take_precedence_over_cnn_fallback(
+    group_aware_fixture, question, unresolved, status, resolved, candidates,
+):
+    cnn = c.AllowedCNNContext(status=c.CNNStatus.ACCEPT, class_id=24, canonical_name="Golden Retriever")
+    result = run_lookup(
+        group_aware_fixture, question, image_only=True, unresolved_mentions=unresolved,
+        request_fields={"cnn_context": cnn},
+    )
+    assert result.status is status
+    assert result.resolved_class_ids == resolved
+    assert result.per_breed[0].candidate_class_ids == candidates
+    assert result.source_ids == tuple(f"fixture-source-{class_id}" for class_id in resolved)

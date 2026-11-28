@@ -1,3 +1,7 @@
 # Byte hashes in VLM snapshots are computed over the repository's LF bytes.
 data/metadata/class_mapping.json text eol=lf
 data/knowledge/vlm/*.json text eol=lf
+outputs/research/vlm/task08_04/kb_source_review.json text eol=lf
+outputs/research/vlm/task08_04/kb_source_approval.json text eol=lf
+outputs/research/vlm/task08_04/kb_publication_manifest.json text eol=lf
+docs/research/vlm/evidence/task08_04/Task08_04_GroupAware_KB_Design.md text eol=lf
